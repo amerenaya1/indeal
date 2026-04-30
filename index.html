@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Indeal Marketplace · Product Audit</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#5b3fd9;--brand-soft:#efeafd;--shadow:0 12px 32px rgba(91,63,217,.10);--radius:20px}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100%}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 24px;min-height:100vh}
+.eyebrow{font-size:13px;color:var(--brand);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+h1{font-size:56px;line-height:1.05;letter-spacing:-.025em;font-weight:700;margin-bottom:14px;background:linear-gradient(180deg,#1d1d1f 0%,#5b3fd9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;max-width:760px}
+.sub{font-size:19px;color:var(--mute);max-width:640px;text-align:center;margin-bottom:48px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:20px;max-width:880px;width:100%}
+a.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;text-decoration:none;color:inherit;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease}
+a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--brand-soft)}
+.card .tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+.card h2{font-size:24px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.card p{font-size:15px;color:var(--mute);margin-bottom:24px}
+.card .cta{margin-top:auto;font-size:14px;font-weight:600;color:var(--brand);display:inline-flex;align-items:center;gap:6px}
+.card .cta span{transition:transform .18s ease}
+a.card:hover .cta span{transform:translateX(3px)}
+.foot{margin-top:56px;font-size:13px;color:var(--mute)}
+@media(max-width:720px){h1{font-size:40px}.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="eyebrow">Product Evaluation · April 30 2026</div>
+<h1>Indeal Marketplace<br>Product Audit</h1>
+<p class="sub">A review of the current B2B experience on marketplace.indeal.sa — pick a format below.</p>
+
+<div class="cards">
+  <a class="card" href="Indeal-Marketplace-Audit-Report.html">
+    <div class="tag">Long-form</div>
+    <h2>Audit report</h2>
+    <p>Full scrolling document covering onboarding, ordering, listings, RFQ, B2B gaps, performance and recommendations.</p>
+    <span class="cta">Read the report <span>→</span></span>
+  </a>
+  <a class="card" href="Indeal-Marketplace-Audit-Slides%20(3).html">
+    <div class="tag">Presentation</div>
+    <h2>Slide deck</h2>
+    <p>Keyboard-navigable slide version of the same audit, designed for sharing in a meeting.</p>
+    <span class="cta">Open the slides <span>→</span></span>
+  </a>
+</div>
+
+<div class="foot">Indeal · Disty.app · Product audit · 30 April 2026</div>
+</body>
+</html>
