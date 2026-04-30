@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Indeal Marketplace — Product Audit</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--blue:#0071e3;--red:#ff3b30;--orange:#ff9500;--yellow:#ffcc00;--green:#34c759;--purple:#5e5ce6;--shadow:0 8px 24px rgba(0,0,0,0.06);--radius:18px}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(20px);background:rgba(251,251,253,.85);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{font-weight:700;font-size:17px;letter-spacing:-.01em}
+.brand span{color:var(--blue)}
+.nav ul{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+.nav a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:500;opacity:.75;transition:.2s}
+.nav a:hover{opacity:1;color:var(--blue)}
+.hero{max-width:1100px;margin:0 auto;padding:88px 24px 56px;text-align:center}
+.eyebrow{font-size:13px;color:var(--blue);font-weight:600;letter-spacing:.02em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:64px;line-height:1.05;letter-spacing:-.025em;font-weight:700;margin-bottom:18px;background:linear-gradient(180deg,#1d1d1f 0%,#3a3a3c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sub{font-size:21px;color:var(--mute);max-width:680px;margin:0 auto 36px;font-weight:400}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:0 auto 80px;padding:0 24px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-align:left}
+.kpi .n{font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.kpi .l{font-size:13px;color:var(--mute);margin-top:8px}
+.kpi.r .n{color:var(--red)}.kpi.o .n{color:var(--orange)}.kpi.y .n{color:#b58400}.kpi.g .n{color:var(--green)}
+section{max-width:1100px;margin:0 auto;padding:64px 24px;border-top:1px solid var(--line)}
+section h2{font-size:42px;letter-spacing:-.02em;font-weight:700;margin-bottom:8px}
+section .lead{color:var(--mute);font-size:18px;margin-bottom:36px;max-width:760px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;margin-bottom:16px;transition:.2s}
+.card:hover{box-shadow:var(--shadow)}
+.card h3{font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.card .src{font-size:12px;color:var(--mute);text-transform:uppercase;letter-spacing:.04em;margin-bottom:14px}
+.card p{font-size:15px;color:#3a3a3c;margin-bottom:10px}
+.card ul{list-style:none;margin-top:12px}
+.card li{padding:8px 0 8px 22px;position:relative;font-size:14.5px;color:#3a3a3c;border-bottom:1px solid #f4f4f7}
+.card li:last-child{border-bottom:none}
+.card li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:8px;border-radius:50%;background:var(--mute)}
+.card li.bad::before{background:var(--red)}
+.card li.warn::before{background:var(--orange)}
+.card li.ok::before{background:var(--green)}
+.pill{display:inline-block;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;margin-left:8px}
+.pill.crit{background:#ffe5e5;color:#b00020}
+.pill.high{background:#fff0db;color:#a35a00}
+.pill.med{background:#fff8d0;color:#80660a}
+.pill.low{background:#e3f9e5;color:#1f6f31}
+.gap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:760px){.gap-grid{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}h1{font-size:42px}section h2{font-size:32px}}
+.feature{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;display:flex;flex-direction:column;gap:8px;transition:.2s;cursor:pointer}
+.feature:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.feature .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.feature .name{font-weight:600;font-size:16px}
+.feature .status{font-size:11px;font-weight:700;padding:4px 9px;border-radius:99px;text-transform:uppercase;letter-spacing:.04em}
+.s-missing{background:#ffe5e5;color:#b00020}
+.s-partial{background:#fff0db;color:#a35a00}
+.s-weak{background:#fff8d0;color:#80660a}
+.s-present{background:#e3f9e5;color:#1f6f31}
+.feature .desc{font-size:13.5px;color:var(--mute);line-height:1.5}
+.tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+.tab{padding:8px 16px;border-radius:99px;background:#fff;border:1px solid var(--line);font-size:13px;font-weight:500;color:var(--ink);cursor:pointer;transition:.15s}
+.tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tab:hover:not(.active){background:#f2f2f7}
+.panel{display:none}
+.panel.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+th,td{text-align:left;padding:14px 18px;font-size:14px;border-bottom:1px solid var(--line)}
+th{background:#f5f5f7;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:#3a3a3c}
+tr:last-child td{border-bottom:none}
+.score{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:13px}
+.dot{width:10px;height:10px;border-radius:50%}
+.rec{background:linear-gradient(180deg,#fff,#fafafe);border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-bottom:14px;display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:start}
+.rec .num{width:48px;height:48px;border-radius:14px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+.rec h4{font-size:18px;font-weight:600;margin-bottom:6px}
+.rec p{font-size:14.5px;color:#3a3a3c}
+.rec .tag{font-size:11px;font-weight:700;padding:6px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.04em}
+.tag.p1{background:#ffe5e5;color:#b00020}
+.tag.p2{background:#fff0db;color:#a35a00}
+.tag.p3{background:#e3f0ff;color:#0050a8}
+.foot{text-align:center;color:var(--mute);font-size:13px;padding:48px 24px;border-top:1px solid var(--line)}
+.evidence{background:#f5f5f7;border-radius:10px;padding:10px 14px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;color:#3a3a3c;margin:8px 0}
+.heat{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin:18px 0}
+.heat-cell{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:600;text-align:center;padding:4px;line-height:1.1}
+.h0{background:#34c759}.h1{background:#a3d96b}.h2{background:#ffcc00;color:#1d1d1f}.h3{background:#ff9500}.h4{background:#ff3b30}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--mute);align-items:center;flex-wrap:wrap;margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+</style><style id="themeOverride">
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#5b3fd9;--brand-soft:#efeafd;--blue:#5b3fd9;--red:#ff3b30;--orange:#ff9500;--yellow:#ffcc00;--green:#34c759;--purple:#5b3fd9;--shadow:0 8px 24px rgba(91,63,217,0.08);--radius:18px}
+.brand span{color:var(--brand) !important}
+.eyebrow{color:var(--brand) !important}
+.nav a:hover{color:var(--brand) !important}
+.tag.p3{background:#efeafd !important;color:#3d28a3 !important}
+.kpi.r .n{color:var(--red)}
+.feature:hover{box-shadow:0 8px 24px rgba(91,63,217,.12) !important}
+h1{background:linear-gradient(180deg,#1d1d1f 0%,#5b3fd9 100%) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important}
+.rec .num{background:var(--brand) !important}
+.brand-logo{height:24px;display:block}
+.logo-large{height:44px;display:block;margin:0 auto 22px}
+</style></head><body cz-shortcut-listen="true">
+
+<nav class="nav"><div class="nav-in">
+<div class="brand"><img src="data:image/png;base64,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" alt="Disty" class="brand-logo"></div>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#onboarding">Onboarding</a></li>
+<li><a href="#ordering">Ordering</a></li>
+<li><a href="#listings">Listings</a></li>
+<li><a href="#rfq">RFQ</a></li>
+<li><a href="#order">Post-Order</a></li>
+<li><a href="#b2b">B2B Gaps</a></li>
+<li><a href="#perf">Performance</a></li>
+<li><a href="#recs">Recommendations</a></li>
+</ul>
+</div></nav>
+
+<header class="hero">
+<div class="eyebrow">Product Evaluation · April 30 2026</div>
+<h1>Indeal Marketplace<br>Product Audit</h1>
+<p class="sub">A comprehensive review of the current B2B experience on marketplace.indeal.sa — identifying gaps, friction, and the missing capabilities that erode partner trust.</p>
+</header>
+
+<div class="kpis">
+<div class="kpi r"><div class="n">42</div><div class="l">Distinct issues identified</div></div>
+<div class="kpi o"><div class="n">11</div><div class="l">Critical B2B capabilities missing or weak</div></div>
+<div class="kpi y"><div class="n">5.5s</div><div class="l">Average homepage load time</div></div>
+<div class="kpi g"><div class="n">2,264</div><div class="l">Sellers on platform (most unverified)</div></div>
+</div>
+
+<section id="summary">
+<h2>Executive summary</h2>
+<p class="lead">Indeal today functions as a hybrid catalog and lead‑generation tool more than a true B2B marketplace. To buyers it reads as a <strong>list of items</strong> — close to a consumer storefront — rather than a procurement platform. Core B2B mechanics (pricing logic, MOQ, tiered discounts, structured negotiation, credit terms, multi‑line RFQs, role‑based teams, and verified seller trust signals) are either missing, partially implemented, or technically broken. Partner dissatisfaction is a rational response to those gaps.</p>
+
+<div class="card">
+<h3>Top three themes <span class="pill crit">Critical</span></h3>
+<ul>
+<li class="bad"><b>The platform is missing the contract layer of B2B.</b> No tiered pricing, no MOQ, no negotiation, no credit terms, no PO/VAT handling, no role-based teams. Buyers cannot transact the way procurement teams actually buy.</li>
+<li class="bad"><b>Trust signals are absent and seller PII is exposed.</b> Personal Gmail addresses and mobile numbers of 2,264 sellers are public — encouraging off-platform deals and undermining marketplace economics.</li>
+<li class="bad"><b>Quality bugs are visible to end-users.</b> Raw translation keys (<code>plugins/fob-request-quote::request-quote.vendor</code>) leak to the buyer dashboard, search returns empty for products that exist, and the seller verification step hangs indefinitely on invalid input.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>What works today <span class="pill low">Strengths</span></h3>
+<ul>
+<li class="ok">A mobile-first bilingual storefront with a clear EN/AR toggle.</li>
+<li class="ok">RFQ post-submission view supports <b>messaging + file attachments</b> (PDF, DOCX, XLS, etc., up to 10MB) — a strong foundation for procurement workflows.</li>
+<li class="ok">Three-step seller onboarding wizard with CR (Commercial Registration) integration via Wathq is the right architectural choice for the Saudi market.</li>
+<li class="ok">A "Saudi Made" badge framework exists and aligns the marketplace with Vision 2030 positioning.</li>
+</ul>
+</div>
+</section>
+
+
+<section id="onboarding">
+<section class="callout-block" style="margin: 28px 0px 36px; padding: 28px 32px; border: 1px solid rgba(91, 63, 217, 0.16); background: linear-gradient(rgba(91, 63, 217, 0.05), rgba(91, 63, 217, 0.016)); border-radius: 20px;">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+      <span style="display:inline-block;padding:5px 12px;border-radius:999px;background:#5b3fd9;color:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;">Cross‑cutting observation</span>
+    </div>
+    <h3 style="margin:4px 0 12px;font-size:26px;letter-spacing:-.015em;line-height:1.15;">It feels like a list of items, not a B2B marketplace</h3>
+    <p style="margin:0 0 24px;color:#3a3a3c;font-size:15.5px;line-height:1.55;max-width:880px;">The site reads as a flat catalog of SKUs in consumer‑style cards. The signals B2B buyers expect — supplier verification, MOQ, lead time, incoterms, price breaks, payment terms, samples, specs, documents — are missing or buried.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+
+      <div style="padding:18px 20px;background:#fff;border:1px solid #ececec;border-radius:14px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#5b3fd9;display:inline-block;"></span>
+          <span style="font-weight:600;color:#5b3fd9;font-size:13px;letter-spacing:.02em;">Search &amp; discovery</span>
+        </div>
+        <p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#1d1d1f;">Buyers can't reliably find products, and can't filter by what matters.</p>
+        <ul style="margin:0;padding:0;list-style:none;font-size:13.5px;line-height:1.55;color:#3a3a3c;">
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• <code style="background:#f5f5f7;padding:1px 6px;border-radius:4px;font-size:12px;">/search</code> returns blank for valid SKUs</li>
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• No industry, spec, supplier, MOQ or lead‑time filters</li>
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• Featured categories resolve to 0 products</li>
+        </ul>
+      </div>
+
+      <div style="padding:18px 20px;background:#fff;border:1px solid #ececec;border-radius:14px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#5b3fd9;display:inline-block;"></span>
+          <span style="font-weight:600;color:#5b3fd9;font-size:13px;letter-spacing:.02em;">RFQ creation</span>
+        </div>
+        <p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#1d1d1f;">RFQ flow is single‑SKU; real procurement is multi‑line.</p>
+        <ul style="margin:0;padding:0;list-style:none;font-size:13.5px;line-height:1.55;color:#3a3a3c;">
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• <strong>No multi‑item RFQ</strong>, no RFQ basket</li>
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• No target price, delivery date or incoterms</li>
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• No documents at the point of creation</li>
+        </ul>
+      </div>
+
+      <div style="padding:18px 20px;background:#fff;border:1px solid #ececec;border-radius:14px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:#5b3fd9;display:inline-block;"></span>
+          <span style="font-weight:600;color:#5b3fd9;font-size:13px;letter-spacing:.02em;">Product information</span>
+        </div>
+        <p style="margin:0 0 10px;font-size:14px;line-height:1.5;color:#1d1d1f;">PDPs lack the data needed to make a procurement decision.</p>
+        <ul style="margin:0;padding:0;list-style:none;font-size:13.5px;line-height:1.55;color:#3a3a3c;">
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• No specs, datasheets, SDS or COA</li>
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• No MOQ, pack/case, lead time or incoterms</li>
+          <li style="padding:4px 0;border-top:1px solid #f2f2f2;">• No verified supplier profile or samples</li>
+        </ul>
+      </div>
+
+    </div>
+  </section><h2>1 · Onboarding &amp; registration</h2>
+<p class="lead">Two distinct journeys exist — buyer (light, e-commerce-style) and seller (3-step wizard with CR validation). Both have meaningful gaps for a B2B context.</p>
+
+<div class="tabs">
+<div class="tab active" data-target="ob-buy">Buyer flow</div>
+<div class="tab" data-target="ob-sell">Seller flow</div>
+<div class="tab" data-target="ob-ver">Verification</div>
+</div>
+
+<div class="panel active" id="ob-buy">
+<div class="card">
+<h3>Buyer registration is treated as B2C <span class="pill high">High impact</span></h3>
+<div class="src">Source · /customer/edit-account, /customer/address/create</div>
+<p>The buyer profile collects only Full Name, Email and Phone. There is no concept of a company, role, industry, tax ID, or team. The address form is generic shipping data with free-text State and City — no validation against Saudi cities, no postal code, no building/floor, no separate billing vs delivery vs warehouse address types, and no VAT/Tax registration number.</p>
+<ul>
+<li class="bad">No company name, industry, company size, or VAT/CR field on the buyer profile.</li>
+<li class="bad">No "role within company" (procurement, finance, plant manager) — needed for routing and permissions.</li>
+<li class="warn">Address form lacks postal code, address type, and Saudi-city dropdown; State and City are free text.</li>
+<li class="warn">Phone is optional; for B2B follow-up this should be required and verified.</li>
+<li class="bad">No way to invite teammates or operate as a corporate account.</li>
+</ul>
+</div>
+</div>
+
+<div class="panel" id="ob-sell">
+<div class="card">
+<h3>Seller wizard — good structure, fragile execution <span class="pill crit">Critical</span></h3>
+<div class="src">Source · /customer/become-vendor</div>
+<p>The 3-step flow (CR Verification → Business Info → Shop Details) is conceptually correct. In testing, however, step 1 has hard issues: the regex requires CR numbers to start with "7", which excludes valid Riyadh-region CRs starting with 1010. When a non-existent CR is entered, the "Check &amp; Next" button enters a perpetual <i>Loading…</i> state with no timeout, no error toast, and no recovery path — the user is silently stranded.</p>
+<ul>
+<li class="bad">Hangs indefinitely on invalid/unknown CR numbers (no timeout, no error message).</li>
+<li class="bad">Overly restrictive regex: "must start with 7" blocks legitimate CRs (Riyadh = 1010xxxxxx).</li>
+<li class="warn">Wathq integration runs client-side; console shows <code>WathqApi: Skipping button addition</code> repeatedly — fragile coupling.</li>
+<li class="warn">No progress save: refreshing during the wizard loses all entered data.</li>
+<li class="warn">Duplicate error toasts displayed for the same validation failure (UI bug).</li>
+<li class="bad">No "what happens next" / SLA after submission ("approval within X days").</li>
+</ul>
+</div>
+</div>
+
+<div class="panel" id="ob-ver">
+<div class="card">
+<h3>Verification &amp; approval are opaque <span class="pill high">High impact</span></h3>
+<p>Once a seller submits, there is no public audit trail of how Indeal validates them. On the seller listing page, 2,264 vendors appear — most with placeholder logos, generic Gmail addresses, and no badge that distinguishes verified, certified, or new sellers. Buyers have no signal of trust.</p>
+<ul>
+<li class="bad">No tiered verification badges (e.g., CR-verified, Wathq-verified, Saudi Made-certified, ISO-certified).</li>
+<li class="bad">No public KYC indicator on seller cards or product pages.</li>
+<li class="warn">Seller "Started from" date is shown on product pages but no other tenure / responsiveness metric.</li>
+<li class="bad">Duplicate sellers visible in catalog ("ARTIC" listed twice with identical contact info) — no dedup pipeline.</li>
+</ul>
+</div>
+</div>
+</section>
+
+
+<section id="ordering">
+<h2>2 · Ordering experience</h2>
+<p class="lead">Two transaction journeys coexist — Request a Quote and direct Add to Cart — but their availability is inconsistent and the choice is hidden from the user.</p>
+
+<div class="gap-grid">
+<div class="card">
+<h3>Request a Quote (RFQ) <span class="pill med">Limited</span></h3>
+<div class="src">Source · /products/baharat-kabsa-naem (modal)</div>
+<p>The RFQ modal is product-scoped: one product, one quantity, optional message. It cannot represent a real procurement scenario — multiple SKUs, attached specifications, target prices, required delivery date, or Incoterms.</p>
+<ul>
+<li class="bad">Single-line only — cannot bundle multiple SKUs into one RFQ.</li>
+<li class="bad">No file attachment in the initial form (uploads only become available <i>after</i> submission).</li>
+<li class="bad">No fields for target price, required-by date, delivery location, payment-terms preference, or unit of measure.</li>
+<li class="warn">Quantity defaults to "1" — not a B2B-realistic anchor.</li>
+<li class="warn">Phone &amp; company are optional, undermining downstream sales qualification.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Direct purchase (Add to Cart) <span class="pill high">Inconsistent</span></h3>
+<div class="src">Source · /products/florida-orange-pineapple-juice-16-ltr → /checkout</div>
+<p>A standard B2C flow exists for products with a published price. It works mechanically, but the checkout is missing every B2B essential: PO number, VAT/tax invoice details, credit terms, freight quotation, multi-warehouse split. Tax shows 0.00 SAR even though Saudi VAT is 15 %.</p>
+<ul>
+<li class="bad">Only "Cash on Delivery" payment method offered. No bank transfer, Mada, STC Pay, corporate card, or credit terms.</li>
+<li class="bad">VAT (15 %) not auto-calculated; tax line shows 0.00.</li>
+<li class="bad">No PO number or tax-invoice fields at checkout.</li>
+<li class="warn">Shipping options limited to "Local Pickup" or "Flat Rate 20 SAR" — no real freight quote.</li>
+<li class="bad">No clear rule explaining <i>why</i> a product shows "Add to Cart" vs "Request a Quote" — same category contains both.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="listings">
+<h2>3 · Product listings</h2>
+<p class="lead">The catalog renders quickly but product data is shallow, pricing is mostly hidden, filters are not category-aware, and search is partially broken.</p>
+
+<div class="card">
+<h3>Pricing visibility is the single biggest catalog problem <span class="pill crit">Critical</span></h3>
+<p>The vast majority of products surfaced in browsing display "Price on Request." For a buyer trying to compare suppliers, the catalog is effectively unusable as a price-discovery surface. Where prices do exist (e.g. Florida Juice at 19.95 SAR), they are unit prices with no MOQ, no tiered breaks, no carton/case context, and no implied VAT.</p>
+<ul>
+<li class="bad">Most products: "Price on Request" with no indicative range.</li>
+<li class="bad">Where shown, price is a single number — no quantity-break tiers.</li>
+<li class="bad">No MOQ shown anywhere on listing or detail pages.</li>
+<li class="bad">No unit-of-measure context (per kg / per carton / per ton / per piece).</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Product data is too thin for B2B decisions <span class="pill high">High impact</span></h3>
+<div class="src">Source · /products/baharat-kabsa-naem and others</div>
+<p>The example "Kabsa Spice Blend" page has a one-sentence description and three generic bullets ("Balanced aromatic mix", "True Gulf taste", "Easy to use"). There are no datasheets, certifications, country of origin, HS code, packaging spec, shelf life, batch info, or available pack sizes. A single image is the norm.</p>
+<ul>
+<li class="bad">No structured specifications table (origin, weight, dimensions, packaging, shelf life, HS code, halal/ISO certifications).</li>
+<li class="bad">No technical documents / datasheets attached to listings.</li>
+<li class="warn">Most products have only one image; no gallery, video, or 360°.</li>
+<li class="warn">Truncated product titles in grid view ("Sun-Dried Bla…") with no tooltip.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Filters &amp; search are inconsistent and partially broken <span class="pill crit">Critical</span></h3>
+<ul>
+<li class="bad">Two parallel search systems: the popup at top works (<code>/products?q=…</code>), but the dedicated <code>/search?q=…</code> URL returns blank — even for known products like "kabsa".</li>
+<li class="bad">No empty-state or "0 results" message on the broken /search route — page just renders blank.</li>
+<li class="bad">Filters are not category-aware: a "Size" filter offering mattress dimensions (<code>90-CM (900×190×220MM)</code>) appears on a page of dried fruit and spices.</li>
+<li class="warn">Tag filter mixes Arabic and unrelated English tags ("rgb", "led", "KTP", "gaming") — suggesting tag taxonomy is unmanaged.</li>
+<li class="warn">No autocomplete suggestions; no "did you mean"; no synonym handling (Arabic/English).</li>
+<li class="bad">No bulk-purchase filters: cannot filter by "available in bulk", MOQ range, lead-time, or country of origin.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Bulk purchasing is not a first-class concept <span class="pill crit">Critical</span></h3>
+<p>The catalog never asks the buyer "how much do you need?" before showing options. There is no quantity-aware sort, no tiered pricing display, no carton/pallet calculator, no consolidated cart-by-seller, and no comparison feature. A procurement officer evaluating 10 SKUs across 5 sellers must currently click each product individually.</p>
+</div>
+</section>
+
+
+<section id="rfq">
+<h2>4 · RFQ journey (post-submission)</h2>
+<p class="lead">Once an RFQ is sent, the buyer lands on a thread-style view. It supports messaging and attachments — but it is a chat, not a quote-management system.</p>
+
+<div class="gap-grid">
+<div class="card">
+<h3>What is in place <span class="pill low">Working</span></h3>
+<div class="src">Source · /customer/quote-requests/35</div>
+<ul>
+<li class="ok">RFQ list page with status pill (Pending) and unread counter.</li>
+<li class="ok">Thread-style messaging between buyer and seller.</li>
+<li class="ok">File attachment supported: PDF, DOC, DOCX, XLS, XLSX, JPG, PNG, TXT, ZIP, RAR — up to 10 MB.</li>
+<li class="ok">Submission timestamp and request ID visible.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>What is missing <span class="pill crit">Critical</span></h3>
+<ul>
+<li class="bad">No structured "quote" object: seller cannot send a price + lead-time + validity + payment-terms response that the buyer can <i>accept / reject / counter</i>.</li>
+<li class="bad">No counter-offer mechanism — negotiation happens in free text only, with no audit trail of price changes.</li>
+<li class="bad">No "convert quote to order" button — the buyer must manually start a separate purchase.</li>
+<li class="bad">Status is binary ("Pending") — no granular states (Quoted, Counter-offered, Accepted, Expired, Lost).</li>
+<li class="bad">No expected-response SLA or overdue indicator visible to the buyer.</li>
+<li class="warn">Untranslated string <code>plugins/fob-request-quote::request-quote.vendor</code> appears as a label — quality bug visible to end-users.</li>
+<li class="bad">No way to share an RFQ with a colleague (no team / collaborator concept).</li>
+<li class="bad">No notifications shown — unclear if email/SMS is sent on seller reply.</li>
+</ul>
+</div>
+</div>
+
+<div class="card">
+<h3>Evidence — leaked translation key</h3>
+<div class="evidence">plugins/fob-request-quote::request-quote.vendor → Saudi Top Plastic Factory</div>
+<p style="font-size:13.5px;color:var(--mute)">Appears on /customer/quote-requests and on the request detail page. Should render as "Vendor" or "Seller". Visible in production today.</p>
+</div>
+</section>
+
+<section id="order">
+<h2>5 · Order journey (pre-fulfillment)</h2>
+<p class="lead">Because no real order could be placed end-to-end (Cash-on-Delivery only, no live fulfillment available for evaluation), this section is bounded to the confirmation and pre-shipment surfaces.</p>
+
+<div class="card">
+<h3>Limitations of this evaluation</h3>
+<p>The audit could not validate post-payment fulfillment, carrier integration, delivery tracking, returns processing, or invoice generation, because: (a) the only available payment method is Cash on Delivery, which produces no online payment receipt; (b) there is no public sandbox with a test order; and (c) the test buyer account has no historical orders to inspect. Findings below are limited to what is observable in cart, checkout, and the empty Orders dashboard.</p>
+</div>
+
+<div class="card">
+<h3>Findings on the visible portion <span class="pill high">High impact</span></h3>
+<ul>
+<li class="bad">Checkout summary shows "Tax: 0.00" — Saudi 15 % VAT not auto-computed; non-compliant for B2B tax invoices.</li>
+<li class="warn">"Shipping fees not included" disclaimer appears in cart total — buyer cannot estimate landed cost before checkout.</li>
+<li class="bad">No order-confirmation preview is shown before payment; buyer has no way to check, e.g., expected delivery window.</li>
+<li class="warn">Empty Orders state is friendly but offers no jumping-off point for procurement (e.g., "import a previous PO").</li>
+<li class="bad">No order-status pipeline visible (Placed → Accepted by seller → Packed → Shipped → Delivered).</li>
+<li class="bad">No downloadable VAT invoice / proforma after order placement.</li>
+</ul>
+</div>
+</section>
+
+
+<section id="b2b">
+<h2>6 · Critical B2B capabilities — gap matrix</h2>
+<p class="lead">Eight capabilities every serious B2B marketplace ships. Today, Indeal has zero of them in production-quality form.</p>
+
+<div class="gap-grid">
+<div class="feature"><div class="row"><div class="name">Price negotiation</div><div class="status s-missing">Missing</div></div><div class="desc">Negotiation happens in free-text chat with no structured offer/counter-offer, no price history, no validity, no accept button. Buyers cannot demonstrate audit trail to finance.</div></div>
+
+<div class="feature"><div class="row"><div class="name">RFQ document upload</div><div class="status s-partial">Partial</div></div><div class="desc">Attachments are supported on the post-submission thread (10 MB, common formats) but <i>not</i> on the initial RFQ form, where specs typically need to be shared first.</div></div>
+
+<div class="feature"><div class="row"><div class="name">Multi-line RFQ</div><div class="status s-missing">Missing</div></div><div class="desc">RFQ is one product per request. A procurement officer with a 30-line BOM must create 30 separate RFQs and message 30 separate threads.</div></div>
+
+<div class="feature"><div class="row"><div class="name">MOQ (Minimum Order Quantity)</div><div class="status s-missing">Missing</div></div><div class="desc">No MOQ field on listings, no MOQ validation in cart, no MOQ filter in browse. Buyers learn the seller cannot fulfill only after they ask.</div></div>
+
+<div class="feature"><div class="row"><div class="name">Tiered / volume pricing</div><div class="status s-missing">Missing</div></div><div class="desc">Where a price is shown, it is a single number. No 1-99 / 100-499 / 500+ ladder. The fundamental B2B pricing primitive does not exist.</div></div>
+
+<div class="feature"><div class="row"><div class="name">Credit terms &amp; flexible payment</div><div class="status s-missing">Missing</div></div><div class="desc">Cash on Delivery is the only option in checkout. No Net 30/60/90, no bank transfer, no Mada, no STC Pay, no purchase-order workflow, no credit-limit logic.</div></div>
+
+<div class="feature"><div class="row"><div class="name">Buyer–seller messaging &amp; audit trail</div><div class="status s-weak">Weak</div></div><div class="desc">A messaging thread exists per RFQ but there is no global inbox, no read receipts, no pinned attachments, no exportable audit log for compliance, and no notification preferences.</div></div>
+
+<div class="feature"><div class="row"><div class="name">Role-based team access</div><div class="status s-missing">Missing</div></div><div class="desc">No company account, no users, no roles. Procurement, finance approver, plant manager, admin — all collapse into a single login. Cannot enforce spend limits or approval flows.</div></div>
+</div>
+
+<h3 style="margin-top:36px;font-weight:600;font-size:18px">Capability heatmap</h3>
+<div class="heat">
+<div class="heat-cell h4">Negotiation</div>
+<div class="heat-cell h3">RFQ uploads</div>
+<div class="heat-cell h4">Multi-line RFQ</div>
+<div class="heat-cell h4">MOQ</div>
+<div class="heat-cell h4">Tiered pricing</div>
+<div class="heat-cell h4">Credit terms</div>
+<div class="heat-cell h2">Messaging</div>
+<div class="heat-cell h4">Roles / teams</div>
+<div class="heat-cell h3">Verification</div>
+<div class="heat-cell h3">Search</div>
+<div class="heat-cell h3">Filters</div>
+<div class="heat-cell h4">VAT / invoicing</div>
+<div class="heat-cell h3">Bulk discovery</div>
+<div class="heat-cell h2">Direct purchase</div>
+<div class="heat-cell h1">Bilingual UI</div>
+<div class="heat-cell h1">Mobile UX</div>
+</div>
+<div class="legend">
+<span><i class="h0" style="background:#34c759"></i>Strong</span>
+<span><i class="h1" style="background:#a3d96b"></i>Good</span>
+<span><i class="h2" style="background:#ffcc00"></i>Weak</span>
+<span><i class="h3" style="background:#ff9500"></i>Poor</span>
+<span><i class="h4" style="background:#ff3b30"></i>Missing / broken</span>
+</div>
+</section>
+
+<section id="perf">
+<h2>7 · Marketplace performance &amp; stability</h2>
+<p class="lead">Measured on the homepage and across the journeys explored.</p>
+
+<table>
+<thead><tr><th>Aspect</th><th>Observation</th><th>Severity</th></tr></thead>
+<tbody>
+<tr><td>Homepage load</td><td>~5.5 s end-to-end (DOM ready 5.47 s) — well above the 2.5 s LCP target</td><td><span class="score"><span class="dot" style="background:#ff9500"></span>High</span></td></tr>
+<tr><td>Direct URL stability</td><td>/sellers, /polymers-hub, /customer/addresses (plural) all return 404 even though they appear in navigation</td><td><span class="score"><span class="dot" style="background:#ff3b30"></span>Critical</span></td></tr>
+<tr><td>Search consistency</td><td>/search route returns blank for valid queries; /products?q= works — two parallel systems</td><td><span class="score"><span class="dot" style="background:#ff3b30"></span>Critical</span></td></tr>
+<tr><td>Seller verification step</td><td>Hangs on "Loading…" indefinitely on invalid CR with no timeout, no error</td><td><span class="score"><span class="dot" style="background:#ff3b30"></span>Critical</span></td></tr>
+<tr><td>Localization quality</td><td>Raw translation keys leak (<code>plugins/fob-request-quote::request-quote.vendor</code>) on customer-facing pages</td><td><span class="score"><span class="dot" style="background:#ff9500"></span>High</span></td></tr>
+<tr><td>RTL responsive layout</td><td>Hero banner Arabic text is truncated / overlapped on the homepage carousel</td><td><span class="score"><span class="dot" style="background:#ffcc00"></span>Medium</span></td></tr>
+<tr><td>Toast duplication</td><td>Validation errors show twice in the toast tray</td><td><span class="score"><span class="dot" style="background:#ffcc00"></span>Medium</span></td></tr>
+<tr><td>Privacy / data exposure</td><td>2,264 sellers' personal Gmail addresses and mobile numbers are public on the directory and product pages</td><td><span class="score"><span class="dot" style="background:#ff3b30"></span>Critical</span></td></tr>
+<tr><td>Catalog data quality</td><td>Duplicate seller cards (e.g. ARTIC × 2 with identical contact info); placeholder-logo majority</td><td><span class="score"><span class="dot" style="background:#ff9500"></span>High</span></td></tr>
+<tr><td>Console errors</td><td>No JavaScript exceptions captured during the audit — failures are silent rather than crashing</td><td><span class="score"><span class="dot" style="background:#34c759"></span>Low</span></td></tr>
+</tbody>
+</table>
+</section>
+
+
+<section id="recs">
+<h2>8 · Prioritized recommendations</h2>
+<p class="lead">A focused 90-day plan ordered by partner-satisfaction impact, not by engineering cost. P1 items unlock revenue mechanics that cannot be substituted for; P2 items remove visible friction; P3 items mature the platform.</p>
+
+<div class="rec"><div class="num">01</div><div><h4>Ship a structured Quote object with negotiation primitives</h4><p>Replace the free-text RFQ thread with a quote artefact — price, lead time, MOQ, validity, payment terms, attached docs — that can be sent, countered, accepted, expired, and converted into an order. Add status states (Pending → Quoted → Counter-offered → Accepted → Lost / Expired). This single change addresses the four most-cited B2B gaps and creates a defensible audit trail.</p></div><div class="tag p1">P1 · Critical</div></div>
+
+<div class="rec"><div class="num">02</div><div><h4>Add MOQ + tiered pricing as first-class fields on every product</h4><p>Require sellers to enter MOQ and at minimum 3 price tiers (e.g. 1-49, 50-499, 500+). Surface them on listing cards, the product page, and in cart/quantity validation. Without these, the marketplace cannot truthfully claim to support B2B.</p></div><div class="tag p1">P1 · Critical</div></div>
+
+<div class="rec"><div class="num">03</div><div><h4>Stop exposing seller PII publicly</h4><p>Mask personal mobile numbers and replace personal Gmail addresses with platform-routed inboxes. This protects sellers, keeps transactions on-platform (revenue!), and removes a class of GDPR-style risk. Add an explicit "Contact via Indeal" CTA instead.</p></div><div class="tag p1">P1 · Critical</div></div>
+
+<div class="rec"><div class="num">04</div><div><h4>Introduce credit terms, VAT invoicing, and PO support at checkout</h4><p>Add Bank Transfer, Mada, STC Pay, Net-30/60 (initially gated by manual seller approval), a PO number field, and automatic 15 % VAT computation with a downloadable tax invoice. Without these, finance teams cannot use the platform.</p></div><div class="tag p1">P1 · Critical</div></div>
+
+<div class="rec"><div class="num">05</div><div><h4>Fix seller onboarding hangs and CR validation</h4><p>Add a 10-second timeout with a clear error and retry on the Wathq lookup; widen the regex to accept all valid Saudi CR prefixes (1010, 2050, 4030, 5800, 7…); persist wizard state across refreshes; deduplicate toast errors.</p></div><div class="tag p1">P1 · Critical</div></div>
+
+<div class="rec"><div class="num">06</div><div><h4>Unify search and fix dead pages</h4><p>Retire the broken /search route in favour of /products?q=. Add a proper "0 results" empty state with category suggestions and synonym fallback. Repair /sellers, /polymers-hub, /customer/addresses (plural) — they appear in navigation but 404 today, eroding credibility.</p></div><div class="tag p2">P2 · High</div></div>
+
+<div class="rec"><div class="num">07</div><div><h4>Make filters category-aware and clean the tag taxonomy</h4><p>Mattress dimensions should not appear on a spice page. Build a per-category filter schema (Food: weight, packaging, halal cert, shelf life; Construction: dimensions, grade, standard) and an editorial process for tags. This is the lowest-cost lift to noticeably improve discovery.</p></div><div class="tag p2">P2 · High</div></div>
+
+<div class="rec"><div class="num">08</div><div><h4>Upgrade the buyer profile into a Company Account with roles</h4><p>Promote "Buyer" to "Company" with members, roles (Admin, Procurement, Approver, Viewer), spending limits, and approval workflows for orders above a threshold. This is the unlock for selling into mid-market and enterprise.</p></div><div class="tag p2">P2 · High</div></div>
+
+<div class="rec"><div class="num">09</div><div><h4>Rewrite product detail pages to a B2B specification template</h4><p>Mandatory: structured spec table (origin, weight, packaging, MOQ, lead time, certifications), at least 3 images, attached datasheet, HS code. Optional: video, batch info, sustainability scoring. Block listings that fall below a minimum data-completeness score.</p></div><div class="tag p2">P2 · High</div></div>
+
+<div class="rec"><div class="num">10</div><div><h4>Add multi-line RFQ creation</h4><p>Allow buyers to compose an RFQ with multiple SKUs across one or more sellers in a single submission, with line-level quantity, target price, and required-by date. Reuses the new Quote object from R-01.</p></div><div class="tag p2">P2 · High</div></div>
+
+<div class="rec"><div class="num">11</div><div><h4>Introduce verified-seller tiers</h4><p>Three visible badges: <i>CR Verified</i>, <i>KYC Verified + Saudi Made</i>, <i>Indeal Trusted</i> (with track record). Filter by badge in browse. Trust signals are the single biggest brake on first orders from new buyers.</p></div><div class="tag p2">P2 · High</div></div>
+
+<div class="rec"><div class="num">12</div><div><h4>Fix Arabic RTL hero banner &amp; complete the localization pass</h4><p>The homepage hero text is visibly broken in RTL. Run a localization audit on every customer-facing string, fixing leaked keys (<code>plugins/fob-request-quote::*</code>) and missing translations.</p></div><div class="tag p3">P3 · Mature</div></div>
+
+<div class="rec"><div class="num">13</div><div><h4>Performance budget and observability</h4><p>Set a 2.5 s LCP / 3 s TTI budget; pre-compress images on the catalog (most are oversized); add real-user monitoring and an error reporter so that silent failures (Wathq hang, /search blank) become visible to the product team without a buyer complaint.</p></div><div class="tag p3">P3 · Mature</div></div>
+</section>
+
+<section id="closing" style="text-align:center;padding-top:80px">
+<h2>The bottom line</h2>
+<p class="lead" style="margin:0 auto 24px;max-width:740px">Indeal has the visual identity and bilingual foundation of a credible Saudi B2B marketplace. What it is missing is the <b>commercial operating system</b> beneath the surface — quotes, MOQ, tiers, terms, teams, and trust. Closing that gap is what will turn dissatisfied partners into repeat ones.</p>
+</section>
+
+<div class="foot">Indeal · Disty.app · Product audit · 30 April 2026 — prepared for the CEO</div>
+
+<script>
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    const target = t.dataset.target;
+    const parent = t.closest('section');
+    parent.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    parent.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    parent.querySelector('#' + target).classList.add('active');
+  });
+});
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if(id.startsWith('#')) {
+      e.preventDefault();
+      document.querySelector(id).scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+</script>
+<input type="file" id="logoUploader" accept="image/*" style="position: fixed; left: 0px; top: 0px; opacity: 0; pointer-events: none;"></body></html>
