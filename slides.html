@@ -302,6 +302,14 @@ tr:last-child td{border-bottom:none}
     .rec h4{display:flex;align-items:center;gap:10px}
     .rec h4 .feature-icon{width:26px;height:26px;border-radius:7px}
     .rec h4 .feature-icon .svg-icon{width:15px;height:15px}
+    /* Convert lists inside cards into a chip-grid */
+    .card ul.li-cards{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .card ul.li-cards li{background:#fafafe;border:1px solid #ececec;border-left:3px solid var(--mute);border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.45;color:#1d1d1f;border-bottom:none;position:relative}
+    .card ul.li-cards li::before{display:none}
+    .card ul.li-cards li.bad{border-left-color:var(--red)}
+    .card ul.li-cards li.warn{border-left-color:var(--orange)}
+    .card ul.li-cards li.ok{border-left-color:var(--green)}
+    @media (max-width:600px){.card ul.li-cards{grid-template-columns:1fr;gap:8px}}
   </style><style id="audit-mobile">
     @media (max-width: 900px) {
       html, body { height: auto !important; min-height: 100dvh; overflow-x: hidden !important; overflow-y: auto !important; }
@@ -544,13 +552,13 @@ tr:last-child td{border-bottom:none}
 <h2>Buyer registration is treated as B2C <span class="pill high">High impact</span></h2>
 <p class="lead">The buyer profile collects only Full Name, Email, and Phone. There is no concept of a company, role, industry, tax ID, or team.</p>
 <div class="cards-2">
-<div class="card"><h3>Profile gaps</h3><ul>
+<div class="card"><h3>Profile gaps</h3><ul class="li-cards">
 <li class="bad">No company name, industry, size, or VAT/CR field</li>
 <li class="bad">No "role within company" (procurement / finance / plant manager)</li>
 <li class="bad">No way to invite teammates or operate as a corporate account</li>
 <li class="warn">Phone is optional — should be required and verified for B2B</li>
 </ul></div>
-<div class="card"><h3>Address form gaps</h3><ul>
+<div class="card"><h3>Address form gaps</h3><ul class="li-cards">
 <li class="warn">No postal code, no Saudi-city dropdown — State and City are free text</li>
 <li class="warn">No address type (billing / shipping / warehouse)</li>
 <li class="warn">No building / floor / delivery instructions</li>
@@ -567,12 +575,12 @@ tr:last-child td{border-bottom:none}
 <h2>Seller wizard — good structure, fragile execution <span class="pill crit">Critical</span></h2>
 <p class="lead">The 3-step flow (CR Verification → Business Info → Shop Details) is conceptually right. Execution has hard issues.</p>
 <div class="cards-2">
-<div class="card"><h3>Hard failures</h3><ul>
+<div class="card"><h3>Hard failures</h3><ul class="li-cards">
 <li class="bad">Hangs indefinitely on unknown CR — no timeout, no error toast, no recovery</li>
 <li class="bad">Regex requires CR to start with "7" — blocks valid Riyadh CRs (1010…)</li>
 <li class="bad">No "what happens next" or approval SLA is communicated to the seller</li>
 </ul></div>
-<div class="card"><h3>Soft failures</h3><ul>
+<div class="card"><h3>Soft failures</h3><ul class="li-cards">
 <li class="warn">Wathq integration is client-side; console shows repeated <code>Skipping button addition</code></li>
 <li class="warn">Wizard state is lost on page refresh</li>
 <li class="warn">Duplicate validation toasts displayed for the same error</li>
@@ -588,12 +596,12 @@ tr:last-child td{border-bottom:none}
 <h2>Verification &amp; approval are opaque <span class="pill high">High impact</span></h2>
 <p class="lead">2,264 vendors are listed — most with placeholder logos and no badge that distinguishes verified, certified, or new sellers. Buyers have no signal of trust.</p>
 <div class="cards-2">
-<div class="card"><h3>Missing trust signals</h3><ul>
+<div class="card"><h3>Missing trust signals</h3><ul class="li-cards">
 <li class="bad">No tiered verification badges (CR-verified, Saudi Made, ISO-certified)</li>
 <li class="bad">No public KYC indicator on seller cards or product pages</li>
 <li class="warn">"Started from" date shown but no other tenure or response metric</li>
 </ul></div>
-<div class="card"><h3>Data quality</h3><ul>
+<div class="card"><h3>Data quality</h3><ul class="li-cards">
 <li class="bad">Duplicate sellers visible (e.g. ARTIC × 2 with identical contact info)</li>
 <li class="bad">2,264 seller emails are personal Gmail addresses, not business</li>
 <li class="bad">Personal mobile numbers exposed publicly on every seller card</li>
@@ -617,14 +625,14 @@ tr:last-child td{border-bottom:none}
 <h2>Two journeys, one confusing rule</h2>
 <p class="lead">Same category contains products with "Add to Cart" and products with "Request a Quote." There is no logic the buyer can predict.</p>
 <div class="cards-2">
-<div class="card"><h3>Request a Quote (RFQ) <span class="pill med">Limited</span></h3><div class="src">/products/baharat-kabsa-naem</div><ul>
+<div class="card"><h3>Request a Quote (RFQ) <span class="pill med">Limited</span></h3><div class="src">/products/baharat-kabsa-naem</div><ul class="li-cards">
 <li class="bad">Single-line only — cannot bundle multiple SKUs</li>
 <li class="bad">No file attachment in the initial form</li>
 <li class="bad">No target price, required-by date, delivery location, or Incoterms fields</li>
 <li class="warn">Quantity defaults to "1" — not B2B-realistic</li>
 <li class="warn">Phone &amp; company are optional</li>
 </ul></div>
-<div class="card"><h3>Direct purchase <span class="pill high">Inconsistent</span></h3><div class="src">/products/florida-orange-pineapple-juice-16-ltr → /checkout</div><ul>
+<div class="card"><h3>Direct purchase <span class="pill high">Inconsistent</span></h3><div class="src">/products/florida-orange-pineapple-juice-16-ltr → /checkout</div><ul class="li-cards">
 <li class="bad">Cash on Delivery is the only payment method</li>
 <li class="bad">VAT (15%) not auto-calculated; tax line shows 0.00</li>
 <li class="bad">No PO number or tax-invoice fields at checkout</li>
@@ -647,13 +655,13 @@ tr:last-child td{border-bottom:none}
 <div class="body">
 <div class="bignum"><div class="n">~95%</div><div class="l">of catalog products show only "Price on Request" — making the marketplace effectively unusable as a price-discovery surface for buyers.</div></div>
 <div class="cards-2">
-<div class="card"><h3>What's missing on every listing</h3><ul>
+<div class="card"><h3>What's missing on every listing</h3><ul class="li-cards">
 <li class="bad">Indicative price range (where exact price isn't published)</li>
 <li class="bad">MOQ (Minimum Order Quantity)</li>
 <li class="bad">Tiered / volume pricing breaks</li>
 <li class="bad">Unit-of-measure context (per kg / carton / ton / piece)</li>
 </ul></div>
-<div class="card"><h3>Where price IS shown</h3><ul>
+<div class="card"><h3>Where price IS shown</h3><ul class="li-cards">
 <li class="warn">Single number — no quantity-break ladder (1-99 / 100-499 / 500+)</li>
 <li class="warn">No carton / pallet / case context</li>
 <li class="warn">VAT inclusion / exclusion is unclear</li>
@@ -670,14 +678,14 @@ tr:last-child td{border-bottom:none}
 <h2>Product data is too thin for B2B decisions</h2>
 <p class="lead">"Kabsa Spice Blend" — one of the products audited — has a single-sentence description and three generic bullets ("Balanced aromatic mix · True Gulf taste · Easy to use"). One image. No specs.</p>
 <div class="cards-2">
-<div class="card"><h3>What B2B buyers need</h3><ul>
+<div class="card"><h3>What B2B buyers need</h3><ul class="li-cards">
 <li class="bad">Structured spec table (origin, weight, packaging, shelf life, HS code)</li>
 <li class="bad">Certifications (Halal, ISO, Saudi Made, organic, etc.)</li>
 <li class="bad">Attached datasheets / technical documents</li>
 <li class="bad">Multiple images, video, or 360°</li>
 <li class="bad">Available pack sizes and case configurations</li>
 </ul></div>
-<div class="card"><h3>What is shown today</h3><ul>
+<div class="card"><h3>What is shown today</h3><ul class="li-cards">
 <li class="warn">One image, one-sentence description</li>
 <li class="warn">Three generic bullets, often unrelated to procurement</li>
 <li class="warn">Truncated titles in grid view ("Sun-Dried Bla…") with no tooltip</li>
@@ -693,7 +701,7 @@ tr:last-child td{border-bottom:none}
 <div class="body">
 <h2>Search is partially broken; filters are not category-aware <span class="pill crit">Critical</span></h2>
 <div class="cards-2" style="margin-top:14px">
-<div class="card"><h3>Search inconsistency</h3><ul>
+<div class="card"><h3>Search inconsistency</h3><ul class="li-cards">
 <li class="bad">Two parallel search systems — popup (works) and <code>/search</code> (returns blank)</li>
 <li class="bad">Even known products like "kabsa" return nothing on the broken route</li>
 <li class="bad">No empty-state — page just renders blank, no "0 results" message</li>
@@ -701,7 +709,7 @@ tr:last-child td{border-bottom:none}
 </ul>
 <div class="evidence">/search?q=kabsa → blank page<br>/products?q=kabsa → results</div>
 </div>
-<div class="card"><h3>Filter mismatches</h3><ul>
+<div class="card"><h3>Filter mismatches</h3><ul class="li-cards">
 <li class="bad">A "Size" filter offering mattress dimensions appears on dried-fruit pages</li>
 <li class="warn">Tag filter mixes "rgb", "led", "KTP", "gaming" — taxonomy is unmanaged</li>
 <li class="bad">No bulk-purchase filters (MOQ range, lead time, country of origin)</li>
@@ -726,13 +734,13 @@ tr:last-child td{border-bottom:none}
 <h2>A chat thread, not a quote system</h2>
 <p class="lead">The post-submission experience supports messaging and document attachments — a real strength. But it is missing the structured "quote" object that turns a conversation into a transaction.</p>
 <div class="cards-2">
-<div class="card"><h3>What works <span class="pill low">Working</span></h3><div class="src">/customer/quote-requests/35</div><ul>
+<div class="card"><h3>What works <span class="pill low">Working</span></h3><div class="src">/customer/quote-requests/35</div><ul class="li-cards">
 <li class="ok">Thread-style messaging between buyer and seller</li>
 <li class="ok">File attachments (PDF, DOC, XLS, PNG, ZIP) up to 10 MB</li>
 <li class="ok">RFQ list with status pill and unread counter</li>
 <li class="ok">Submission timestamp and request ID visible</li>
 </ul></div>
-<div class="card"><h3>What's missing <span class="pill crit">Critical</span></h3><ul>
+<div class="card"><h3>What's missing <span class="pill crit">Critical</span></h3><ul class="li-cards">
 <li class="bad">No structured "quote" object with price + lead time + validity + terms</li>
 <li class="bad">No accept / reject / counter-offer mechanism</li>
 <li class="bad">No "convert quote to order" button</li>
@@ -752,7 +760,7 @@ tr:last-child td{border-bottom:none}
 <p class="lead">Because no real order could be placed end-to-end (Cash on Delivery only, no live fulfillment), this section is bounded to confirmation and pre-shipment surfaces.</p>
 <div class="cards-2">
 <div class="card"><h3>Limitations of this audit</h3><p style="font-size:14px;line-height:1.6">No public sandbox with a test order. The buyer account has no historical orders. The only payment method is Cash on Delivery, which produces no online receipt to inspect. Findings are limited to cart, checkout, and the empty Orders dashboard.</p></div>
-<div class="card"><h3>Findings on the visible portion <span class="pill high">High</span></h3><ul>
+<div class="card"><h3>Findings on the visible portion <span class="pill high">High</span></h3><ul class="li-cards">
 <li class="bad">Tax line shows 0.00 — Saudi 15% VAT not auto-computed</li>
 <li class="bad">No order-status pipeline (Placed → Accepted → Packed → Shipped → Delivered)</li>
 <li class="bad">No downloadable VAT invoice / proforma after order placement</li>
