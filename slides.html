@@ -354,6 +354,10 @@ tr:last-child td{border-bottom:none}
       .feature .row .name { font-size: 14px !important; }
       .feature .desc { font-size: 12px !important; }
 
+      .bignum { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+      .bignum .n { font-size: 56px !important; line-height: 1 !important; }
+      .bignum .l { font-size: 14px !important; }
+
       table { display: block; overflow-x: auto; white-space: nowrap; }
       table th, table td { padding: 8px 10px !important; font-size: 12px !important; }
 
@@ -1019,8 +1023,10 @@ tr:last-child td{border-bottom:none}
 
   const prevBtn = document.getElementById('prev');
   const nextBtn = document.getElementById('next');
+  const homeBtn = document.getElementById('home');
   if (prevBtn) prevBtn.addEventListener('click', () => go(idx - 1));
   if (nextBtn) nextBtn.addEventListener('click', () => go(idx + 1));
+  if (homeBtn) homeBtn.addEventListener('click', () => go(0));
 
   if (cur) cur.textContent = '1';
   if (secName) secName.textContent = sectionByIdx[0];
