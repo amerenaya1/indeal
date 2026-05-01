@@ -304,10 +304,23 @@ tr:last-child td{border-bottom:none}
     .rec h4 .feature-icon .svg-icon{width:15px;height:15px}
   </style><style id="audit-mobile">
     @media (max-width: 900px) {
-      html, body { height: 100dvh; }
-      .deck { height: 100dvh; min-height: -webkit-fill-available; }
-      .slide { overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
+      html, body { height: auto !important; min-height: 100dvh; overflow-x: hidden !important; overflow-y: auto !important; }
+      .deck { height: auto !important; min-height: 100dvh; overflow: visible !important; position: relative; }
+      .slide {
+        position: relative !important;
+        inset: auto !important;
+        display: none !important;
+        min-height: 100dvh;
+        height: auto !important;
+        overflow: visible !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .slide.active { display: flex !important; }
       .slide .body { flex: 0 0 auto !important; justify-content: flex-start !important; }
+      /* Bottom padding so content can scroll above the fixed controls bar */
+      .slide { padding-bottom: 96px !important; }
     }
     @media (max-width: 600px) {
       .slide { padding: 16px 0 84px !important; align-items: stretch !important; }
