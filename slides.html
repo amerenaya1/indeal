@@ -302,6 +302,66 @@ tr:last-child td{border-bottom:none}
     .rec h4{display:flex;align-items:center;gap:10px}
     .rec h4 .feature-icon{width:26px;height:26px;border-radius:7px}
     .rec h4 .feature-icon .svg-icon{width:15px;height:15px}
+  </style><style id="audit-mobile">
+    @media (max-width: 600px) {
+      .slide { padding: 16px 0 84px !important; align-items: stretch !important; overflow: auto !important; }
+      .slide .header,
+      .slide .body { width: 92vw !important; max-width: 92vw !important; }
+      .slide.title-slide > * { max-width: 92vw !important; }
+      .slide .slide-num { right: 4vw !important; top: 18px !important; font-size: 11px !important; }
+      .header { margin-bottom: 16px !important; padding-bottom: 12px !important; }
+      .header img { height: 18px !important; }
+      .section-tag { font-size: 10px !important; letter-spacing: .04em !important; }
+
+      h1 { font-size: 30px !important; line-height: 1.1 !important; }
+      h2 { font-size: 24px !important; line-height: 1.15 !important; }
+      h3 { font-size: 17px !important; }
+      .title-slide h1 { font-size: 38px !important; }
+      .title-slide .sub { font-size: 15px !important; }
+      .lead { font-size: 14.5px !important; }
+      .sub { font-size: 15px !important; }
+
+      .kpis, .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr !important; gap: 12px !important; }
+      .kpi { padding: 18px !important; }
+      .kpi .n { font-size: 36px !important; }
+      .kpi-icon { width: 32px !important; height: 32px !important; margin-bottom: 8px !important; }
+
+      .heat { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
+      .heat-cell { font-size: 9px !important; padding: 3px !important; aspect-ratio: 1.6 !important; }
+
+      .rec { grid-template-columns: 40px 1fr !important; gap: 12px !important; padding: 16px !important; margin-bottom: 10px !important; }
+      .rec .num { width: 36px !important; height: 36px !important; font-size: 14px !important; border-radius: 10px !important; }
+      .rec h4 { font-size: 15px !important; gap: 8px !important; flex-wrap: wrap; }
+      .rec h4 .feature-icon { width: 22px !important; height: 22px !important; }
+      .rec p { font-size: 13px !important; }
+      .rec .tag { grid-column: 2 / 3 !important; justify-self: start !important; margin-top: 6px !important; }
+
+      .theme { grid-template-columns: 40px 1fr !important; padding: 16px !important; gap: 12px !important; }
+      .theme .ic { width: 36px !important; height: 36px !important; }
+      .theme .ic .svg-icon { width: 20px !important; height: 20px !important; }
+      .theme h4 { font-size: 16px !important; }
+      .theme p { font-size: 13px !important; }
+
+      .feature { padding: 14px !important; }
+      .feature .row .name { font-size: 14px !important; }
+      .feature .desc { font-size: 12px !important; }
+
+      table { display: block; overflow-x: auto; white-space: nowrap; }
+      table th, table td { padding: 8px 10px !important; font-size: 12px !important; }
+
+      .body div[style*="grid-template-columns:repeat(3,1fr)"],
+      .body div[style*="grid-template-columns: repeat(3, 1fr)"],
+      .body div[style*="grid-template-columns:1fr 1fr"],
+      .body div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+
+      .controls { height: 64px !important; padding: 0 14px !important; }
+      .controls .btn { width: 44px !important; height: 44px !important; font-size: 22px !important; border-radius: 12px !important; }
+      .controls .l, .controls .r { gap: 10px !important; }
+      .counter { font-size: 13px !important; }
+      .toc { display: none !important; }
+
+      .hint { display: none !important; }
+    }
   </style></head><body cz-shortcut-listen="true" class="">
 <div class="progress"><div class="bar" id="progBar" style="width: 24.1379%;"></div></div>
 <div class="hint" style="opacity: 0; transition: opacity 1s;">Use <kbd>←</kbd> <kbd>→</kbd> to navigate</div>
@@ -954,5 +1014,32 @@ tr:last-child td{border-bottom:none}
 
   if (cur) cur.textContent = '1';
   if (secName) secName.textContent = sectionByIdx[0];
+
+  // Touch / swipe navigation
+  const deck = document.getElementById('deck') || document.querySelector('.deck');
+  if (deck) {
+    let sx = 0, sy = 0, st = 0, tracking = false;
+    const THRESH = 50, MAX_VERT = 80, MAX_TIME = 700;
+    deck.addEventListener('touchstart', function(e){
+      if (e.touches.length !== 1) { tracking = false; return; }
+      sx = e.touches[0].clientX;
+      sy = e.touches[0].clientY;
+      st = Date.now();
+      tracking = true;
+    }, { passive: true });
+    deck.addEventListener('touchend', function(e){
+      if (!tracking || e.changedTouches.length !== 1) return;
+      tracking = false;
+      const dx = e.changedTouches[0].clientX - sx;
+      const dy = e.changedTouches[0].clientY - sy;
+      const dt = Date.now() - st;
+      if (dt > MAX_TIME) return;
+      if (Math.abs(dx) < THRESH) return;
+      if (Math.abs(dy) > MAX_VERT) return;
+      if (Math.abs(dx) < Math.abs(dy)) return;
+      if (dx < 0) go(idx + 1); else go(idx - 1);
+    }, { passive: true });
+    deck.addEventListener('touchcancel', function(){ tracking = false; }, { passive: true });
+  }
 })();
 </script></body></html>
