@@ -303,11 +303,19 @@ tr:last-child td{border-bottom:none}
     .rec h4 .feature-icon{width:26px;height:26px;border-radius:7px}
     .rec h4 .feature-icon .svg-icon{width:15px;height:15px}
   </style><style id="audit-mobile">
+    @media (max-width: 900px) {
+      html, body { height: 100dvh; }
+      .deck { height: 100dvh; min-height: -webkit-fill-available; }
+      .slide { overflow-y: auto !important; -webkit-overflow-scrolling: touch; }
+      .slide .body { flex: 0 0 auto !important; justify-content: flex-start !important; }
+    }
     @media (max-width: 600px) {
-      .slide { padding: 16px 0 84px !important; align-items: stretch !important; overflow: auto !important; }
+      .slide { padding: 16px 0 84px !important; align-items: stretch !important; }
       .slide .header,
       .slide .body { width: 92vw !important; max-width: 92vw !important; }
       .slide.title-slide > * { max-width: 92vw !important; }
+      .slide.title-slide { justify-content: center !important; }
+      .slide.title-slide .body { justify-content: center !important; }
       .slide .slide-num { right: 4vw !important; top: 18px !important; font-size: 11px !important; }
       .header { margin-bottom: 16px !important; padding-bottom: 12px !important; }
       .header img { height: 18px !important; }
@@ -318,7 +326,7 @@ tr:last-child td{border-bottom:none}
       h3 { font-size: 17px !important; }
       .title-slide h1 { font-size: 38px !important; }
       .title-slide .sub { font-size: 15px !important; }
-      .lead { font-size: 14.5px !important; }
+      .lead { font-size: 14.5px !important; margin-bottom: 16px !important; }
       .sub { font-size: 15px !important; }
 
       .kpis, .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr !important; gap: 12px !important; }
@@ -352,7 +360,9 @@ tr:last-child td{border-bottom:none}
       .body div[style*="grid-template-columns:repeat(3,1fr)"],
       .body div[style*="grid-template-columns: repeat(3, 1fr)"],
       .body div[style*="grid-template-columns:1fr 1fr"],
-      .body div[style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      .body div[style*="grid-template-columns: 1fr 1fr"],
+      .body div[style*="grid-template-columns:repeat(auto-fit"],
+      .body div[style*="grid-template-columns: repeat(auto-fit"] { grid-template-columns: 1fr !important; }
 
       .controls { height: 64px !important; padding: 0 14px !important; }
       .controls .btn { width: 44px !important; height: 44px !important; font-size: 22px !important; border-radius: 12px !important; }
