@@ -94,7 +94,46 @@ td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
 .toc{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--mute);font-weight:500}
 .slide-num{position:absolute;top:56px;right:80px;font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;letter-spacing:.05em}
 @media(max-width:1100px){.cards-3,.plan-grid,.swot{grid-template-columns:1fr 1fr}.slide{padding:32px 36px 84px}.slide-num{top:32px;right:36px}h1{font-size:42px}h2{font-size:32px}.title-slide h1{font-size:54px}.kpis{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:700px){.cards-2,.cards-3,.plan-grid,.swot,.kpis{grid-template-columns:1fr}.slide-num{display:none}}
+@media(max-width:700px){
+  .cards-2,.cards-3,.plan-grid,.swot,.kpis{grid-template-columns:1fr}
+  .slide-num{display:none}
+  .slide{padding:20px 16px 76px}
+  h1{font-size:26px}
+  h2{font-size:20px}
+  .title-slide h1{font-size:34px}
+  .title-slide .sub{font-size:15px}
+  .title-slide .eyebrow{font-size:11px;margin-bottom:10px}
+  .title-slide .meta{margin-top:18px;font-size:12px}
+  .lead{font-size:14px;margin-bottom:14px}
+  .header{margin-bottom:14px;padding-bottom:10px}
+  .header img{height:18px}
+  .section-tag{font-size:11px}
+  .kpi{padding:14px}
+  .kpi .n{font-size:30px}
+  .kpi .l{font-size:12px}
+  .kpi .sub-l{font-size:11px}
+  .card{padding:14px}
+  .card h3{font-size:15px;margin-bottom:7px}
+  .card p,.card li{font-size:13px}
+  .swot-box{padding:14px}
+  .swot-box h3{font-size:13px}
+  .swot-box li{font-size:13px}
+  .plan{padding:16px}
+  .plan h3{font-size:16px;margin-bottom:12px}
+  .plan .row{font-size:13px}
+  .plan-note{font-size:12px;padding:10px 14px}
+  .rec{padding:14px;gap:10px;grid-template-columns:40px 1fr}
+  .rec .num{width:32px;height:32px;font-size:13px;border-radius:9px}
+  .rec h4{font-size:14px}
+  .rec p{font-size:13px}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
+  table{min-width:520px}
+  th,td{padding:9px 11px;font-size:12px}
+  td:first-child{white-space:normal}
+  .toc{display:none}
+  .controls{padding:0 14px}
+  .btn{width:32px;height:32px;font-size:16px}
+}
 .swipe-hint{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);color:#fff;border-radius:99px;padding:10px 22px;font-size:14px;font-weight:500;z-index:200;display:none;align-items:center;gap:10px;pointer-events:none;white-space:nowrap;transition:opacity .5s ease}
 .swipe-hint .arr{font-size:20px;opacity:.8}
 @media(hover:none){.swipe-hint{display:flex}}
@@ -145,7 +184,7 @@ td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
 <div class="slide-num">3</div>
 <div class="body">
 <h2>Company at a Glance</h2>
-<div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+<div class="kpis">
 <div class="kpi g"><div class="n">1,000+</div><div class="l">Corporate Clients</div><div class="sub-l">Banks, hospitals, govt agencies</div></div>
 <div class="kpi o"><div class="n">150%</div><div class="l">Quarterly Growth</div><div class="sub-l">Recorded in 2021</div></div>
 <div class="kpi b"><div class="n">$1.3M</div><div class="l">Seed Funding</div><div class="sub-l">Raised April 2022</div></div>
@@ -213,6 +252,7 @@ td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
 <div class="slide-num">6</div>
 <div class="body">
 <h2>Competitive Landscape</h2>
+<div class="table-scroll">
 <table>
 <thead><tr><th>Feature</th><th>Lawazem</th><th>Jarir Corporate</th><th>Officeflux (UAE)</th><th>Sary (Saudi)</th></tr></thead>
 <tbody>
@@ -226,6 +266,7 @@ td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
 <tr><td>Target Segment</td><td>Mid–large enterprise</td><td>All (banks, schools)</td><td>UAE corporate</td><td>SME retail/food</td></tr>
 </tbody>
 </table>
+</div>
 </div>
 </section>
 
