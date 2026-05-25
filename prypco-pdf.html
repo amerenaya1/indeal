@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRYPCO · All Tasks · Print / PDF</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#0d5c4a;--brand-soft:#e0f0ec;--radius:20px}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+
+/* ── Print bar (hidden when printing) ── */
+.print-bar{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:16px}
+.print-bar .left{display:flex;align-items:center;gap:16px}
+.pb-back{font-size:13px;font-weight:600;color:var(--brand);text-decoration:none;display:flex;align-items:center;gap:5px}
+.pb-back:hover{opacity:.7}
+.pb-title{font-size:13px;color:var(--mute)}
+.pb-count{font-size:12px;color:var(--mute);background:#f5f5f7;padding:3px 10px;border-radius:99px}
+.pb-btn{height:34px;padding:0 16px;border-radius:9px;background:var(--brand);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.pb-btn:hover{opacity:.88}
+
+/* ── Deck separator (hidden when printing) ── */
+.deck-sep{display:flex;align-items:center;gap:16px;padding:18px 0;margin:0 auto;width:60vw}
+.deck-sep .ds-line{flex:1;height:1px;background:var(--line)}
+.deck-sep .ds-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);white-space:nowrap;background:var(--brand-soft);padding:4px 12px;border-radius:99px}
+
+/* ── Slide overrides for static / preview mode ── */
+.slide{
+  position:relative!important;
+  inset:auto!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+  transform:none!important;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  padding-left:0!important;
+  padding-right:0!important;
+  align-items:center!important;
+  border-bottom:1px solid var(--line);
+}
+.slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}
+/* Un-hide children that are hidden by the animation CSS */
+.slide .body>*{opacity:1!important;transform:none!important;transition:none!important}
+.slide .header{opacity:1!important;transform:none!important;transition:none!important}
+
+/* ── Loading state ── */
+#loading{display:flex;align-items:center;justify-content:center;height:60vh;flex-direction:column;gap:16px}
+#loading .spinner{width:36px;height:36px;border:3px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loading p{font-size:14px;color:var(--mute)}
+
+/* ── Print styles ── */
+@media print{
+  @page{size:landscape;margin:0}
+  .print-bar,.deck-sep{display:none!important}
+  html,body{background:#fff}
+  .slide{
+    height:100vh!important;
+    page-break-after:always;
+    break-after:page;
+    border-bottom:none!important;
+    overflow:hidden!important;
+  }
+  .slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}
+}
+</style>
+</head>
+<body>
+
+<div class="print-bar">
+  <div class="left">
+    <a class="pb-back" href="prypco.html">← PRYPCO</a>
+    <span class="pb-title">All Tasks · Print / Save as PDF</span>
+    <span class="pb-count" id="slideCount">Loading…</span>
+  </div>
+  <button class="pb-btn" onclick="window.print()">⬇ Save as PDF</button>
+</div>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <p>Assembling slides…</p>
+</div>
+
+<div id="container" style="display:none"></div>
+
+<script>
+(async function(){
+  const decks = [
+    {url:'prypco-task1.html', label:'Task 01 · Driving Growth: KYC & Investment Conversion'},
+    {url:'prypco-task2.html', label:'Task 02 · Arabic RTL Localization'},
+    {url:'prypco-task3.html', label:'Task 03 · Mint Advisor — AI-Powered Investment Advisory'},
+  ];
+
+  const container = document.getElementById('container');
+  const loading = document.getElementById('loading');
+  const countEl = document.getElementById('slideCount');
+  const injectedStyles = new Set();
+
+  for(const deck of decks){
+    let html;
+    try{ html = await fetch(deck.url).then(r=>r.text()); }
+    catch(e){ console.error('Failed to load', deck.url, e); continue; }
+
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+
+    // Inject styles once (all three decks share the same base CSS plus unique components)
+    doc.querySelectorAll('style').forEach(function(styleEl){
+      const text = styleEl.textContent;
+      // Use first 120 chars as a fingerprint to avoid injecting identical blocks twice
+      const key = text.trim().slice(0, 120);
+      if(!injectedStyles.has(key)){
+        injectedStyles.add(key);
+        const s = document.createElement('style');
+        s.textContent = text;
+        document.head.appendChild(s);
+      }
+    });
+
+    // Deck separator
+    const sep = document.createElement('div');
+    sep.className = 'deck-sep';
+    sep.innerHTML = '<div class="ds-line"></div><div class="ds-label">'+deck.label+'</div><div class="ds-line"></div>';
+    container.appendChild(sep);
+
+    // Slides
+    doc.querySelectorAll('.slide').forEach(function(slide){
+      // Remove the active class so no slide appears "selected"
+      slide.classList.remove('active');
+      container.appendChild(document.importNode(slide, true));
+    });
+  }
+
+  const total = container.querySelectorAll('.slide').length;
+  countEl.textContent = total + ' slides';
+  loading.style.display = 'none';
+  container.style.display = 'block';
+})();
+</script>
+</body>
+</html>
