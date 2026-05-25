@@ -7,8 +7,8 @@
 <script>if(localStorage.getItem('theme')==='dark'||(localStorage.getItem('theme')===null&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#0d5c4a;--brand-soft:#e0f0ec;--radius:20px}
-html.dark{--bg:#111113;--ink:#f5f5f7;--mute:#8e8e93;--line:#2c2c2e;--card:#1c1c1e;--brand:#2eb87a;--brand-soft:#0d2d1c}
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#cffd57;--brand-soft:#edfcaa;--radius:20px}
+html.dark{--bg:#111113;--ink:#f5f5f7;--mute:#8e8e93;--line:#2c2c2e;--card:#1c1c1e;--brand:#cffd57;--brand-soft:#293300}
 html.dark .print-bar{background:rgba(17,17,19,.92)}
 html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
 
@@ -19,7 +19,7 @@ html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Disp
 .pb-back:hover{opacity:.7}
 .pb-title{font-size:13px;color:var(--mute)}
 .pb-count{font-size:12px;color:var(--mute);background:#f5f5f7;padding:3px 10px;border-radius:99px}
-.pb-btn{height:34px;padding:0 16px;border-radius:9px;background:var(--brand);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.pb-btn{height:34px;padding:0 16px;border-radius:9px;background:var(--brand);color:#1d1d1f;border:none;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap}
 .pb-btn:hover{opacity:.88}
 
 /* ── Deck separator (hidden when printing) ── */
