@@ -28,6 +28,9 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .title-slide h1{font-size:74px;margin-bottom:18px}
 .title-slide .sub{font-size:20px;color:var(--mute);max-width:720px}
 .title-slide .meta{margin-top:36px;font-size:12px;color:var(--mute);letter-spacing:.05em}
+.cover-icon{width:88px;height:88px;border-radius:22px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;background:linear-gradient(145deg,rgba(13,92,74,.13) 0%,rgba(13,92,74,.04) 100%);border:1px solid rgba(13,92,74,.22);box-shadow:0 8px 32px rgba(13,92,74,.16),0 2px 8px rgba(13,92,74,.09),inset 0 1.5px 0 rgba(255,255,255,.72);color:var(--brand);position:relative;flex-shrink:0}
+.cover-icon::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(155deg,rgba(255,255,255,.38) 0%,rgba(255,255,255,0) 52%);pointer-events:none}
+html.dark .cover-icon{background:linear-gradient(145deg,rgba(46,184,122,.16) 0%,rgba(46,184,122,.05) 100%);border-color:rgba(46,184,122,.26);box-shadow:0 8px 32px rgba(0,0,0,.38),0 2px 8px rgba(0,0,0,.22),inset 0 1.5px 0 rgba(255,255,255,.09)}
 .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:12px}
 .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
 .kpi .n{font-size:42px;font-weight:700;letter-spacing:-.02em;line-height:1}
@@ -119,6 +122,13 @@ tr:last-child td{border-bottom:none}
 <!-- SLIDE 1: TITLE -->
 <div class="slide active title-slide">
   <div class="body">
+    <div class="cover-icon">
+      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 7h24a3.5 3.5 0 0 1 3.5 3.5v14A3.5 3.5 0 0 1 31 28H22l-7 7v-7H7a3.5 3.5 0 0 1-3.5-3.5v-14A3.5 3.5 0 0 1 7 7z"/>
+        <path d="M37 5 L38.2 2 L39.4 5 L42.4 6.2 L39.4 7.4 L38.2 10.4 L37 7.4 L34 6.2 Z"/>
+        <circle cx="38.2" cy="17" r="1.5" fill="currentColor" stroke="none"/>
+      </svg>
+    </div>
     <div class="eyebrow">PRYPCO Mint · Task 03 · Senior PM Assignment</div>
     <h1>AI-Powered<br>Investment Advisory.</h1>
     <p class="sub">Mint Advisor — from decision paralysis to first investment, in one conversation.</p>
