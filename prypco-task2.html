@@ -1,8 +1,14 @@
 <!doctype html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRYPCO Blocks · Task 02 · Arabic RTL Localization</title>
+<script>if(localStorage.getItem('theme')==='dark'||(localStorage.getItem('theme')===null&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#0d5c4a;--brand-soft:#e0f0ec;--red:#ff3b30;--orange:#ff9500;--green:#34c759;--shadow:0 12px 32px rgba(13,92,74,.10);--radius:20px}
+html.dark{--bg:#111113;--ink:#f5f5f7;--mute:#8e8e93;--line:#2c2c2e;--card:#1c1c1e;--brand:#2eb87a;--brand-soft:#0d2d1c;--red:#ff453a;--orange:#ff9f0a;--green:#30d158;--shadow:0 12px 32px rgba(0,0,0,.4)}
+html.dark h1{background:linear-gradient(160deg,#f5f5f7 0%,#2eb87a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+html.dark .controls{background:rgba(17,17,19,.9)!important}
+html.dark th{background:#222224!important}
+html.dark .code-block{background:#222224;color:#e5e5ea}
 html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;height:100%;overflow:hidden}
 .deck{width:100vw;height:100vh;position:relative;overflow:hidden}
 .slide{position:absolute;inset:0;padding:52px 80px 86px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease,transform .45s cubic-bezier(.22,.61,.36,1);background:var(--bg);overflow:auto;transform:translateY(14px) scale(.993);will-change:opacity,transform}
@@ -507,6 +513,7 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="r">
     <button class="btn" id="next" title="Next">→</button>
+    <button class="btn" id="themeBtn" onclick="toggleDark()" title="Toggle dark mode"></button>
   </div>
 </div>
 
@@ -570,5 +577,14 @@ tr:last-child td{border-bottom:none}
     deck.addEventListener('touchend',function(e){if(!tracking||e.changedTouches.length!==1)return;tracking=false;var dx=e.changedTouches[0].clientX-sx;var dy=e.changedTouches[0].clientY-sy;var dt=Date.now()-st;if(dt>700)return;if(Math.abs(dx)<50)return;if(Math.abs(dy)>80)return;if(dx<0)go(idx+1);else go(idx-1);},{passive:true});
   }
 })();
+</script>
+<script>
+function toggleDark(){
+  var dark=document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme',dark?'dark':'light');
+  var btn=document.getElementById('themeBtn');
+  if(btn)btn.textContent=dark?'☀':'☾';
+}
+(function(){var btn=document.getElementById('themeBtn');if(btn)btn.textContent=document.documentElement.classList.contains('dark')?'☀':'☾';})();
 </script>
 </body></html>
