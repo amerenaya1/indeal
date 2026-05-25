@@ -4,10 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PRYPCO · Senior PM Assignment</title>
+<script>if(localStorage.getItem('theme')==='dark'||(localStorage.getItem('theme')===null&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#0d5c4a;--brand-soft:#e0f0ec;--shadow:0 12px 32px rgba(13,92,74,.10);--radius:20px;--h1-from:#1d1d1f;--h1-to:#0d5c4a}
 html.dark{--bg:#111113;--ink:#f5f5f7;--mute:#8e8e93;--line:#2c2c2e;--card:#1c1c1e;--brand:#2eb87a;--brand-soft:#0d2d1c;--shadow:0 12px 32px rgba(0,0,0,.4);--h1-from:#f5f5f7;--h1-to:#2eb87a}
+.by{font-size:15px;font-weight:600;color:var(--mute);margin-bottom:16px;letter-spacing:-.01em}
 html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100%;transition:background .25s,color .25s}
 body{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px 64px;min-height:100vh}
 
@@ -59,6 +61,7 @@ a.card:hover .cta span{transform:translateX(3px)}
 
 <div class="wordmark">PRYPCO</div>
 <div class="eyebrow">Senior PM Assignment · May 2026</div>
+<div class="by">Amer Enaya</div>
 <h1>Three Tasks.<br>One Vision.</h1>
 <p class="sub">A senior PM assignment for the PRYPCO Hiring Council — covering growth, localization, and AI-powered investment advisory across PRYPCO Mint and Blocks.</p>
 
