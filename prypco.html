@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRYPCO · Senior PM Assignment</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#0d5c4a;--brand-soft:#e0f0ec;--shadow:0 12px 32px rgba(13,92,74,.10);--radius:20px}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100%}
+body{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 24px;min-height:100vh}
+.wordmark{font-size:22px;font-weight:800;letter-spacing:-.03em;color:var(--brand);margin-bottom:32px}
+.eyebrow{font-size:13px;color:var(--brand);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+h1{font-size:56px;line-height:1.05;letter-spacing:-.025em;font-weight:700;margin-bottom:14px;background:linear-gradient(180deg,#1d1d1f 0%,#0d5c4a 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;max-width:760px}
+.sub{font-size:19px;color:var(--mute);max-width:660px;text-align:center;margin-bottom:48px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(240px,1fr));gap:20px;max-width:980px;width:100%}
+a.card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;text-decoration:none;color:inherit;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+a.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--brand-soft)}
+.card .tag{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+.card .task-num{font-size:42px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--brand-soft);margin-bottom:14px;-webkit-text-stroke:2px var(--brand)}
+.card h2{font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px;line-height:1.25}
+.card p{font-size:14.5px;color:var(--mute);margin-bottom:24px;line-height:1.55}
+.card .cta{margin-top:auto;font-size:14px;font-weight:600;color:var(--brand);display:inline-flex;align-items:center;gap:6px}
+.card .cta span{transition:transform .18s ease}
+a.card:hover .cta span{transform:translateX(3px)}
+.foot{margin-top:56px;font-size:13px;color:var(--mute)}
+@media(max-width:860px){h1{font-size:40px}.cards{grid-template-columns:1fr}}
+@media(min-width:861px) and (max-width:1100px){.cards{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wordmark">PRYPCO</div>
+<div class="eyebrow">Senior PM Assignment · May 2026</div>
+<h1>Three Tasks.<br>One Vision.</h1>
+<p class="sub">A senior PM assignment for the PRYPCO Hiring Council — covering growth, localization, and AI-powered investment advisory across PRYPCO Mint and Blocks.</p>
+
+<div class="cards">
+  <a class="card" href="prypco-task1.html">
+    <div class="tag">PRYPCO Mint</div>
+    <div class="task-num">01</div>
+    <h2>Driving Growth: KYC &amp; Investment Conversion</h2>
+    <p>14 initiatives to double KYC completion from 18% to 36% and triple investment conversion from 5% to 15% — across 3 sprints.</p>
+    <span class="cta">Open presentation <span>→</span></span>
+  </a>
+  <a class="card" href="prypco-task2.html">
+    <div class="tag">PRYPCO Blocks</div>
+    <div class="task-num">02</div>
+    <h2>Arabic RTL Localization</h2>
+    <p>Full AI-powered localization in one sprint — five layers: strings, layout, typography, visual assets, and data formats. More than translation.</p>
+    <span class="cta">Open presentation <span>→</span></span>
+  </a>
+  <a class="card" href="prypco-task3.html">
+    <div class="tag">PRYPCO Mint</div>
+    <div class="task-num">03</div>
+    <h2>Mint Advisor: AI-Powered Investment Advisory</h2>
+    <p>A VARA-compliant AI coach that takes a first-timer from decision paralysis to first investment — MVP to Scale in three phases.</p>
+    <span class="cta">Open presentation <span>→</span></span>
+  </a>
+</div>
+
+<div class="foot">PRYPCO · Senior PM Assignment · PRYPCO Hiring Council · May 2026</div>
+</body>
+</html>
