@@ -94,6 +94,7 @@ tr:last-child td{border-bottom:none}
 .smi .n{font-variant-numeric:tabular-nums;font-weight:600;min-width:18px;font-size:10px;opacity:.65;flex-shrink:0}
 .smi.active .n{opacity:1}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.kpis,.step-grid,.sprint-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+@media print{html,body{overflow:visible!important;height:auto!important}body.nav-forward .slide:not(.active),body.nav-back .slide:not(.active){transform:none!important}.deck{overflow:visible!important;height:auto!important;position:relative!important}.slide{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;transform:none!important;page-break-after:always;break-after:page;height:100vh;overflow:hidden!important;padding:40px 60px 40px!important}.slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}.progress,.controls,.hint{display:none!important}}
 .slide{padding-left:0!important;padding-right:0!important;align-items:center!important}
 .slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}
 </style></head>
@@ -199,35 +200,13 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="body">
     <h2>KYC: intent-triggered, AI-powered.</h2>
-    <div class="cards-2" style="margin-top:16px">
-      <div>
-        <div class="card" style="margin-bottom:12px">
-          <h3>04 · KYC roadmap with save &amp; resume <span class="pill brand">ICE 9</span></h3>
-          <p>All steps visible upfront with time estimates. Step 1 pre-checked. Save progress — return exactly where left off.</p>
-        </div>
-        <div class="card" style="margin-bottom:12px">
-          <h3>05 · KYC motivation layer <span class="pill brand">ICE 7</span></h3>
-          <p>Selected property stays visible throughout KYC. Live funding ticker keeps emotional momentum alive.</p>
-        </div>
-        <div class="card">
-          <h3>08 · Persistent KYC progress widget <span class="pill brand">ICE 7</span></h3>
-          <p>Soft constant nudge visible on every screen until KYC complete. Borrowed from Stake's proven pattern.</p>
-        </div>
-      </div>
-      <div>
-        <div class="card" style="margin-bottom:12px">
-          <h3>06 · AI OCR document capture <span class="pill brand">ICE 8</span></h3>
-          <p>ID scan auto-fills all fields. AI rejection explainer tells user exactly how to fix failed documents.</p>
-        </div>
-        <div class="card" style="margin-bottom:12px">
-          <h3>07 · AI chatbot with human-in-the-loop <span class="pill brand">ICE 7</span></h3>
-          <p>In-app chat replaces broken email support. AI handles 80%, escalates to human for edge cases.</p>
-        </div>
-        <div class="card" style="background:#fff8f0;border-color:#ffe5cc">
-          <h3 style="color:var(--red)">Before ✕</h3>
-          <p>Emirates ID gate blocks step 1 · Hard error at final T&Cs step · Full manual re-entry on failure</p>
-        </div>
-      </div>
+    <div class="step-grid" style="margin-top:16px">
+      <div class="step"><div class="num">04 · ICE 9</div><h4>KYC roadmap with save &amp; resume</h4><p>All steps visible upfront with time estimates. Step 1 pre-checked. Save progress — return exactly where left off.</p></div>
+      <div class="step"><div class="num">05 · ICE 7</div><h4>KYC motivation layer</h4><p>Selected property stays visible throughout KYC. Live funding ticker keeps emotional momentum alive.</p></div>
+      <div class="step"><div class="num">06 · ICE 8</div><h4>AI OCR document capture</h4><p>ID scan auto-fills all fields. AI rejection explainer tells user exactly how to fix failed documents.</p></div>
+      <div class="step"><div class="num">07 · ICE 7</div><h4>AI chatbot with human-in-the-loop</h4><p>In-app chat replaces broken email support. AI handles 80%, escalates to human for edge cases.</p></div>
+      <div class="step"><div class="num">08 · ICE 7</div><h4>Persistent KYC progress widget</h4><p>Soft constant nudge visible on every screen until KYC complete. Borrowed from Stake's proven pattern.</p></div>
+      <div class="step" style="background:#fff8f0;border-color:#ffe5cc"><div class="num" style="color:var(--red)">Before ✕</div><h4>Broken experience</h4><p>Emirates ID gate blocks step 1 · Hard error at final T&Cs step · Full manual re-entry on failure</p></div>
     </div>
   </div>
 </div>
@@ -394,6 +373,7 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="r">
     <button class="btn" id="next" title="Next">→</button>
+    <button class="btn" onclick="window.print()" title="Download as PDF" style="font-size:13px;width:auto;padding:0 12px;gap:5px;display:flex;align-items:center">⬇ PDF</button>
   </div>
 </div>
 
