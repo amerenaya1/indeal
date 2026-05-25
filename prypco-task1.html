@@ -37,13 +37,15 @@ h3{font-size:22px;font-weight:600;margin-bottom:12px;letter-spacing:-.01em}
 .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
 .card h3{font-size:18px;margin-bottom:8px}
-.card p{font-size:14px;color:#3a3a3c;line-height:1.55}
+.card p{font-size:14px;color:var(--ink);line-height:1.55}
 .card ul{list-style:none;margin-top:8px}
-.card li{padding:6px 0 6px 20px;position:relative;font-size:13.5px;color:#3a3a3c;border-bottom:1px solid #f4f4f7}
+.card li{padding:6px 0 6px 20px;position:relative;font-size:13.5px;color:var(--ink);border-bottom:1px solid var(--line)}
 .card li:last-child{border-bottom:none}
 .card li::before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:var(--mute)}
 .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px}
 .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.step-warn{background:#fff8f0;border-color:#ffe5cc}
+html.dark .step-warn{background:rgba(255,69,58,.08);border-color:rgba(255,69,58,.25)}
 .step .num{font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--brand);text-transform:uppercase;margin-bottom:8px}
 .step h4{font-size:17px;font-weight:600;margin-bottom:6px}
 .step p{font-size:13px;color:var(--mute);line-height:1.5}
@@ -51,21 +53,21 @@ h3{font-size:22px;font-weight:600;margin-bottom:12px;letter-spacing:-.01em}
 .pill.high{background:#ffe5e5;color:#b00020}.pill.med{background:#fff0db;color:#a35a00}.pill.low{background:#e3f9e5;color:#1f6f31}.pill.brand{background:var(--brand-soft);color:var(--brand)}
 table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
 th,td{text-align:left;padding:10px 16px;font-size:13px;border-bottom:1px solid var(--line)}
-th{background:#f5f5f7;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#3a3a3c}
+th{background:#f5f5f7;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink)}
 tr:last-child td{border-bottom:none}
 .risk{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:10px}
 .risk-row{display:flex;align-items:flex-start;gap:14px}
 .risk-label{font-size:10px;font-weight:700;padding:3px 8px;border-radius:99px;text-transform:uppercase;letter-spacing:.04em;flex-shrink:0;margin-top:1px}
 .rl-high{background:#ffe5e5;color:#b00020}.rl-med{background:#fff0db;color:#a35a00}
 .risk h4{font-size:15px;font-weight:600;margin-bottom:4px}
-.risk p{font-size:13px;color:#3a3a3c;line-height:1.5}
+.risk p{font-size:13px;color:var(--ink);line-height:1.5}
 .risk .fix{font-size:12px;color:var(--brand);margin-top:6px;font-style:italic}
 .sprint-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .sprint{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
 .sprint .label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
 .sprint h4{font-size:17px;font-weight:600;margin-bottom:12px}
 .sprint ul{list-style:none}
-.sprint li{font-size:13px;color:#3a3a3c;padding:5px 0;border-bottom:1px solid #f4f4f7}
+.sprint li{font-size:13px;color:var(--ink);padding:5px 0;border-bottom:1px solid var(--line)}
 .sprint li:last-child{border-bottom:none}
 .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .kpi-big{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
@@ -211,7 +213,7 @@ tr:last-child td{border-bottom:none}
       <div class="step"><div class="num">06 · ICE 8</div><h4>AI OCR document capture</h4><p>ID scan auto-fills all fields. AI rejection explainer tells user exactly how to fix failed documents.</p></div>
       <div class="step"><div class="num">07 · ICE 7</div><h4>AI chatbot with human-in-the-loop</h4><p>In-app chat replaces broken email support. AI handles 80%, escalates to human for edge cases.</p></div>
       <div class="step"><div class="num">08 · ICE 7</div><h4>Persistent KYC progress widget</h4><p>Soft constant nudge visible on every screen until KYC complete. Borrowed from Stake's proven pattern.</p></div>
-      <div class="step" style="background:#fff8f0;border-color:#ffe5cc"><div class="num" style="color:var(--red)">Before ✕</div><h4>Broken experience</h4><p>Emirates ID gate blocks step 1 · Hard error at final T&Cs step · Full manual re-entry on failure</p></div>
+      <div class="step step-warn"><div class="num" style="color:var(--red)">Before ✕</div><h4>Broken experience</h4><p>Emirates ID gate blocks step 1 · Hard error at final T&Cs step · Full manual re-entry on failure</p></div>
     </div>
   </div>
 </div>
