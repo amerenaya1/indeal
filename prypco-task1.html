@@ -42,11 +42,14 @@ h3{font-size:22px;font-weight:600;margin-bottom:12px;letter-spacing:-.01em}
 .card li{padding:6px 0 6px 20px;position:relative;font-size:13.5px;color:var(--ink);border-bottom:1px solid var(--line)}
 .card li:last-child{border-bottom:none}
 .card li::before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:var(--mute)}
-.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:4px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
-.step-warn{background:#fff8f0;border-color:#ffe5cc}
-html.dark .step-warn{background:rgba(255,69,58,.08);border-color:rgba(255,69,58,.25)}
-.step .num{font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--brand);text-transform:none;margin-bottom:10px}
+.step-grid{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:column;grid-template-rows:repeat(3,auto);column-gap:40px;margin-top:4px}
+.step{background:none;border:none;border-left:3px solid var(--brand);border-radius:0;padding:16px 0 16px 18px;border-bottom:1px solid var(--line)}
+.step:nth-child(3n){border-bottom:none}
+.step-warn{border-left-color:var(--red)}
+html.dark .step-warn{background:none;border-color:rgba(255,69,58,.25)}
+.step-head{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.step .num{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--brand);flex-shrink:0;text-transform:uppercase}
+.step-title{font-size:19px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
 .step h4{display:none}
 .step p{font-size:13px;color:var(--mute);line-height:1.55}
 .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-left:6px}
@@ -148,12 +151,12 @@ tr:last-child td{border-bottom:none}
   <div class="body">
     <h2>Make them fall in love<br>before asking for anything.</h2>
     <div class="step-grid" style="margin-top:20px">
-      <div class="step"><div class="num">01 Hook</div><h4>Emotional splash screen</h4><p>Speaks to the internal dream — own Dubai real estate from AED 500</p></div>
-      <div class="step"><div class="num">02 Enter</div><h4>One-tap registration</h4><p>Email or Google only. Re-engagement channel secured immediately.</p></div>
-      <div class="step"><div class="num">03 Wow</div><h4>3-step investment wizard</h4><p>Social Proof → How Much → AI-Matched Properties</p></div>
-      <div class="step"><div class="num">04 Convert</div><h4>Intent-triggered KYC</h4><p>AI-powered, short, with property always visible for motivation.</p></div>
-      <div class="step"><div class="num">05 Recover</div><h4>Smart empty state</h4><p>Retargeting at every drop-off point, wallet credit with FOMO countdown.</p></div>
-      <div class="step"><div class="num">06 Retain</div><h4>Portfolio nudges</h4><p>Investor story campaigns, property launch events, referral program.</p></div>
+      <div class="step"><div class="step-head"><span class="num">01</span><span class="step-title">Hook</span></div><p>Emotional splash screen speaks to the internal dream — own Dubai real estate from AED 500</p></div>
+      <div class="step"><div class="step-head"><span class="num">02</span><span class="step-title">Enter</span></div><p>One-tap registration. Email or Google only. Re-engagement channel secured immediately.</p></div>
+      <div class="step"><div class="step-head"><span class="num">03</span><span class="step-title">Wow</span></div><p>3-step investment wizard: Social Proof → How Much → AI-Matched Properties</p></div>
+      <div class="step"><div class="step-head"><span class="num">04</span><span class="step-title">Convert</span></div><p>Intent-triggered KYC. AI-powered, short, with property always visible for motivation.</p></div>
+      <div class="step"><div class="step-head"><span class="num">05</span><span class="step-title">Recover</span></div><p>Smart empty state. Retargeting at every drop-off point, wallet credit with FOMO countdown.</p></div>
+      <div class="step"><div class="step-head"><span class="num">06</span><span class="step-title">Retain</span></div><p>Portfolio nudges, investor story campaigns, property launch events, referral program.</p></div>
     </div>
   </div>
 </div>
@@ -208,12 +211,12 @@ tr:last-child td{border-bottom:none}
   <div class="body">
     <h2>KYC: intent-triggered, AI-powered.</h2>
     <div class="step-grid" style="margin-top:16px">
-      <div class="step"><div class="num">04 · ICE 9</div><h4>KYC roadmap with save &amp; resume</h4><p>All steps visible upfront with time estimates. Step 1 pre-checked. Save progress — return exactly where left off.</p></div>
-      <div class="step"><div class="num">05 · ICE 7</div><h4>KYC motivation layer</h4><p>Selected property stays visible throughout KYC. Live funding ticker keeps emotional momentum alive.</p></div>
-      <div class="step"><div class="num">06 · ICE 8</div><h4>AI OCR document capture</h4><p>ID scan auto-fills all fields. AI rejection explainer tells user exactly how to fix failed documents.</p></div>
-      <div class="step"><div class="num">07 · ICE 7</div><h4>AI chatbot with human-in-the-loop</h4><p>In-app chat replaces broken email support. AI handles 80%, escalates to human for edge cases.</p></div>
-      <div class="step"><div class="num">08 · ICE 7</div><h4>Persistent KYC progress widget</h4><p>Soft constant nudge visible on every screen until KYC complete. Borrowed from Stake's proven pattern.</p></div>
-      <div class="step step-warn"><div class="num" style="color:var(--red)">Before ✕</div><h4>Broken experience</h4><p>Emirates ID gate blocks step 1 · Hard error at final T&Cs step · Full manual re-entry on failure</p></div>
+      <div class="step"><div class="step-head"><span class="num">04 · ICE 9</span><span class="step-title">KYC roadmap with save &amp; resume</span></div><p>All steps visible upfront with time estimates. Step 1 pre-checked. Save progress — return exactly where left off.</p></div>
+      <div class="step"><div class="step-head"><span class="num">05 · ICE 7</span><span class="step-title">KYC motivation layer</span></div><p>Selected property stays visible throughout KYC. Live funding ticker keeps emotional momentum alive.</p></div>
+      <div class="step"><div class="step-head"><span class="num">06 · ICE 8</span><span class="step-title">AI OCR document capture</span></div><p>ID scan auto-fills all fields. AI rejection explainer tells user exactly how to fix failed documents.</p></div>
+      <div class="step"><div class="step-head"><span class="num">07 · ICE 7</span><span class="step-title">AI chatbot with human-in-the-loop</span></div><p>In-app chat replaces broken email support. AI handles 80%, escalates to human for edge cases.</p></div>
+      <div class="step"><div class="step-head"><span class="num">08 · ICE 7</span><span class="step-title">Persistent KYC progress widget</span></div><p>Soft constant nudge visible on every screen until KYC complete. Borrowed from Stake's proven pattern.</p></div>
+      <div class="step step-warn"><div class="step-head"><span class="num" style="color:var(--red)">Before ✕</span><span class="step-title">Broken experience</span></div><p>Emirates ID gate blocks step 1 · Hard error at final T&Cs step · Full manual re-entry on failure</p></div>
     </div>
   </div>
 </div>
@@ -227,12 +230,12 @@ tr:last-child td{border-bottom:none}
   <div class="body">
     <h2>Investment: supply + trust + guided decision.</h2>
     <div class="step-grid" style="margin-top:16px">
-      <div class="step"><div class="num">09 · ICE 8</div><h4>Smart empty state</h4><p>Never a dead end. Browse Marketplace or Notify Me — two paths always available.</p></div>
-      <div class="step"><div class="num">10 · ICE 7</div><h4>New investor wallet credit</h4><p>AED 100 credit, 14-day countdown. User sees real returns. FOMO drives KYC completion.</p></div>
-      <div class="step"><div class="num">11 · ICE 8</div><h4>AI retargeting across the funnel</h4><p>6 specific re-engagement sequences. Each drop-off point has a personalized WhatsApp/push recovery.</p></div>
-      <div class="step"><div class="num">12 · ICE 7</div><h4>Property launch events</h4><p>Every listing treated as a product launch moment. Countdown, early access, live funding updates.</p></div>
-      <div class="step"><div class="num">13 · ICE 6</div><h4>Investor story campaigns</h4><p>Weekly anonymized return stories matched to user profile. Keeps the dream alive between launches.</p></div>
-      <div class="step"><div class="num">14 · ICE 6</div><h4>Referral program</h4><p>Invite a friend — both get AED 50 credit. Placed at post-investment celebration screen.</p></div>
+      <div class="step"><div class="step-head"><span class="num">09 · ICE 8</span><span class="step-title">Smart empty state</span></div><p>Never a dead end. Browse Marketplace or Notify Me — two paths always available.</p></div>
+      <div class="step"><div class="step-head"><span class="num">10 · ICE 7</span><span class="step-title">New investor wallet credit</span></div><p>AED 100 credit, 14-day countdown. User sees real returns. FOMO drives KYC completion.</p></div>
+      <div class="step"><div class="step-head"><span class="num">11 · ICE 8</span><span class="step-title">AI retargeting across the funnel</span></div><p>6 specific re-engagement sequences. Each drop-off point has a personalized WhatsApp/push recovery.</p></div>
+      <div class="step"><div class="step-head"><span class="num">12 · ICE 7</span><span class="step-title">Property launch events</span></div><p>Every listing treated as a product launch moment. Countdown, early access, live funding updates.</p></div>
+      <div class="step"><div class="step-head"><span class="num">13 · ICE 6</span><span class="step-title">Investor story campaigns</span></div><p>Weekly anonymized return stories matched to user profile. Keeps the dream alive between launches.</p></div>
+      <div class="step"><div class="step-head"><span class="num">14 · ICE 6</span><span class="step-title">Referral program</span></div><p>Invite a friend — both get AED 50 credit. Placed at post-investment celebration screen.</p></div>
     </div>
   </div>
 </div>
