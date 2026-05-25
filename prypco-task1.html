@@ -47,8 +47,9 @@ h3{font-size:22px;font-weight:600;margin-bottom:12px;letter-spacing:-.01em}
 .step-warn{background:#fff8f0;border-color:#ffe5cc}
 html.dark .step-warn{background:rgba(255,69,58,.08);border-color:rgba(255,69,58,.25)}
 .step .num{font-size:19px;font-weight:700;letter-spacing:-.01em;color:var(--brand);text-transform:none;margin-bottom:10px}
-.step h4{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.step p{font-size:12.5px;color:var(--mute);line-height:1.5}
+.step h4{font-size:13px;font-weight:400;color:var(--mute);margin-bottom:0;display:inline}
+.step h4::after{content:", "}
+.step p{font-size:13px;color:var(--mute);line-height:1.55;display:inline}
 .pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-left:6px}
 .pill.high{background:#ffe5e5;color:#b00020}.pill.med{background:#fff0db;color:#a35a00}.pill.low{background:#e3f9e5;color:#1f6f31}.pill.brand{background:var(--brand-soft);color:var(--brand)}
 table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
