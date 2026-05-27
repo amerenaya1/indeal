@@ -113,6 +113,10 @@ tr:last-child td{border-bottom:none}
 .smi.active{background:var(--brand);color:#1d1d1f}
 .smi .n{font-variant-numeric:tabular-nums;font-weight:600;min-width:18px;font-size:10px;opacity:.65;flex-shrink:0}
 .smi.active .n{opacity:1}
+@keyframes logo-pulse{0%,100%{opacity:.045}50%{opacity:.1}}
+.slide::before{content:'';position:absolute;inset:0;background:url('https://framerusercontent.com/images/bG00b9yaBH4LVFTcny8AOl8uzu4.png') center/65% auto no-repeat;opacity:.045;pointer-events:none;z-index:0;animation:logo-pulse 6s ease-in-out infinite}
+.slide .header,.slide .body{position:relative;z-index:1}
+@media print{.slide::before{display:none!important}}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.kpis,.step-grid,.sprint-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
 @media print{html,body{overflow:visible!important;height:auto!important}body.nav-forward .slide:not(.active),body.nav-back .slide:not(.active){transform:none!important}.deck{overflow:visible!important;height:auto!important;position:relative!important}.slide{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;transform:none!important;page-break-after:always;break-after:page;height:100vh;overflow:hidden!important;padding:40px 60px 40px!important}.slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}.progress,.controls,.hint{display:none!important}h1,h2{-webkit-text-fill-color:#1d1d1f!important;background:none!important;color:#1d1d1f!important}#init-sidebar{display:none!important}}
 /* ── Initiative 01 Sidebar ── */
