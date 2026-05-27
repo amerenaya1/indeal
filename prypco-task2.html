@@ -68,6 +68,13 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .code-after{color:var(--brand)}
 .sprint-day{display:flex;gap:0;flex-wrap:wrap;margin-top:14px}
 .day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:4px;flex:1;min-width:120px;max-width:160px}
+/* Sprint plan vertical rows */
+.sprint-rows{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.sprint-row{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:10px;overflow:hidden;gap:0}
+.sr-day{min-width:72px;padding:12px 16px;font-size:13px;font-weight:700;color:var(--brand);letter-spacing:-.01em;flex-shrink:0;border-right:1px solid var(--line)}
+.sr-task{min-width:160px;padding:12px 16px;font-size:13.5px;font-weight:600;color:var(--ink);flex-shrink:0;border-right:1px solid var(--line)}
+.sr-owner{min-width:150px;padding:12px 16px;font-size:12px;font-weight:600;color:var(--brand);letter-spacing:.02em;flex-shrink:0;border-right:1px solid var(--line)}
+.sr-desc{flex:1;padding:12px 18px;font-size:12.5px;color:var(--mute);line-height:1.5}
 .day .d{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
 .day .role{font-size:10px;color:var(--mute);margin-bottom:6px}
 .day p{font-size:12px;color:var(--ink);line-height:1.4}
@@ -384,18 +391,17 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="body">
     <h2>10-day sprint plan.</h2>
-    <p class="lead" style="margin-bottom:12px">React Native app — full AI-powered localization from zero.</p>
-    <div class="sprint-day">
-      <div class="day"><div class="d">D1</div><div class="role">PM + AI</div><p>AST scanner extracts ~500 hardcoded strings from .jsx/.tsx → en.json</p></div>
-      <div class="day"><div class="d">D2</div><div class="role">PM + AI</div><p>Claude API translates en.json → ar.json in &lt;2 min. PM reviews financial terms (KYC, SPV, IBAN)</p></div>
-      <div class="day"><div class="d">D3</div><div class="role">Reviewer</div><p>Native Arabic speaker reviews ar.json in audit UI. Edits strings, flags cultural issues in imagery</p></div>
-      <div class="day"><div class="d">D4</div><div class="role">Eng</div><p>Wire i18next (web) + i18n-js (mobile). Run jscodeshift codemod to replace all hardcoded strings</p></div>
-      <div class="day"><div class="d">D5</div><div class="role">Eng</div><p>Add dir=rtl when locale=ar. react-native-rtl-layout. Flip marginLeft→marginStart, paddingLeft→paddingStart</p></div>
-      <div class="day"><div class="d">D6</div><div class="role">Eng + Des</div><p>Mirror nav, tab bars, back buttons. Replace images with embedded EN text. Load Noto Sans Arabic</p></div>
-      <div class="day"><div class="d">D7</div><div class="role">Eng + Des</div><p>Format localization: dates DD/MM/YYYY, currency 500 AED, phone numbers LTR in RTL context</p></div>
-      <div class="day"><div class="d">D8</div><div class="role">QA</div><p>Automated: Detox RTL suite, Playwright web tests, BrowserStack real device matrix (iPhone 14 Arabic)</p></div>
-      <div class="day"><div class="d">D9</div><div class="role">Reviewer</div><p>Native Arabic speaker: walks all 20 key screens on real iOS device. Signs off each screen</p></div>
-      <div class="day"><div class="d">D10</div><div class="role">PM</div><p>Feature flag ship to Levant users only. Monitor AR adoption and CES score. Wire analytics</p></div>
+    <p class="lead" style="margin-bottom:10px">Day by day. Owner per task. Checkpoints at D3, D5, D7, D9.</p>
+    <div class="sprint-rows">
+      <div class="sprint-row"><div class="sr-day">D1–D2</div><div class="sr-task">AI Pipeline</div><div class="sr-owner">Engineering + AI</div><div class="sr-desc">AST scan all screens. Claude API MT with fintech glossary. Output reviewed JSON translation file.</div></div>
+      <div class="sprint-row"><div class="sr-day">D3</div><div class="sr-task">Human Review</div><div class="sr-owner">Native Speaker</div><div class="sr-desc">2-hour string audit session. Flag mistranslations, tone issues, financial terminology errors. CES baseline.</div></div>
+      <div class="sprint-row"><div class="sr-day">D4–D5</div><div class="sr-task">Codemod</div><div class="sr-owner">Engineering</div><div class="sr-desc">jscodeshift replaces all hardcoded strings with i18n() calls. i18n provider wired to locale detection.</div></div>
+      <div class="sprint-row"><div class="sr-day">D5–D6</div><div class="sr-task">RTL Layout</div><div class="sr-owner">Engineering</div><div class="sr-desc">react-native-rtl-layout applied. All flex rows, margins, paddings, absolute positions flipped for AR.</div></div>
+      <div class="sprint-row"><div class="sr-day">D6</div><div class="sr-task">Visual Assets</div><div class="sr-owner">Design</div><div class="sr-desc">Category 1 images replaced with Arabic variants. Category 2 icons mirrored. Category 3 brand assets verified.</div></div>
+      <div class="sprint-row"><div class="sr-day">D7</div><div class="sr-task">Typography</div><div class="sr-owner">Design + Eng</div><div class="sr-desc">Noto Sans Arabic loaded and subsetted. Line-height +20%. Bidi handling for mixed EN/AR content.</div></div>
+      <div class="sprint-row"><div class="sr-day">D8</div><div class="sr-task">Automated QA</div><div class="sr-owner">Engineering</div><div class="sr-desc">Detox RTL screenshot tests. Playwright string coverage. ESLint i18n rule. BrowserStack real device tests.</div></div>
+      <div class="sprint-row"><div class="sr-day">D9</div><div class="sr-task">Native QA</div><div class="sr-owner">Native Speaker + PM</div><div class="sr-desc">Full screen walkthrough in Arabic. PM acceptance checklist. Flag P0/P1 issues. CES measurement.</div></div>
+      <div class="sprint-row"><div class="sr-day">D10</div><div class="sr-task">Ship</div><div class="sr-owner">Engineering + PM</div><div class="sr-desc">Feature flag enabled for Levant region only. Monitor adoption, CES, bug escape rate.</div></div>
     </div>
   </div>
 </div>
