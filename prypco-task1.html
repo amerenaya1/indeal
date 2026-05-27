@@ -113,8 +113,8 @@ tr:last-child td{border-bottom:none}
 .smi.active{background:var(--brand);color:#1d1d1f}
 .smi .n{font-variant-numeric:tabular-nums;font-weight:600;min-width:18px;font-size:10px;opacity:.65;flex-shrink:0}
 .smi.active .n{opacity:1}
-@keyframes logo-pulse{0%,100%{opacity:.045}50%{opacity:.1}}
-.slide::before{content:'';position:absolute;inset:0;background:url('https://framerusercontent.com/images/bG00b9yaBH4LVFTcny8AOl8uzu4.png') center/65% auto no-repeat;opacity:.045;pointer-events:none;z-index:0;animation:logo-pulse 6s ease-in-out infinite}
+@keyframes logo-pulse{0%,100%{opacity:.018}50%{opacity:.04}}
+.slide::before{content:'';position:absolute;inset:0;background:url('https://framerusercontent.com/images/bG00b9yaBH4LVFTcny8AOl8uzu4.png') center bottom/80% auto no-repeat;opacity:.018;pointer-events:none;z-index:0;animation:logo-pulse 6s ease-in-out infinite;-webkit-mask-image:linear-gradient(to top,transparent 0%,black 55%);mask-image:linear-gradient(to top,transparent 0%,black 55%)}
 .slide .header,.slide .body{position:relative;z-index:1}
 @media print{.slide::before{display:none!important}}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.kpis,.step-grid,.sprint-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:repeat(2,1fr)}}

@@ -112,8 +112,8 @@ tr:last-child td{border-bottom:none}
 .smi.active{background:var(--brand);color:#1d1d1f}
 .smi .n{font-variant-numeric:tabular-nums;font-weight:600;min-width:18px;font-size:10px;opacity:.65;flex-shrink:0}
 .smi.active .n{opacity:1}
-@keyframes logo-pulse{0%,100%{opacity:.045}50%{opacity:.1}}
-.slide::before{content:'';position:absolute;inset:0;background:url('https://framerusercontent.com/images/bG00b9yaBH4LVFTcny8AOl8uzu4.png') center/65% auto no-repeat;opacity:.045;pointer-events:none;z-index:0;animation:logo-pulse 6s ease-in-out infinite}
+@keyframes logo-pulse{0%,100%{opacity:.018}50%{opacity:.04}}
+.slide::before{content:'';position:absolute;inset:0;background:url('https://framerusercontent.com/images/bG00b9yaBH4LVFTcny8AOl8uzu4.png') center bottom/80% auto no-repeat;opacity:.018;pointer-events:none;z-index:0;animation:logo-pulse 6s ease-in-out infinite;-webkit-mask-image:linear-gradient(to top,transparent 0%,black 55%);mask-image:linear-gradient(to top,transparent 0%,black 55%)}
 .slide .header,.slide .body{position:relative;z-index:1}
 @media print{.slide::before{display:none!important}}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.layer-grid{grid-template-columns:repeat(3,1fr)}.ac-grid{grid-template-columns:repeat(2,1fr)}.metric-grid{grid-template-columns:repeat(2,1fr)}}
@@ -267,7 +267,7 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="body">
     <h2>The AI pipeline.</h2>
-    <p class="lead" style="margin-bottom:16px">blocks.prypco.com — React Native — no i18n layer exists today</p>
+    <p class="lead" style="margin-bottom:16px">Full AI-powered localization pipeline — from extraction to deployment in one sprint.</p>
     <div class="pipeline">
       <div class="pipe-step"><div class="pnum">1 · AST Extract</div><h4>String extraction</h4><p>Claude reads all .jsx/.tsx, identifies every hardcoded string literal. Outputs en.json.</p></div>
       <div class="pipe-step"><div class="pnum">2 · MT via Claude</div><h4>Machine translation</h4><p>en.json sent to Claude API with fintech prompt (KYC, AED, SPV, IBAN). ~500 strings in &lt;2 min. Output: ar.json.</p></div>
