@@ -3,8 +3,8 @@
 <script>if(localStorage.getItem('theme')==='dark'||(localStorage.getItem('theme')===null&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#cffd57;--brand-soft:#edfcaa;--red:#ff3b30;--orange:#ff9500;--green:#34c759;--shadow:0 12px 32px rgba(207,253,87,.10);--radius:20px}
-html.dark{--bg:#111113;--ink:#f5f5f7;--mute:#8e8e93;--line:#2c2c2e;--card:#1c1c1e;--brand:#cffd57;--brand-soft:#293300;--red:#ff453a;--orange:#ff9f0a;--green:#30d158;--shadow:0 12px 32px rgba(0,0,0,.4)}
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#cffd57;--brand-text:#4d6600;--brand-soft:#edfcaa;--red:#ff3b30;--orange:#ff9500;--green:#34c759;--shadow:0 12px 32px rgba(207,253,87,.10);--radius:20px}
+html.dark{--bg:#111113;--ink:#f5f5f7;--mute:#8e8e93;--line:#2c2c2e;--card:#1c1c1e;--brand:#cffd57;--brand-text:#cffd57;--brand-soft:#293300;--red:#ff453a;--orange:#ff9f0a;--green:#30d158;--shadow:0 12px 32px rgba(0,0,0,.4)}
 html.dark h1{background:linear-gradient(160deg,#f5f5f7 0%,#cffd57 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 html.dark .controls{background:rgba(17,17,19,.9)!important}
 html.dark th{background:#222224!important}
@@ -22,15 +22,15 @@ body.nav-forward .slide:not(.active){transform:translateY(18px) scale(.99)}
 body.nav-back .slide:not(.active){transform:translateY(-18px) scale(.99)}
 .header{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--line);flex-shrink:0}
 .header-left{display:flex;align-items:center;gap:14px}
-.wordmark{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--brand)}
-.section-tag{font-size:11px;color:var(--brand);font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--brand-soft);padding:3px 10px;border-radius:99px}
+.wordmark{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--brand-text)}
+.section-tag{font-size:11px;color:var(--brand-text);font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--brand-soft);padding:3px 10px;border-radius:99px}
 h1{font-size:58px;line-height:1.1;letter-spacing:-.025em;font-weight:700;margin-bottom:16px;background:linear-gradient(160deg,#1d1d1f 0%,#cffd57 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 h2{font-size:44px;letter-spacing:-.02em;font-weight:700;margin-bottom:10px;line-height:1.1}
 h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .lead{font-size:19px;color:var(--mute);max-width:820px;margin-bottom:24px}
 .body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0}
 .title-slide{justify-content:center;text-align:center;align-items:center}
-.title-slide .eyebrow{font-size:13px;color:var(--brand);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.title-slide .eyebrow{font-size:13px;color:var(--brand-text);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
 .title-slide h1{font-size:78px;margin-bottom:18px}
 .title-slide .sub{font-size:20px;color:var(--mute);max-width:720px}
 .title-slide .meta{margin-top:36px;font-size:12px;color:var(--mute);letter-spacing:.05em}
@@ -45,9 +45,9 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .card li::before{content:"";position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:var(--mute)}
 .layer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px}
 .layer{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
-.layer .num{font-size:28px;font-weight:800;color:var(--brand-soft);-webkit-text-stroke:2px var(--brand);line-height:1;margin-bottom:8px}
+.layer .num{font-size:28px;font-weight:800;color:var(--brand-soft);-webkit-text-stroke:2px var(--brand-text);line-height:1;margin-bottom:8px}
 .layer h4{font-size:14px;font-weight:600;margin-bottom:6px}
-.layer .owner{font-size:11px;color:var(--brand);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.layer .owner{font-size:11px;color:var(--brand-text);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
 .layer p{font-size:12px;color:var(--mute);line-height:1.45}
 /* Vertical layer rows */
 .layer-rows{display:flex;flex-direction:column;gap:10px;margin-top:14px}
@@ -60,33 +60,33 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .pipeline{display:flex;align-items:flex-start;gap:0;margin-top:16px;overflow-x:auto}
 .pipe-step{flex:1;min-width:120px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 14px;position:relative;text-align:center}
 .pipe-step+.pipe-step{margin-left:8px}
-.pipe-step .pnum{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.pipe-step .pnum{font-size:11px;font-weight:700;color:var(--brand-text);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
 .pipe-step h4{font-size:13px;font-weight:600;margin-bottom:4px}
 .pipe-step p{font-size:11.5px;color:var(--mute);line-height:1.4}
 .code-block{background:#f5f5f7;border-radius:10px;padding:12px 16px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:12px;color:var(--ink);margin:8px 0;line-height:1.5}
 .code-label{font-size:11px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.code-after{color:var(--brand)}
+.code-after{color:var(--brand-text)}
 .sprint-day{display:flex;gap:0;flex-wrap:wrap;margin-top:14px}
 .day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:4px;flex:1;min-width:120px;max-width:160px}
 /* Sprint plan vertical rows */
 .sprint-rows{display:flex;flex-direction:column;gap:6px;margin-top:10px}
 .sprint-row{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:10px;overflow:hidden;gap:0}
-.sr-day{min-width:72px;padding:12px 16px;font-size:13px;font-weight:700;color:var(--brand);letter-spacing:-.01em;flex-shrink:0;border-right:1px solid var(--line)}
+.sr-day{min-width:72px;padding:12px 16px;font-size:13px;font-weight:700;color:var(--brand-text);letter-spacing:-.01em;flex-shrink:0;border-right:1px solid var(--line)}
 .sr-task{min-width:160px;padding:12px 16px;font-size:13.5px;font-weight:600;color:var(--ink);flex-shrink:0;border-right:1px solid var(--line)}
-.sr-owner{min-width:150px;padding:12px 16px;font-size:12px;font-weight:600;color:var(--brand);letter-spacing:.02em;flex-shrink:0;border-right:1px solid var(--line)}
+.sr-owner{min-width:150px;padding:12px 16px;font-size:12px;font-weight:600;color:var(--brand-text);letter-spacing:.02em;flex-shrink:0;border-right:1px solid var(--line)}
 .sr-desc{flex:1;padding:12px 18px;font-size:12.5px;color:var(--mute);line-height:1.5}
-.day .d{font-size:11px;font-weight:700;color:var(--brand);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.day .d{font-size:11px;font-weight:700;color:var(--brand-text);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
 .day .role{font-size:10px;color:var(--mute);margin-bottom:6px}
 .day p{font-size:12px;color:var(--ink);line-height:1.4}
 .ac-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:14px}
 .ac-col{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
-.ac-col h4{font-size:13px;font-weight:600;color:var(--brand);margin-bottom:8px}
+.ac-col h4{font-size:13px;font-weight:600;color:var(--brand-text);margin-bottom:8px}
 .ac-col ul{list-style:none}
 .ac-col li{font-size:11.5px;color:var(--ink);padding:3px 0;border-bottom:1px solid var(--line)}
 .ac-col li:last-child{border-bottom:none}
 .metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
 .metric{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
-.metric .n{font-size:40px;font-weight:700;letter-spacing:-.03em;color:var(--brand);line-height:1}
+.metric .n{font-size:40px;font-weight:700;letter-spacing:-.03em;color:var(--brand-text);line-height:1}
 .metric .l{font-size:12.5px;color:var(--mute);margin-top:6px;line-height:1.4}
 table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
 th,td{text-align:left;padding:9px 14px;font-size:12.5px;border-bottom:1px solid var(--line)}
@@ -153,10 +153,10 @@ tr:last-child td{border-bottom:none}
     <p class="lead">Translation is 20% of the work. The other 80% is what makes the experience actually feel Arabic.</p>
     <div class="cards-2" style="margin-top:4px">
       <div class="card" style="display:flex;align-items:center;justify-content:center;background:var(--brand-soft);border-color:#c5dfd9">
-        <div style="text-align:center"><div style="font-size:72px;font-weight:800;color:var(--brand)">20%</div><div style="font-size:16px;color:var(--brand);font-weight:600">Translation</div><div style="font-size:13px;color:var(--mute);margin-top:4px">MT via Claude API</div></div>
+        <div style="text-align:center"><div style="font-size:72px;font-weight:800;color:var(--brand-text)">20%</div><div style="font-size:16px;color:var(--brand-text);font-weight:600">Translation</div><div style="font-size:13px;color:var(--mute);margin-top:4px">MT via Claude API</div></div>
       </div>
       <div class="card">
-        <div style="font-size:36px;font-weight:800;color:var(--brand);margin-bottom:12px">80%</div>
+        <div style="font-size:36px;font-weight:800;color:var(--brand-text);margin-bottom:12px">80%</div>
         <p style="font-size:15px;font-weight:600;margin-bottom:12px">Localization</p>
         <ul>
           <li>↔ RTL layout — every flex row, margin, icon, nav bar mirrored</li>
@@ -183,35 +183,35 @@ tr:last-child td{border-bottom:none}
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">1</div>
-          <div class="layer-info"><h4>Strings</h4><div class="owner" style="color:var(--brand)">AI (Claude API)</div></div>
+          <div class="layer-info"><h4>Strings</h4><div class="owner" style="color:var(--brand-text)">AI (Claude API)</div></div>
         </div>
         <div class="layer-row-desc">AST scanner extracts all JSX strings. Claude MT translates with fintech glossary. Human reviews on D3.</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">2</div>
-          <div class="layer-info"><h4>Layout &amp; RTL</h4><div class="owner" style="color:var(--brand)">Engineering</div></div>
+          <div class="layer-info"><h4>Layout &amp; RTL</h4><div class="owner" style="color:var(--brand-text)">Engineering</div></div>
         </div>
         <div class="layer-row-desc">react-native-rtl-layout flips every flex row, margin, padding, absolute position. Swipe gestures also mirror — swipe direction reverses for carousels and dismissals.</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">3</div>
-          <div class="layer-info"><h4>Typography</h4><div class="owner" style="color:var(--brand)">Design + Eng</div></div>
+          <div class="layer-info"><h4>Typography</h4><div class="owner" style="color:var(--brand-text)">Design + Eng</div></div>
         </div>
         <div class="layer-row-desc">Noto Sans Arabic loaded, line-height +20%, text-align flipped, bidi handling for mixed EN/AR.</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">4</div>
-          <div class="layer-info"><h4>Visual Assets</h4><div class="owner" style="color:var(--brand)">Design + AI</div></div>
+          <div class="layer-info"><h4>Visual Assets</h4><div class="owner" style="color:var(--brand-text)">Design + AI</div></div>
         </div>
         <div class="layer-row-desc">Images with embedded text replaced. Directional icons mirrored. Brand assets verified for Arabic variants.</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">5</div>
-          <div class="layer-info"><h4>Data &amp; Formats</h4><div class="owner" style="color:var(--brand)">Engineering</div></div>
+          <div class="layer-info"><h4>Data &amp; Formats</h4><div class="owner" style="color:var(--brand-text)">Engineering</div></div>
         </div>
         <div class="layer-row-desc">Dates DD/MM/YYYY (Gregorian), currency 500 AED not AED 500, phone numbers LTR within RTL context.</div>
       </div>
@@ -252,7 +252,7 @@ tr:last-child td{border-bottom:none}
         <p style="margin-top:10px;font-size:12px;color:var(--mute)">CSS transform: scaleX(-1) on arrow/chevron icons.</p>
       </div>
       <div class="card" style="border-top:3px solid var(--brand)">
-        <h3 style="color:var(--brand)">Audit</h3>
+        <h3 style="color:var(--brand-text)">Audit</h3>
         <p style="margin-bottom:10px;font-size:13px"><strong>Category 3 — Cultural &amp; religious imagery</strong></p>
         <ul>
           <li>People imagery (conservative dress)</li>
@@ -304,7 +304,7 @@ tr:last-child td{border-bottom:none}
             <div style="font-size:11px;color:var(--mute);margin-top:2px">physical direction</div>
           </div>
           <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
+            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
             <div style="font-size:18px;font-weight:700">رجوع</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">navigation CTA</div>
           </div>
@@ -320,7 +320,7 @@ tr:last-child td{border-bottom:none}
             <div style="font-size:11px;color:var(--mute);margin-top:2px">equilibrium</div>
           </div>
           <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
+            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
             <div style="font-size:18px;font-weight:700">الرصيد</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">account balance</div>
           </div>
@@ -336,7 +336,7 @@ tr:last-child td{border-bottom:none}
             <div style="font-size:11px;color:var(--mute);margin-top:2px">general meaning</div>
           </div>
           <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
+            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
             <div style="font-size:18px;font-weight:700">المتاح</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">financial available</div>
           </div>
@@ -367,7 +367,7 @@ tr:last-child td{border-bottom:none}
     </div>
     <div class="cards-2" style="margin-top:14px">
       <div class="card bot-card">
-        <h3 style="color:var(--brand)">🤖 l10n-bot commented</h3>
+        <h3 style="color:var(--brand-text)">🤖 l10n-bot commented</h3>
         <div class="code-block" style="margin-top:8px;font-size:11.5px">🌐 Localization: 4 strings translated<br><span style="color:var(--green)">✓</span> screens.kyc.upload_step → Upload Emirates ID<br><span style="color:var(--green)">✓</span> components.wallet.available → Available<br><span style="color:var(--green)">✓</span> screens.invest.cta_back → Back<br><span style="color:var(--green)">✓</span> components.form.full_name → Enter your full name</div>
       </div>
       <div class="card">
@@ -474,7 +474,7 @@ tr:last-child td{border-bottom:none}
           <li><strong>Screen walkthrough (D9)</strong> — walks through all 20 key screens on a real Arabic iOS device. Signs off on each screen.</li>
           <li><strong>Cultural review</strong> — imagery, colors, idioms, Shariah-relevant copy audited by MENA reviewer.</li>
         </ul>
-        <div style="margin-top:12px;padding:10px;background:var(--brand-soft);border-radius:10px;font-size:12px;color:var(--brand)"><strong>Zero screen passes QA</strong> without explicit sign-off from both automated tests and native speaker review.</div>
+        <div style="margin-top:12px;padding:10px;background:var(--brand-soft);border-radius:10px;font-size:12px;color:var(--brand-text)"><strong>Zero screen passes QA</strong> without explicit sign-off from both automated tests and native speaker review.</div>
       </div>
     </div>
   </div>
@@ -550,7 +550,7 @@ tr:last-child td{border-bottom:none}
       <span>CI pipeline auto-translates new strings on every merge — zero manual overhead</span>
       <span>Feature flag ships to Levant users only — measurable from day one</span>
     </div>
-    <div style="margin-top:32px;font-size:12px;color:var(--mute)">PRYPCO Blocks · Arabic Localization · Senior PM Assignment · <a href="prypco.html" style="color:var(--brand);text-decoration:none">← Back to all tasks</a></div>
+    <div style="margin-top:32px;font-size:12px;color:var(--mute)">PRYPCO Blocks · Arabic Localization · Senior PM Assignment · <a href="prypco.html" style="color:var(--brand-text);text-decoration:none">← Back to all tasks</a></div>
   </div>
 </div>
 
