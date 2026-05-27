@@ -9,6 +9,11 @@ html.dark h1{background:linear-gradient(160deg,#f5f5f7 0%,#cffd57 100%);-webkit-
 html.dark .controls{background:rgba(17,17,19,.9)!important}
 html.dark th{background:#222224!important}
 html.dark .code-block{background:#222224;color:#e5e5ea}
+.ctx-wrong{background:#fff5f5;border-radius:10px;padding:12px;flex:1}
+html.dark .ctx-wrong{background:rgba(255,69,58,.12)}
+.ctx-right{background:var(--brand-soft);border-radius:10px;padding:12px;flex:1}
+.bot-card{background:#f5faf9!important;border-color:#c5dfd9!important}
+html.dark .bot-card{background:rgba(48,209,88,.07)!important;border-color:rgba(48,209,88,.2)!important}
 html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;height:100%;overflow:hidden}
 .deck{width:100vw;height:100vh;position:relative;overflow:hidden}
 .slide{position:absolute;inset:0;padding:52px 80px 86px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease,transform .45s cubic-bezier(.22,.61,.36,1);background:var(--bg);overflow:auto;transform:translateY(14px) scale(.993);will-change:opacity,transform}
@@ -282,12 +287,12 @@ tr:last-child td{border-bottom:none}
       <div class="card">
         <h3>"Back"</h3>
         <div style="display:flex;gap:12px;margin-top:8px">
-          <div style="flex:1;background:#fff5f5;border-radius:10px;padding:12px">
+          <div class="ctx-wrong">
             <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
             <div style="font-size:18px;font-weight:700">خلف</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">physical direction</div>
           </div>
-          <div style="flex:1;background:var(--brand-soft);border-radius:10px;padding:12px">
+          <div class="ctx-right">
             <div style="font-size:10px;color:var(--brand);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
             <div style="font-size:18px;font-weight:700">رجوع</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">navigation CTA</div>
@@ -298,12 +303,12 @@ tr:last-child td{border-bottom:none}
       <div class="card">
         <h3>"Balance"</h3>
         <div style="display:flex;gap:12px;margin-top:8px">
-          <div style="flex:1;background:#fff5f5;border-radius:10px;padding:12px">
+          <div class="ctx-wrong">
             <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
             <div style="font-size:18px;font-weight:700">توازن</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">equilibrium</div>
           </div>
-          <div style="flex:1;background:var(--brand-soft);border-radius:10px;padding:12px">
+          <div class="ctx-right">
             <div style="font-size:10px;color:var(--brand);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
             <div style="font-size:18px;font-weight:700">الرصيد</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">account balance</div>
@@ -314,12 +319,12 @@ tr:last-child td{border-bottom:none}
       <div class="card">
         <h3>"Available"</h3>
         <div style="display:flex;gap:12px;margin-top:8px">
-          <div style="flex:1;background:#fff5f5;border-radius:10px;padding:12px">
+          <div class="ctx-wrong">
             <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
             <div style="font-size:18px;font-weight:700">متاح</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">general meaning</div>
           </div>
-          <div style="flex:1;background:var(--brand-soft);border-radius:10px;padding:12px">
+          <div class="ctx-right">
             <div style="font-size:10px;color:var(--brand);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
             <div style="font-size:18px;font-weight:700">المتاح</div>
             <div style="font-size:11px;color:var(--mute);margin-top:2px">financial available</div>
@@ -350,7 +355,7 @@ tr:last-child td{border-bottom:none}
       <div class="pipe-step"><div class="pnum">6</div><h4>PR comment + QA checks</h4><p>Coverage, placeholders, truncation risk</p></div>
     </div>
     <div class="cards-2" style="margin-top:14px">
-      <div class="card" style="background:#f5faf9;border-color:#c5dfd9">
+      <div class="card bot-card">
         <h3 style="color:var(--brand)">🤖 l10n-bot commented</h3>
         <div class="code-block" style="margin-top:8px;font-size:11.5px">🌐 Localization: 4 strings translated<br><span style="color:var(--green)">✓</span> screens.kyc.upload_step → Upload Emirates ID<br><span style="color:var(--green)">✓</span> components.wallet.available → Available<br><span style="color:var(--green)">✓</span> screens.invest.cta_back → Back<br><span style="color:var(--green)">✓</span> components.form.full_name → Enter your full name</div>
       </div>
