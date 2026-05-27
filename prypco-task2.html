@@ -48,7 +48,7 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .layer-rows{display:flex;flex-direction:column;gap:10px;margin-top:14px}
 .layer-row{display:flex;align-items:stretch;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;gap:0}
 .layer-row-left{display:flex;align-items:center;gap:14px;padding:16px 20px;min-width:220px;border-right:1px solid var(--line)}
-.layer-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff;flex-shrink:0}
+.layer-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1d1d1f;flex-shrink:0;background:var(--brand)}
 .layer-info h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;line-height:1.2}
 .layer-info .owner{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .layer-row-desc{flex:1;padding:16px 24px;display:flex;align-items:center;font-size:13.5px;color:var(--mute);line-height:1.55}
@@ -164,38 +164,38 @@ tr:last-child td{border-bottom:none}
     <h2>Five layers. Five different owners.</h2>
     <p class="lead">Each layer requires a different tool, owner, and validation approach.</p>
     <div class="layer-rows">
-      <div class="layer-row" style="border-left:4px solid #4a8cff">
+      <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
-          <div class="layer-num" style="background:#4a8cff">1</div>
-          <div class="layer-info"><h4>Strings</h4><div class="owner" style="color:#4a8cff">AI (Claude API)</div></div>
+          <div class="layer-num">1</div>
+          <div class="layer-info"><h4>Strings</h4><div class="owner" style="color:var(--brand)">AI (Claude API)</div></div>
         </div>
         <div class="layer-row-desc">AST scanner extracts all JSX strings. Claude MT translates with fintech glossary. Human reviews on D3.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid #9b6dff">
+      <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
-          <div class="layer-num" style="background:#9b6dff">2</div>
-          <div class="layer-info"><h4>Layout &amp; RTL</h4><div class="owner" style="color:#9b6dff">Engineering</div></div>
+          <div class="layer-num">2</div>
+          <div class="layer-info"><h4>Layout &amp; RTL</h4><div class="owner" style="color:var(--brand)">Engineering</div></div>
         </div>
         <div class="layer-row-desc">react-native-rtl-layout flips every flex row, margin, padding, absolute position. Swipe gestures also mirror — swipe direction reverses for carousels and dismissals.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid #ff9f0a">
+      <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
-          <div class="layer-num" style="background:#ff9f0a">3</div>
-          <div class="layer-info"><h4>Typography</h4><div class="owner" style="color:#ff9f0a">Design + Eng</div></div>
+          <div class="layer-num">3</div>
+          <div class="layer-info"><h4>Typography</h4><div class="owner" style="color:var(--brand)">Design + Eng</div></div>
         </div>
         <div class="layer-row-desc">Noto Sans Arabic loaded, line-height +20%, text-align flipped, bidi handling for mixed EN/AR.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid #30d158">
+      <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
-          <div class="layer-num" style="background:#30d158">4</div>
-          <div class="layer-info"><h4>Visual Assets</h4><div class="owner" style="color:#30d158">Design + AI</div></div>
+          <div class="layer-num">4</div>
+          <div class="layer-info"><h4>Visual Assets</h4><div class="owner" style="color:var(--brand)">Design + AI</div></div>
         </div>
         <div class="layer-row-desc">Images with embedded text replaced. Directional icons mirrored. Brand assets verified for Arabic variants.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid #ff453a">
+      <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
-          <div class="layer-num" style="background:#ff453a">5</div>
-          <div class="layer-info"><h4>Data &amp; Formats</h4><div class="owner" style="color:#ff453a">Engineering</div></div>
+          <div class="layer-num">5</div>
+          <div class="layer-info"><h4>Data &amp; Formats</h4><div class="owner" style="color:var(--brand)">Engineering</div></div>
         </div>
         <div class="layer-row-desc">Dates DD/MM/YYYY (Gregorian), currency 500 AED not AED 500, phone numbers LTR within RTL context.</div>
       </div>
