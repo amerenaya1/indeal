@@ -203,8 +203,8 @@ tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
     <table style="margin-top:16px">
       <thead><tr><th>#</th><th>Initiative</th><th>Type</th><th>ICE Score</th></tr></thead>
       <tbody>
-        <tr class="clickable-row" onclick="openInitSidebar()"><td style="color:var(--brand);font-weight:700">01</td><td>Emotional splash screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup →</span></td><td>Design</td><td><strong>8</strong></td></tr>
-        <tr><td>02</td><td>One-tap registration</td><td>Product</td><td><strong>8</strong></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(1)"><td style="color:var(--brand);font-weight:700">01</td><td>Emotional splash screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup →</span></td><td>Design</td><td><strong>8</strong></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(2)"><td style="color:var(--brand);font-weight:700">02</td><td>One-tap registration <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup →</span></td><td>Product</td><td><strong>8</strong></td></tr>
         <tr><td>03</td><td>First-time investment wizard</td><td>AI + Product</td><td><strong>9</strong></td></tr>
         <tr><td>04</td><td>KYC roadmap with save &amp; resume</td><td>Product</td><td><strong>9</strong></td></tr>
         <tr><td>05</td><td>KYC motivation layer</td><td>Design</td><td><strong>7</strong></td></tr>
@@ -527,8 +527,8 @@ function toggleDark(){
   <div id="sb-panel">
     <div id="sb-head">
       <div>
-        <div class="sb-eyebrow">Initiative 01 · Design · ICE 8</div>
-        <div class="sb-htitle">Emotional Splash Screen</div>
+        <div class="sb-eyebrow" id="sb-eyebrow-text">Initiative 01 · Design · ICE 8</div>
+        <div class="sb-htitle" id="sb-htitle-text">Emotional Splash Screen</div>
       </div>
       <button class="sb-close" onclick="closeInitSidebar()" aria-label="Close">✕</button>
     </div>
@@ -545,13 +545,23 @@ function toggleDark(){
 </div><!-- /init-sidebar -->
 
 <script>
-function openInitSidebar(){
+var SB_INITS = {
+  1: { eyebrow:'Initiative 01 · Design · ICE 8', title:'Emotional Splash Screen', src:'prypco-mint-landing.html' },
+  2: { eyebrow:'Initiative 02 · Product · ICE 8', title:'One-Tap Registration', src:'prypco-mint-landing-modal.html' }
+};
+function openInitSidebar(num){
+  var cfg = SB_INITS[num] || SB_INITS[1];
+  document.getElementById('sb-eyebrow-text').textContent = cfg.eyebrow;
+  document.getElementById('sb-htitle-text').textContent = cfg.title;
+  var iframe = document.getElementById('sb-iframe');
+  iframe.src = cfg.src;
   document.getElementById('init-sidebar').classList.add('open');
   document.body.style.overflow='hidden';
 }
 function closeInitSidebar(){
   document.getElementById('init-sidebar').classList.remove('open');
   document.body.style.overflow='';
+  setTimeout(function(){ document.getElementById('sb-iframe').src=''; }, 400);
 }
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape')closeInitSidebar();
