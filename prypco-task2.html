@@ -135,6 +135,11 @@ tr:last-child td{border-bottom:none}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.layer-grid{grid-template-columns:repeat(3,1fr)}.ac-grid{grid-template-columns:repeat(2,1fr)}.metric-grid{grid-template-columns:repeat(2,1fr)}}
 .slide{padding-left:0!important;padding-right:0!important;align-items:center!important}
 .slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;text-align:center}
+.kpi .n{font-size:26px;font-weight:700;letter-spacing:-.02em;line-height:1;margin-bottom:4px}
+.kpi .l{font-size:11px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.kpi.b .n{color:var(--brand-text)}
+.kpi.g .n{color:var(--green)}
 </style></head>
 <body>
 <div class="progress"><div class="bar" id="progFill"></div></div>
@@ -146,7 +151,7 @@ tr:last-child td{border-bottom:none}
   <div class="body">
     <div class="eyebrow">PRYPCO Blocks · Task 02 · Senior PM Assignment</div>
     <h1>Arabic RTL<br>Localization.</h1>
-    <p class="sub">More than translation. PRYPCO Blocks · React Native · One Sprint · AI-Powered</p>
+    <p class="sub">More than translation. One sprint. AI-powered. Levant region.</p>
     <div class="meta">PRYPCO Hiring Council · May 2026</div>
   </div>
 </div>
@@ -155,443 +160,314 @@ tr:last-child td{border-bottom:none}
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">The Problem</span></div>
-    <span style="font-size:12px;color:var(--mute)">2 / 14</span>
+    <span style="font-size:12px;color:var(--mute)">2 / 6</span>
   </div>
   <div class="body">
     <h2>Localization is not translation.</h2>
     <p class="lead">Translation is 20% of the work. The other 80% is what makes the experience actually feel Arabic.</p>
-    <div class="cards-2" style="margin-top:4px">
-      <div class="card" style="display:flex;align-items:center;justify-content:center;background:var(--brand-soft);border-color:#c5dfd9">
-        <div style="text-align:center"><div style="font-size:72px;font-weight:600;color:var(--brand-text)">20%</div><div style="font-size:16px;color:var(--brand-text);font-weight:600">Translation</div><div style="font-size:13px;color:var(--mute);margin-top:4px">MT via Claude API</div></div>
+    <div class="cards-2" style="margin-top:12px;margin-bottom:16px">
+      <div class="card" style="background:var(--brand-soft);border-color:var(--line);display:flex;align-items:center;justify-content:center;text-align:center">
+        <div>
+          <div style="font-size:60px;font-weight:600;color:var(--brand-text)">20%</div>
+          <div style="font-size:14px;color:var(--brand-text);font-weight:600">Translation</div>
+          <div style="font-size:12px;color:var(--mute);margin-top:4px">Converting English strings to Arabic. Handled by Claude API MT pipeline automatically.</div>
+        </div>
       </div>
       <div class="card">
-        <div style="font-size:36px;font-weight:800;color:var(--brand-text);margin-bottom:12px">80%</div>
-        <p style="font-size:15px;font-weight:600;margin-bottom:12px">Localization</p>
-        <ul>
-          <li>RTL layout - every flex row, margin, icon, nav bar mirrored</li>
-          <li>Typography - Arabic font, line height, letter spacing, bidi text</li>
-          <li>Visual assets - images, icons, illustrations with LTR direction</li>
-          <li>Formats - dates (DD/MM/YYYY), currency (500 AED), phone numbers</li>
-          <li>Cultural fit - imagery, colors, idioms, Shariah-relevant copy</li>
-        </ul>
+        <div style="font-size:60px;font-weight:600;color:var(--ink);margin-bottom:8px">80%</div>
+        <div style="font-size:14px;font-weight:600;margin-bottom:4px">Localization</div>
+        <div style="font-size:12px;color:var(--mute)">RTL layout mirroring, Arabic typography, visual asset handling, number/date formats, gesture direction, cultural fit.</div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- SLIDE 3: FIVE LAYERS -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Framework</span></div>
-    <span style="font-size:12px;color:var(--mute)">3 / 14</span>
-  </div>
-  <div class="body">
-    <h2>Five layers. Five different owners.</h2>
-    <p class="lead">Each layer requires a different tool, owner, and validation approach.</p>
     <div class="layer-rows">
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">1</div>
-          <div class="layer-info"><h4>Strings</h4><div class="owner" style="color:var(--brand-text)">AI (Claude API)</div></div>
+          <div class="layer-info"><h4>Strings</h4><div class="owner" style="color:var(--brand-text)">Claude API</div></div>
         </div>
-        <div class="layer-row-desc">AST scanner extracts all JSX strings. Claude MT translates with fintech glossary. Human reviews.</div>
+        <div class="layer-row-desc">AST scanner extracts all JSX strings with context (component, type, char limit). Claude MT translates with fintech glossary. Human reviews D3.</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">2</div>
           <div class="layer-info"><h4>Layout &amp; RTL</h4><div class="owner" style="color:var(--brand-text)">Engineering</div></div>
         </div>
-        <div class="layer-row-desc">react-native-rtl-layout flips every flex row, margin, padding, absolute position. Swipe gestures also mirror - swipe direction reverses for carousels and dismissals.</div>
+        <div class="layer-row-desc">react-native-rtl-layout flips every flex row, margin, padding, absolute position. Swipe gestures also mirror - carousel and dismissal direction reverses.</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">3</div>
           <div class="layer-info"><h4>Typography</h4><div class="owner" style="color:var(--brand-text)">Design + Eng</div></div>
         </div>
-        <div class="layer-row-desc">Noto Sans Arabic loaded, line-height +20%, text-align flipped, bidi handling for mixed EN/AR.</div>
+        <div class="layer-row-desc">Noto Sans Arabic loaded and subsetted. Line-height +20%. Bidi handling for mixed EN/AR strings (property names, AED amounts).</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">4</div>
-          <div class="layer-info"><h4>Visual Assets</h4><div class="owner" style="color:var(--brand-text)">Design + AI</div></div>
+          <div class="layer-info"><h4>Visual assets</h4><div class="owner" style="color:var(--brand-text)">Design + AI</div></div>
         </div>
-        <div class="layer-row-desc">Images with embedded text replaced. Directional icons mirrored. Brand assets verified for Arabic variants.</div>
+        <div class="layer-row-desc">Cat 1: replace images with embedded text. Cat 2: mirror directional icons (not camera/search/refresh). Cat 3: verify brand &amp; regulatory asset Arabic variants.</div>
       </div>
       <div class="layer-row" style="border-left:4px solid var(--brand)">
         <div class="layer-row-left">
           <div class="layer-num">5</div>
-          <div class="layer-info"><h4>Data &amp; Formats</h4><div class="owner" style="color:var(--brand-text)">Engineering</div></div>
+          <div class="layer-info"><h4>Data formats</h4><div class="owner" style="color:var(--brand-text)">Engineering</div></div>
         </div>
-        <div class="layer-row-desc">Dates DD/MM/YYYY (Gregorian), currency 500 AED not AED 500, phone numbers LTR within RTL context.</div>
+        <div class="layer-row-desc">Currency: 500 AED not AED 500. Dates: DD/MM/YYYY Gregorian. Phone numbers LTR within RTL context. Numbers always stay LTR.</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 4: VISUAL ASSETS -->
+<!-- SLIDE 3: VISUAL ASSETS + AI PIPELINE -->
 <div class="slide">
   <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Visual Assets</span></div>
-    <span style="font-size:12px;color:var(--mute)">4 / 14</span>
+    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Pipeline</span></div>
+    <span style="font-size:12px;color:var(--mute)">3 / 6</span>
   </div>
   <div class="body">
-    <h2>Visual &amp; graphic asset localization.</h2>
-    <p class="lead">Not all images are universal - three categories require action.</p>
-    <div class="cards-3" style="margin-top:4px">
-      <div class="card" style="border-top:3px solid var(--red)">
-        <h3 style="color:var(--red)">Replace</h3>
-        <p style="margin-bottom:10px;font-size:13px"><strong>Category 1 - Images with embedded text</strong></p>
-        <ul>
+    <h2>Visual assets &amp; the AI pipeline.</h2>
+    <p class="lead">Three asset categories require action. The AI pipeline handles strings in D1-D5.</p>
+    <div class="cards-2" style="margin-top:12px">
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Visual asset categories</h3>
+        <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Replace - Images with embedded text</div>
+        <ul style="font-size:12px;color:var(--mute);list-style:none;padding:0;margin-bottom:10px;display:flex;flex-direction:column;gap:2px">
           <li>Property price banners</li>
           <li>Promo cards with 'AED 500'</li>
-          <li>App store screenshots</li>
           <li>Onboarding illustrations with labels</li>
+          <li>Replace with Arabic version or text overlay</li>
         </ul>
-        <p style="margin-top:10px;font-size:12px;color:var(--mute)">Replace with Arabic version or use text overlay approach.</p>
-      </div>
-      <div class="card" style="border-top:3px solid var(--orange)">
-        <h3 style="color:var(--orange)">Mirror</h3>
-        <p style="margin-bottom:10px;font-size:13px"><strong>Category 2 - Directional icons &amp; UI elements</strong></p>
-        <ul>
-          <li>Back arrow (← becomes →)</li>
-          <li>Progress indicators (L→R becomes R→L)</li>
-          <li>Carousel pagination dots</li>
-          <li>Timeline components</li>
+        <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Mirror - Directional icons &amp; UI</div>
+        <ul style="font-size:12px;color:var(--mute);list-style:none;padding:0;margin-bottom:10px;display:flex;flex-direction:column;gap:2px">
+          <li>Back arrow (- becomes -&gt;)</li>
+          <li>Property carousel: swipe direction reverses</li>
+          <li>Investment slider: fill starts from right</li>
+          <li>DO NOT mirror: camera, search, share, refresh</li>
         </ul>
-        <p style="margin-top:10px;font-size:12px;color:var(--mute)">CSS transform: scaleX(-1) on arrow/chevron icons.</p>
+        <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Audit - Brand &amp; regulatory assets</div>
+        <ul style="font-size:12px;color:var(--mute);list-style:none;padding:0;display:flex;flex-direction:column;gap:2px">
+          <li>VARA / DFSA / DLD logos: verify Arabic variants exist</li>
+          <li>App Store screenshots: recreate with Arabic UI</li>
+          <li>Property labels: use Arabic place names</li>
+        </ul>
       </div>
       <div class="card" style="border-top:3px solid var(--brand)">
-        <h3 style="color:var(--brand-text)">Audit</h3>
-        <p style="margin-bottom:10px;font-size:13px"><strong>Category 3 - Cultural &amp; religious imagery</strong></p>
-        <ul>
-          <li>People imagery (conservative dress)</li>
-          <li>Financial lifestyle photos</li>
-          <li>Holiday/seasonal visuals</li>
-          <li>Trust badges and regulatory logos</li>
-        </ul>
-        <p style="margin-top:10px;font-size:12px;color:var(--mute)">Audit all imagery with a cultural reviewer on D3.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 5: AI PIPELINE -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">AI Pipeline</span></div>
-    <span style="font-size:12px;color:var(--mute)">5 / 14</span>
-  </div>
-  <div class="body">
-    <h2>The AI pipeline: 5 steps.</h2>
-    <p class="lead" style="margin-bottom:16px">What would take weeks manually - done in 2 days with AI tooling.</p>
-    <div class="pipeline">
-      <div class="pipe-card">
-        <div class="pc-num">01</div>
-        <div class="pc-title">AST Extract</div>
-        <div class="pc-tool">jscodeshift</div>
-        <div class="pc-desc">Scan all JSX/TSX files. Extract every hardcoded string with context: component name, file path, string type, and character limit. Output structured JSON.</div>
-        <div class="pc-day">D1</div>
-      </div>
-      <div class="pipe-arrow">→</div>
-      <div class="pipe-card">
-        <div class="pc-num">02</div>
-        <div class="pc-title">MT via Claude</div>
-        <div class="pc-tool">Claude API</div>
-        <div class="pc-desc">Each string sent with full context: component, type, char limit, and fintech glossary. Claude translates with RTL markers. Returns confidence score per string.</div>
-        <div class="pc-day">D1–D2</div>
-      </div>
-      <div class="pipe-arrow">→</div>
-      <div class="pipe-card">
-        <div class="pc-num">03</div>
-        <div class="pc-title">Human Review</div>
-        <div class="pc-tool">Native Speaker</div>
-        <div class="pc-desc">2-hour session on D3. Reviews all strings for accuracy, tone, financial terminology.</div>
-        <div class="pc-day">D3</div>
-      </div>
-      <div class="pipe-arrow">→</div>
-      <div class="pipe-card">
-        <div class="pc-num">04</div>
-        <div class="pc-title">Codemod</div>
-        <div class="pc-tool">jscodeshift</div>
-        <div class="pc-desc">Automated refactor replaces all hardcoded strings with i18n() calls. Zero manual edits.</div>
-        <div class="pc-day">D4–D5</div>
-      </div>
-      <div class="pipe-arrow">→</div>
-      <div class="pipe-card">
-        <div class="pc-num">05</div>
-        <div class="pc-title">RTL + Assets</div>
-        <div class="pc-tool">Design + Eng</div>
-        <div class="pc-desc">Layout mirrored. Icons flipped. Visual assets replaced. Typography switched to Noto Sans Arabic.</div>
-        <div class="pc-day">D5–D7</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 6: CONTEXT -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Context-Aware MT</span></div>
-    <span style="font-size:12px;color:var(--mute)">6 / 14</span>
-  </div>
-  <div class="body">
-    <h2>Why context changes everything.</h2>
-    <p class="lead">The same English word translates differently depending on where it lives in the app.</p>
-    <div class="cards-3" style="margin-top:4px">
-      <div class="card">
-        <h3>"Back"</h3>
-        <div style="display:flex;gap:12px;margin-top:8px">
-          <div class="ctx-wrong">
-            <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
-            <div style="font-size:18px;font-weight:700">خلف</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">physical direction</div>
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">The AI pipeline - D1 to D5</h3>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+            <div style="min-width:28px;height:28px;border-radius:50%;background:transparent;border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--brand-text);flex-shrink:0">01</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:700;color:var(--ink)">AST Extract <span style="font-size:10px;color:var(--brand-text);font-weight:600">jscodeshift</span></div>
+              <div style="font-size:11.5px;color:var(--mute)">Scan all JSX/TSX. Extract strings with context: component, type, char limit.</div>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--brand-text);white-space:nowrap">D1</div>
           </div>
-          <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
-            <div style="font-size:18px;font-weight:700">رجوع</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">navigation CTA</div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+            <div style="min-width:28px;height:28px;border-radius:50%;background:transparent;border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--brand-text);flex-shrink:0">02</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:700;color:var(--ink)">MT via Claude <span style="font-size:10px;color:var(--brand-text);font-weight:600">Claude API</span></div>
+              <div style="font-size:11.5px;color:var(--mute)">Each string sent with full context + fintech glossary. Returns confidence score.</div>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--brand-text);white-space:nowrap">D1-D2</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+            <div style="min-width:28px;height:28px;border-radius:50%;background:transparent;border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--brand-text);flex-shrink:0">03</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:700;color:var(--ink)">Human Review <span style="font-size:10px;color:var(--brand-text);font-weight:600">Native</span></div>
+              <div style="font-size:11.5px;color:var(--mute)">2-hour session. All strings audited. Financial terms verified.</div>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--brand-text);white-space:nowrap">D3</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)">
+            <div style="min-width:28px;height:28px;border-radius:50%;background:transparent;border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--brand-text);flex-shrink:0">04</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:700;color:var(--ink)">Codemod <span style="font-size:10px;color:var(--brand-text);font-weight:600">jscodeshift</span></div>
+              <div style="font-size:11.5px;color:var(--mute)">Auto-replaces all hardcoded strings with i18n() calls. Zero manual edits.</div>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--brand-text);white-space:nowrap">D4-D5</div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0">
+            <div style="min-width:28px;height:28px;border-radius:50%;background:transparent;border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--brand-text);flex-shrink:0">05</div>
+            <div style="flex:1">
+              <div style="font-size:12px;font-weight:700;color:var(--ink)">RTL + Assets <span style="font-size:10px;color:var(--brand-text);font-weight:600">Design+Eng</span></div>
+              <div style="font-size:11.5px;color:var(--mute)">Layout mirrored. Icons flipped. Visual assets replaced. Noto Sans Arabic.</div>
+            </div>
+            <div style="font-size:11px;font-weight:600;color:var(--brand-text);white-space:nowrap">D5-D7</div>
           </div>
         </div>
-        <div class="code-block" style="margin-top:10px;font-size:11px">screen: InvestmentDetail<br>element: TouchableOpacity<br>role: cta</div>
-      </div>
-      <div class="card">
-        <h3>"Balance"</h3>
-        <div style="display:flex;gap:12px;margin-top:8px">
-          <div class="ctx-wrong">
-            <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
-            <div style="font-size:18px;font-weight:700">توازن</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">equilibrium</div>
-          </div>
-          <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
-            <div style="font-size:18px;font-weight:700">الرصيد</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">account balance</div>
-          </div>
-        </div>
-        <div class="code-block" style="margin-top:10px;font-size:11px">screen: Wallet<br>element: Text<br>role: form_label</div>
-      </div>
-      <div class="card">
-        <h3>"Available"</h3>
-        <div style="display:flex;gap:12px;margin-top:8px">
-          <div class="ctx-wrong">
-            <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
-            <div style="font-size:18px;font-weight:700">متاح</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">general meaning</div>
-          </div>
-          <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
-            <div style="font-size:18px;font-weight:700">المتاح</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">financial available</div>
-          </div>
-        </div>
-        <div class="code-block" style="margin-top:10px;font-size:11px">screen: Wallet<br>element: Text<br>role: form_label</div>
-      </div>
-    </div>
-    <p style="font-size:13px;color:var(--mute);margin-top:14px">The extractor captures screen, component, element type, role (cta / placeholder / label), and 6 sibling strings - all passed to Claude with every translation request.</p>
-  </div>
-</div>
-
-<!-- SLIDE 7: AUTOMATED PIPELINE -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">CI/CD Integration</span></div>
-    <span style="font-size:12px;color:var(--mute)">7 / 14</span>
-  </div>
-  <div class="body">
-    <h2>Automated pipeline - ongoing.</h2>
-    <p class="lead">New strings flow through translation automatically on every merge to main.</p>
-    <div class="pipeline" style="margin-top:12px">
-      <div class="pipe-step"><div class="pnum">1</div><h4>Dev pushes new JSX</h4><p>Hardcoded string in component</p></div>
-      <div class="pipe-step"><div class="pnum">2</div><h4>CI: AST extractor</h4><p>Babel parser finds new keys</p></div>
-      <div class="pipe-step"><div class="pnum">3</div><h4>CI: diff locales</h4><p>Finds keys missing in ar.json</p></div>
-      <div class="pipe-step"><div class="pnum">4</div><h4>Claude API + context</h4><p>Role, screen, siblings injected</p></div>
-      <div class="pipe-step"><div class="pnum">5</div><h4>ar.json updated</h4><p>Bot commits back to main</p></div>
-      <div class="pipe-step"><div class="pnum">6</div><h4>PR comment + QA checks</h4><p>Coverage, placeholders, truncation risk</p></div>
-    </div>
-    <div class="cards-2" style="margin-top:14px">
-      <div class="card bot-card">
-        <h3 style="color:var(--brand-text)">🤖 l10n-bot commented</h3>
-        <div class="code-block" style="margin-top:8px;font-size:11.5px">🌐 Localization: 4 strings translated<br><span style="color:var(--green)">✓</span> screens.kyc.upload_step → Upload Emirates ID<br><span style="color:var(--green)">✓</span> components.wallet.available → Available<br><span style="color:var(--green)">✓</span> screens.invest.cta_back → Back<br><span style="color:var(--green)">✓</span> components.form.full_name → Enter your full name</div>
-      </div>
-      <div class="card">
-        <h3>Guardrails</h3>
-        <ul>
-          <li><strong>ESLint i18n rule</strong> - blocks PRs with new hardcoded strings</li>
-          <li><strong>Placeholder check</strong> - ar.json {name} / %s must match en.json</li>
-          <li><strong>Coverage gate</strong> - 100% key coverage required to merge</li>
-          <li><strong>Truncation risk</strong> - Arabic strings flagged if &gt;40% longer than EN</li>
-        </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 8: 10-DAY SPRINT PLAN -->
+<!-- SLIDE 4: 10-DAY SPRINT PLAN -->
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Sprint Plan</span></div>
-    <span style="font-size:12px;color:var(--mute)">8 / 14</span>
+    <span style="font-size:12px;color:var(--mute)">4 / 6</span>
   </div>
   <div class="body">
     <h2>10-day sprint plan.</h2>
-    <p class="lead" style="margin-bottom:10px">Day by day. Owner per task. Checkpoints at D3, D5, D7, D9.</p>
+    <p class="lead">Day by day. Owner per task. Checkpoints at D3, D7, D9.</p>
     <div class="sprint-rows">
-      <div class="sprint-row"><div class="sr-day">D1–D2</div><div class="sr-task">AI Pipeline</div><div class="sr-owner">Engineering + AI</div><div class="sr-desc">AST scan all screens. Claude API MT with fintech glossary. Output reviewed JSON translation file.</div></div>
-      <div class="sprint-row"><div class="sr-day">D3</div><div class="sr-task">Human Review</div><div class="sr-owner">Native Speaker</div><div class="sr-desc">2-hour string audit session. Flag mistranslations, tone issues, financial terminology errors. CES baseline.</div></div>
-      <div class="sprint-row"><div class="sr-day">D4–D5</div><div class="sr-task">Codemod</div><div class="sr-owner">Engineering</div><div class="sr-desc">jscodeshift replaces all hardcoded strings with i18n() calls. i18n provider wired to locale detection.</div></div>
-      <div class="sprint-row"><div class="sr-day">D5–D6</div><div class="sr-task">RTL Layout</div><div class="sr-owner">Engineering</div><div class="sr-desc">react-native-rtl-layout applied. All flex rows, margins, paddings, absolute positions flipped for AR.</div></div>
-      <div class="sprint-row"><div class="sr-day">D6</div><div class="sr-task">Visual Assets</div><div class="sr-owner">Design</div><div class="sr-desc">Category 1 images replaced with Arabic variants. Category 2 icons mirrored. Category 3 brand assets verified.</div></div>
-      <div class="sprint-row"><div class="sr-day">D7</div><div class="sr-task">Typography</div><div class="sr-owner">Design + Eng</div><div class="sr-desc">Noto Sans Arabic loaded and subsetted. Line-height +20%. Bidi handling for mixed EN/AR content.</div></div>
-      <div class="sprint-row"><div class="sr-day">D8</div><div class="sr-task">Automated QA</div><div class="sr-owner">Engineering</div><div class="sr-desc">Detox RTL screenshot tests. Playwright string coverage. ESLint i18n rule. BrowserStack real device tests.</div></div>
-      <div class="sprint-row"><div class="sr-day">D9</div><div class="sr-task">Native QA</div><div class="sr-owner">Native Speaker + PM</div><div class="sr-desc">Full screen walkthrough in Arabic. PM acceptance checklist. Flag P0/P1 issues. CES measurement.</div></div>
-      <div class="sprint-row"><div class="sr-day">D10</div><div class="sr-task">Ship</div><div class="sr-owner">Engineering + PM</div><div class="sr-desc">Feature flag enabled for Levant region only. Monitor adoption, CES, bug escape rate.</div></div>
+      <div class="sprint-row"><div class="sr-day">D1-D2</div><div class="sr-task">AI Pipeline</div><div class="sr-owner">Engineering + AI</div><div class="sr-desc">AST scan all screens. Claude API MT with fintech glossary. Context-aware: component name, string type, char limit, confidence score per string.</div></div>
+      <div class="sprint-row"><div class="sr-day">D3</div><div class="sr-task">Human Review</div><div class="sr-owner">Native Speaker</div><div class="sr-desc">2-hour string audit. Flag mistranslations, tone issues, financial terminology errors (SPV, IBAN, DFSA). CES baseline established.</div></div>
+      <div class="sprint-row"><div class="sr-day">D4-D5</div><div class="sr-task">Codemod</div><div class="sr-owner">Engineering</div><div class="sr-desc">jscodeshift replaces all hardcoded strings with i18n() calls. i18n provider wired to locale detection. Zero manual edits.</div></div>
+      <div class="sprint-row"><div class="sr-day">D5-D6</div><div class="sr-task">RTL Layout</div><div class="sr-owner">Engineering</div><div class="sr-desc">react-native-rtl-layout applied. All flex rows, margins, paddings flipped. Swipe gestures mirrored. Sliders: direction:rtl on container.</div></div>
+      <div class="sprint-row"><div class="sr-day">D6</div><div class="sr-task">Visual Assets</div><div class="sr-owner">Design</div><div class="sr-desc">Cat 1 images replaced. Cat 2 icons mirrored (not camera/search/refresh). Cat 3 brand assets verified. Media playback stays LTR.</div></div>
+      <div class="sprint-row"><div class="sr-day">D7</div><div class="sr-task">Typography</div><div class="sr-owner">Design + Eng</div><div class="sr-desc">Noto Sans Arabic loaded and subsetted. Line-height +20%. Bidi handling for mixed EN/AR. Numbers always LTR within RTL context.</div></div>
+      <div class="sprint-row"><div class="sr-day">D8</div><div class="sr-task">Automated QA</div><div class="sr-owner">Engineering</div><div class="sr-desc">Detox RTL screenshot tests. Playwright string coverage. ESLint i18n rule. BrowserStack: iPhone 14 Arabic, Samsung S23 Arabic, Chrome Arabic Android.</div></div>
+      <div class="sprint-row"><div class="sr-day">D9</div><div class="sr-task">Native QA</div><div class="sr-owner">Native Speaker + PM</div><div class="sr-desc">Full screen walkthrough in Arabic. PM acceptance checklist sign-off. Flag P0/P1 issues for immediate fix before feature flag.</div></div>
+      <div class="sprint-row"><div class="sr-day">D10</div><div class="sr-task">Ship</div><div class="sr-owner">Engineering + PM</div><div class="sr-desc">Feature flag enabled for Levant region only. Monitor adoption rate, CES score, bug escape rate. EN users completely unaffected.</div></div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 9: CODE CHANGES -->
+<!-- SLIDE 5: QA & ACCEPTANCE CRITERIA -->
 <div class="slide">
   <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Implementation</span></div>
-    <span style="font-size:12px;color:var(--mute)">9 / 14</span>
+    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">QA &amp; Acceptance</span></div>
+    <span style="font-size:12px;color:var(--mute)">5 / 6</span>
   </div>
   <div class="body">
-    <h2>What the code actually changes.</h2>
-    <p class="lead">Four types of change - only one is a string replacement.</p>
-    <div class="cards-2" style="margin-top:8px">
-      <div class="card">
-        <h3>String - AI handles via AST codemod</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">&lt;Text&gt;Invest Now&lt;/Text&gt;</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">&lt;Text&gt;{t('cta.invest_now')}&lt;/Text&gt;</div>
-      </div>
-      <div class="card">
-        <h3>Layout - CSS logical properties</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">style={{ marginLeft: 16 }}</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">style={{ marginStart: 16 }}</div>
-      </div>
-      <div class="card">
-        <h3>Icon - Conditional mirror</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">&lt;ArrowRight /&gt;</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">&lt;ArrowRight style={{transform:[{scaleX: isRTL ? -1 : 1}]}} /&gt;</div>
-      </div>
-      <div class="card">
-        <h3>Format - i18n number formatter</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">amount + ' AED'</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">formatCurrency(amount, locale)</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 10: QA -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Quality Assurance</span></div>
-    <span style="font-size:12px;color:var(--mute)">10 / 14</span>
-  </div>
-  <div class="body">
-    <h2>How we validate quality fast.</h2>
-    <p class="lead">Three layers of QA - automated first, human last, all within D8–D9.</p>
-    <div class="cards-2" style="margin-top:8px">
-      <div class="card">
-        <h3>Automated (D8 - hours)</h3>
-        <ul>
-          <li><strong>Detox RTL suite</strong> - screenshot tests for all 20 key screens in AR locale. Pixel-diff against EN baseline.</li>
-          <li><strong>Playwright (web)</strong> - headless browser tests: truncation, overflow, input direction, form validation in AR.</li>
-          <li><strong>ESLint i18n rule</strong> - catches any new hardcoded string committed after the sprint. Fails the build.</li>
-          <li><strong>BrowserStack</strong> - real device matrix: iPhone 14 Arabic, Samsung S23 Arabic, Chrome Arabic on Android.</li>
+    <h2>QA &amp; acceptance criteria.</h2>
+    <p class="lead">All criteria must pass before the feature flag enables for the Levant region.</p>
+    <div class="cards-2" style="margin-top:14px">
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">QA checkpoints</h3>
+        <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Automated - D8</div>
+        <ul style="font-size:12px;color:var(--mute);list-style:none;margin-bottom:10px;display:flex;flex-direction:column;gap:2px">
+          <li>Detox RTL screenshot tests</li>
+          <li>Playwright string coverage check</li>
+          <li>ESLint i18n rule - no hardcoded strings</li>
+          <li>BrowserStack: iPhone 14, Samsung S23, Chrome AR</li>
+          <li>Bundle size diff - font load impact</li>
+        </ul>
+        <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Native speaker - D3 + D9</div>
+        <ul style="font-size:12px;color:var(--mute);list-style:none;margin-bottom:10px;display:flex;flex-direction:column;gap:2px">
+          <li>D3: Full string audit - all screens</li>
+          <li>Financial terms: SPV, IBAN, DFSA reviewed</li>
+          <li>Tone check - formal financial Arabic</li>
+          <li>D9: Full screen walkthrough</li>
+          <li>CES measurement baseline</li>
+        </ul>
+        <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">PM acceptance - D9</div>
+        <ul style="font-size:12px;color:var(--mute);list-style:none;display:flex;flex-direction:column;gap:2px">
+          <li>100% string coverage - zero EN fallbacks</li>
+          <li>Zero P0/P1 RTL layout bugs</li>
+          <li>Performance parity with EN baseline</li>
+          <li>Feature flag scoped to Levant only</li>
+          <li>CES &lt; 2.5 threshold met</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Native Speaker (D3 + D9 - 2hr sessions)</h3>
-        <ul>
-          <li><strong>String audit (D3)</strong> - reviews 100% of ar.json. Corrects mistranslations. Flags financial/legal terms (DFSA, SPV, IBAN).</li>
-          <li><strong>Screen walkthrough (D9)</strong> - walks through all 20 key screens on a real Arabic iOS device. Signs off on each screen.</li>
-          <li><strong>Cultural review</strong> - imagery, colors, idioms, Shariah-relevant copy audited by MENA reviewer.</li>
-        </ul>      </div>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:12px">Acceptance criteria - all must pass</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div>
+            <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Strings</div>
+            <ul style="list-style:none;font-size:11.5px;color:var(--mute);display:flex;flex-direction:column;gap:2px">
+              <li>100% translated - zero EN fallbacks</li>
+              <li>Financial terms native-reviewed</li>
+              <li>No truncation on any viewport</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">RTL layout</div>
+            <ul style="list-style:none;font-size:11.5px;color:var(--mute);display:flex;flex-direction:column;gap:2px">
+              <li>All screens mirror on locale=ar</li>
+              <li>No overlaps or clipping</li>
+              <li>Back arrows point right</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Typography</div>
+            <ul style="list-style:none;font-size:11.5px;color:var(--mute);display:flex;flex-direction:column;gap:2px">
+              <li>Noto Sans Arabic on all devices</li>
+              <li>No descender clipping</li>
+              <li>Bidi strings display correctly</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Formats</div>
+            <ul style="list-style:none;font-size:11.5px;color:var(--mute);display:flex;flex-direction:column;gap:2px">
+              <li>Currency: 500 AED format</li>
+              <li>Dates DD/MM/YYYY Gregorian</li>
+              <li>Phone numbers LTR in RTL</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Assets</div>
+            <ul style="list-style:none;font-size:11.5px;color:var(--mute);display:flex;flex-direction:column;gap:2px">
+              <li>No EN text in images on AR</li>
+              <li>Directional icons mirrored</li>
+              <li>VARA/DLD Arabic logos verified</li>
+            </ul>
+          </div>
+          <div>
+            <div style="font-size:10px;font-weight:700;color:var(--brand-text);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Performance</div>
+            <ul style="list-style:none;font-size:11.5px;color:var(--mute);display:flex;flex-direction:column;gap:2px">
+              <li>Font adds &lt;50KB to bundle</li>
+              <li>Load time within 200ms of EN</li>
+              <li>EN users unaffected</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 11: ACCEPTANCE CRITERIA -->
+<!-- SLIDE 6: KPIs + RISKS -->
 <div class="slide">
   <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Definition of Done</span></div>
-    <span style="font-size:12px;color:var(--mute)">11 / 14</span>
+    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">KPIs &amp; Risks</span></div>
+    <span style="font-size:12px;color:var(--mute)">6 / 6</span>
   </div>
   <div class="body">
-    <h2>Acceptance criteria.</h2>
-    <p class="lead" style="margin-bottom:12px">A screen is not shipped until all pass.</p>
-    <div class="ac-grid">
-      <div class="ac-col"><h4>Strings</h4><ul><li>Zero English fallbacks in AR locale</li><li>Financial terms match approved glossary</li><li>Plurals handled correctly</li><li>Error messages translated</li></ul></div>
-      <div class="ac-col"><h4>Layout &amp; RTL</h4><ul><li>All flex rows reversed</li><li>No LTR absolute positions</li><li>Icons and arrows mirrored</li><li>Navigation tab bar correct</li></ul></div>
-      <div class="ac-col"><h4>Typography</h4><ul><li>Noto Sans Arabic loaded</li><li>No truncation on any string</li><li>Bidi text renders correctly</li><li>Line height sufficient for Arabic</li></ul></div>
-      <div class="ac-col"><h4>Visual Assets</h4><ul><li>No images with embedded EN text</li><li>Directional icons mirrored</li><li>Culturally appropriate imagery</li><li>App Store AR screenshots updated</li></ul></div>
-      <div class="ac-col"><h4>Performance</h4><ul><li>Arabic font no FOUT</li><li>&lt;200ms launch parity</li><li>No AR-only crashes</li><li>Locale switch &lt;500ms</li></ul></div>
+    <h2>KPIs &amp; risks.</h2>
+    <div class="kpis" style="margin-top:14px;display:grid;grid-template-columns:repeat(6,1fr);gap:12px">
+      <div class="kpi b"><div class="n">&gt;40%</div><div class="l">AR adoption</div><div style="font-size:10px;color:var(--mute)">Levant users to AR within 30 days</div></div>
+      <div class="kpi b"><div class="n">&lt;2.5</div><div class="l">CES score</div><div style="font-size:10px;color:var(--mute)">Effort score (1=easy, 7=hard)</div></div>
+      <div class="kpi b"><div class="n">&lt;3</div><div class="l">Bug escape rate</div><div style="font-size:10px;color:var(--mute)">P1/P2 RTL bugs, week 1</div></div>
+      <div class="kpi b"><div class="n">100%</div><div class="l">String coverage</div><div style="font-size:10px;color:var(--mute)">Zero EN fallbacks on launch</div></div>
+      <div class="kpi b"><div class="n">+5pp</div><div class="l">KYC completion</div><div style="font-size:10px;color:var(--mute)">AR vs EN users at 30 days</div></div>
+      <div class="kpi b"><div class="n">+13%</div><div class="l">Day 3 retention</div><div style="font-size:10px;color:var(--mute)">Sweatcoin Arabic benchmark</div></div>
     </div>
-  </div>
-</div>
-
-<!-- SLIDE 12: SUCCESS METRICS -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Success Metrics</span></div>
-    <span style="font-size:12px;color:var(--mute)">12 / 14</span>
-  </div>
-  <div class="body">
-    <h2>Success metrics.</h2>
-    <p class="lead">Measured at 7, 30, and 90 days - localization quality shows in product metrics.</p>
-    <div class="metric-grid">
-      <div class="metric"><div class="n">&gt;40%</div><div class="l">AR Adoption<br><em>Levant users switch to AR within 30 days</em></div></div>
-      <div class="metric"><div class="n">&lt;2.5</div><div class="l">CES Score<br><em>Arabic flow effort score (1=easy, 7=hard)</em></div></div>
-      <div class="metric"><div class="n">&lt;3</div><div class="l">Bug Escape Rate<br><em>P1/P2 RTL bugs in first week post-launch</em></div></div>
-      <div class="metric"><div class="n">100%</div><div class="l">String Coverage<br><em>Zero English fallbacks in AR locale on launch</em></div></div>
-      <div class="metric"><div class="n">+5pp</div><div class="l">KYC Completion<br><em>AR users vs EN users at 30 days</em></div></div>
-      <div class="metric"><div class="n">+8pts</div><div class="l">NPS Delta<br><em>AR users vs EN users at 90 days</em></div></div>
+    <div class="cards-2" style="margin-top:14px">
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3 style="font-size:14px;font-weight:700;margin-bottom:10px">Key risks &amp; mitigations</h3>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)">
+            <div style="font-size:10px;font-weight:700;color:var(--red);min-width:36px;flex-shrink:0;padding-top:1px">HIGH</div>
+            <div style="font-size:11.5px;color:var(--mute)">MT mistranslates financial/legal terms. Fintech glossary in Claude prompt. 100% native speaker review on D3.</div>
+          </div>
+          <div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)">
+            <div style="font-size:10px;font-weight:700;color:var(--orange);min-width:36px;flex-shrink:0;padding-top:1px">MED</div>
+            <div style="font-size:11.5px;color:var(--mute)">Directional images missed - embedded English ships in AR. D6 visual asset checklist. Automated screenshot diff on D8.</div>
+          </div>
+          <div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)">
+            <div style="font-size:10px;font-weight:700;color:var(--orange);min-width:36px;flex-shrink:0;padding-top:1px">MED</div>
+            <div style="font-size:11.5px;color:var(--mute)">Arabic font causes FOUT or increases bundle significantly. Subset Noto Sans Arabic. Preload font. Measure D8 performance baseline.</div>
+          </div>
+          <div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)">
+            <div style="font-size:10px;font-weight:700;color:var(--red);min-width:36px;flex-shrink:0;padding-top:1px">HIGH</div>
+            <div style="font-size:11.5px;color:var(--mute)">RTL breaks EN screens for existing users. All RTL scoped to locale=ar only. Feature flag. EN users unaffected.</div>
+          </div>
+          <div style="display:flex;gap:8px;padding:5px 0">
+            <div style="font-size:10px;font-weight:700;color:var(--orange);min-width:36px;flex-shrink:0;padding-top:1px">MED</div>
+            <div style="font-size:11.5px;color:var(--mute)">Arabic regulatory logos unavailable. Confirm with legal/brand on D1. Use universal logo if unavailable.</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--brand);display:flex;align-items:center;justify-content:center;text-align:center">
+        <div style="text-align:center">
+          <h1 style="font-size:32px;margin-bottom:12px">More than translation.<br>One sprint. AI-powered.<br>Levant region.</h1>
+          <p style="font-size:13px;color:var(--mute)">Full localization pipeline - from extraction to deployment in 10 days</p>
+          <div style="margin-top:20px;font-size:12px;color:var(--mute)">PRYPCO Blocks · Task 2 of 3 · Senior PM Assignment · <a href="prypco.html" style="color:var(--brand-text);text-decoration:none">- Back to all tasks</a></div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-<!-- SLIDE 13: RISKS -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Risks</span></div>
-    <span style="font-size:12px;color:var(--mute)">13 / 14</span>
-  </div>
-  <div class="body">
-    <h2>Risks &amp; mitigations.</h2>
-    <table style="margin-top:14px">
-      <thead><tr><th>Risk</th><th>Likelihood</th><th>Impact</th><th>Mitigation</th></tr></thead>
-      <tbody>
-        <tr><td>MT mistranslates financial/legal terms (SPV, DFSA, IBAN)</td><td>Med</td><td><strong style="color:var(--red)">High</strong></td><td>Fintech glossary baked into Claude prompt. 100% reviewed by native Arabic speaker on D3.</td></tr>
-        <tr><td>Directional images missed - embedded English text ships in AR</td><td>Med</td><td>Med</td><td>D6 visual asset audit checklist. Automated screenshot diff catches text-in-image on D8.</td></tr>
-        <tr><td>Arabic font causes FOUT or increases bundle size significantly</td><td>Low</td><td>Med</td><td>Subset Noto Sans Arabic to characters used. Preload font. Measure D8 perf baseline.</td></tr>
-        <tr><td>RTL layout breaks EN screens for existing users</td><td>Low</td><td><strong style="color:var(--red)">High</strong></td><td>All RTL scoped to locale=ar only. Feature flag. EN users completely unaffected.</td></tr>
-        <tr><td>Cultural imagery inappropriate for MENA/Levant audience</td><td>Low</td><td>Med</td><td>Cultural reviewer on D3 audits all lifestyle imagery and copy idioms.</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- SLIDE 14: CLOSING -->
-<div class="slide closing">
-  <div class="body" style="justify-content:center;align-items:center;text-align:center">
-    <h1>Localization is not<br>just translation.<br>It's the full experience.</h1>
-    <div class="bullets" style="margin-top:28px">
-      <span>Five layers: strings, layout, typography, visual assets, data formats</span>
-      <span>AI extraction + context-aware MT - role, screen, siblings injected per string</span>
-      <span>CI pipeline auto-translates new strings on every merge - zero manual overhead</span>
-      <span>Feature flag ships to Levant users only - measurable from day one</span>
-    </div>
-    <div style="margin-top:32px;font-size:12px;color:var(--mute)">PRYPCO Blocks · Arabic Localization · Senior PM Assignment · <a href="prypco.html" style="color:var(--brand-text);text-decoration:none">← Back to all tasks</a></div>
   </div>
 </div>
 
@@ -603,7 +479,7 @@ tr:last-child td{border-bottom:none}
     <button class="btn" id="prev" title="Previous">←</button>
   </div>
   <div style="position:relative">
-    <span class="counter" id="counter"><span id="cur">1</span> / <span id="tot">14</span></span>
+    <span class="counter" id="counter"><span id="cur">1</span> / <span id="tot">6</span></span>
   </div>
   <div class="r">
     <button class="btn" id="next" title="Next">→</button>
@@ -619,7 +495,7 @@ tr:last-child td{border-bottom:none}
   const progFill = document.getElementById('progFill');
   const counterEl = document.getElementById('counter');
   if(tot) tot.textContent = slides.length;
-  const slideTitles = ['Cover','Localization ≠ Translation','Five Layers','Visual Assets','AI Pipeline','Context-Aware MT','Automated Pipeline','10-Day Sprint Plan','Code Changes','QA Validation','Acceptance Criteria','Success Metrics','Risks','Closing'];
+  const slideTitles = ['Cover','Localization is not Translation','Visual Assets + AI Pipeline','10-Day Sprint Plan','QA &amp; Acceptance Criteria','KPIs &amp; Risks'];
   const menu = document.createElement('div');
   const menuItems = [];
   menu.className = 'slide-menu';

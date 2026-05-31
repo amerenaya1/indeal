@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRYPCO Mint · Task 03 · Mint Advisor - AI-Powered Investment Advisory</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRYPCO Mint · Task 03 · AI-Powered Investment Advisory</title>
 <script>if(localStorage.getItem('theme')==='dark'||(localStorage.getItem('theme')===null&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -130,362 +130,195 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
   <div class="body">
     <div class="eyebrow">PRYPCO Mint · Task 03 · Senior PM Assignment</div>
     <h1>AI-Powered<br>Investment Advisory.</h1>
-    <p class="sub">Mint Advisor - from decision paralysis to first investment, in one conversation.</p>
-    <div class="meta">Problem defined · AI approach + compliance · MVP → V1 → Scale · PRYPCO FZE - VARA Licence VL/25/05/001</div>
+    <p class="sub">From passive investor to informed decision-maker.</p>
+    <div class="meta">PRYPCO Hiring Council · May 2026</div>
   </div>
 </div>
 
-<!-- SLIDE 2: THE PROBLEM -->
+<!-- SLIDE 2: THE CUSTOMER PROBLEM -->
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">The Problem</span></div>
-    <span style="font-size:12px;color:var(--mute)">2 / 12</span>
+    <span style="font-size:12px;color:var(--mute)">2 / 6</span>
   </div>
   <div class="body">
-    <h2>Access is solved. Confidence is not.</h2>
-    <p class="lead">PRYPCO Mint removed every barrier to entry. But 95% of users who start still don't invest.</p>
-    <div class="kpis">
-      <div class="kpi r"><div class="n">18%</div><div class="l">KYC completion rate<br><em>82% abandon before investing</em></div></div>
-      <div class="kpi r"><div class="n">5%</div><div class="l">Investment funnel CVR<br><em>95% stall at property selection</em></div></div>
-      <div class="kpi g"><div class="n">36%</div><div class="l">Target KYC rate<br><em>2× current - achievable with AI</em></div></div>
-      <div class="kpi b"><div class="n">15%</div><div class="l">Target invest CVR<br><em>3× - the Advisor's job</em></div></div>
-    </div>
+    <h2>The customer problem.</h2>
+    <p class="lead">A first-time investor has the intent but not the knowledge to act confidently.</p>
     <div class="cards-3" style="margin-top:14px">
-      <div class="card"><h3>🤯 Decision paralysis</h3><p>Marina vs JVC vs Downtown - no context on which fits their goal, horizon, or budget.</p></div>
-      <div class="card"><h3>🌍 Cross-border confusion</h3><p>Expat investors have no reference for Dubai yields, market cycles, or AED FX impact.</p></div>
-      <div class="card"><h3>🔕 Silent after KYC</h3><p>After completing KYC, users receive no guidance or next step. Silence equals churn.</p></div>
+      <div class="card"><h3 style="font-size:15px">Which property is right for me?</h3><p style="font-size:13px;color:var(--ink)">The user sees a list of properties with ROI numbers but has no context for what's good, what's risky, or what matches their goals.</p></div>
+      <div class="card"><h3 style="font-size:15px">How much should I invest?</h3><p style="font-size:13px;color:var(--ink)">No guidance on portfolio allocation. A first-timer doesn't know if AED 500 or AED 5,000 is the right starting point for their situation.</p></div>
+      <div class="card"><h3 style="font-size:15px">Is this Sharia-compliant?</h3><p style="font-size:13px;color:var(--ink)">A significant portion of the UAE/MENA investor base requires Sharia-compliant investment options. There's no filtering or certification visible.</p></div>
+      <div class="card"><h3 style="font-size:15px">When should I exit?</h3><p style="font-size:13px;color:var(--ink)">No guidance on when to sell tokens on the marketplace or how to think about holding periods vs. liquidity needs.</p></div>
+      <div class="card"><h3 style="font-size:15px">Is my portfolio diversified?</h3><p style="font-size:13px;color:var(--ink)">Once an investor holds multiple properties, there's no AI layer telling them if they're overexposed to one area or asset type.</p></div>
+      <div class="card"><h3 style="font-size:15px">What are my returns vs. benchmark?</h3><p style="font-size:13px;color:var(--ink)">No comparison to Dubai real estate market benchmarks, rental yield averages, or alternative asset classes.</p></div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 3: CORE INSIGHT -->
+<!-- SLIDE 3: THE AI APPROACH -->
 <div class="slide">
   <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Core Insight</span></div>
-    <span style="font-size:12px;color:var(--mute)">3 / 12</span>
+    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">The AI Approach</span></div>
+    <span style="font-size:12px;color:var(--mute)">3 / 6</span>
   </div>
   <div class="body">
-    <h2>Mint Advisor fills the confidence gap.</h2>
-    <div class="cards-2" style="margin-top:14px">
-      <div class="card" style="border-top:3px solid var(--green)">
-        <h3 style="color:var(--green)">What PRYPCO Mint solved</h3>
-        <ul>
-          <li>✓ AED 500 minimum - entry barrier gone</li>
-          <li>✓ 3-minute KYC - friction removed</li>
-          <li>✓ DLD + VARA - trust signal established</li>
-          <li>✓ Blockchain title deed - ownership proven</li>
+    <h2>The AI approach: hybrid human + AI advisor.</h2>
+    <p class="lead">Not a black box - a transparent, explainable advisor with human escalation.</p>
+    <div class="cards-3" style="margin-top:14px">
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <div class="label" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text);margin-bottom:6px">01</div>
+        <h3>LLM-powered conversational advisor</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px">
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Answers investor questions in real time: 'Is this Sharia-compliant?', 'What's the exit strategy?'</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Explains complex concepts in plain language: SPV structure, gross vs net yield, token liquidity</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Available 24/7 - critical for international investors across time zones</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Escalates to human advisor for high-value, complex, or sensitive queries</li>
         </ul>
       </div>
-      <div class="card" style="border-top:3px solid var(--red)">
-        <h3 style="color:var(--red)">What's still broken</h3>
-        <ul>
-          <li>✗ No guidance on which property to pick</li>
-          <li>✗ No explanation of why one fits better</li>
-          <li>✗ No post-KYC nudge to actually invest</li>
-          <li>✗ No post-purchase engagement loop</li>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <div class="label" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text);margin-bottom:6px">02</div>
+        <h3>AI recommendation engine</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px">
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Analyzes investor profile: risk tolerance, investment horizon, nationality, portfolio size</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Ranks available properties by fit score - not just yield, but alignment to investor goals</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Surfaces Sharia-compliant options automatically when relevant to the user profile</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Learns from investor behavior - which properties they viewed, saved, and invested in</li>
         </ul>
       </div>
-    </div>
-    <div style="margin-top:18px;background:var(--brand-soft);border-radius:var(--radius);padding:24px;text-align:center">
-      <div style="font-size:17px;font-weight:600;color:var(--brand-text);margin-bottom:8px">Mint Advisor bridges this gap.</div>
-      <div style="font-size:15px;color:var(--mute);max-width:680px;margin:0 auto">An AI coach that takes a first-timer from "I completed KYC" to "I bought my first property tokens" - in a single conversation. No financial advisor required. No call centre.</div>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <div class="label" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text);margin-bottom:6px">03</div>
+        <h3>Portfolio intelligence layer</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px">
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Tracks portfolio diversification - alerts when overexposed to one location or asset type</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Benchmarks returns against Dubai real estate market averages and rental yield indices</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Predicts optimal re-investment timing based on portfolio performance and market signals</li>
+          <li style="font-size:13px;color:var(--ink);line-height:1.5">Generates monthly plain-language portfolio summary: 'Your best performing property this month was...'</li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 4: AI APPROACH -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">AI Architecture</span></div>
-    <span style="font-size:12px;color:var(--mute)">4 / 12</span>
-  </div>
-  <div class="body">
-    <h2>Four-layer hybrid architecture.</h2>
-    <p class="lead">Not just a chatbot - a full investment intelligence stack.</p>
-    <div class="arch-grid">
-      <div class="arch"><div class="num">01 · Goal Intake Engine</div><h4>Conversational onboarding</h4><p>3-question flow captures goal, horizon, and budget. Builds an investor profile vector before the first recommendation.</p></div>
-      <div class="arch"><div class="num">02 · Recommendation Engine</div><h4>Rules + ML scoring</h4><p>Scores each property against the investor profile. Outputs a ranked shortlist with 3 plain-language explainability tags per property.</p></div>
-      <div class="arch"><div class="num">03 · LLM Advisor Chat</div><h4>Claude-powered chat</h4><p>Grounded strictly on PRYPCO's DLD-verified property data. Handles open questions, risk explanations, and step-by-step guidance.</p></div>
-      <div class="arch"><div class="num">04 · Portfolio Pulse</div><h4>Post-investment AI</h4><p>Monthly yield nudges, re-investment prompts when wallet accumulates, diversification health score. Benchmarked against Origin + Magnifi.</p></div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 5: TRUST & COMPLIANCE -->
+<!-- SLIDE 4: TRUST, COMPLIANCE & EXPLAINABILITY -->
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Trust &amp; Compliance</span></div>
-    <span style="font-size:12px;color:var(--mute)">5 / 12</span>
+    <span style="font-size:12px;color:var(--mute)">4 / 6</span>
   </div>
   <div class="body">
-    <h2>Non-negotiable in a regulated market.</h2>
-    <div class="trust-grid">
-      <div class="trust-section">
-        <h3>🛡 Trust</h3>
-        <ul>
-          <li><strong>Disclosure on every output</strong> - "AI-generated guidance · Not financial advice" inline - not in a footer.</li>
-          <li><strong>No commercial bias</strong> - Properties ranked by profile match, not inventory fill. Logic is auditable.</li>
-          <li><strong>Data isolation</strong> - Profile and portfolio never used to train shared models. Tenant-of-one architecture.</li>
-          <li><strong>Human escalation</strong> - Complex queries hand off to a licensed advisor with full AI context pre-loaded.</li>
+    <h2>Trust, compliance &amp; explainability.</h2>
+    <p class="lead">An AI advisor that cannot be explained cannot be trusted - especially in a regulated investment context.</p>
+    <div class="cards-2" style="margin-top:14px">
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3>Explainability</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px;font-size:13px;color:var(--ink)">
+          <li>Every AI recommendation shows its reasoning: 'Recommended because: high yield, matches your AED 1,000-5,000 range, Dubai Marina exposure you don't yet have'</li>
+          <li>No black box outputs - the investor always sees why, not just what</li>
+          <li>Confidence level shown per recommendation: High / Medium / Needs human review</li>
         </ul>
       </div>
-      <div class="trust-section">
-        <h3>⚖️ Compliance</h3>
-        <ul>
-          <li><strong>VARA &amp; DLD guardrails</strong> - "Guaranteed" is programmatically blocked. All yields carry projection disclaimers.</li>
-          <li><strong>RAG-grounded responses</strong> - V1: LLM constrained to PRYPCO + DLD verified data only. No hallucinated market claims.</li>
-          <li><strong>Consent-gated AI</strong> - One-time acknowledgement before first interaction. Stored and auditable.</li>
-          <li><strong>VARA Licence VL/25/05/001</strong> - All AI guidance operates within licensed advisory scope.</li>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3>VARA compliance</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px;font-size:13px;color:var(--ink)">
+          <li>AI advisory classified as decision-support, not financial advice - avoids MiFID-equivalent licensing issues</li>
+          <li>All AI recommendations reviewed by human advisors before being surfaced at high-value thresholds</li>
+          <li>VARA disclosure shown on every AI-generated recommendation: 'This is not financial advice'</li>
+          <li>Regulatory audit trail - every recommendation logged with reasoning for review</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3>Sharia compliance</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px;font-size:13px;color:var(--ink)">
+          <li>Properties screened for Sharia compliance by certified scholars - AI surfaces the result, not the screening</li>
+          <li>Filter: 'Show Sharia-compliant only' available across all property views and recommendations</li>
+          <li>AI never makes Sharia compliance determinations - it retrieves and displays certified status only</li>
+          <li>Certification partner displayed per property for transparency</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <h3>Human-in-the-loop</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:8px;font-size:13px;color:var(--ink)">
+          <li>AI handles 80% of queries autonomously - FAQs, property comparisons, yield calculations</li>
+          <li>High-value queries (AED 50,000+), complex situations, and low-confidence recommendations escalate to human</li>
+          <li>Human advisor sees full AI reasoning before taking over - no cold start</li>
+          <li>Response time SLA: AI instant, human within 4 hours UAE business hours</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 6: RESPONSE FLOW -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Response Flow</span></div>
-    <span style="font-size:12px;color:var(--mute)">6 / 12</span>
-  </div>
-  <div class="body">
-    <h2>How a single response works.</h2>
-    <p class="lead">Trust and compliance built in - not bolted on after.</p>
-    <div class="flow-grid">
-      <div class="flow-row"><div class="flow-num">1</div><div class="flow-label">User query</div><div class="flow-desc">Types a question or taps a quick-reply chip</div></div>
-      <div class="flow-row"><div class="flow-num">2</div><div class="flow-label">RAG retrieval</div><div class="flow-desc">Fetches only verified PRYPCO + DLD data - no external web search</div></div>
-      <div class="flow-row"><div class="flow-num">3</div><div class="flow-label">LLM generation</div><div class="flow-desc">Claude responds within VARA-compliant system prompt with strict guardrails</div></div>
-      <div class="flow-row"><div class="flow-num">4</div><div class="flow-label">Post-filter</div><div class="flow-desc">Deterministic code blocks banned terms: <em>guaranteed, price predictions, tax advice</em></div></div>
-      <div class="flow-row"><div class="flow-num">5</div><div class="flow-label">Display + tags</div><div class="flow-desc">Output shown with disclosure, 3-reason explainability tags, source citation</div></div>
-      <div class="flow-row"><div class="flow-num">6</div><div class="flow-label">Audit log</div><div class="flow-desc">Interaction logged: profile, query, model version, sources used, output text</div></div>
-    </div>
-    <div class="warn-note" style="margin-top:12px;padding:12px 16px;border-radius:10px;font-size:13px;font-weight:500">The post-filter is a deterministic code-level check - not a prompt instruction. Language models can be coaxed. Code cannot.</div>
-  </div>
-</div>
-
-<!-- SLIDE 7: MVP -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">MVP · Weeks 1–6</span></div>
-    <span style="font-size:12px;color:var(--mute)">7 / 12</span>
-  </div>
-  <div class="body">
-    <h2>MVP - 6 Weeks.</h2>
-    <p class="lead">Goal: close the KYC-to-first-investment gap.</p>
-    <div class="cards-2" style="margin-top:8px">
-      <div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--brand)">
-          <h3>Goal intake onboarding</h3>
-          <p>3-question flow - goal, horizon, budget - before chat starts. Builds investor profile vector.</p>
-        </div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--brand)">
-          <h3>Profile-based matching</h3>
-          <p>Rule-based ranking of properties against profile. 1–2 best fits with plain-language reasoning.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--brand)">
-          <h3>ROI calculator</h3>
-          <p>Monthly income, annual yield, 5-year value estimate based on user's budget and selected property.</p>
-        </div>
-      </div>
-      <div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--brand)">
-          <h3>Platform education coach</h3>
-          <p>Answers: what is tokenization, how KYC works, what the Mint Wallet is. Plain language for first-timers.</p>
-        </div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--brand)">
-          <h3>6 step-by-step learn modules</h3>
-          <p>Tokenization · KYC · Wallet · Buying · Selling · Regulation - 4 steps each. Learn tab.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--brand)">
-          <h3>Explainability tags on cards</h3>
-          <p>Every property card shows 3 plain-language reason tags: why it matches this investor's profile.</p>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:12px;background:var(--brand-soft);border-radius:10px;padding:10px 16px;font-size:13px;color:var(--brand-text);font-weight:600">🔒 Gate: CVR &gt;8% before V1 build begins</div>
-  </div>
-</div>
-
-<!-- SLIDE 8: V1 -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">V1 · Weeks 7–16</span></div>
-    <span style="font-size:12px;color:var(--mute)">8 / 12</span>
-  </div>
-  <div class="body">
-    <h2>V1 - +10 Weeks.</h2>
-    <p class="lead">Goal: retain investors and grow AUM post-purchase.</p>
-    <div class="cards-2" style="margin-top:8px">
-      <div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid #4a90e2">
-          <h3>LLM-powered chat (real AI)</h3>
-          <p>Claude API replaces scripted responses. Grounded on PRYPCO verified data. Handles nuanced, open questions naturally.</p>
-        </div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid #4a90e2">
-          <h3>Persistent investor memory</h3>
-          <p>Advisor remembers past conversations, investments, preferences. "You invested in Marina Gate 3 months ago."</p>
-        </div>
-        <div class="card" style="border-left:3px solid #4a90e2">
-          <h3>Portfolio diversification guidance</h3>
-          <p>Detects concentration risk. Proactively suggests cross-district diversification: Marina + JVC + Downtown.</p>
-        </div>
-      </div>
-      <div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid #4a90e2">
-          <h3>Monthly rental payout nudges</h3>
-          <p>"Your AED 340 just landed - want to reinvest in Bloom Towers B?" Re-investment rate target: &gt;35%.</p>
-        </div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid #4a90e2">
-          <h3>Portfolio health score</h3>
-          <p>0–100 score: diversification + yield vs target + horizon proximity. Shown in dashboard header.</p>
-        </div>
-        <div class="card" style="border-left:3px solid #4a90e2">
-          <h3>Arabic RTL support</h3>
-          <p>Full Mint Advisor experience in Arabic - strings, layout, and conversational tone adapted for MENA investors.</p>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:12px;background:#e8f0fb;border-radius:10px;padding:10px 16px;font-size:13px;color:#2c5fa3;font-weight:600">🔒 Gate: D30 retention +20% before Scale begins</div>
-  </div>
-</div>
-
-<!-- SLIDE 9: SCALE -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Scale · Month 5+</span></div>
-    <span style="font-size:12px;color:var(--mute)">9 / 12</span>
-  </div>
-  <div class="body">
-    <h2>Scale - +6 Months.</h2>
-    <p class="lead">Goal: become the default investment intelligence layer across PRYPCO.</p>
-    <div class="cards-2" style="margin-top:8px">
-      <div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--orange)">
-          <h3>DLD market cycle alerts</h3>
-          <p>Integrated with DLD transaction data. "Marina volume up 22% this quarter - your tokens may be worth more."</p>
-        </div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--orange)">
-          <h3>Predictive yield forecasting</h3>
-          <p>ML model on PRYPCO rental history + DLD data. Forward-looking yield ranges with confidence intervals.</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--orange)">
-          <h3>Optimal exit timing signals</h3>
-          <p>Monitors marketplace liquidity. Notifies when conditions favour selling: high demand + above-cost price.</p>
-        </div>
-      </div>
-      <div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--orange)">
-          <h3>Cross-product advisory</h3>
-          <p>Single advisor across Mint + Blocks + Mortgage. "You're 40% of the way to PRYPCO Mortgage pre-approval."</p>
-        </div>
-        <div class="card" style="margin-bottom:12px;border-left:3px solid var(--orange)">
-          <h3>Goal-based wealth planning</h3>
-          <p>"To generate AED 10K/month passive income by 2030, you need AED 1.67M in tokens. Here's the path."</p>
-        </div>
-        <div class="card" style="border-left:3px solid var(--orange)">
-          <h3>White-label API</h3>
-          <p>Mint Advisor as a B2B product - branded advisory layer for institutional and brokerage partners.</p>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:12px;background:#fff5e6;border-radius:10px;padding:10px 16px;font-size:13px;color:var(--orange);font-weight:600">🔒 Gate: NPS &gt;55 + B2B interest validated before white-label build</div>
-  </div>
-</div>
-
-<!-- SLIDE 10: ROADMAP -->
+<!-- SLIDE 5: MVP TO SCALE ROADMAP -->
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Roadmap</span></div>
-    <span style="font-size:12px;color:var(--mute)">10 / 12</span>
+    <span style="font-size:12px;color:var(--mute)">5 / 6</span>
   </div>
   <div class="body">
-    <h2>Three phases, clear gates, no big-bang launches.</h2>
-    <div class="phase-grid">
-      <div class="phase">
-        <div class="label">MVP</div>
-        <div class="timeline">Weeks 1–6</div>
-        <ul>
-          <li>Goal intake onboarding</li>
-          <li>Rule-based matching</li>
-          <li>Coach + Learn tab</li>
-          <li>ROI calculator</li>
-          <li>Explainability tags</li>
-          <li>Scripted responses</li>
+    <h2>MVP to V1 to Scale roadmap.</h2>
+    <p class="lead">Three phases: prove, personalize, and become the trusted financial companion for every MENA real estate investor.</p>
+    <div class="cards-3" style="margin-top:14px">
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <div class="label" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text);margin-bottom:6px">MVP · Sprint 1-2 · 4 weeks</div>
+        <h3>Prove AI answers investor questions better than email support.</h3>
+        <ul style="font-size:13px;color:var(--ink);list-style:none;display:flex;flex-direction:column;gap:4px;margin-top:8px">
+          <li>LLM chatbot answers top 20 investor FAQs</li>
+          <li>Property comparison: side-by-side yield, ROI, location</li>
+          <li>Sharia compliance filter and status display</li>
+          <li>Basic recommendation: 'Properties that match your amount'</li>
+          <li>Human escalation for complex or high-value queries</li>
         </ul>
-        <div class="gate">🔒 Gate: CVR &gt;8% before V1 build</div>
+        <p style="font-size:11.5px;color:var(--brand-text);margin-top:10px;font-weight:600">CSAT &gt; 4.2 · Chatbot deflection &gt; 60% · Avg response time &lt; 5s</p>
       </div>
-      <div class="phase">
-        <div class="label">V1</div>
-        <div class="timeline">Weeks 7–16</div>
-        <ul>
-          <li>Claude API integration</li>
-          <li>RAG on PRYPCO data</li>
-          <li>Persistent memory</li>
-          <li>Portfolio pulse</li>
-          <li>Rental nudges</li>
-          <li>Arabic RTL support</li>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <div class="label" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text);margin-bottom:6px">V1 · Sprint 3-5 · 8 weeks</div>
+        <h3>Personalize the investment experience for every user.</h3>
+        <ul style="font-size:13px;color:var(--ink);list-style:none;display:flex;flex-direction:column;gap:4px;margin-top:8px">
+          <li>Full investor profile: risk tolerance, horizon, goals, Sharia preference</li>
+          <li>AI recommendation engine with fit score and explainability</li>
+          <li>Portfolio diversification analysis and alerts</li>
+          <li>Benchmarking vs. Dubai rental yield averages</li>
+          <li>Monthly portfolio summary in plain language</li>
         </ul>
-        <div class="gate">🔒 Gate: D30 retention +20% before Scale</div>
+        <p style="font-size:11.5px;color:var(--brand-text);margin-top:10px;font-weight:600">Recommendation CTR &gt; 35% · AUM growth +20% · 30-day retention +10pp</p>
       </div>
-      <div class="phase">
-        <div class="label">Scale</div>
-        <div class="timeline">Month 5+</div>
-        <ul>
-          <li>DLD market alerts</li>
-          <li>Yield forecasting ML</li>
-          <li>Cross-product advisory</li>
-          <li>Wealth planning tool</li>
-          <li>White-label API</li>
-          <li>Compliance audit v2</li>
+      <div class="card" style="border-top:3px solid var(--brand)">
+        <div class="label" style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-text);margin-bottom:6px">Scale · Sprint 6+ · Ongoing</div>
+        <h3>Become the trusted financial companion for every MENA real estate investor.</h3>
+        <ul style="font-size:13px;color:var(--ink);list-style:none;display:flex;flex-direction:column;gap:4px;margin-top:8px">
+          <li>Predictive market signals - best time to invest by location</li>
+          <li>Cross-asset comparison: PRYPCO tokens vs REITs vs savings</li>
+          <li>Multilingual AI advisory (Arabic first, then Urdu, Hindi)</li>
+          <li>Institutional investor tier - AI-powered due diligence reports</li>
+          <li>API for wealth managers and financial advisors</li>
         </ul>
-        <div class="gate">🔒 Gate: NPS &gt;55 + B2B interest validated</div>
+        <p style="font-size:11.5px;color:var(--brand-text);margin-top:10px;font-weight:600">AUM growth +50% YoY · NPS &gt; 60 · Advisor-assisted conversion rate &gt; 40%</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SLIDE 11: SUCCESS METRICS -->
+<!-- SLIDE 6: KPIs + CLOSING -->
 <div class="slide">
   <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Success Metrics</span></div>
-    <span style="font-size:12px;color:var(--mute)">11 / 12</span>
+    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">KPIs</span></div>
+    <span style="font-size:12px;color:var(--mute)">6 / 6</span>
   </div>
   <div class="body">
-    <h2>Success metrics tied to business outcomes.</h2>
-    <table style="margin-top:14px">
-      <thead><tr><th>Metric</th><th>Baseline</th><th>MVP Target</th><th>V1 Target</th><th>Scale Target</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Investment CVR</strong></td><td>5%</td><td style="color:var(--brand-text);font-weight:600">&gt;9%</td><td style="color:var(--brand-text);font-weight:600">&gt;12%</td><td style="color:var(--brand-text);font-weight:600">15%</td></tr>
-        <tr><td><strong>D30 Retention</strong></td><td>~30%</td><td style="color:var(--brand-text);font-weight:600">+8pts</td><td style="color:var(--brand-text);font-weight:600">+15pts</td><td style="color:var(--brand-text);font-weight:600">+25pts</td></tr>
-        <tr><td><strong>Avg AUM / User</strong></td><td>AED 10.7K</td><td style="color:var(--brand-text);font-weight:600">+10%</td><td style="color:var(--brand-text);font-weight:600">+20%</td><td style="color:var(--brand-text);font-weight:600">+40%</td></tr>
-        <tr><td><strong>Advisor CSAT</strong></td><td>—</td><td style="color:var(--brand-text);font-weight:600">&gt;4.0/5</td><td style="color:var(--brand-text);font-weight:600">&gt;4.2/5</td><td style="color:var(--brand-text);font-weight:600">&gt;4.5/5</td></tr>
-        <tr><td><strong>Reinvestment Rate</strong></td><td>&lt;5%</td><td>—</td><td style="color:var(--brand-text);font-weight:600">&gt;20%</td><td style="color:var(--brand-text);font-weight:600">&gt;35%</td></tr>
-        <tr><td><strong>Rec. Click-Through Rate</strong></td><td>—</td><td style="color:var(--brand-text);font-weight:600">&gt;25%</td><td style="color:var(--brand-text);font-weight:600">&gt;35%</td><td style="color:var(--brand-text);font-weight:600">&gt;45%</td></tr>
-      </tbody>
-    </table>
-    <div class="guardrail">
-      <h4>Guardrail metrics - what must NOT move in the wrong direction</h4>
-      <ul>
-        <li>AI hallucination rate: &lt;0.5%</li>
-        <li>Compliance flag rate: &lt;0.5%</li>
-        <li>Disclaimer ACK rate: &gt;95%</li>
-        <li>Data breach incidents: 0</li>
-      </ul>
+    <h2>How we know it's working.</h2>
+    <div class="kpis" style="margin-top:14px;display:grid;grid-template-columns:repeat(6,1fr)">
+      <div class="kpi b"><div class="n">35%</div><div class="l">Recommendation CTR<br>AI property suggestions clicked</div></div>
+      <div class="kpi b"><div class="n">+20%</div><div class="l">AUM growth<br>within 90 days of AI advisory launch</div></div>
+      <div class="kpi b"><div class="n">&gt;60%</div><div class="l">Chatbot deflection<br>queries resolved without human</div></div>
+      <div class="kpi b"><div class="n">+10pp</div><div class="l">30-day retention<br>AI users vs non-AI users</div></div>
+      <div class="kpi b"><div class="n">&lt;2</div><div class="l">Compliance incidents<br>AI recommendations flagged per month</div></div>
+      <div class="kpi b"><div class="n">&gt;4.2</div><div class="l">AI advisor CSAT<br>investor satisfaction score /5</div></div>
     </div>
-  </div>
-</div>
-
-<!-- SLIDE 12: CLOSING -->
-<div class="slide closing">
-  <div class="body" style="justify-content:center;align-items:center;text-align:center">
-    <h1>The advisor isn't a feature.<br>It's the conversion engine.</h1>
-    <div class="bullets" style="margin-top:28px">
-      <span>PRYPCO Mint solved access. Mint Advisor solves confidence.</span>
-      <span>The user who understands what they're buying and why - invests. Every time.</span>
-      <span>MVP in 6 weeks · V1 in 16 weeks · Scale at month 5</span>
-      <span>VARA-compliant · RAG-grounded · Deterministic post-filter · Full audit trail</span>
+    <div style="margin-top:24px;text-align:center;padding-top:20px;border-top:1px solid var(--line)">
+      <p style="font-size:13px;color:var(--mute);margin-bottom:16px">MVP to V1 to Scale · VARA-compliant · explainable · human-in-the-loop · Sharia-aware</p>
+      <h1 style="font-size:34px;margin-bottom:12px">From passive investor<br>to informed decision-maker.</h1>
+      <div style="margin-top:16px;font-size:12px;color:var(--mute)">PRYPCO Mint · Task 3 of 3 · Senior PM Assignment · <a href="prypco.html" style="color:var(--brand-text);text-decoration:none">- Back to all tasks</a></div>
     </div>
-    <div style="margin-top:32px;font-size:12px;color:var(--mute)">PRYPCO FZE · VARA Licence VL/25/05/001 · AI-generated guidance · Not financial advice · <a href="prypco.html" style="color:var(--brand-text);text-decoration:none">← Back to all tasks</a></div>
   </div>
 </div>
 
@@ -497,7 +330,7 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
     <button class="btn" id="prev" title="Previous">←</button>
   </div>
   <div style="position:relative">
-    <span class="counter" id="counter"><span id="cur">1</span> / <span id="tot">12</span></span>
+    <span class="counter" id="counter"><span id="cur">1</span> / <span id="tot">6</span></span>
   </div>
   <div class="r">
     <button class="btn" id="next" title="Next">→</button>
@@ -513,7 +346,7 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
   const progFill = document.getElementById('progFill');
   const counterEl = document.getElementById('counter');
   if(tot) tot.textContent = slides.length;
-  const slideTitles = ['Cover','The Problem','Core Insight','AI Architecture','Trust & Compliance','Response Flow','MVP - 6 Weeks','V1 - +10 Weeks','Scale - +6 Months','Roadmap','Success Metrics','Closing'];
+  const slideTitles = ['Cover','The Customer Problem','The AI Approach','Trust & Compliance','Roadmap','KPIs'];
   const menu = document.createElement('div');
   const menuItems = [];
   menu.className = 'slide-menu';
