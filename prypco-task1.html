@@ -157,7 +157,7 @@ tr:last-child td{border-bottom:none}
 .sb-close:hover{background:rgba(255,255,255,.15)}
 /* two-column body */
 #sb-body{flex:1;display:flex;min-height:0;overflow:hidden}
-#sb-details{width:190px;flex-shrink:0;padding:14px 16px;border-right:1px solid rgba(255,255,255,.08);overflow-y:auto;display:flex;flex-direction:column;gap:0}
+#sb-details{flex:1;padding:14px 16px;border-right:1px solid rgba(255,255,255,.08);overflow-y:auto;display:flex;flex-direction:column;gap:0}
 .sb-meta-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .sb-meta-label{font-size:10px;color:rgba(242,243,247,.4);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
 .sb-meta-val{font-size:12px;color:#F2F3F7;font-weight:600}
@@ -597,10 +597,6 @@ function toggleDark(){
         <div class="sb-iframe-wrap" id="sb-iframe-wrap">
           <iframe id="sb-iframe" src="" title="Prototype" style="border:none"></iframe>
         </div>
-        <div id="sb-no-proto" style="display:none">
-          <span style="font-size:28px;opacity:.3">&#9711;</span>
-          <span>Prototype not yet available</span>
-        </div>
       </div>
     </div>
     <div id="sb-footer">
@@ -613,20 +609,20 @@ function toggleDark(){
 
 <script>
 var SB_INITS = {
-  1:  { eyebrow:'Initiative 01 · Product + Eng', title:'Funnel Instrumentation & Analytics', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product + Eng', desc:'Instrument every step of registration, KYC, and investment. No strategy can be validated without baseline data on where users are dropping off.', src:null },
-  2:  { eyebrow:'Initiative 02 · Design', title:'Value-led Landing Screen', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Design', desc:'Replace the registration-first landing with a value-first screen. Show live ROI projections, social proof, and property previews before asking for sign-up.', src:'prypco-mint-landing.html' },
-  3:  { eyebrow:'Initiative 03 · Product', title:'One-Tap Registration', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Move to email-first, ID-later registration with Apple and Google Sign-In as the primary CTA. Remove the barrier to entry - ID verification comes after the user sees value.', src:'prypco-mint-landing-modal.html' },
-  4:  { eyebrow:'Initiative 04 · AI + Product', title:'First-Time Investment Wizard', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI + Product', desc:'3-step guided flow: social proof wall with anonymized returns, amount selector with live ROI preview, and AI-matched properties personalized to the user.', src:null },
-  5:  { eyebrow:'Initiative 05 · Product', title:'KYC Roadmap with Save & Resume', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Show users exactly where they are in KYC, estimate time remaining per step, and persist progress so they can leave and return without restarting.', src:null },
-  6:  { eyebrow:'Initiative 06 · Design', title:'KYC Motivation Layer', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'Design', desc:'Contextual copy at each KYC step explaining why the information is needed and what benefit completing that step unlocks for the investor.', src:null },
-  7:  { eyebrow:'Initiative 07 · AI', title:'AI OCR Document Capture', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI', desc:'Auto-fill KYC fields by scanning Emirates ID or passport with the camera. Reduces manual entry time from minutes to under 20 seconds.', src:null },
-  8:  { eyebrow:'Initiative 08 · AI', title:'AI Chatbot with Human-in-the-Loop', impact:'Medium', effort:'Medium', sprint:'Sprint 2', team:'AI', desc:'In-app support that handles common KYC questions instantly, with seamless escalation to a human agent when the AI is not confident.', src:null },
-  9:  { eyebrow:'Initiative 09 · Product', title:'Persistent KYC Progress Widget', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'Product', desc:'Sticky progress indicator visible across the app that reminds and encourages users to return and complete their KYC verification.', src:null },
-  10: { eyebrow:'Initiative 10 · Product', title:'Smart Empty State', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Replace the empty investment shelf with a guided first-investment prompt. When no live properties are available, show a curated waitlist or upcoming launch instead of a blank screen.', src:null },
-  11: { eyebrow:'Initiative 11 · Product + GTM', title:'Rewards Program', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'Product + GTM', desc:'Welcome credit on first investment, referral bonuses, and milestone rewards tied to investment activity. Drives both acquisition and retention loops.', src:null },
-  12: { eyebrow:'Initiative 12 · AI + GTM', title:'Retargeting - AI Drop-off Detection', impact:'High', effort:'High', sprint:'Sprint 2', team:'AI + GTM', desc:'Detect abandonment patterns in the funnel and trigger personalized re-engagement campaigns via email and push notification, tailored to where the user stopped.', src:null },
-  13: { eyebrow:'Initiative 13 · GTM', title:'Property Launch Events', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'GTM', desc:'Coordinate property launches with marketing moments: countdown emails, push alerts on launch day, and livestream Q&A with the property team.', src:null },
-  14: { eyebrow:'Initiative 14 · GTM', title:'Investor Story Campaigns', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'GTM', desc:'Anonymized investor testimonials with real return figures and country of origin, distributed across social, email, and in-app. Builds social proof at scale.', src:null }
+  1:  { eyebrow:'Initiative 01 · Product + Eng', title:'Funnel Instrumentation & Analytics', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product + Eng', desc:'You cannot optimize a funnel you cannot see. Track every step: landing viewed, CTA tapped, KYC started, each step drop-off, investment completed. Segments by UAE resident vs. international, device, and acquisition channel. The baseline that makes every other initiative measurable - ships before everything else.', src:null },
+  2:  { eyebrow:'Initiative 02 · Design', title:'Value-led Landing Screen', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Design', desc:'Replace the registration-first landing with a value-first screen. Show live ROI projections, social proof from real investors, and property previews before asking for sign-up. Value first, registration second.', src:'prypco-mint-landing.html' },
+  3:  { eyebrow:'Initiative 03 · Product', title:'One-Tap Registration', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Move to email-first, ID-later registration with Apple and Google Sign-In as the primary CTA. Remove the barrier to entry - Emirates ID verification comes only after the user has seen the product and chosen a property.', src:'prypco-mint-landing-modal.html' },
+  4:  { eyebrow:'Initiative 04 · AI + Product', title:'First-Time Investment Wizard', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI + Product', desc:'3 steps. Every fear answered before the user asks. Step 1: social proof wall with 12,847 investors and anonymized returns. Step 2: amount selector (AED 500/1K/5K/Custom) with live ROI preview. Step 3: 2-3 AI-matched properties - personalized yield shown. One tap to invest triggers KYC.', src:null },
+  5:  { eyebrow:'Initiative 05 · Product', title:'KYC Roadmap with Save & Resume', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'All KYC steps visible upfront with time estimates per step. Step 1 pre-checked. Save progress automatically - the user returns exactly where they left off. Removes the anxiety of not knowing how long the process takes.', src:null },
+  6:  { eyebrow:'Initiative 06 · Design', title:'KYC Motivation Layer', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'Design', desc:"The selected property stays visible throughout the KYC flow. A live funding ticker keeps emotional momentum alive - the user sees the property filling up while they complete verification. Makes KYC feel purposeful, not bureaucratic.", src:null },
+  7:  { eyebrow:'Initiative 07 · AI', title:'AI OCR Document Capture', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI', desc:'ID scan auto-fills all KYC fields in under 20 seconds. If the scan fails, an AI rejection explainer tells the user exactly how to retake the photo to fix the issue - no dead ends, no email support required.', src:null },
+  8:  { eyebrow:'Initiative 08 · AI', title:'AI Chatbot with Human-in-the-Loop', impact:'Medium', effort:'Medium', sprint:'Sprint 2', team:'AI', desc:'In-app chat replaces the broken email support flow. AI handles 80% of KYC questions instantly. For edge cases or anything the AI is not confident about, it escalates seamlessly to a human agent.', src:null },
+  9:  { eyebrow:'Initiative 09 · Product', title:'Persistent KYC Progress Widget', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'Product', desc:'A soft, constant nudge visible on every screen until KYC is complete. Borrowed from Stake\'s proven onboarding pattern. Reminds users of incomplete verification without being intrusive.', src:null },
+  10: { eyebrow:'Initiative 10 · Product', title:'Smart Empty State', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Never a dead end. When no live properties are available, the shelf shows two paths: Browse Marketplace (secondary market tokens) or Notify Me (get alerted on next launch). A motivated investor always has somewhere to go.', src:null },
+  11: { eyebrow:'Initiative 11 · Product + GTM', title:'Rewards Program', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'Product + GTM', desc:'AED 100 credit on first investment with a 14-day countdown - FOMO drives KYC completion. Referral: invite a friend and both get AED 50. Milestone rewards tied to investment activity drive long-term retention.', src:null },
+  12: { eyebrow:'Initiative 12 · AI + GTM', title:'Retargeting - AI Drop-off Detection', impact:'High', effort:'High', sprint:'Sprint 2', team:'AI + GTM', desc:'6 specific re-engagement sequences, one for each drop-off point in the funnel. Each sequence triggers a personalized WhatsApp or push message based on where the user stopped. Depends entirely on the funnel instrumentation data from Initiative 01.', src:null },
+  13: { eyebrow:'Initiative 13 · GTM', title:'Property Launch Events', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'GTM', desc:'Every listing is treated as a product launch moment. Countdown email 48 hours before, early-access push for KYC-complete users, live funding updates on launch day. Turns inventory scarcity into a conversion driver.', src:null },
+  14: { eyebrow:'Initiative 14 · GTM', title:'Investor Story Campaigns', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'GTM', desc:'Weekly anonymized investor stories matched to the user\'s profile - showing returns from similar investors. Keeps the investment dream alive between property launches and builds long-term social proof across channels.', src:null }
 };
 function openInitSidebar(num){
   var cfg = SB_INITS[num];
@@ -645,16 +641,13 @@ function openInitSidebar(num){
   var effEl = document.getElementById('sb-effort');
   effEl.textContent = cfg.effort;
   effEl.className = 'sb-badge ' + (cfg.effort==='Low'?'low':cfg.effort==='High'?'high-eff':'med');
-  var wrap = document.getElementById('sb-iframe-wrap');
-  var noProto = document.getElementById('sb-no-proto');
+  var protoCol = document.getElementById('sb-proto-col');
   var iframe = document.getElementById('sb-iframe');
   if(cfg.src){
-    wrap.style.display='';
-    noProto.style.display='none';
+    protoCol.style.display='';
     iframe.src = cfg.src;
   } else {
-    wrap.style.display='none';
-    noProto.style.display='flex';
+    protoCol.style.display='none';
     iframe.src='';
   }
   document.getElementById('init-sidebar').classList.add('open');
