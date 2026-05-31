@@ -121,12 +121,13 @@ tr:last-child td{border-bottom:none}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.kpis,.step-grid,.sprint-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
 @media print{html,body{overflow:visible!important;height:auto!important}body.nav-forward .slide:not(.active),body.nav-back .slide:not(.active){transform:none!important}.deck{overflow:visible!important;height:auto!important;position:relative!important}.slide{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;transform:none!important;page-break-after:always;break-after:page;height:100vh;overflow:hidden!important;padding:40px 60px 40px!important}.slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}.progress,.controls,.hint{display:none!important}h1,h2{-webkit-text-fill-color:#1d1d1f!important;background:none!important;color:#1d1d1f!important}#init-sidebar{display:none!important}}
 .quad-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-.grp-hdr td{background:var(--ink);color:var(--bg);font-weight:700;font-size:12px;letter-spacing:.04em;padding:7px 16px!important;border:none!important}
-.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600;white-space:nowrap}
-.b-high{background:var(--brand);color:var(--ink)}
+.grp-hdr td{background:var(--ink);color:var(--bg);font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px!important;border:none!important}
+.badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:600;white-space:nowrap}
+.b-high{background:var(--brand);color:#1d1d1f}
 .b-med{background:var(--line);color:var(--mute)}
-.b-low{background:var(--brand-soft);color:var(--brand-text)}
-.b-high-eff{background:var(--ink);color:var(--bg)}
+.b-low{background:var(--brand);color:#1d1d1f;opacity:.55}
+.b-high-eff{border:1.5px solid var(--ink);color:var(--ink);background:transparent}
+.tbl-sm td,.tbl-sm th{padding:6px 12px}
 .quad{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
 .quad-label{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--ink)}
 .quad-sub{font-size:11px;color:var(--mute);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
@@ -225,9 +226,9 @@ tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Initiatives</span></div>
     <span style="font-size:12px;color:var(--mute)">4 / 12</span>
   </div>
-  <div class="body">
-    <h2>14 initiatives across the full funnel.</h2>
-    <table style="margin-top:16px">
+  <div class="body" style="justify-content:flex-start">
+    <h2 style="font-size:32px;margin-bottom:10px">14 initiatives across the full funnel.</h2>
+    <table class="tbl-sm" style="margin-top:10px;font-size:12px">
       <thead><tr><th>#</th><th>Initiative</th><th>Type</th><th>Impact</th><th>Effort</th></tr></thead>
       <tbody>
         <tr class="grp-hdr"><td colspan="5">Foundation</td></tr>
