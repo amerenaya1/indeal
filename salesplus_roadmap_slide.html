@@ -74,7 +74,6 @@
     flex-direction: column;
     gap: 8px;
     transition: box-shadow 0.2s, border-color 0.2s;
-    position: relative;
   }
   .tile:hover {
     box-shadow: 0 4px 20px rgba(27, 84, 248, 0.09);
@@ -86,10 +85,7 @@
     align-items: center;
     gap: 9px;
   }
-  .tile-icon {
-    font-size: 20px;
-    line-height: 1;
-  }
+  .tile-icon { font-size: 20px; line-height: 1; }
   .tile-title {
     font-size: 13px;
     font-weight: 700;
@@ -102,7 +98,6 @@
     line-height: 1.5;
   }
 
-  /* Items list inside tile */
   .tile-items {
     margin-top: 4px;
     display: flex;
@@ -156,76 +151,78 @@
     <p>Long-term product roadmap · CEO Briefing · May 2026</p>
   </div>
 
-  <!-- Tiles -->
   <div class="grid">
 
+    <!-- Field Operations -->
     <div class="tile">
       <div class="tile-top">
         <span class="tile-icon">🗺️</span>
         <span class="tile-title">Field Operations</span>
       </div>
-      <div class="tile-desc">Coordinate agents on the ground with visit tracking, payout processing, and instant operational alerts.</div>
+      <div class="tile-desc">Coordinate agents on the ground with real-time visit tracking and instant operational alerts.</div>
       <div class="tile-items">
         <div class="tile-item">Visit Module</div>
-        <div class="tile-item">Agent Payout</div>
         <div class="tile-item">Notifications Center</div>
-        <div class="tile-item">Market Research</div>
+        <div class="tile-item">Merchandising Module</div>
       </div>
     </div>
 
+    <!-- CRM -->
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">👥</span>
+        <span class="tile-title">CRM</span>
+      </div>
+      <div class="tile-desc">Build a CRM tailored to your specific industry, workflow, and processes for easier customer management.</div>
+      <div class="tile-items">
+        <div class="tile-item">Gift Management</div>
+      </div>
+    </div>
+
+    <!-- Commercial Controls -->
     <div class="tile">
       <div class="tile-top">
         <span class="tile-icon">⚙️</span>
         <span class="tile-title">Commercial Controls</span>
       </div>
-      <div class="tile-desc">Set the rules that govern how your team sells — from pricing and discounts to approval workflows.</div>
+      <div class="tile-desc">Set the rules that govern how your team sells — discounts, approvals, and agent compensation.</div>
       <div class="tile-items">
         <div class="tile-item">Discount Configs</div>
-        <div class="tile-item">Dynamic Pricelists</div>
         <div class="tile-item">Approval Flows</div>
-        <div class="tile-item">Gift Management</div>
+        <div class="tile-item">Agent Payout</div>
       </div>
     </div>
 
+    <!-- Intelligence & Growth -->
     <div class="tile">
       <div class="tile-top">
         <span class="tile-icon">📈</span>
         <span class="tile-title">Intelligence & Growth</span>
       </div>
-      <div class="tile-desc">Turn field data into decisions — track agent performance, set targets, and surface insights through AI and BI.</div>
+      <div class="tile-desc">Turn field data into decisions — track performance, set targets, and surface insights through AI and BI.</div>
       <div class="tile-items">
         <div class="tile-item">Agent Performance Dashboard</div>
         <div class="tile-item">Agent Rewards Program</div>
         <div class="tile-item">Agent Targets</div>
+        <div class="tile-item">Market Research</div>
         <div class="tile-item">AI Assistant</div>
         <div class="tile-item">BI Rich Dashboards</div>
       </div>
     </div>
 
+    <!-- Catalog Management -->
     <div class="tile">
       <div class="tile-top">
-        <span class="tile-icon">📚</span>
-        <span class="tile-title">Knowledge Base</span>
+        <span class="tile-icon">🗂️</span>
+        <span class="tile-title">Catalog Management</span>
       </div>
-      <div class="tile-desc">Equip your field teams with the knowledge, answers, and resources they need in one dedicated app.</div>
+      <div class="tile-desc">Control SKUs, pricing, and product content from one place — so agents always sell with accurate information.</div>
+      <div class="tile-items">
+        <div class="tile-item">Dynamic Pricelists</div>
+      </div>
     </div>
 
-    <div class="tile">
-      <div class="tile-top">
-        <span class="tile-icon">🧾</span>
-        <span class="tile-title">Invoice Processing</span>
-      </div>
-      <div class="tile-desc">Automate invoice processing and eliminate hours of manual data entry for email and paper documents.</div>
-    </div>
-
-    <div class="tile">
-      <div class="tile-top">
-        <span class="tile-icon">📡</span>
-        <span class="tile-title">Offline Support</span>
-      </div>
-      <div class="tile-desc">Keep core operations running smoothly even when agents lose internet connection in the field.</div>
-    </div>
-
+    <!-- Inventory Management -->
     <div class="tile">
       <div class="tile-top">
         <span class="tile-icon">📦</span>
@@ -234,30 +231,16 @@
       <div class="tile-desc">Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory.</div>
     </div>
 
+    <!-- Invoice Processing -->
     <div class="tile">
       <div class="tile-top">
-        <span class="tile-icon">🗂️</span>
-        <span class="tile-title">Catalog Management</span>
+        <span class="tile-icon">🧾</span>
+        <span class="tile-title">Invoice Processing</span>
       </div>
-      <div class="tile-desc">Control SKUs, pricing, and product content from one place — so agents always sell with accurate information.</div>
+      <div class="tile-desc">Automate invoice processing and eliminate hours of manual data entry for email and paper documents.</div>
     </div>
 
-    <div class="tile">
-      <div class="tile-top">
-        <span class="tile-icon">👥</span>
-        <span class="tile-title">CRM</span>
-      </div>
-      <div class="tile-desc">Build a CRM tailored to your specific industry, workflow, and processes for easier customer management.</div>
-    </div>
-
-    <div class="tile">
-      <div class="tile-top">
-        <span class="tile-icon">🤝</span>
-        <span class="tile-title">Vendor Management</span>
-      </div>
-      <div class="tile-desc">Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards.</div>
-    </div>
-
+    <!-- Logistics -->
     <div class="tile">
       <div class="tile-top">
         <span class="tile-icon">🚚</span>
@@ -266,6 +249,7 @@
       <div class="tile-desc">Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations.</div>
     </div>
 
+    <!-- Warehouse Management -->
     <div class="tile">
       <div class="tile-top">
         <span class="tile-icon">🏭</span>
@@ -274,12 +258,40 @@
       <div class="tile-desc">Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout.</div>
     </div>
 
+    <!-- Procurement -->
     <div class="tile">
       <div class="tile-top">
         <span class="tile-icon">🛒</span>
         <span class="tile-title">Procurement</span>
       </div>
       <div class="tile-desc">Keep on top of orders, vendors, and budgets with an app customized to how your team sources and controls spend.</div>
+    </div>
+
+    <!-- Vendor Management -->
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🤝</span>
+        <span class="tile-title">Vendor Management</span>
+      </div>
+      <div class="tile-desc">Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards.</div>
+    </div>
+
+    <!-- Knowledge Base -->
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">📚</span>
+        <span class="tile-title">Knowledge Base</span>
+      </div>
+      <div class="tile-desc">Equip your field teams with the knowledge, answers, and resources they need in one dedicated app.</div>
+    </div>
+
+    <!-- Offline Support -->
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">📡</span>
+        <span class="tile-title">Offline Support</span>
+      </div>
+      <div class="tile-desc">Keep core operations running smoothly even when agents lose internet connection in the field.</div>
     </div>
 
   </div>
