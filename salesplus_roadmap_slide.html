@@ -9,7 +9,7 @@
 
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: #f0f0f8;
+    background: #e8edf8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@
     background: #ffffff;
     border-radius: 24px;
     padding: 44px 52px 40px;
-    box-shadow: 0 20px 60px rgba(100, 90, 200, 0.12);
+    box-shadow: 0 20px 60px rgba(27, 84, 248, 0.1);
   }
 
   /* ── Header ── */
@@ -34,14 +34,14 @@
     gap: 10px;
   }
 
-  .logo {
-    width: 52px; height: 52px;
-    background: linear-gradient(135deg, #7C6FF7, #5B54E8);
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 8px 20px rgba(124,111,247,0.35);
+  /* Sales+ Logo — SVG recreation */
+  .logo-svg {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-shrink: 0;
   }
-  .logo svg { width: 30px; height: 30px; fill: white; }
 
   .header h1 {
     font-size: 32px;
@@ -66,7 +66,7 @@
   /* ── Cards ── */
   .card {
     background: #ffffff;
-    border: 1.5px solid #ececf4;
+    border: 1.5px solid #e8edf8;
     border-radius: 16px;
     padding: 14px 16px;
     display: flex;
@@ -75,24 +75,18 @@
     transition: box-shadow 0.2s, border-color 0.2s;
   }
   .card:hover {
-    box-shadow: 0 6px 24px rgba(100,90,200,0.1);
-    border-color: rgba(124,111,247,0.3);
+    box-shadow: 0 6px 24px rgba(27, 84, 248, 0.1);
+    border-color: rgba(27, 84, 248, 0.25);
   }
 
   .card-icon {
     width: 46px; height: 46px;
     border-radius: 13px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
+    font-size: 21px;
     flex-shrink: 0;
+    background: linear-gradient(135deg, #dce8ff, #c0d4ff);
   }
-  .icon-purple { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
-  .icon-blue   { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
-  .icon-green  { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
-  .icon-amber  { background: linear-gradient(135deg, #fef3c7, #fde68a); }
-  .icon-pink   { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
-  .icon-sky    { background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
-  .icon-gray   { background: linear-gradient(135deg, #f3f4f6, #e5e7eb); }
 
   .card-body { flex: 1; min-width: 0; }
   .card-title {
@@ -125,9 +119,17 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="logo">
-      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    </div>
+    <!-- Sales+ logo recreation as inline SVG -->
+    <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="16" fill="#1B54F8"/>
+      <!-- Yellow + sign -->
+      <rect x="10" y="20" width="5" height="14" rx="2" fill="#D4E84A"/>
+      <rect x="5.5" y="24.5" width="14" height="5" rx="2" fill="#D4E84A"/>
+      <!-- "Sales" text -->
+      <text x="19" y="30" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white" letter-spacing="-0.3">Sales</text>
+      <!-- "Plus" text -->
+      <text x="19" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white" letter-spacing="-0.3">Plus</text>
+    </svg>
     <h1>What's Coming Next for Sales+</h1>
     <p>Long-term product roadmap · CEO Briefing · May 2026</p>
   </div>
@@ -136,7 +138,7 @@
   <div class="grid">
 
     <div class="card">
-      <div class="card-icon icon-purple">🗺️</div>
+      <div class="card-icon">🗺️</div>
       <div class="card-body">
         <div class="card-title">Visit Module</div>
         <div class="card-desc">Plan, log & track customer visits in the field</div>
@@ -144,7 +146,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-green">💵</div>
+      <div class="card-icon">💵</div>
       <div class="card-body">
         <div class="card-title">Cash Orders Deposit</div>
         <div class="card-desc">Record & reconcile cash collections on delivery</div>
@@ -152,7 +154,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-blue">✏️</div>
+      <div class="card-icon">✏️</div>
       <div class="card-body">
         <div class="card-title">Edit Order — App Side</div>
         <div class="card-desc">Agents modify confirmed orders without duplicates</div>
@@ -160,7 +162,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-pink">🏷️</div>
+      <div class="card-icon">🏷️</div>
       <div class="card-body">
         <div class="card-title">Discount Configs</div>
         <div class="card-desc">Configurable discount rules, limits & approval controls</div>
@@ -168,7 +170,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-sky">📤</div>
+      <div class="card-icon">📤</div>
       <div class="card-body">
         <div class="card-title">Export Lists</div>
         <div class="card-desc">Export sales, orders & inventory from admin panel</div>
@@ -176,7 +178,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-purple">🔔</div>
+      <div class="card-icon">🔔</div>
       <div class="card-body">
         <div class="card-title">Notifications Center</div>
         <div class="card-desc">Real-time alerts for orders, approvals & key events</div>
@@ -184,7 +186,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-green">💰</div>
+      <div class="card-icon">💰</div>
       <div class="card-body">
         <div class="card-title">Agent Payout</div>
         <div class="card-desc">Calculate & process payouts based on completed deliveries</div>
@@ -192,7 +194,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-purple">⚙️</div>
+      <div class="card-icon">⚙️</div>
       <div class="card-body">
         <div class="card-title">Commissions Config</div>
         <div class="card-desc">Flexible commission rules based on sales criteria</div>
@@ -200,7 +202,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-blue">📊</div>
+      <div class="card-icon">📊</div>
       <div class="card-body">
         <div class="card-title">Agent Performance Dashboard</div>
         <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
@@ -208,7 +210,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-pink">💲</div>
+      <div class="card-icon">💲</div>
       <div class="card-body">
         <div class="card-title">Dynamic Pricelists</div>
         <div class="card-desc">Customer-specific pricelists managed from admin</div>
@@ -216,7 +218,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-amber">🏆</div>
+      <div class="card-icon">🏆</div>
       <div class="card-body">
         <div class="card-title">Agent Rewards Program</div>
         <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
@@ -224,7 +226,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-purple">🤖</div>
+      <div class="card-icon">🤖</div>
       <div class="card-body">
         <div class="card-title">AI Assistant</div>
         <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
@@ -232,7 +234,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-blue">📈</div>
+      <div class="card-icon">📈</div>
       <div class="card-body">
         <div class="card-title">BI Rich Dashboards</div>
         <div class="card-desc">Business intelligence-powered insights & analytics</div>
@@ -240,7 +242,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-green">🏪</div>
+      <div class="card-icon">🏪</div>
       <div class="card-body">
         <div class="card-title">Merchandising Module</div>
         <div class="card-desc">Audit shelves & track store presence in the field</div>
@@ -248,7 +250,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-sky">🔍</div>
+      <div class="card-icon">🔍</div>
       <div class="card-body">
         <div class="card-title">Market Research</div>
         <div class="card-desc">Deploy field surveys for instant market insights</div>
@@ -256,7 +258,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-pink">🎯</div>
+      <div class="card-icon">🎯</div>
       <div class="card-body">
         <div class="card-title">Agent Targets</div>
         <div class="card-desc">Agents track personal goals & progress live</div>
@@ -264,7 +266,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-amber">🎁</div>
+      <div class="card-icon">🎁</div>
       <div class="card-body">
         <div class="card-title">Gift Management</div>
         <div class="card-desc">Distribute brand gifts with full visibility & control</div>
@@ -272,7 +274,7 @@
     </div>
 
     <div class="card">
-      <div class="card-icon icon-gray">🔐</div>
+      <div class="card-icon">🔐</div>
       <div class="card-body">
         <div class="card-title">Approval Flows</div>
         <div class="card-desc">Multi-tier approval workflows for orders, discounts & credit</div>
