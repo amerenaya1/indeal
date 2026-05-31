@@ -121,6 +121,12 @@ tr:last-child td{border-bottom:none}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.kpis,.step-grid,.sprint-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
 @media print{html,body{overflow:visible!important;height:auto!important}body.nav-forward .slide:not(.active),body.nav-back .slide:not(.active){transform:none!important}.deck{overflow:visible!important;height:auto!important;position:relative!important}.slide{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;transform:none!important;page-break-after:always;break-after:page;height:100vh;overflow:hidden!important;padding:40px 60px 40px!important}.slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}.progress,.controls,.hint{display:none!important}h1,h2{-webkit-text-fill-color:#1d1d1f!important;background:none!important;color:#1d1d1f!important}#init-sidebar{display:none!important}}
 .quad-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.grp-hdr td{font-weight:700;font-size:12px;letter-spacing:.04em;padding:7px 16px!important;border:none!important;color:#fff}
+.grp-hdr.foundation td{background:#1d4ed8}
+.grp-hdr.kyc td{background:#7c3aed}
+.grp-hdr.investment td{background:#16a34a}
+.badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600;white-space:nowrap;color:#fff}
+.b-high{background:#16a34a}.b-med{background:#ea580c}.b-low{background:#16a34a}.b-high-eff{background:#dc2626}
 .quad{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
 .quad-label{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--ink)}
 .quad-sub{font-size:11px;color:var(--mute);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
@@ -222,22 +228,25 @@ tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
   <div class="body">
     <h2>14 initiatives across the full funnel.</h2>
     <table style="margin-top:16px">
-      <thead><tr><th>#</th><th>Initiative</th><th>Type</th><th>ICE Score</th></tr></thead>
+      <thead><tr><th>#</th><th>Initiative</th><th>Type</th><th>Impact</th><th>Effort</th></tr></thead>
       <tbody>
-        <tr class="clickable-row" onclick="openInitSidebar(1)"><td style="color:var(--brand-text);font-weight:700">01</td><td>Emotional splash screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup →</span></td><td>Design</td><td><strong>8</strong></td></tr>
-        <tr class="clickable-row" onclick="openInitSidebar(2)"><td style="color:var(--brand-text);font-weight:700">02</td><td>One-tap registration <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup →</span></td><td>Product</td><td><strong>8</strong></td></tr>
-        <tr><td>03</td><td>First-time investment wizard</td><td>AI + Product</td><td><strong>9</strong></td></tr>
-        <tr><td>04</td><td>KYC roadmap with save &amp; resume</td><td>Product</td><td><strong>9</strong></td></tr>
-        <tr><td>05</td><td>KYC motivation layer</td><td>Design</td><td><strong>7</strong></td></tr>
-        <tr><td>06</td><td>AI OCR document capture</td><td>AI</td><td><strong>8</strong></td></tr>
-        <tr><td>07</td><td>AI chatbot with human-in-the-loop</td><td>AI</td><td><strong>7</strong></td></tr>
-        <tr><td>08</td><td>Persistent KYC progress widget</td><td>Product</td><td><strong>7</strong></td></tr>
-        <tr><td>09</td><td>Smart empty state</td><td>Product</td><td><strong>8</strong></td></tr>
-        <tr><td>10</td><td>New investor wallet credit</td><td>GTM</td><td><strong>7</strong></td></tr>
-        <tr><td>11</td><td>Retargeting - AI drop-off detection</td><td>AI + GTM</td><td><strong>8</strong></td></tr>
-        <tr><td>12</td><td>Property launch events</td><td>GTM</td><td><strong>7</strong></td></tr>
-        <tr><td>13</td><td>Investor story campaigns</td><td>GTM</td><td><strong>6</strong></td></tr>
-        <tr><td>14</td><td>Referral program</td><td>GTM</td><td><strong>6</strong></td></tr>
+        <tr class="grp-hdr foundation"><td colspan="5">Foundation</td></tr>
+        <tr><td style="color:var(--brand-text);font-weight:700">01</td><td>Funnel instrumentation &amp; analytics</td><td>Product + Eng</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="grp-hdr kyc"><td colspan="5">Conversion - KYC</td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(1)"><td style="color:var(--brand-text);font-weight:700">02</td><td>Value-led landing screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Design</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(2)"><td style="color:var(--brand-text);font-weight:700">03</td><td>One-tap registration <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr><td>04</td><td>First-time investment wizard</td><td>AI + Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr><td>05</td><td>KYC roadmap with save &amp; resume</td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr><td>06</td><td>KYC motivation layer</td><td>Design</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr><td>07</td><td>AI OCR document capture</td><td>AI</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr><td>08</td><td>AI chatbot with human-in-the-loop</td><td>AI</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr><td>09</td><td>Persistent KYC progress widget</td><td>Product</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="grp-hdr investment"><td colspan="5">Conversion - Investment</td></tr>
+        <tr><td>10</td><td>Smart empty state</td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr><td>11</td><td>Rewards program</td><td>Product + GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr><td>12</td><td>Retargeting - AI drop-off detection</td><td>AI + GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-high-eff">High</span></td></tr>
+        <tr><td>13</td><td>Property launch events</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr><td>14</td><td>Investor story campaigns</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -567,8 +576,8 @@ function toggleDark(){
 
 <script>
 var SB_INITS = {
-  1: { eyebrow:'Initiative 01 · Design · ICE 8', title:'Emotional Splash Screen', src:'prypco-mint-landing.html' },
-  2: { eyebrow:'Initiative 02 · Product · ICE 8', title:'One-Tap Registration', src:'prypco-mint-landing-modal.html' }
+  1: { eyebrow:'Initiative 02 · Design', title:'Value-led Landing Screen', src:'prypco-mint-landing.html' },
+  2: { eyebrow:'Initiative 03 · Product', title:'One-Tap Registration', src:'prypco-mint-landing-modal.html' }
 };
 function openInitSidebar(num){
   var cfg = SB_INITS[num] || SB_INITS[1];
