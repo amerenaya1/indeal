@@ -65,8 +65,8 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .pipe-step h4{font-size:13px;font-weight:600;margin-bottom:4px}
 .pipe-step p{font-size:11.5px;color:var(--mute);line-height:1.4}
 .pipe-card{flex:1;min-width:160px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 14px 16px;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden}
-.pipe-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--brand)}
-.pc-num{width:44px;height:44px;border-radius:50%;background:transparent;border:2px solid var(--brand);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--brand-text);margin-bottom:14px}
+.pipe-card::before{display:none}
+.pc-num{width:44px;height:44px;border-radius:50%;background:transparent;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#F2F3F7;margin-bottom:14px}
 .pc-title{font-size:14px;font-weight:700;color:var(--ink);text-align:center;margin-bottom:6px}
 .pc-tool{font-size:12px;font-weight:600;color:var(--brand-text);text-align:center;margin-bottom:12px}
 .pc-desc{font-size:11.5px;color:var(--mute);line-height:1.5;text-align:center;flex:1}
@@ -159,30 +159,30 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="body">
     <h2>Localization ≠ translation.</h2>
-    <p class="lead" style="margin-bottom:16px">Most teams ship the 20% and call it done. The 80% is what makes the product actually feel Arabic.</p>
+    <p class="lead" style="margin-bottom:10px">Most teams ship the 20% and call it done. The 80% is what makes the product actually feel Arabic.</p>
     <!-- Split bar -->
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-      <div style="display:flex;height:10px;border-radius:99px;overflow:hidden;flex:1">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+      <div style="display:flex;height:8px;border-radius:99px;overflow:hidden;flex:1">
         <div style="width:20%;background:var(--line);flex-shrink:0"></div>
         <div style="flex:1;background:var(--brand)"></div>
       </div>
       <span style="font-size:11px;color:var(--mute);white-space:nowrap">20% · 80%</span>
     </div>
     <!-- Asymmetric columns -->
-    <div style="display:grid;grid-template-columns:1fr 3fr;gap:16px;flex:1;min-height:0">
+    <div style="display:grid;grid-template-columns:1fr 3fr;gap:12px;flex:1;min-height:0">
       <!-- 20% -->
-      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:6px">
-        <div style="font-size:58px;font-weight:800;color:var(--mute);line-height:1">20%</div>
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:4px;padding:16px">
+        <div style="font-size:52px;font-weight:800;color:var(--mute);line-height:1">20%</div>
         <div style="font-size:15px;font-weight:700;color:var(--ink)">Translation</div>
-        <div style="font-size:13px;color:var(--mute);line-height:1.5;margin-top:4px">Machine translation via Claude API. Automated, fast, solved.</div>
+        <div style="font-size:13px;color:var(--mute);line-height:1.5;margin-top:2px">Machine translation via Claude API. Automated, fast, solved.</div>
       </div>
       <!-- 80% -->
-      <div class="card" style="border-top:3px solid var(--brand)">
-        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:16px">
-          <span style="font-size:52px;font-weight:800;color:var(--brand-text);line-height:1">80%</span>
-          <span style="font-size:17px;font-weight:700;color:var(--ink);line-height:1.3">Localization — the hard part that makes it feel Arabic</span>
+      <div class="card" style="padding:16px">
+        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:12px">
+          <span style="font-size:48px;font-weight:800;color:var(--brand-text);line-height:1">80%</span>
+          <span style="font-size:16px;font-weight:700;color:var(--ink);line-height:1.3">Localization — the hard part that makes it feel Arabic</span>
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div>
             <div style="font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--brand-text);margin-bottom:5px">RTL Layout</div>
             <div style="font-size:13px;color:var(--mute);line-height:1.5">Every flex row, margin, padding, icon and nav bar mirrored. Not just flipped — rebuilt.</div>
@@ -351,70 +351,7 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- SLIDE 6: CONTEXT -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Context-Aware MT</span></div>
-    <span style="font-size:12px;color:var(--mute)">6 / 14</span>
-  </div>
-  <div class="body">
-    <h2>Why context changes everything.</h2>
-    <p class="lead">The same English word translates differently depending on where it lives in the app.</p>
-    <div class="cards-3" style="margin-top:4px">
-      <div class="card">
-        <h3>"Back"</h3>
-        <div style="display:flex;gap:12px;margin-top:8px">
-          <div class="ctx-wrong">
-            <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
-            <div style="font-size:18px;font-weight:700">خلف</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">physical direction</div>
-          </div>
-          <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
-            <div style="font-size:18px;font-weight:700">رجوع</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">navigation CTA</div>
-          </div>
-        </div>
-        <div class="code-block" style="margin-top:10px;font-size:11px">screen: InvestmentDetail<br>element: TouchableOpacity<br>role: cta</div>
-      </div>
-      <div class="card">
-        <h3>"Balance"</h3>
-        <div style="display:flex;gap:12px;margin-top:8px">
-          <div class="ctx-wrong">
-            <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
-            <div style="font-size:18px;font-weight:700">توازن</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">equilibrium</div>
-          </div>
-          <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
-            <div style="font-size:18px;font-weight:700">الرصيد</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">account balance</div>
-          </div>
-        </div>
-        <div class="code-block" style="margin-top:10px;font-size:11px">screen: Wallet<br>element: Text<br>role: form_label</div>
-      </div>
-      <div class="card">
-        <h3>"Available"</h3>
-        <div style="display:flex;gap:12px;margin-top:8px">
-          <div class="ctx-wrong">
-            <div style="font-size:10px;color:var(--red);font-weight:700;text-transform:uppercase;margin-bottom:4px">Without context</div>
-            <div style="font-size:18px;font-weight:700">متاح</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">general meaning</div>
-          </div>
-          <div class="ctx-right">
-            <div style="font-size:10px;color:var(--brand-text);font-weight:700;text-transform:uppercase;margin-bottom:4px">With context</div>
-            <div style="font-size:18px;font-weight:700">المتاح</div>
-            <div style="font-size:11px;color:var(--mute);margin-top:2px">financial available</div>
-          </div>
-        </div>
-        <div class="code-block" style="margin-top:10px;font-size:11px">screen: Wallet<br>element: Text<br>role: form_label</div>
-      </div>
-    </div>
-    <p style="font-size:13px;color:var(--mute);margin-top:14px">The extractor captures screen, component, element type, role (cta / placeholder / label), and 6 sibling strings - all passed to Claude with every translation request.</p>
-  </div>
-</div>
-
-<!-- SLIDE 7: AUTOMATED PIPELINE -->
+<!-- SLIDE 6: AUTOMATED PIPELINE -->
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">CI/CD Integration</span></div>
@@ -430,21 +367,6 @@ tr:last-child td{border-bottom:none}
       <div class="pipe-step"><div class="pnum">4</div><h4>Claude API + context</h4><p>Role, screen, siblings injected</p></div>
       <div class="pipe-step"><div class="pnum">5</div><h4>ar.json updated</h4><p>Bot commits back to main</p></div>
       <div class="pipe-step"><div class="pnum">6</div><h4>PR comment + QA checks</h4><p>Coverage, placeholders, truncation risk</p></div>
-    </div>
-    <div class="cards-2" style="margin-top:14px">
-      <div class="card bot-card">
-        <h3 style="color:var(--brand-text)">🤖 l10n-bot commented</h3>
-        <div class="code-block" style="margin-top:8px;font-size:11.5px">🌐 Localization: 4 strings translated<br><span style="color:var(--green)">✓</span> screens.kyc.upload_step → Upload Emirates ID<br><span style="color:var(--green)">✓</span> components.wallet.available → Available<br><span style="color:var(--green)">✓</span> screens.invest.cta_back → Back<br><span style="color:var(--green)">✓</span> components.form.full_name → Enter your full name</div>
-      </div>
-      <div class="card">
-        <h3>Guardrails</h3>
-        <ul>
-          <li><strong>ESLint i18n rule</strong> - blocks PRs with new hardcoded strings</li>
-          <li><strong>Placeholder check</strong> - ar.json {name} / %s must match en.json</li>
-          <li><strong>Coverage gate</strong> - 100% key coverage required to merge</li>
-          <li><strong>Truncation risk</strong> - Arabic strings flagged if &gt;40% longer than EN</li>
-        </ul>
-      </div>
     </div>
   </div>
 </div>
@@ -472,49 +394,7 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- SLIDE 9: CODE CHANGES -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Implementation</span></div>
-    <span style="font-size:12px;color:var(--mute)">9 / 14</span>
-  </div>
-  <div class="body">
-    <h2>What the code actually changes.</h2>
-    <p class="lead">Four types of change - only one is a string replacement.</p>
-    <div class="cards-2" style="margin-top:8px">
-      <div class="card">
-        <h3>String - AI handles via AST codemod</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">&lt;Text&gt;Invest Now&lt;/Text&gt;</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">&lt;Text&gt;{t('cta.invest_now')}&lt;/Text&gt;</div>
-      </div>
-      <div class="card">
-        <h3>Layout - CSS logical properties</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">style={{ marginLeft: 16 }}</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">style={{ marginStart: 16 }}</div>
-      </div>
-      <div class="card">
-        <h3>Icon - Conditional mirror</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">&lt;ArrowRight /&gt;</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">&lt;ArrowRight style={{transform:[{scaleX: isRTL ? -1 : 1}]}} /&gt;</div>
-      </div>
-      <div class="card">
-        <h3>Format - i18n number formatter</h3>
-        <div class="code-label" style="margin-top:8px">Before</div>
-        <div class="code-block">amount + ' AED'</div>
-        <div class="code-label">After</div>
-        <div class="code-block code-after">formatCurrency(amount, locale)</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SLIDE 10: QA -->
+<!-- SLIDE 9: QA -->
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Quality Assurance</span></div>
@@ -642,7 +522,7 @@ tr:last-child td{border-bottom:none}
   const progFill = document.getElementById('progFill');
   const counterEl = document.getElementById('counter');
   if(tot) tot.textContent = slides.length;
-  const slideTitles = ['Cover','Localization ≠ Translation','Five Layers','Visual Assets','AI Pipeline','Context-Aware MT','Automated Pipeline','10-Day Sprint Plan','Code Changes','QA Validation','Acceptance Criteria','Success Metrics','Risks','Closing'];
+  const slideTitles = ['Cover','Localization ≠ Translation','Five Layers','Visual Assets','AI Pipeline','Automated Pipeline','10-Day Sprint Plan','QA Validation','Acceptance Criteria','Success Metrics','Risks','Closing'];
   const menu = document.createElement('div');
   const menuItems = [];
   menu.className = 'slide-menu';
