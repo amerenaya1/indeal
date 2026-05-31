@@ -35,108 +35,101 @@
   }
 
   .logo-svg {
-    width: 64px; height: 64px;
-    border-radius: 16px;
+    width: 56px; height: 56px;
+    border-radius: 14px;
     overflow: hidden;
     flex-shrink: 0;
   }
 
   .header h1 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 800;
     color: #1a1a2e;
-    letter-spacing: -0.6px;
-    text-align: left;
+    letter-spacing: -0.5px;
   }
   .header p {
-    font-size: 14px;
+    font-size: 13px;
     color: #8b8fa8;
-    text-align: left;
   }
   .header p.subtitle {
-    font-size: 15px;
+    font-size: 14px;
     color: #4b5063;
-    max-width: 680px;
+    max-width: 700px;
     line-height: 1.6;
   }
 
-  /* ── Groups layout ── */
-  .groups {
+  /* ── Grid ── */
+  .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
   }
 
-  .group {
+  /* ── Tile ── */
+  .tile {
+    border: 1.5px solid #e8edf8;
+    border-radius: 16px;
+    padding: 18px 18px 16px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-  }
-
-  .group-header {
-    display: flex;
-    align-items: center;
     gap: 8px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #1B54F8;
-    margin-bottom: 2px;
-  }
-  .group-icon {
-    font-size: 16px;
-  }
-  .group-title {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: #1B54F8;
-  }
-
-  /* ── Cards ── */
-  .card {
-    background: #ffffff;
-    border: 1.5px solid #e8edf8;
-    border-radius: 14px;
-    padding: 12px 14px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
     transition: box-shadow 0.2s, border-color 0.2s;
+    position: relative;
   }
-  .card:hover {
-    box-shadow: 0 4px 18px rgba(27, 84, 248, 0.1);
+  .tile:hover {
+    box-shadow: 0 4px 20px rgba(27, 84, 248, 0.09);
     border-color: rgba(27, 84, 248, 0.2);
   }
 
-  .card-num {
-    font-size: 18px;
-    font-weight: 700;
-    color: #d1d5e0;
-    flex-shrink: 0;
-    width: 28px;
-    line-height: 1.2;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.5px;
-    padding-top: 1px;
+  .tile-top {
+    display: flex;
+    align-items: center;
+    gap: 9px;
   }
-
-  .card-body { flex: 1; min-width: 0; }
-  .card-title {
+  .tile-icon {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .tile-title {
     font-size: 13px;
     font-weight: 700;
-    color: #1a1a2e;
-    line-height: 1.3;
-    margin-bottom: 2px;
+    color: #1B54F8;
+    letter-spacing: 0.1px;
   }
-  .card-desc {
-    font-size: 11px;
+  .tile-desc {
+    font-size: 11.5px;
     color: #8b8fa8;
-    line-height: 1.4;
+    line-height: 1.5;
+  }
+
+  /* Items list inside tile */
+  .tile-items {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .tile-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 11.5px;
+    color: #4b5063;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .tile-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #d1d5e0;
+    flex-shrink: 0;
+    margin-top: 4px;
   }
 
   /* ── Footer ── */
   .footer {
-    margin-top: 28px;
+    margin-top: 24px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -163,132 +156,133 @@
     <p>Long-term product roadmap · CEO Briefing · May 2026</p>
   </div>
 
-  <!-- Grouped Cards -->
-  <div class="groups">
+  <!-- Tiles -->
+  <div class="grid">
 
-    <!-- Group 1: Field Operations -->
-    <div class="group">
-      <div class="group-header">
-        <span class="group-icon">🗺️</span>
-        <span class="group-title">Field Operations</span>
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🗺️</span>
+        <span class="tile-title">Field Operations</span>
       </div>
-      <div class="card">
-        <div class="card-num">01</div>
-        <div class="card-body">
-          <div class="card-title">Visit Module</div>
-          <div class="card-desc">Plan, log & track customer visits in the field</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">02</div>
-        <div class="card-body">
-          <div class="card-title">Agent Payout</div>
-          <div class="card-desc">Calculate & process payouts based on completed deliveries</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">03</div>
-        <div class="card-body">
-          <div class="card-title">Notifications Center</div>
-          <div class="card-desc">Real-time alerts for orders, approvals & key events</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">04</div>
-        <div class="card-body">
-          <div class="card-title">Merchandising Module</div>
-          <div class="card-desc">Audit shelves & track store presence in the field</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">05</div>
-        <div class="card-body">
-          <div class="card-title">Market Research</div>
-          <div class="card-desc">Deploy field surveys for instant market insights</div>
-        </div>
+      <div class="tile-desc">Coordinate agents on the ground with visit tracking, payout processing, and instant operational alerts.</div>
+      <div class="tile-items">
+        <div class="tile-item">Visit Module</div>
+        <div class="tile-item">Agent Payout</div>
+        <div class="tile-item">Notifications Center</div>
+        <div class="tile-item">Market Research</div>
       </div>
     </div>
 
-    <!-- Group 2: Commercial Controls -->
-    <div class="group">
-      <div class="group-header">
-        <span class="group-icon">⚙️</span>
-        <span class="group-title">Commercial Controls</span>
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">⚙️</span>
+        <span class="tile-title">Commercial Controls</span>
       </div>
-      <div class="card">
-        <div class="card-num">06</div>
-        <div class="card-body">
-          <div class="card-title">Discount Configs</div>
-          <div class="card-desc">Configurable discount rules, limits & approval controls</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">07</div>
-        <div class="card-body">
-          <div class="card-title">Dynamic Pricelists</div>
-          <div class="card-desc">Customer-specific pricelists managed from admin</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">08</div>
-        <div class="card-body">
-          <div class="card-title">Approval Flows</div>
-          <div class="card-desc">Multi-tier approval workflows for orders, discounts & credit</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">09</div>
-        <div class="card-body">
-          <div class="card-title">Gift Management</div>
-          <div class="card-desc">Distribute brand gifts with full visibility & control</div>
-        </div>
+      <div class="tile-desc">Set the rules that govern how your team sells — from pricing and discounts to approval workflows.</div>
+      <div class="tile-items">
+        <div class="tile-item">Discount Configs</div>
+        <div class="tile-item">Dynamic Pricelists</div>
+        <div class="tile-item">Approval Flows</div>
+        <div class="tile-item">Gift Management</div>
       </div>
     </div>
 
-    <!-- Group 3: Intelligence & Growth -->
-    <div class="group">
-      <div class="group-header">
-        <span class="group-icon">📈</span>
-        <span class="group-title">Intelligence & Growth</span>
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">📈</span>
+        <span class="tile-title">Intelligence & Growth</span>
       </div>
-      <div class="card">
-        <div class="card-num">10</div>
-        <div class="card-body">
-          <div class="card-title">Agent Performance Dashboard</div>
-          <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">11</div>
-        <div class="card-body">
-          <div class="card-title">Agent Rewards Program</div>
-          <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">12</div>
-        <div class="card-body">
-          <div class="card-title">Agent Targets</div>
-          <div class="card-desc">Agents track personal goals & progress live</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">13</div>
-        <div class="card-body">
-          <div class="card-title">AI Assistant</div>
-          <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">14</div>
-        <div class="card-body">
-          <div class="card-title">BI Rich Dashboards</div>
-          <div class="card-desc">Business intelligence-powered insights & analytics</div>
-        </div>
+      <div class="tile-desc">Turn field data into decisions — track agent performance, set targets, and surface insights through AI and BI.</div>
+      <div class="tile-items">
+        <div class="tile-item">Agent Performance Dashboard</div>
+        <div class="tile-item">Agent Rewards Program</div>
+        <div class="tile-item">Agent Targets</div>
+        <div class="tile-item">AI Assistant</div>
+        <div class="tile-item">BI Rich Dashboards</div>
       </div>
     </div>
 
-  </div><!-- /groups -->
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">📚</span>
+        <span class="tile-title">Knowledge Base</span>
+      </div>
+      <div class="tile-desc">Equip your field teams with the knowledge, answers, and resources they need in one dedicated app.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🧾</span>
+        <span class="tile-title">Invoice Processing</span>
+      </div>
+      <div class="tile-desc">Automate invoice processing and eliminate hours of manual data entry for email and paper documents.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">📡</span>
+        <span class="tile-title">Offline Support</span>
+      </div>
+      <div class="tile-desc">Keep core operations running smoothly even when agents lose internet connection in the field.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">📦</span>
+        <span class="tile-title">Inventory Management</span>
+      </div>
+      <div class="tile-desc">Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🗂️</span>
+        <span class="tile-title">Catalog Management</span>
+      </div>
+      <div class="tile-desc">Control SKUs, pricing, and product content from one place — so agents always sell with accurate information.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">👥</span>
+        <span class="tile-title">CRM</span>
+      </div>
+      <div class="tile-desc">Build a CRM tailored to your specific industry, workflow, and processes for easier customer management.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🤝</span>
+        <span class="tile-title">Vendor Management</span>
+      </div>
+      <div class="tile-desc">Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🚚</span>
+        <span class="tile-title">Logistics</span>
+      </div>
+      <div class="tile-desc">Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🏭</span>
+        <span class="tile-title">Warehouse Management</span>
+      </div>
+      <div class="tile-desc">Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout.</div>
+    </div>
+
+    <div class="tile">
+      <div class="tile-top">
+        <span class="tile-icon">🛒</span>
+        <span class="tile-title">Procurement</span>
+      </div>
+      <div class="tile-desc">Keep on top of orders, vendors, and budgets with an app customized to how your team sources and controls spend.</div>
+    </div>
+
+  </div>
 
   <!-- Footer -->
   <div class="footer">
