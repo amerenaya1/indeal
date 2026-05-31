@@ -34,10 +34,8 @@
     gap: 10px;
   }
 
-  /* Sales+ Logo — SVG recreation */
   .logo-svg {
-    width: 64px;
-    height: 64px;
+    width: 64px; height: 64px;
     border-radius: 16px;
     overflow: hidden;
     flex-shrink: 0;
@@ -62,57 +60,83 @@
     line-height: 1.6;
   }
 
-  /* ── Grid ── */
-  .grid {
+  /* ── Groups layout ── */
+  .groups {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1B54F8;
+    margin-bottom: 2px;
+  }
+  .group-icon {
+    font-size: 16px;
+  }
+  .group-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #1B54F8;
   }
 
   /* ── Cards ── */
   .card {
     background: #ffffff;
     border: 1.5px solid #e8edf8;
-    border-radius: 16px;
-    padding: 14px 16px;
+    border-radius: 14px;
+    padding: 12px 14px;
     display: flex;
     align-items: flex-start;
-    gap: 14px;
+    gap: 12px;
     transition: box-shadow 0.2s, border-color 0.2s;
   }
   .card:hover {
-    box-shadow: 0 6px 24px rgba(27, 84, 248, 0.1);
-    border-color: rgba(27, 84, 248, 0.25);
+    box-shadow: 0 4px 18px rgba(27, 84, 248, 0.1);
+    border-color: rgba(27, 84, 248, 0.2);
   }
 
-  .card-icon {
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
+  .card-num {
+    font-size: 18px;
     font-weight: 700;
     color: #d1d5e0;
     flex-shrink: 0;
+    width: 28px;
+    line-height: 1.2;
     font-variant-numeric: tabular-nums;
     letter-spacing: -0.5px;
+    padding-top: 1px;
   }
 
   .card-body { flex: 1; min-width: 0; }
   .card-title {
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 700;
     color: #1a1a2e;
     line-height: 1.3;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
   .card-desc {
-    font-size: 11.5px;
+    font-size: 11px;
     color: #8b8fa8;
     line-height: 1.4;
   }
 
   /* ── Footer ── */
   .footer {
-    margin-top: 24px;
+    margin-top: 28px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -127,15 +151,11 @@
 
   <!-- Header -->
   <div class="header">
-    <!-- Sales+ logo recreation as inline SVG -->
     <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <rect width="64" height="64" rx="16" fill="#1B54F8"/>
-      <!-- Yellow + sign -->
       <rect x="10" y="20" width="5" height="14" rx="2" fill="#D4E84A"/>
       <rect x="5.5" y="24.5" width="14" height="5" rx="2" fill="#D4E84A"/>
-      <!-- "Sales" text -->
       <text x="19" y="30" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white" letter-spacing="-0.3">Sales</text>
-      <!-- "Plus" text -->
       <text x="19" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white" letter-spacing="-0.3">Plus</text>
     </svg>
     <h1>What's Coming Next for Sales+</h1>
@@ -143,109 +163,140 @@
     <p>Long-term product roadmap · CEO Briefing · May 2026</p>
   </div>
 
-  <!-- Cards Grid -->
-  <div class="grid">
+  <!-- Grouped Cards -->
+  <div class="groups">
 
-    <div class="card">
-      <div class="card-icon">01</div>
-      <div class="card-body">
-        <div class="card-title">Visit Module</div>
-        <div class="card-desc">Plan, log & track customer visits in the field</div>
+    <!-- Group 1: Field Operations -->
+    <div class="group">
+      <div class="group-header">
+        <span class="group-icon">🗺️</span>
+        <span class="group-title">Field Operations</span>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">02</div>
-      <div class="card-body">
-        <div class="card-title">Discount Configs</div>
-        <div class="card-desc">Configurable discount rules, limits & approval controls</div>
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-body">
+          <div class="card-title">Visit Module</div>
+          <div class="card-desc">Plan, log & track customer visits in the field</div>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">03</div>
-      <div class="card-body">
-        <div class="card-title">Notifications Center</div>
-        <div class="card-desc">Real-time alerts for orders, approvals & key events</div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <div class="card-body">
+          <div class="card-title">Notifications Center</div>
+          <div class="card-desc">Real-time alerts for orders, approvals & key events</div>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">04</div>
-      <div class="card-body">
-        <div class="card-title">Agent Payout</div>
-        <div class="card-desc">Calculate & process payouts based on completed deliveries</div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-body">
+          <div class="card-title">Merchandising Module</div>
+          <div class="card-desc">Audit shelves & track store presence in the field</div>
+        </div>
       </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">05</div>
-      <div class="card-body">
-        <div class="card-title">Agent Performance Dashboard</div>
-        <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">06</div>
-      <div class="card-body">
-        <div class="card-title">Dynamic Pricelists</div>
-        <div class="card-desc">Customer-specific pricelists managed from admin</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">07</div>
-      <div class="card-body">
-        <div class="card-title">Agent Rewards Program</div>
-        <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">08</div>
-      <div class="card-body">
-        <div class="card-title">AI Assistant</div>
-        <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">09</div>
-      <div class="card-body">
-        <div class="card-title">BI Rich Dashboards</div>
-        <div class="card-desc">Business intelligence-powered insights & analytics</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">10</div>
-      <div class="card-body">
-        <div class="card-title">Merchandising Module</div>
-        <div class="card-desc">Audit shelves & track store presence in the field</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">11</div>
-      <div class="card-body">
-        <div class="card-title">Market Research</div>
-        <div class="card-desc">Deploy field surveys for instant market insights</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">12</div>
-      <div class="card-body">
-        <div class="card-title">Agent Targets</div>
-        <div class="card-desc">Agents track personal goals & progress live</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">13</div>
-      <div class="card-body">
-        <div class="card-title">Gift Management</div>
-        <div class="card-desc">Distribute brand gifts with full visibility & control</div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon">14</div>
-      <div class="card-body">
-        <div class="card-title">Approval Flows</div>
-        <div class="card-desc">Multi-tier approval workflows for orders, discounts & credit</div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <div class="card-body">
+          <div class="card-title">Market Research</div>
+          <div class="card-desc">Deploy field surveys for instant market insights</div>
+        </div>
       </div>
     </div>
 
-  </div>
+    <!-- Group 2: Agent Management -->
+    <div class="group">
+      <div class="group-header">
+        <span class="group-icon">👤</span>
+        <span class="group-title">Agent Management</span>
+      </div>
+      <div class="card">
+        <div class="card-num">05</div>
+        <div class="card-body">
+          <div class="card-title">Agent Payout</div>
+          <div class="card-desc">Calculate & process payouts based on completed deliveries</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">06</div>
+        <div class="card-body">
+          <div class="card-title">Agent Performance Dashboard</div>
+          <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">07</div>
+        <div class="card-body">
+          <div class="card-title">Agent Rewards Program</div>
+          <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">08</div>
+        <div class="card-body">
+          <div class="card-title">Agent Targets</div>
+          <div class="card-desc">Agents track personal goals & progress live</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 3: Commercial Controls -->
+    <div class="group">
+      <div class="group-header">
+        <span class="group-icon">⚙️</span>
+        <span class="group-title">Commercial Controls</span>
+      </div>
+      <div class="card">
+        <div class="card-num">09</div>
+        <div class="card-body">
+          <div class="card-title">Discount Configs</div>
+          <div class="card-desc">Configurable discount rules, limits & approval controls</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">10</div>
+        <div class="card-body">
+          <div class="card-title">Dynamic Pricelists</div>
+          <div class="card-desc">Customer-specific pricelists managed from admin</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">11</div>
+        <div class="card-body">
+          <div class="card-title">Approval Flows</div>
+          <div class="card-desc">Multi-tier approval workflows for orders, discounts & credit</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">12</div>
+        <div class="card-body">
+          <div class="card-title">Gift Management</div>
+          <div class="card-desc">Distribute brand gifts with full visibility & control</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group 4: Intelligence & Growth -->
+    <div class="group">
+      <div class="group-header">
+        <span class="group-icon">📈</span>
+        <span class="group-title">Intelligence & Growth</span>
+      </div>
+      <div class="card">
+        <div class="card-num">13</div>
+        <div class="card-body">
+          <div class="card-title">AI Assistant</div>
+          <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">14</div>
+        <div class="card-body">
+          <div class="card-title">BI Rich Dashboards</div>
+          <div class="card-desc">Business intelligence-powered insights & analytics</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /groups -->
 
   <!-- Footer -->
   <div class="footer">
