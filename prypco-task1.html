@@ -244,7 +244,7 @@ tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
     <span style="font-size:12px;color:var(--mute)">4 / 6</span>
   </div>
   <div class="body" style="justify-content:flex-start">
-    <h2 style="font-size:32px;margin-bottom:10px">14 initiatives across the full funnel.</h2>
+    <h2 style="font-size:32px;margin-bottom:10px">15 initiatives across the full funnel.</h2>
     <table class="tbl-sm" style="margin-top:10px;font-size:12px">
       <thead><tr><th>#</th><th>Initiative</th><th>Type</th><th>Impact</th><th>Effort</th></tr></thead>
       <tbody>
@@ -265,6 +265,7 @@ tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
         <tr class="clickable-row" onclick="openInitSidebar(12)"><td>12</td><td>Retargeting - AI drop-off detection</td><td>AI + GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-high-eff">High</span></td></tr>
         <tr class="clickable-row" onclick="openInitSidebar(13)"><td>13</td><td>Property launch events</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
         <tr class="clickable-row" onclick="openInitSidebar(14)"><td>14</td><td>Investor story campaigns</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(15)"><td>15</td><td>Targeted campaigns</td><td>GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -292,7 +293,7 @@ tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
   <div class="body" style="justify-content:center;align-items:center;text-align:center">
     <h1>The goal is simple:<br>make them fall in love<br>before asking for anything.</h1>
     <div class="bullets" style="margin-top:28px">
-      <span>14 initiatives · 3 sprints · KYC 18% → 36% · Investment 5% → 15%</span>
+      <span>15 initiatives · 3 sprints · KYC 18% → 36% · Investment 5% → 15%</span>
       <span>AI handles friction - OCR, chatbot, routing, retargeting, recommendations</span>
       <span>Every drop-off point has a specific recovery sequence</span>
       <span>Supply + experience + trust = conversion</span>
@@ -442,7 +443,8 @@ var SB_INITS = {
   11: { eyebrow:'Initiative 11 · Product + GTM', title:'Rewards Program', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'Product + GTM', desc:'Milestone rewards tied to funnel progression, not just sign-up. Registration credit unlocks at email entry. KYC completion bonus activates on verification. First-investment reward triggers at payment. Each milestone is segmented by user type - UAE residents, international investors, first-timers - so the incentive targets the exact friction point blocking that cohort from converting. Designed to pull users through both the KYC and investment funnels simultaneously.', src:null },
   12: { eyebrow:'Initiative 12 · AI + GTM', title:'Retargeting - AI Drop-off Detection', impact:'High', effort:'High', sprint:'Sprint 2', team:'AI + GTM', desc:'6 specific re-engagement sequences. Each drop-off point has a personalized WhatsApp/push recovery.', src:null },
   13: { eyebrow:'Initiative 13 · GTM', title:'Property Launch Events', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'GTM', desc:'Every listing treated as a product launch moment. Countdown, early access, live funding updates.', src:null },
-  14: { eyebrow:'Initiative 14 · GTM', title:'Investor Story Campaigns', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'GTM', desc:'Weekly anonymized return stories matched to user profile. Keeps the dream alive between launches.', src:null }
+  14: { eyebrow:'Initiative 14 · GTM', title:'Investor Story Campaigns', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'GTM', desc:'Weekly anonymized return stories matched to user profile. Keeps the dream alive between launches.', src:null },
+  15: { eyebrow:'Initiative 15 · GTM', title:'Targeted Campaigns', impact:'High', effort:'Low', sprint:'Sprint 2', team:'GTM', desc:'Reach the right user with the right message at the right moment.', descHTML:'<div style="display:flex;flex-direction:column;gap:16px"><div><div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C8F564;margin-bottom:8px">New investors <span style="font-weight:400;text-transform:none;letter-spacing:0;color:rgba(242,243,247,.4);font-size:11px">(KYC complete, never invested)</span></div><div style="display:flex;flex-direction:column;gap:5px"><p style="font-size:13px;color:rgba(242,243,247,.8);font-style:italic;margin-bottom:4px">"You\'re verified — your first investment is one tap away"</p><div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:13px;color:rgba(242,243,247,.55)">Highlights the lowest entry point: AED 500</p><p style="font-size:13px;color:rgba(242,243,247,.55)">Shows a property matched to their wizard selections</p><p style="font-size:13px;color:rgba(242,243,247,.55)">Time-limited: "This property closes in 48 hours"</p></div></div></div><div style="border-top:1px solid rgba(255,255,255,.08);padding-top:14px"><div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C8F564;margin-bottom:8px">Existing investors <span style="font-weight:400;text-transform:none;letter-spacing:0;color:rgba(242,243,247,.4);font-size:11px">(verified, portfolio holder)</span></div><div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:13px;color:rgba(242,243,247,.55)">Monthly portfolio summary: "Your AED 1,000 earned AED 8.20 last month"</p><p style="font-size:13px;color:rgba(242,243,247,.55)">"Properties similar to ones you own are now available"</p><p style="font-size:13px;color:rgba(242,243,247,.55)">Reinvestment nudge when rental income is credited to wallet</p><p style="font-size:13px;color:rgba(242,243,247,.55)">Milestone: "You\'ve been investing 6 months — here\'s your total return"</p></div></div><div style="border-top:1px solid rgba(255,255,255,.08);padding-top:14px"><div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C8F564;margin-bottom:8px">Channels</div><p style="font-size:13px;color:rgba(242,243,247,.55)">Push notification · WhatsApp · In-app banner · Email digest</p></div><div style="border-top:1px solid rgba(255,255,255,.08);padding-top:14px"><div style="font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C8F564;margin-bottom:8px">AI role</div><div style="display:flex;flex-direction:column;gap:4px"><p style="font-size:13px;color:rgba(242,243,247,.55)">Selects best channel per user based on engagement history</p><p style="font-size:13px;color:rgba(242,243,247,.55)">Optimizes send time by user timezone and last active session</p><p style="font-size:13px;color:rgba(242,243,247,.55)">A/B tests message variants and promotes the winner automatically</p></div></div></div>', src:null }
 };
 function openInitSidebar(num){
   var cfg = SB_INITS[num];
