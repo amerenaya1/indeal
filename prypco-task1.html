@@ -148,7 +148,7 @@ tr:last-child td{border-bottom:none}
 #init-sidebar.open{pointer-events:auto}
 #sb-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .35s ease;cursor:pointer}
 #init-sidebar.open #sb-backdrop{background:rgba(0,0,0,.55)}
-#sb-panel{position:relative;width:620px;height:100%;background:#0A0B14;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;box-shadow:-20px 0 80px rgba(0,0,0,.5)}
+#sb-panel{position:relative;width:744px;height:100%;background:#0A0B14;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;box-shadow:-20px 0 80px rgba(0,0,0,.5)}
 #init-sidebar.open #sb-panel{transform:translateX(0)}
 #sb-head{display:flex;align-items:flex-start;justify-content:space-between;padding:16px 18px 12px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0}
 .sb-eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8F564;margin-bottom:4px}
@@ -612,7 +612,7 @@ var SB_INITS = {
   1:  { eyebrow:'Initiative 01 · Product + Eng', title:'Funnel Instrumentation & Analytics', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product + Eng', desc:'You cannot optimize a funnel you cannot see. Track every step: landing viewed, CTA tapped, KYC started, each step drop-off, investment completed. Segments by UAE resident vs. international, device, and acquisition channel. The baseline that makes every other initiative measurable - ships before everything else.', src:null },
   2:  { eyebrow:'Initiative 02 · Design', title:'Value-led Landing Screen', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Design', desc:'Replace the registration-first landing with a value-first screen. Show live ROI projections, social proof from real investors, and property previews before asking for sign-up. Value first, registration second.', src:'prypco-mint-landing.html' },
   3:  { eyebrow:'Initiative 03 · Product', title:'One-Tap Registration', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Move to email-first, ID-later registration with Apple and Google Sign-In as the primary CTA. Remove the barrier to entry - Emirates ID verification comes only after the user has seen the product and chosen a property.', src:'prypco-mint-landing-modal.html' },
-  4:  { eyebrow:'Initiative 04 · AI + Product', title:'First-Time Investment Wizard', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI + Product', desc:'3 steps. Every fear answered before the user asks. Step 1: social proof wall with 12,847 investors and anonymized returns. Step 2: amount selector (AED 500/1K/5K/Custom) with live ROI preview. Step 3: 2-3 AI-matched properties - personalized yield shown. One tap to invest triggers KYC.', src:null },
+  4:  { eyebrow:'Initiative 04 · AI + Product', title:'First-Time Investment Wizard', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI + Product', desc:'3 steps. Every fear answered before the user asks.', descHTML:'<div style="display:flex;flex-direction:column;gap:12px"><div><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C8F564;margin-bottom:5px">Step 1 · Social Proof</div><ul style="list-style:none;display:flex;flex-direction:column;gap:3px"><li>12,847 investors across 74 countries</li><li>3 real anonymized investor stories with returns</li><li>VARA + Dubai Land Department trust badges</li><li style="color:rgba(242,243,247,.4);font-style:italic">Answers: \'Is this legit? Are others doing this?\'</li></ul></div><div><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C8F564;margin-bottom:5px">Step 2 · How Much</div><ul style="list-style:none;display:flex;flex-direction:column;gap:3px"><li>4 options: AED 500 / 1,000 / 5,000 / Custom</li><li>Live ROI preview updates per selection</li><li>Social anchor: Most first-timers start AED 500-1K</li><li>Liquidity note: Sell anytime on Marketplace</li></ul></div><div><div style="font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C8F564;margin-bottom:5px">Step 3 · AI-Matched Properties</div><ul style="list-style:none;display:flex;flex-direction:column;gap:3px"><li>2-3 properties only - AI selected for chosen amount</li><li>Each card: ROI, yield, funding progress, investor count</li><li>Personalized: Your AED 1,000 earns AED 94/year here</li><li>One tap to invest - triggers KYC if not complete</li></ul></div></div>', src:null },
   5:  { eyebrow:'Initiative 05 · Product', title:'KYC Roadmap with Save & Resume', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'All KYC steps visible upfront with time estimates per step. Step 1 pre-checked. Save progress automatically - the user returns exactly where they left off. Removes the anxiety of not knowing how long the process takes.', src:null },
   6:  { eyebrow:'Initiative 06 · Design', title:'KYC Motivation Layer', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'Design', desc:"The selected property stays visible throughout the KYC flow. A live funding ticker keeps emotional momentum alive - the user sees the property filling up while they complete verification. Makes KYC feel purposeful, not bureaucratic.", src:null },
   7:  { eyebrow:'Initiative 07 · AI', title:'AI OCR Document Capture', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI', desc:'ID scan auto-fills all KYC fields in under 20 seconds. If the scan fails, an AI rejection explainer tells the user exactly how to retake the photo to fix the issue - no dead ends, no email support required.', src:null },
@@ -629,7 +629,7 @@ function openInitSidebar(num){
   if(!cfg) return;
   document.getElementById('sb-eyebrow-text').textContent = cfg.eyebrow;
   document.getElementById('sb-htitle-text').textContent = cfg.title;
-  document.getElementById('sb-desc').textContent = cfg.desc;
+  document.getElementById('sb-desc').innerHTML = cfg.descHTML || cfg.desc;
   document.getElementById('sb-sprint').textContent = cfg.sprint;
   document.getElementById('sb-team').textContent = cfg.team;
   document.getElementById('sb-chip-sprint').textContent = cfg.sprint;
@@ -641,12 +641,15 @@ function openInitSidebar(num){
   var effEl = document.getElementById('sb-effort');
   effEl.textContent = cfg.effort;
   effEl.className = 'sb-badge ' + (cfg.effort==='Low'?'low':cfg.effort==='High'?'high-eff':'med');
+  var panel = document.getElementById('sb-panel');
   var protoCol = document.getElementById('sb-proto-col');
   var iframe = document.getElementById('sb-iframe');
   if(cfg.src){
+    panel.style.width='';
     protoCol.style.display='';
     iframe.src = cfg.src;
   } else {
+    panel.style.width='420px';
     protoCol.style.display='none';
     iframe.src='';
   }
