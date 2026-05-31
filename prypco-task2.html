@@ -54,7 +54,7 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .layer-rows{display:flex;flex-direction:column;gap:10px;margin-top:14px}
 .layer-row{display:flex;align-items:stretch;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;gap:0}
 .layer-row-left{display:flex;align-items:center;gap:14px;padding:16px 20px;min-width:220px;border-right:1px solid var(--line)}
-.layer-num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#1d1d1f;flex-shrink:0;background:var(--brand)}
+.layer-num{width:28px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--mute);flex-shrink:0;background:none}
 .layer-info h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;line-height:1.2}
 .layer-info .owner{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .layer-row-desc{flex:1;padding:16px 24px;display:flex;align-items:center;font-size:13.5px;color:var(--mute);line-height:1.55}
@@ -217,37 +217,37 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="body">
     <h2>Five layers. Five different owners.</h2>
-    <p class="lead">Each layer requires a different tool, owner, and validation approach.</p>
+    <p class="lead" style="color:rgba(255,255,255,.45)">Each layer requires a different tool, owner, and validation approach.</p>
     <div class="layer-rows">
-      <div class="layer-row" style="border-left:4px solid var(--brand)">
+      <div class="layer-row">
         <div class="layer-row-left">
           <div class="layer-num">1</div>
           <div class="layer-info"><h4>Strings</h4><div class="owner" style="color:var(--brand-text)">AI (Claude API)</div></div>
         </div>
         <div class="layer-row-desc">AST scanner extracts all JSX strings. Claude MT translates with fintech glossary. Human reviews.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid var(--brand)">
+      <div class="layer-row">
         <div class="layer-row-left">
           <div class="layer-num">2</div>
           <div class="layer-info"><h4>Layout &amp; RTL</h4><div class="owner" style="color:var(--brand-text)">Engineering</div></div>
         </div>
         <div class="layer-row-desc">react-native-rtl-layout flips every flex row, margin, padding, absolute position. Swipe gestures also mirror - swipe direction reverses for carousels and dismissals.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid var(--brand)">
+      <div class="layer-row">
         <div class="layer-row-left">
           <div class="layer-num">3</div>
           <div class="layer-info"><h4>Typography</h4><div class="owner" style="color:var(--brand-text)">Design + Eng</div></div>
         </div>
         <div class="layer-row-desc">Noto Sans Arabic loaded, line-height +20%, text-align flipped, bidi handling for mixed EN/AR.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid var(--brand)">
+      <div class="layer-row">
         <div class="layer-row-left">
           <div class="layer-num">4</div>
           <div class="layer-info"><h4>Visual Assets</h4><div class="owner" style="color:var(--brand-text)">Design + AI</div></div>
         </div>
         <div class="layer-row-desc">Images with embedded text replaced. Directional icons mirrored. Brand assets verified for Arabic variants.</div>
       </div>
-      <div class="layer-row" style="border-left:4px solid var(--brand)">
+      <div class="layer-row">
         <div class="layer-row-left">
           <div class="layer-num">5</div>
           <div class="layer-info"><h4>Data &amp; Formats</h4><div class="owner" style="color:var(--brand-text)">Engineering</div></div>
@@ -266,40 +266,33 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="body">
     <h2>Visual &amp; graphic asset localization.</h2>
-    <p class="lead">Not all images are universal - three categories require action.</p>
-    <div class="cards-3" style="margin-top:4px">
-      <div class="card" style="border-top:3px solid var(--red)">
-        <h3 style="color:var(--red)">Replace</h3>
-        <p style="margin-bottom:10px;font-size:13px"><strong>Category 1 - Images with embedded text</strong></p>
-        <ul>
-          <li>Property price banners</li>
-          <li>Promo cards with 'AED 500'</li>
-          <li>App store screenshots</li>
-          <li>Onboarding illustrations with labels</li>
-        </ul>
-        <p style="margin-top:10px;font-size:12px;color:var(--mute)">Replace with Arabic version or use text overlay approach.</p>
+    <p class="lead">Three categories — every image, icon and illustration must be assessed before launch.</p>
+    <div class="cards-2" style="margin-top:12px;align-items:stretch">
+      <!-- Box 1: Replace + Mirror -->
+      <div class="card" style="display:flex;flex-direction:column;gap:20px">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red);border-radius:6px;padding:3px 9px">Replace</span>
+            <span style="font-size:14px;font-weight:700;color:var(--ink)">Images with embedded text</span>
+          </div>
+          <p style="font-size:13px;color:var(--mute);line-height:1.6">Property price banners, promo cards with 'AED 500', app store screenshots, onboarding illustrations with labels</p>
+        </div>
+        <div style="border-top:1px solid var(--line);padding-top:20px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--orange);border-radius:6px;padding:3px 9px">Mirror</span>
+            <span style="font-size:14px;font-weight:700;color:var(--ink)">Directional icons &amp; UI elements</span>
+          </div>
+          <p style="font-size:13px;color:var(--mute);line-height:1.6">Back arrow (← becomes →), progress indicators (L→R becomes R→L), carousel pagination dots, timeline components</p>
+        </div>
       </div>
-      <div class="card" style="border-top:3px solid var(--orange)">
-        <h3 style="color:var(--orange)">Mirror</h3>
-        <p style="margin-bottom:10px;font-size:13px"><strong>Category 2 - Directional icons &amp; UI elements</strong></p>
-        <ul>
-          <li>Back arrow (← becomes →)</li>
-          <li>Progress indicators (L→R becomes R→L)</li>
-          <li>Carousel pagination dots</li>
-          <li>Timeline components</li>
-        </ul>
-        <p style="margin-top:10px;font-size:12px;color:var(--mute)">CSS transform: scaleX(-1) on arrow/chevron icons.</p>
-      </div>
-      <div class="card" style="border-top:3px solid var(--brand)">
-        <h3 style="color:var(--brand-text)">Audit</h3>
-        <p style="margin-bottom:10px;font-size:13px"><strong>Category 3 - Cultural &amp; religious imagery</strong></p>
-        <ul>
-          <li>People imagery (conservative dress)</li>
-          <li>Financial lifestyle photos</li>
-          <li>Holiday/seasonal visuals</li>
-          <li>Trust badges and regulatory logos</li>
-        </ul>
-        <p style="margin-top:10px;font-size:12px;color:var(--mute)">Audit all imagery with a cultural reviewer on D3.</p>
+      <!-- Box 2: Audit -->
+      <div class="card" style="display:flex;flex-direction:column;justify-content:center">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-text);background:var(--brand-soft);border-radius:6px;padding:3px 9px">Audit</span>
+          <span style="font-size:14px;font-weight:700;color:var(--ink)">Cultural &amp; religious imagery</span>
+        </div>
+        <p style="font-size:13px;color:var(--mute);line-height:1.6">People imagery (conservative dress standards), financial lifestyle photos, holiday and seasonal visuals, trust badges and regulatory logos</p>
+        <p style="margin-top:14px;font-size:12px;color:var(--mute);font-style:italic">Review with a native cultural consultant before launch — not a developer call.</p>
       </div>
     </div>
   </div>
