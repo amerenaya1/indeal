@@ -56,33 +56,12 @@
     text-align: center;
   }
 
-  /* ── Quarter sections ── */
-  .quarters {
+  /* ── Grid ── */
+  .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 14px;
   }
-
-  .quarter-section {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .quarter-label {
-    text-align: center;
-    padding: 8px 0 10px;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    color: #5B54E8;
-    border-radius: 10px 10px 0 0;
-    background: linear-gradient(to bottom, rgba(124,111,247,0.08), transparent);
-    border-bottom: 2px solid rgba(124,111,247,0.15);
-    margin-bottom: 2px;
-  }
-  .quarter-label .q { font-size: 18px; font-weight: 800; color: #1a1a2e; display: block; }
-  .quarter-label .sub { font-size: 11.5px; color: #8b8fa8; font-weight: 500; }
 
   /* ── Cards ── */
   .card {
@@ -93,7 +72,7 @@
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s;
   }
   .card:hover {
     box-shadow: 0 6px 24px rgba(100,90,200,0.1);
@@ -129,37 +108,14 @@
     line-height: 1.4;
   }
 
-  .badge {
-    display: inline-block;
-    font-size: 9.5px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 6px;
-    margin-top: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.4px;
-  }
-  .badge-new      { background: #d1fae5; color: #065f46; }
-  .badge-enhance  { background: #ede9fe; color: #5b21b6; }
-  .badge-idea     { background: #fef3c7; color: #92400e; }
-
   /* ── Footer ── */
   .footer {
-    margin-top: 28px;
+    margin-top: 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-top: 16px;
+    justify-content: flex-end;
+    padding-top: 14px;
     border-top: 1.5px solid #ececf4;
-  }
-  .legend { display: flex; gap: 20px; align-items: center; }
-  .legend-item {
-    display: flex; align-items: center; gap: 6px;
-    font-size: 11.5px; color: #8b8fa8;
-  }
-  .lbadge {
-    font-size: 9.5px; font-weight: 700; padding: 2px 7px;
-    border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px;
   }
   .confidential { font-size: 11px; color: #c4c6d4; letter-spacing: 1px; text-transform: uppercase; }
 </style>
@@ -176,231 +132,157 @@
     <p>Long-term product roadmap · CEO Briefing · May 2026</p>
   </div>
 
-  <!-- Columns -->
-  <div class="quarters">
+  <!-- Cards Grid -->
+  <div class="grid">
 
-    <!-- Q2 -->
-    <div class="quarter-section">
-      <div class="quarter-label">
-        <span class="q">Q2 2026</span>
-        <span class="sub">In-Flight &amp; Almost Done</span>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-purple">🗺️</div>
-        <div class="card-body">
-          <div class="card-title">Visit Module</div>
-          <div class="card-desc">Plan, log & track customer visits in the field</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-green">💵</div>
-        <div class="card-body">
-          <div class="card-title">Cash Orders Deposit</div>
-          <div class="card-desc">Record & reconcile cash collections on delivery</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-blue">✏️</div>
-        <div class="card-body">
-          <div class="card-title">Edit Order — App Side</div>
-          <div class="card-desc">Agents modify confirmed orders without duplicates</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-pink">🏷️</div>
-        <div class="card-body">
-          <div class="card-title">Discount Configs</div>
-          <div class="card-desc">Configurable discount rules, limits & approval controls</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-sky">📤</div>
-        <div class="card-body">
-          <div class="card-title">Export Lists</div>
-          <div class="card-desc">Export sales, orders & inventory from admin panel</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-purple">🔔</div>
-        <div class="card-body">
-          <div class="card-title">Notifications Center</div>
-          <div class="card-desc">Real-time alerts for orders, approvals & key events</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-gray">👥</div>
-        <div class="card-body">
-          <div class="card-title">Customer Module Improvements</div>
-          <div class="card-desc">Better profiles, search & management UX</div>
-          <span class="badge badge-enhance">Enhancement</span>
-        </div>
+    <div class="card">
+      <div class="card-icon icon-purple">🗺️</div>
+      <div class="card-body">
+        <div class="card-title">Visit Module</div>
+        <div class="card-desc">Plan, log & track customer visits in the field</div>
       </div>
     </div>
 
-    <!-- Q3 -->
-    <div class="quarter-section">
-      <div class="quarter-label">
-        <span class="q">Q3 2026</span>
-        <span class="sub">Planned</span>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-green">💰</div>
-        <div class="card-body">
-          <div class="card-title">Agent Payout</div>
-          <div class="card-desc">Calculate & process payouts based on deliveries</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-purple">⚙️</div>
-        <div class="card-body">
-          <div class="card-title">Commissions Config</div>
-          <div class="card-desc">Flexible commission rules based on sales criteria</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-blue">📊</div>
-        <div class="card-body">
-          <div class="card-title">Agent Performance Dashboard</div>
-          <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-sky">📸</div>
-        <div class="card-body">
-          <div class="card-title">Proof of Delivery / Return</div>
-          <div class="card-desc">Digital proof capture for deliveries & returns</div>
-          <span class="badge badge-enhance">Enhancement</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-pink">💲</div>
-        <div class="card-body">
-          <div class="card-title">Dynamic Pricelists</div>
-          <div class="card-desc">Customer-specific pricelists managed from admin</div>
-          <span class="badge badge-new">New Feature</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-amber">📦</div>
-        <div class="card-body">
-          <div class="card-title">Reserve Stock on Order</div>
-          <div class="card-desc">Auto-hold stock on creation to prevent overselling</div>
-          <span class="badge badge-enhance">Enhancement</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-gray">🚚</div>
-        <div class="card-body">
-          <div class="card-title">Cashvan Enhancements</div>
-          <div class="card-desc">Stock pickup, thresholds & full product history</div>
-          <span class="badge badge-enhance">Enhancement</span>
-        </div>
+    <div class="card">
+      <div class="card-icon icon-green">💵</div>
+      <div class="card-body">
+        <div class="card-title">Cash Orders Deposit</div>
+        <div class="card-desc">Record & reconcile cash collections on delivery</div>
       </div>
     </div>
 
-    <!-- Q4 -->
-    <div class="quarter-section">
-      <div class="quarter-label">
-        <span class="q">Q4 2026</span>
-        <span class="sub">Future Vision</span>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-amber">🏆</div>
-        <div class="card-body">
-          <div class="card-title">Agent Rewards Program</div>
-          <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
-          <span class="badge badge-idea">Idea</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-purple">🤖</div>
-        <div class="card-body">
-          <div class="card-title">AI Assistant</div>
-          <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
-          <span class="badge badge-idea">Idea</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-blue">📈</div>
-        <div class="card-body">
-          <div class="card-title">BI Rich Dashboards</div>
-          <div class="card-desc">Business intelligence-powered insights & analytics</div>
-          <span class="badge badge-idea">Idea</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-green">🏪</div>
-        <div class="card-body">
-          <div class="card-title">Merchandising Module</div>
-          <div class="card-desc">Audit shelves & track store presence in the field</div>
-          <span class="badge badge-idea">Idea</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-sky">🔍</div>
-        <div class="card-body">
-          <div class="card-title">Market Research</div>
-          <div class="card-desc">Deploy field surveys for instant market insights</div>
-          <span class="badge badge-idea">Idea</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-pink">🎯</div>
-        <div class="card-body">
-          <div class="card-title">Agent Targets</div>
-          <div class="card-desc">Agents track personal goals & progress live</div>
-          <span class="badge badge-idea">Idea</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon icon-amber">🎁</div>
-        <div class="card-body">
-          <div class="card-title">Gift Management</div>
-          <div class="card-desc">Distribute brand gifts with full visibility & control</div>
-          <span class="badge badge-idea">Idea</span>
-        </div>
+    <div class="card">
+      <div class="card-icon icon-blue">✏️</div>
+      <div class="card-body">
+        <div class="card-title">Edit Order — App Side</div>
+        <div class="card-desc">Agents modify confirmed orders without duplicates</div>
       </div>
     </div>
 
-  </div><!-- /quarters -->
+    <div class="card">
+      <div class="card-icon icon-pink">🏷️</div>
+      <div class="card-body">
+        <div class="card-title">Discount Configs</div>
+        <div class="card-desc">Configurable discount rules, limits & approval controls</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-sky">📤</div>
+      <div class="card-body">
+        <div class="card-title">Export Lists</div>
+        <div class="card-desc">Export sales, orders & inventory from admin panel</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-purple">🔔</div>
+      <div class="card-body">
+        <div class="card-title">Notifications Center</div>
+        <div class="card-desc">Real-time alerts for orders, approvals & key events</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-green">💰</div>
+      <div class="card-body">
+        <div class="card-title">Agent Payout</div>
+        <div class="card-desc">Calculate & process payouts based on completed deliveries</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-purple">⚙️</div>
+      <div class="card-body">
+        <div class="card-title">Commissions Config</div>
+        <div class="card-desc">Flexible commission rules based on sales criteria</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-blue">📊</div>
+      <div class="card-body">
+        <div class="card-title">Agent Performance Dashboard</div>
+        <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-pink">💲</div>
+      <div class="card-body">
+        <div class="card-title">Dynamic Pricelists</div>
+        <div class="card-desc">Customer-specific pricelists managed from admin</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-amber">🏆</div>
+      <div class="card-body">
+        <div class="card-title">Agent Rewards Program</div>
+        <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-purple">🤖</div>
+      <div class="card-body">
+        <div class="card-title">AI Assistant</div>
+        <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-blue">📈</div>
+      <div class="card-body">
+        <div class="card-title">BI Rich Dashboards</div>
+        <div class="card-desc">Business intelligence-powered insights & analytics</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-green">🏪</div>
+      <div class="card-body">
+        <div class="card-title">Merchandising Module</div>
+        <div class="card-desc">Audit shelves & track store presence in the field</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-sky">🔍</div>
+      <div class="card-body">
+        <div class="card-title">Market Research</div>
+        <div class="card-desc">Deploy field surveys for instant market insights</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-pink">🎯</div>
+      <div class="card-body">
+        <div class="card-title">Agent Targets</div>
+        <div class="card-desc">Agents track personal goals & progress live</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-amber">🎁</div>
+      <div class="card-body">
+        <div class="card-title">Gift Management</div>
+        <div class="card-desc">Distribute brand gifts with full visibility & control</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-icon icon-gray">🔐</div>
+      <div class="card-body">
+        <div class="card-title">Approval Flows</div>
+        <div class="card-desc">Multi-tier approval workflows for orders, discounts & credit</div>
+      </div>
+    </div>
+
+  </div>
 
   <!-- Footer -->
   <div class="footer">
-    <div class="legend">
-      <div class="legend-item"><span class="lbadge" style="background:#d1fae5;color:#065f46;">New Feature</span> Net-new capability</div>
-      <div class="legend-item"><span class="lbadge" style="background:#ede9fe;color:#5b21b6;">Enhancement</span> Improves existing flow</div>
-      <div class="legend-item"><span class="lbadge" style="background:#fef3c7;color:#92400e;">Idea</span> In exploration</div>
-    </div>
     <div class="confidential">Confidential · salesplus.app</div>
   </div>
 
