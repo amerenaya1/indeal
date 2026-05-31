@@ -121,7 +121,7 @@ tr:last-child td{border-bottom:none}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.kpis,.step-grid,.sprint-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
 @media print{html,body{overflow:visible!important;height:auto!important}body.nav-forward .slide:not(.active),body.nav-back .slide:not(.active){transform:none!important}.deck{overflow:visible!important;height:auto!important;position:relative!important}.slide{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;transform:none!important;page-break-after:always;break-after:page;height:100vh;overflow:hidden!important;padding:40px 60px 40px!important}.slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}.progress,.controls,.hint{display:none!important}h1,h2{-webkit-text-fill-color:#1d1d1f!important;background:none!important;color:#1d1d1f!important}#init-sidebar{display:none!important}}
 .quad-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-.grp-hdr td{background:var(--ink);color:var(--bg);font-weight:700;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px!important;border:none!important}
+.grp-hdr td{background:var(--line);color:var(--mute);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px!important;border:none!important}
 .badge{display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:600;white-space:nowrap}
 .b-high{background:var(--brand);color:#1d1d1f}
 .b-med{background:var(--line);color:var(--mute)}
@@ -148,16 +148,33 @@ tr:last-child td{border-bottom:none}
 #init-sidebar.open{pointer-events:auto}
 #sb-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .35s ease;cursor:pointer}
 #init-sidebar.open #sb-backdrop{background:rgba(0,0,0,.55)}
-#sb-panel{position:relative;width:520px;height:100%;background:#0A0B14;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;box-shadow:-20px 0 80px rgba(0,0,0,.5)}
+#sb-panel{position:relative;width:620px;height:100%;background:#0A0B14;transform:translateX(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);display:flex;flex-direction:column;box-shadow:-20px 0 80px rgba(0,0,0,.5)}
 #init-sidebar.open #sb-panel{transform:translateX(0)}
-#sb-head{display:flex;align-items:flex-start;justify-content:space-between;padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0}
+#sb-head{display:flex;align-items:flex-start;justify-content:space-between;padding:16px 18px 12px;border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0}
 .sb-eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C8F564;margin-bottom:4px}
-.sb-htitle{font-size:16px;font-weight:700;letter-spacing:-.01em;color:#F2F3F7;line-height:1.2}
-.sb-close{width:30px;height:30px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#F2F3F7;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:12px;line-height:1;transition:.15s}
+.sb-htitle{font-size:15px;font-weight:700;letter-spacing:-.01em;color:#F2F3F7;line-height:1.2}
+.sb-close{width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#F2F3F7;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:12px;line-height:1;transition:.15s}
 .sb-close:hover{background:rgba(255,255,255,.15)}
+/* two-column body */
+#sb-body{flex:1;display:flex;min-height:0;overflow:hidden}
+#sb-details{width:190px;flex-shrink:0;padding:14px 16px;border-right:1px solid rgba(255,255,255,.08);overflow-y:auto;display:flex;flex-direction:column;gap:0}
+.sb-meta-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.sb-meta-label{font-size:10px;color:rgba(242,243,247,.4);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.sb-meta-val{font-size:12px;color:#F2F3F7;font-weight:600}
+.sb-badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700}
+.sb-badge.high{background:#C8F564;color:#1d1d1f}
+.sb-badge.med{background:rgba(255,255,255,.1);color:rgba(242,243,247,.6)}
+.sb-badge.low{background:rgba(200,245,100,.18);color:#C8F564}
+.sb-badge.high-eff{border:1px solid rgba(255,255,255,.3);color:rgba(242,243,247,.7)}
+.sb-overview{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
+.sb-overview-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,243,247,.35);margin-bottom:7px}
+#sb-desc{font-size:12px;color:rgba(242,243,247,.65);line-height:1.6}
+/* prototype column */
+#sb-proto-col{flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden;position:relative}
 .sb-iframe-wrap{flex:1;overflow:hidden;position:relative;min-height:0}
 #sb-iframe{position:absolute;top:0;left:0;width:139%;height:139%;transform:scale(0.72);transform-origin:top left;border:none}
-#sb-footer{flex-shrink:0;padding:12px 16px;border-top:1px solid rgba(255,255,255,.08);background:#0A0B14;display:flex;flex-wrap:wrap;gap:6px}
+#sb-no-proto{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(242,243,247,.2);font-size:13px;padding:20px;text-align:center}
+#sb-footer{flex-shrink:0;padding:10px 14px;border-top:1px solid rgba(255,255,255,.08);background:#0A0B14;display:flex;flex-wrap:wrap;gap:6px}
 .sb-chip{font-size:11px;background:#13141F;border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:4px 11px;color:rgba(242,243,247,.7)}
 .sb-chip-brand{background:rgba(200,245,100,.12);border-color:rgba(200,245,100,.2);color:#C8F564}
 /* Clickable row hint */
@@ -232,22 +249,22 @@ tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
       <thead><tr><th>#</th><th>Initiative</th><th>Type</th><th>Impact</th><th>Effort</th></tr></thead>
       <tbody>
         <tr class="grp-hdr"><td colspan="5">Foundation</td></tr>
-        <tr><td style="color:var(--brand-text);font-weight:700">01</td><td>Funnel instrumentation &amp; analytics</td><td>Product + Eng</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(1)"><td style="color:var(--brand-text);font-weight:700">01</td><td>Funnel instrumentation &amp; analytics</td><td>Product + Eng</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
         <tr class="grp-hdr"><td colspan="5">Conversion - KYC</td></tr>
-        <tr class="clickable-row" onclick="openInitSidebar(1)"><td style="color:var(--brand-text);font-weight:700">02</td><td>Value-led landing screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Design</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
-        <tr class="clickable-row" onclick="openInitSidebar(2)"><td style="color:var(--brand-text);font-weight:700">03</td><td>One-tap registration <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
-        <tr><td>04</td><td>First-time investment wizard</td><td>AI + Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
-        <tr><td>05</td><td>KYC roadmap with save &amp; resume</td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
-        <tr><td>06</td><td>KYC motivation layer</td><td>Design</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
-        <tr><td>07</td><td>AI OCR document capture</td><td>AI</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
-        <tr><td>08</td><td>AI chatbot with human-in-the-loop</td><td>AI</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-med">Medium</span></td></tr>
-        <tr><td>09</td><td>Persistent KYC progress widget</td><td>Product</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(2)"><td style="color:var(--brand-text);font-weight:700">02</td><td>Value-led landing screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Design</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(3)"><td style="color:var(--brand-text);font-weight:700">03</td><td>One-tap registration <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(4)"><td>04</td><td>First-time investment wizard</td><td>AI + Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(5)"><td>05</td><td>KYC roadmap with save &amp; resume</td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(6)"><td>06</td><td>KYC motivation layer</td><td>Design</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(7)"><td>07</td><td>AI OCR document capture</td><td>AI</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(8)"><td>08</td><td>AI chatbot with human-in-the-loop</td><td>AI</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(9)"><td>09</td><td>Persistent KYC progress widget</td><td>Product</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
         <tr class="grp-hdr"><td colspan="5">Conversion - Investment</td></tr>
-        <tr><td>10</td><td>Smart empty state</td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
-        <tr><td>11</td><td>Rewards program</td><td>Product + GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
-        <tr><td>12</td><td>Retargeting - AI drop-off detection</td><td>AI + GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-high-eff">High</span></td></tr>
-        <tr><td>13</td><td>Property launch events</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
-        <tr><td>14</td><td>Investor story campaigns</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(10)"><td>10</td><td>Smart empty state</td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(11)"><td>11</td><td>Rewards program</td><td>Product + GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(12)"><td>12</td><td>Retargeting - AI drop-off detection</td><td>AI + GTM</td><td><span class="badge b-high">High</span></td><td><span class="badge b-high-eff">High</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(13)"><td>13</td><td>Property launch events</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(14)"><td>14</td><td>Investor story campaigns</td><td>GTM</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -552,40 +569,94 @@ function toggleDark(){
 (function(){var btn=document.getElementById('themeBtn');if(btn)btn.textContent=document.documentElement.classList.contains('dark')?'☀':'☾';})();
 </script>
 
-<!-- Initiative 01 Sidebar -->
+<!-- Initiative Sidebar -->
 <div id="init-sidebar">
   <div id="sb-backdrop" onclick="closeInitSidebar()"></div>
   <div id="sb-panel">
     <div id="sb-head">
       <div>
-        <div class="sb-eyebrow" id="sb-eyebrow-text">Initiative 01 · Design · ICE 8</div>
-        <div class="sb-htitle" id="sb-htitle-text">Emotional Splash Screen</div>
+        <div class="sb-eyebrow" id="sb-eyebrow-text"></div>
+        <div class="sb-htitle" id="sb-htitle-text"></div>
       </div>
       <button class="sb-close" onclick="closeInitSidebar()" aria-label="Close">✕</button>
     </div>
-    <div class="sb-iframe-wrap">
-      <iframe id="sb-iframe" src="prypco-mint-landing.html" title="PRYPCO Mint - Emotional Splash Screen design"></iframe>
+    <div id="sb-body">
+      <!-- Details column -->
+      <div id="sb-details">
+        <div class="sb-meta-row"><span class="sb-meta-label">Impact</span><span id="sb-impact" class="sb-badge"></span></div>
+        <div class="sb-meta-row"><span class="sb-meta-label">Effort</span><span id="sb-effort" class="sb-badge"></span></div>
+        <div class="sb-meta-row"><span class="sb-meta-label">Sprint</span><span id="sb-sprint" class="sb-meta-val"></span></div>
+        <div class="sb-meta-row"><span class="sb-meta-label">Team</span><span id="sb-team" class="sb-meta-val"></span></div>
+        <div class="sb-overview">
+          <div class="sb-overview-label">Overview</div>
+          <p id="sb-desc"></p>
+        </div>
+      </div>
+      <!-- Prototype column -->
+      <div id="sb-proto-col">
+        <div class="sb-iframe-wrap" id="sb-iframe-wrap">
+          <iframe id="sb-iframe" src="" title="Prototype" style="border:none"></iframe>
+        </div>
+        <div id="sb-no-proto" style="display:none">
+          <span style="font-size:28px;opacity:.3">&#9711;</span>
+          <span>Prototype not yet available</span>
+        </div>
+      </div>
     </div>
     <div id="sb-footer">
-      <span class="sb-chip">Sprint 1</span>
-      <span class="sb-chip">Design team</span>
-      <span class="sb-chip">~2 weeks</span>
-      <span class="sb-chip sb-chip-brand">ICE Score: 8</span>
+      <span class="sb-chip" id="sb-chip-sprint"></span>
+      <span class="sb-chip" id="sb-chip-team"></span>
+      <span class="sb-chip sb-chip-brand" id="sb-chip-impact"></span>
     </div>
   </div><!-- /sb-panel -->
 </div><!-- /init-sidebar -->
 
 <script>
 var SB_INITS = {
-  1: { eyebrow:'Initiative 02 · Design', title:'Value-led Landing Screen', src:'prypco-mint-landing.html' },
-  2: { eyebrow:'Initiative 03 · Product', title:'One-Tap Registration', src:'prypco-mint-landing-modal.html' }
+  1:  { eyebrow:'Initiative 01 · Product + Eng', title:'Funnel Instrumentation & Analytics', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product + Eng', desc:'Instrument every step of registration, KYC, and investment. No strategy can be validated without baseline data on where users are dropping off.', src:null },
+  2:  { eyebrow:'Initiative 02 · Design', title:'Value-led Landing Screen', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Design', desc:'Replace the registration-first landing with a value-first screen. Show live ROI projections, social proof, and property previews before asking for sign-up.', src:'prypco-mint-landing.html' },
+  3:  { eyebrow:'Initiative 03 · Product', title:'One-Tap Registration', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Move to email-first, ID-later registration with Apple and Google Sign-In as the primary CTA. Remove the barrier to entry - ID verification comes after the user sees value.', src:'prypco-mint-landing-modal.html' },
+  4:  { eyebrow:'Initiative 04 · AI + Product', title:'First-Time Investment Wizard', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI + Product', desc:'3-step guided flow: social proof wall with anonymized returns, amount selector with live ROI preview, and AI-matched properties personalized to the user.', src:null },
+  5:  { eyebrow:'Initiative 05 · Product', title:'KYC Roadmap with Save & Resume', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Show users exactly where they are in KYC, estimate time remaining per step, and persist progress so they can leave and return without restarting.', src:null },
+  6:  { eyebrow:'Initiative 06 · Design', title:'KYC Motivation Layer', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'Design', desc:'Contextual copy at each KYC step explaining why the information is needed and what benefit completing that step unlocks for the investor.', src:null },
+  7:  { eyebrow:'Initiative 07 · AI', title:'AI OCR Document Capture', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'AI', desc:'Auto-fill KYC fields by scanning Emirates ID or passport with the camera. Reduces manual entry time from minutes to under 20 seconds.', src:null },
+  8:  { eyebrow:'Initiative 08 · AI', title:'AI Chatbot with Human-in-the-Loop', impact:'Medium', effort:'Medium', sprint:'Sprint 2', team:'AI', desc:'In-app support that handles common KYC questions instantly, with seamless escalation to a human agent when the AI is not confident.', src:null },
+  9:  { eyebrow:'Initiative 09 · Product', title:'Persistent KYC Progress Widget', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'Product', desc:'Sticky progress indicator visible across the app that reminds and encourages users to return and complete their KYC verification.', src:null },
+  10: { eyebrow:'Initiative 10 · Product', title:'Smart Empty State', impact:'High', effort:'Low', sprint:'Sprint 1', team:'Product', desc:'Replace the empty investment shelf with a guided first-investment prompt. When no live properties are available, show a curated waitlist or upcoming launch instead of a blank screen.', src:null },
+  11: { eyebrow:'Initiative 11 · Product + GTM', title:'Rewards Program', impact:'High', effort:'Medium', sprint:'Sprint 2', team:'Product + GTM', desc:'Welcome credit on first investment, referral bonuses, and milestone rewards tied to investment activity. Drives both acquisition and retention loops.', src:null },
+  12: { eyebrow:'Initiative 12 · AI + GTM', title:'Retargeting - AI Drop-off Detection', impact:'High', effort:'High', sprint:'Sprint 2', team:'AI + GTM', desc:'Detect abandonment patterns in the funnel and trigger personalized re-engagement campaigns via email and push notification, tailored to where the user stopped.', src:null },
+  13: { eyebrow:'Initiative 13 · GTM', title:'Property Launch Events', impact:'Medium', effort:'Low', sprint:'Sprint 2', team:'GTM', desc:'Coordinate property launches with marketing moments: countdown emails, push alerts on launch day, and livestream Q&A with the property team.', src:null },
+  14: { eyebrow:'Initiative 14 · GTM', title:'Investor Story Campaigns', impact:'Medium', effort:'Low', sprint:'Sprint 3', team:'GTM', desc:'Anonymized investor testimonials with real return figures and country of origin, distributed across social, email, and in-app. Builds social proof at scale.', src:null }
 };
 function openInitSidebar(num){
-  var cfg = SB_INITS[num] || SB_INITS[1];
+  var cfg = SB_INITS[num];
+  if(!cfg) return;
   document.getElementById('sb-eyebrow-text').textContent = cfg.eyebrow;
   document.getElementById('sb-htitle-text').textContent = cfg.title;
+  document.getElementById('sb-desc').textContent = cfg.desc;
+  document.getElementById('sb-sprint').textContent = cfg.sprint;
+  document.getElementById('sb-team').textContent = cfg.team;
+  document.getElementById('sb-chip-sprint').textContent = cfg.sprint;
+  document.getElementById('sb-chip-team').textContent = cfg.team;
+  document.getElementById('sb-chip-impact').textContent = 'Impact: ' + cfg.impact;
+  var impEl = document.getElementById('sb-impact');
+  impEl.textContent = cfg.impact;
+  impEl.className = 'sb-badge ' + (cfg.impact==='High'?'high':cfg.impact==='Medium'?'med':'low');
+  var effEl = document.getElementById('sb-effort');
+  effEl.textContent = cfg.effort;
+  effEl.className = 'sb-badge ' + (cfg.effort==='Low'?'low':cfg.effort==='High'?'high-eff':'med');
+  var wrap = document.getElementById('sb-iframe-wrap');
+  var noProto = document.getElementById('sb-no-proto');
   var iframe = document.getElementById('sb-iframe');
-  iframe.src = cfg.src;
+  if(cfg.src){
+    wrap.style.display='';
+    noProto.style.display='none';
+    iframe.src = cfg.src;
+  } else {
+    wrap.style.display='none';
+    noProto.style.display='flex';
+    iframe.src='';
+  }
   document.getElementById('init-sidebar').classList.add('open');
   document.body.style.overflow='hidden';
 }
