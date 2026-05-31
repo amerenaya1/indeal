@@ -74,22 +74,28 @@
   }
 
   .group-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
     padding-bottom: 10px;
     border-bottom: 2px solid #1B54F8;
     margin-bottom: 2px;
   }
-  .group-icon {
-    font-size: 16px;
+  .group-header-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
   }
+  .group-icon { font-size: 15px; }
   .group-title {
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     color: #1B54F8;
+  }
+  .group-desc {
+    font-size: 11px;
+    color: #8b8fa8;
+    line-height: 1.45;
   }
 
   /* ── Cards ── */
@@ -166,11 +172,14 @@
   <!-- Grouped Cards -->
   <div class="groups">
 
-    <!-- Group 1: Field Operations -->
+    <!-- 1: Field Operations -->
     <div class="group">
       <div class="group-header">
-        <span class="group-icon">🗺️</span>
-        <span class="group-title">Field Operations</span>
+        <div class="group-header-top">
+          <span class="group-icon">🗺️</span>
+          <span class="group-title">Field Operations</span>
+        </div>
+        <div class="group-desc">Coordinate agents on the ground with real-time visit tracking, payout processing, and instant operational alerts.</div>
       </div>
       <div class="card">
         <div class="card-num">01</div>
@@ -196,48 +205,44 @@
       <div class="card">
         <div class="card-num">04</div>
         <div class="card-body">
-          <div class="card-title">Merchandising Module</div>
-          <div class="card-desc">Audit shelves & track store presence in the field</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-num">05</div>
-        <div class="card-body">
           <div class="card-title">Market Research</div>
           <div class="card-desc">Deploy field surveys for instant market insights</div>
         </div>
       </div>
     </div>
 
-    <!-- Group 2: Commercial Controls -->
+    <!-- 2: Commercial Controls -->
     <div class="group">
       <div class="group-header">
-        <span class="group-icon">⚙️</span>
-        <span class="group-title">Commercial Controls</span>
+        <div class="group-header-top">
+          <span class="group-icon">⚙️</span>
+          <span class="group-title">Commercial Controls</span>
+        </div>
+        <div class="group-desc">Set the rules that govern how your team sells — from pricing and discounts to multi-tier approval workflows.</div>
       </div>
       <div class="card">
-        <div class="card-num">06</div>
+        <div class="card-num">05</div>
         <div class="card-body">
           <div class="card-title">Discount Configs</div>
           <div class="card-desc">Configurable discount rules, limits & approval controls</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-num">07</div>
+        <div class="card-num">06</div>
         <div class="card-body">
           <div class="card-title">Dynamic Pricelists</div>
           <div class="card-desc">Customer-specific pricelists managed from admin</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-num">08</div>
+        <div class="card-num">07</div>
         <div class="card-body">
           <div class="card-title">Approval Flows</div>
           <div class="card-desc">Multi-tier approval workflows for orders, discounts & credit</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-num">09</div>
+        <div class="card-num">08</div>
         <div class="card-body">
           <div class="card-title">Gift Management</div>
           <div class="card-desc">Distribute brand gifts with full visibility & control</div>
@@ -245,45 +250,144 @@
       </div>
     </div>
 
-    <!-- Group 3: Intelligence & Growth -->
+    <!-- 3: Intelligence & Growth -->
     <div class="group">
       <div class="group-header">
-        <span class="group-icon">📈</span>
-        <span class="group-title">Intelligence & Growth</span>
+        <div class="group-header-top">
+          <span class="group-icon">📈</span>
+          <span class="group-title">Intelligence & Growth</span>
+        </div>
+        <div class="group-desc">Turn field data into decisions — track agent performance, set targets, and surface insights through AI and BI.</div>
       </div>
       <div class="card">
-        <div class="card-num">10</div>
+        <div class="card-num">09</div>
         <div class="card-body">
           <div class="card-title">Agent Performance Dashboard</div>
           <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-num">11</div>
+        <div class="card-num">10</div>
         <div class="card-body">
           <div class="card-title">Agent Rewards Program</div>
           <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-num">12</div>
+        <div class="card-num">11</div>
         <div class="card-body">
           <div class="card-title">Agent Targets</div>
           <div class="card-desc">Agents track personal goals & progress live</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-num">13</div>
+        <div class="card-num">12</div>
         <div class="card-body">
           <div class="card-title">AI Assistant</div>
           <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
         </div>
       </div>
       <div class="card">
-        <div class="card-num">14</div>
+        <div class="card-num">13</div>
         <div class="card-body">
           <div class="card-title">BI Rich Dashboards</div>
           <div class="card-desc">Business intelligence-powered insights & analytics</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4: Logistics -->
+    <div class="group">
+      <div class="group-header">
+        <div class="group-header-top">
+          <span class="group-icon">🚚</span>
+          <span class="group-title">Logistics</span>
+        </div>
+        <div class="group-desc">Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">14</div>
+        <div class="card-body">
+          <div class="card-title">Vehicles Management</div>
+          <div class="card-desc">Track and manage company-owned vehicle fleet</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">15</div>
+        <div class="card-body">
+          <div class="card-title">Proof of Delivery / Return</div>
+          <div class="card-desc">Digital proof capture for deliveries & returns</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">16</div>
+        <div class="card-body">
+          <div class="card-title">Cashvan Stock Pickup</div>
+          <div class="card-desc">Improve stock pickup tracking & reconciliation for cashvans</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5: Inventory Management -->
+    <div class="group">
+      <div class="group-header">
+        <div class="group-header-top">
+          <span class="group-icon">📦</span>
+          <span class="group-title">Inventory Management</span>
+        </div>
+        <div class="group-desc">Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">17</div>
+        <div class="card-body">
+          <div class="card-title">Reserve Stock on Order</div>
+          <div class="card-desc">Auto-hold stock on creation to prevent overselling</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">18</div>
+        <div class="card-body">
+          <div class="card-title">Agent Stock Thresholds</div>
+          <div class="card-desc">Set minimum stock alert thresholds per van inventory</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">19</div>
+        <div class="card-body">
+          <div class="card-title">Cashvan Product History</div>
+          <div class="card-desc">Full product transaction history per cashvan</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6: Catalogue Management -->
+    <div class="group">
+      <div class="group-header">
+        <div class="group-header-top">
+          <span class="group-icon">🗂️</span>
+          <span class="group-title">Catalogue Management</span>
+        </div>
+        <div class="group-desc">Control SKUs, pricing tiers, and product content from one place — ensuring agents always sell with accurate, up-to-date information.</div>
+      </div>
+      <div class="card">
+        <div class="card-num">20</div>
+        <div class="card-body">
+          <div class="card-title">Advanced Product Pricing</div>
+          <div class="card-desc">Multiple pricing tiers to support diverse sales strategies</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">21</div>
+        <div class="card-body">
+          <div class="card-title">Return & Cancellation Configs</div>
+          <div class="card-desc">Standardized return and cancellation reason management</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-num">22</div>
+        <div class="card-body">
+          <div class="card-title">Merchandising Module</div>
+          <div class="card-desc">Audit shelves & track store presence in the field</div>
         </div>
       </div>
     </div>
