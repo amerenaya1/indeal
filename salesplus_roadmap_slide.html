@@ -9,7 +9,7 @@
 
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: #0A0E1A;
+    background: #f0f0f8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,224 +19,149 @@
 
   .slide {
     width: 1280px;
-    min-height: 720px;
-    background: linear-gradient(135deg, #0D1220 0%, #111827 60%, #0D1220 100%);
-    border-radius: 20px;
-    padding: 52px 60px 44px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 44px 52px 40px;
+    box-shadow: 0 20px 60px rgba(100, 90, 200, 0.12);
   }
 
-  /* Decorative blobs */
-  .slide::before {
-    content: '';
-    position: absolute;
-    top: -120px; right: -80px;
-    width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-  .slide::after {
-    content: '';
-    position: absolute;
-    bottom: -100px; left: -60px;
-    width: 360px; height: 360px;
-    background: radial-gradient(circle, rgba(16,185,129,0.12) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  /* Header */
+  /* ── Header ── */
   .header {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 36px;
-  }
-  .logo-area {
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
+    margin-bottom: 36px;
+    gap: 10px;
   }
-  .logo-icon {
-    width: 44px; height: 44px;
-    background: linear-gradient(135deg, #6366F1, #8B5CF6);
-    border-radius: 12px;
+
+  .logo {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, #7C6FF7, #5B54E8);
+    border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
+    box-shadow: 0 8px 20px rgba(124,111,247,0.35);
   }
-  .logo-text {
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.3px;
-  }
-  .logo-text span { color: #818CF8; }
+  .logo svg { width: 30px; height: 30px; fill: white; }
 
-  .slide-meta {
-    text-align: right;
+  .header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #1a1a2e;
+    letter-spacing: -0.6px;
+    text-align: center;
   }
-  .slide-meta .label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #4B5563;
-    margin-bottom: 4px;
-  }
-  .slide-meta .date {
-    font-size: 13px;
-    color: #6B7280;
-  }
-
-  /* Title */
-  .title-block { margin-bottom: 32px; }
-  .title-block h1 {
-    font-size: 30px;
-    font-weight: 700;
-    color: #F9FAFB;
-    letter-spacing: -0.5px;
-    line-height: 1.2;
-  }
-  .title-block p {
-    margin-top: 6px;
+  .header p {
     font-size: 14px;
-    color: #6B7280;
+    color: #8b8fa8;
+    text-align: center;
   }
 
-  /* Quarter columns */
+  /* ── Quarter sections ── */
   .quarters {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 
-  .quarter-col {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px;
-    padding: 18px 16px 16px;
-    position: relative;
-  }
-
-  .quarter-header {
+  .quarter-section {
     display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    flex-direction: column;
+    gap: 12px;
   }
-  .quarter-badge {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    text-transform: uppercase;
-  }
-  .q2 .quarter-badge { background: rgba(99,102,241,0.2); color: #A5B4FC; border: 1px solid rgba(99,102,241,0.3); }
-  .q3 .quarter-badge { background: rgba(16,185,129,0.15); color: #6EE7B7; border: 1px solid rgba(16,185,129,0.25); }
-  .q4 .quarter-badge { background: rgba(245,158,11,0.15); color: #FCD34D; border: 1px solid rgba(245,158,11,0.25); }
-  .parking .quarter-badge { background: rgba(107,114,128,0.2); color: #9CA3AF; border: 1px solid rgba(107,114,128,0.25); }
 
-  .quarter-title {
+  .quarter-label {
+    text-align: center;
+    padding: 8px 0 10px;
     font-size: 13px;
-    font-weight: 600;
-    color: #D1D5DB;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #5B54E8;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(to bottom, rgba(124,111,247,0.08), transparent);
+    border-bottom: 2px solid rgba(124,111,247,0.15);
+    margin-bottom: 2px;
   }
+  .quarter-label .q { font-size: 18px; font-weight: 800; color: #1a1a2e; display: block; }
+  .quarter-label .sub { font-size: 11.5px; color: #8b8fa8; font-weight: 500; }
 
-  /* Items */
-  .item {
+  /* ── Cards ── */
+  .card {
+    background: #ffffff;
+    border: 1.5px solid #ececf4;
+    border-radius: 16px;
+    padding: 14px 16px;
     display: flex;
-    gap: 8px;
     align-items: flex-start;
-    margin-bottom: 9px;
+    gap: 14px;
+    transition: box-shadow 0.2s;
   }
-  .item:last-child { margin-bottom: 0; }
+  .card:hover {
+    box-shadow: 0 6px 24px rgba(100,90,200,0.1);
+    border-color: rgba(124,111,247,0.3);
+  }
 
-  .item-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    margin-top: 6px;
+  .card-icon {
+    width: 46px; height: 46px;
+    border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
     flex-shrink: 0;
   }
-  .q2 .item-dot { background: #818CF8; }
-  .q3 .item-dot { background: #34D399; }
-  .q4 .item-dot { background: #FBBF24; }
-  .parking .item-dot { background: #6B7280; }
+  .icon-purple { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+  .icon-blue   { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+  .icon-green  { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+  .icon-amber  { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+  .icon-pink   { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+  .icon-sky    { background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
+  .icon-gray   { background: linear-gradient(135deg, #f3f4f6, #e5e7eb); }
 
-  .item-content { flex: 1; }
-  .item-name {
-    font-size: 12.5px;
-    font-weight: 500;
-    color: #E5E7EB;
-    line-height: 1.35;
-  }
-  .item-desc {
-    font-size: 11px;
-    color: #6B7280;
+  .card-body { flex: 1; min-width: 0; }
+  .card-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1a1a2e;
     line-height: 1.3;
-    margin-top: 2px;
+    margin-bottom: 3px;
+  }
+  .card-desc {
+    font-size: 11.5px;
+    color: #8b8fa8;
+    line-height: 1.4;
   }
 
-  .tag {
-    display: inline-block;
-    font-size: 10px;
-    padding: 1px 6px;
-    border-radius: 4px;
-    margin-top: 3px;
-    font-weight: 500;
-  }
-  .tag-new { background: rgba(16,185,129,0.12); color: #6EE7B7; }
-  .tag-enhance { background: rgba(99,102,241,0.12); color: #A5B4FC; }
-  .tag-idea { background: rgba(245,158,11,0.12); color: #FCD34D; }
-
-  /* Status chips on items */
-  .status-chip {
+  .badge {
     display: inline-block;
     font-size: 9.5px;
-    padding: 1px 6px;
-    border-radius: 4px;
-    margin-top: 3px;
-    font-weight: 600;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 6px;
+    margin-top: 5px;
     text-transform: uppercase;
     letter-spacing: 0.4px;
   }
-  .status-ready { background: rgba(16,185,129,0.15); color: #6EE7B7; }
-  .status-delivery { background: rgba(99,102,241,0.15); color: #A5B4FC; }
-  .status-discovery { background: rgba(245,158,11,0.15); color: #FCD34D; }
-  .status-parking { background: rgba(107,114,128,0.15); color: #9CA3AF; }
+  .badge-new      { background: #d1fae5; color: #065f46; }
+  .badge-enhance  { background: #ede9fe; color: #5b21b6; }
+  .badge-idea     { background: #fef3c7; color: #92400e; }
 
-  /* Footer */
+  /* ── Footer ── */
   .footer {
     margin-top: 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1.5px solid #ececf4;
   }
-  .legend {
-    display: flex;
-    gap: 16px;
-  }
+  .legend { display: flex; gap: 20px; align-items: center; }
   .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: #6B7280;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11.5px; color: #8b8fa8;
   }
-  .legend-dot {
-    width: 8px; height: 8px;
-    border-radius: 2px;
+  .lbadge {
+    font-size: 9.5px; font-weight: 700; padding: 2px 7px;
+    border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px;
   }
-  .confidential {
-    font-size: 11px;
-    color: #374151;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+  .confidential { font-size: 11px; color: #c4c6d4; letter-spacing: 1px; text-transform: uppercase; }
 </style>
 </head>
 <body>
@@ -244,267 +169,225 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="logo-area">
-      <div class="logo-icon">⚡</div>
-      <div class="logo-text">Sales<span>+</span></div>
+    <div class="logo">
+      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
     </div>
-    <div class="slide-meta">
-      <div class="label">Long-Term Roadmap</div>
-      <div class="date">May 2026 · CEO Briefing</div>
-    </div>
-  </div>
-
-  <!-- Title -->
-  <div class="title-block">
     <h1>What's Coming Next for Sales+</h1>
-    <p>Upcoming capabilities across Q2 → Q4 2026 and beyond — powering the complete field sales lifecycle</p>
+    <p>Long-term product roadmap · CEO Briefing · May 2026</p>
   </div>
 
-  <!-- Quarter Columns -->
+  <!-- Columns -->
   <div class="quarters">
 
-    <!-- Q2 In-Flight / Next -->
-    <div class="quarter-col q2">
-      <div class="quarter-header">
-        <span class="quarter-badge">Q2 2026</span>
-        <span class="quarter-title">In-Flight</span>
+    <!-- Q2 -->
+    <div class="quarter-section">
+      <div class="quarter-label">
+        <span class="q">Q2 2026</span>
+        <span class="sub">In-Flight &amp; Almost Done</span>
       </div>
 
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Visit Module</div>
-          <div class="item-desc">Plan, log & track customer visits in the field</div>
-          <span class="tag tag-new">🍀 New</span>
+      <div class="card">
+        <div class="card-icon icon-purple">🗺️</div>
+        <div class="card-body">
+          <div class="card-title">Visit Module</div>
+          <div class="card-desc">Plan, log & track customer visits in the field</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Cash Orders Deposit</div>
-          <div class="item-desc">Record & reconcile cash deposits on delivery</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-green">💵</div>
+        <div class="card-body">
+          <div class="card-title">Cash Orders Deposit</div>
+          <div class="card-desc">Record & reconcile cash collections on delivery</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Edit Order (App)</div>
-          <div class="item-desc">Agents modify confirmed orders without duplicates</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-blue">✏️</div>
+        <div class="card-body">
+          <div class="card-title">Edit Order — App Side</div>
+          <div class="card-desc">Agents modify confirmed orders without duplicates</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Discount Configs</div>
-          <div class="item-desc">Configurable discount rules with limits & controls</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-pink">🏷️</div>
+        <div class="card-body">
+          <div class="card-title">Discount Configs</div>
+          <div class="card-desc">Configurable discount rules, limits & approval controls</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Export Lists</div>
-          <div class="item-desc">Export sales, orders & inventory from admin panel</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-sky">📤</div>
+        <div class="card-body">
+          <div class="card-title">Export Lists</div>
+          <div class="card-desc">Export sales, orders & inventory from admin panel</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Notifications Center</div>
-          <div class="item-desc">Real-time alerts for orders & approvals</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-purple">🔔</div>
+        <div class="card-body">
+          <div class="card-title">Notifications Center</div>
+          <div class="card-desc">Real-time alerts for orders, approvals & key events</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Customer Module Improvements</div>
-          <div class="item-desc">Better profiles, search & management UX</div>
-          <span class="tag tag-enhance">⚡ Enhance</span>
+
+      <div class="card">
+        <div class="card-icon icon-gray">👥</div>
+        <div class="card-body">
+          <div class="card-title">Customer Module Improvements</div>
+          <div class="card-desc">Better profiles, search & management UX</div>
+          <span class="badge badge-enhance">Enhancement</span>
         </div>
       </div>
     </div>
 
     <!-- Q3 -->
-    <div class="quarter-col q3">
-      <div class="quarter-header">
-        <span class="quarter-badge">Q3 2026</span>
-        <span class="quarter-title">Planned</span>
+    <div class="quarter-section">
+      <div class="quarter-label">
+        <span class="q">Q3 2026</span>
+        <span class="sub">Planned</span>
       </div>
 
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Agent Payout</div>
-          <div class="item-desc">Calculate & process payouts on completed deliveries</div>
-          <span class="tag tag-new">🍀 New</span>
+      <div class="card">
+        <div class="card-icon icon-green">💰</div>
+        <div class="card-body">
+          <div class="card-title">Agent Payout</div>
+          <div class="card-desc">Calculate & process payouts based on deliveries</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Agent Commissions Config</div>
-          <div class="item-desc">Flexible commission rules based on sales criteria</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-purple">⚙️</div>
+        <div class="card-body">
+          <div class="card-title">Commissions Config</div>
+          <div class="card-desc">Flexible commission rules based on sales criteria</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Agent Performance Dashboard</div>
-          <div class="item-desc">Customizable KPIs & performance tracking</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-blue">📊</div>
+        <div class="card-body">
+          <div class="card-title">Agent Performance Dashboard</div>
+          <div class="card-desc">Customizable KPIs & real-time performance tracking</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Proof of Delivery / Return</div>
-          <div class="item-desc">Digital proof capture for deliveries & returns</div>
-          <span class="tag tag-enhance">⚡ Enhance</span>
+
+      <div class="card">
+        <div class="card-icon icon-sky">📸</div>
+        <div class="card-body">
+          <div class="card-title">Proof of Delivery / Return</div>
+          <div class="card-desc">Digital proof capture for deliveries & returns</div>
+          <span class="badge badge-enhance">Enhancement</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Dynamic Pricelists</div>
-          <div class="item-desc">Customer-specific pricelists managed from admin</div>
-          <span class="tag tag-new">🍀 New</span>
+
+      <div class="card">
+        <div class="card-icon icon-pink">💲</div>
+        <div class="card-body">
+          <div class="card-title">Dynamic Pricelists</div>
+          <div class="card-desc">Customer-specific pricelists managed from admin</div>
+          <span class="badge badge-new">New Feature</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Reserve Stock on Order</div>
-          <div class="item-desc">Auto-hold stock on creation to prevent overselling</div>
-          <span class="tag tag-enhance">⚡ Enhance</span>
+
+      <div class="card">
+        <div class="card-icon icon-amber">📦</div>
+        <div class="card-body">
+          <div class="card-title">Reserve Stock on Order</div>
+          <div class="card-desc">Auto-hold stock on creation to prevent overselling</div>
+          <span class="badge badge-enhance">Enhancement</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Cashvan Enhancements</div>
-          <div class="item-desc">Stock pickup, thresholds & product history</div>
-          <span class="tag tag-enhance">⚡ Enhance</span>
+
+      <div class="card">
+        <div class="card-icon icon-gray">🚚</div>
+        <div class="card-body">
+          <div class="card-title">Cashvan Enhancements</div>
+          <div class="card-desc">Stock pickup, thresholds & full product history</div>
+          <span class="badge badge-enhance">Enhancement</span>
         </div>
       </div>
     </div>
 
     <!-- Q4 -->
-    <div class="quarter-col q4">
-      <div class="quarter-header">
-        <span class="quarter-badge">Q4 2026</span>
-        <span class="quarter-title">Future</span>
+    <div class="quarter-section">
+      <div class="quarter-label">
+        <span class="q">Q4 2026</span>
+        <span class="sub">Future Vision</span>
       </div>
 
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Agents Rewards Program</div>
-          <div class="item-desc">Incentive & loyalty program for field agents</div>
-          <span class="tag tag-idea">💡 Idea</span>
+      <div class="card">
+        <div class="card-icon icon-amber">🏆</div>
+        <div class="card-body">
+          <div class="card-title">Agent Rewards Program</div>
+          <div class="card-desc">Incentive & loyalty program to motivate field agents</div>
+          <span class="badge badge-idea">Idea</span>
         </div>
-      </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">AI Assistant</div>
-          <div class="item-desc">In-app AI for smarter sales decisions</div>
-          <span class="tag tag-idea">💡 Idea</span>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">BI Rich Dashboards</div>
-          <div class="item-desc">Business intelligence-powered insights & analytics</div>
-          <span class="tag tag-idea">💡 Idea</span>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Merchandising Module</div>
-          <div class="item-desc">Audit shelves & track store presence in field</div>
-          <span class="tag tag-idea">💡 Idea</span>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Market Research</div>
-          <div class="item-desc">Field surveys for instant market insights</div>
-          <span class="tag tag-idea">💡 Idea</span>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Agent Targets</div>
-          <div class="item-desc">Agents track personal targets & progress</div>
-          <span class="tag tag-idea">💡 Idea</span>
-        </div>
-      </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">Mystery Shopping</div>
-          <div class="item-desc">Identify standards gaps to elevate CX</div>
-          <span class="tag tag-idea">💡 Idea</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Strategic Themes -->
-    <div class="quarter-col parking">
-      <div class="quarter-header">
-        <span class="quarter-badge">Strategic</span>
-        <span class="quarter-title">Themes</span>
       </div>
 
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">💰 Agent Economics</div>
-          <div class="item-desc">Commissions, payouts, rewards & performance</div>
+      <div class="card">
+        <div class="card-icon icon-purple">🤖</div>
+        <div class="card-body">
+          <div class="card-title">AI Assistant</div>
+          <div class="card-desc">In-app AI for orders, stock & daily decision support</div>
+          <span class="badge badge-idea">Idea</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">🗺️ Field Ops Intelligence</div>
-          <div class="item-desc">Visits, proof of delivery & geofencing</div>
+
+      <div class="card">
+        <div class="card-icon icon-blue">📈</div>
+        <div class="card-body">
+          <div class="card-title">BI Rich Dashboards</div>
+          <div class="card-desc">Business intelligence-powered insights & analytics</div>
+          <span class="badge badge-idea">Idea</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">💳 Financial Controls</div>
-          <div class="item-desc">Cash deposits, credit notes & approval flows</div>
+
+      <div class="card">
+        <div class="card-icon icon-green">🏪</div>
+        <div class="card-body">
+          <div class="card-title">Merchandising Module</div>
+          <div class="card-desc">Audit shelves & track store presence in the field</div>
+          <span class="badge badge-idea">Idea</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">📊 Analytics & Insights</div>
-          <div class="item-desc">BI dashboards, agent KPIs & market research</div>
+
+      <div class="card">
+        <div class="card-icon icon-sky">🔍</div>
+        <div class="card-body">
+          <div class="card-title">Market Research</div>
+          <div class="card-desc">Deploy field surveys for instant market insights</div>
+          <span class="badge badge-idea">Idea</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">🤖 AI & Automation</div>
-          <div class="item-desc">AI assistant, dynamic pricing & smart configs</div>
+
+      <div class="card">
+        <div class="card-icon icon-pink">🎯</div>
+        <div class="card-body">
+          <div class="card-title">Agent Targets</div>
+          <div class="card-desc">Agents track personal goals & progress live</div>
+          <span class="badge badge-idea">Idea</span>
         </div>
       </div>
-      <div class="item">
-        <div class="item-dot"></div>
-        <div class="item-content">
-          <div class="item-name">🏪 Retail Execution</div>
-          <div class="item-desc">Merchandising, mystery shopping & audits</div>
+
+      <div class="card">
+        <div class="card-icon icon-amber">🎁</div>
+        <div class="card-body">
+          <div class="card-title">Gift Management</div>
+          <div class="card-desc">Distribute brand gifts with full visibility & control</div>
+          <span class="badge badge-idea">Idea</span>
         </div>
       </div>
     </div>
@@ -514,20 +397,9 @@
   <!-- Footer -->
   <div class="footer">
     <div class="legend">
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#818CF8;"></div>Q2 In-Flight
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#34D399;"></div>Q3 Planned
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#FBBF24;"></div>Q4 Future
-      </div>
-      <div class="legend-item">
-        <div class="legend-dot" style="background:#818CF8; border-radius:0;"></div>🍀 New Feature &nbsp;
-        <div class="legend-dot" style="background:#6EE7B7; border-radius:0;"></div>⚡ Enhancement &nbsp;
-        <div class="legend-dot" style="background:#FCD34D; border-radius:0;"></div>💡 Idea
-      </div>
+      <div class="legend-item"><span class="lbadge" style="background:#d1fae5;color:#065f46;">New Feature</span> Net-new capability</div>
+      <div class="legend-item"><span class="lbadge" style="background:#ede9fe;color:#5b21b6;">Enhancement</span> Improves existing flow</div>
+      <div class="legend-item"><span class="lbadge" style="background:#fef3c7;color:#92400e;">Idea</span> In exploration</div>
     </div>
     <div class="confidential">Confidential · salesplus.app</div>
   </div>
