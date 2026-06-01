@@ -148,7 +148,9 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
 .slide.proto-slide{padding:0!important;align-items:stretch!important}
 .slide.proto-slide .header,.slide.proto-slide .body{width:100%!important;max-width:100%!important;margin:0!important}
 .slide.proto-slide .header{padding:10px 28px;flex-shrink:0;border-bottom:1px solid var(--line)}
-.proto-frame{flex:1;min-height:0;width:100%;border:none;display:block}
+.proto-wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:16px 0 20px;overflow:hidden}
+.proto-scale{width:390px;height:844px;transform-origin:top center;border-radius:24px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.35);flex-shrink:0}
+.proto-frame{width:100%;height:100%;border:none;display:block}
 </style></head>
 <body>
 <div class="progress"><div class="bar" id="progFill"></div></div>
@@ -171,7 +173,11 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Live Prototype</span></div>
     <a href="https://prypcoai.lovable.app" target="_blank" style="font-size:12px;color:var(--brand-text);text-decoration:none;font-weight:600">Open ↗</a>
   </div>
-  <iframe class="proto-frame" src="https://prypcoai.lovable.app" title="PRYPCO AI Prototype" allow="fullscreen" loading="lazy"></iframe>
+  <div class="proto-wrap">
+    <div class="proto-scale" id="protoScale">
+      <iframe class="proto-frame" src="https://prypcoai.lovable.app" title="PRYPCO AI Prototype" allow="fullscreen" loading="lazy"></iframe>
+    </div>
+  </div>
 </div>
 
 <!-- SLIDE 3: THE CUSTOMER PROBLEM -->
@@ -421,6 +427,21 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
 })();
 </script>
 <script>
+function scaleProto(){
+  var el=document.getElementById('protoScale');
+  if(!el)return;
+  var wrap=el.parentElement;
+  var availH=wrap.clientHeight-36;
+  var availW=wrap.clientWidth-48;
+  var scaleH=availH/844;
+  var scaleW=availW/390;
+  var s=Math.min(scaleH,scaleW,1);
+  el.style.transform='scale('+s+')';
+  el.style.marginBottom=(844*(s-1))+'px';
+}
+window.addEventListener('resize',scaleProto);
+document.addEventListener('DOMContentLoaded',function(){setTimeout(scaleProto,100);});
+scaleProto();
 function toggleDark(){
   var dark=document.documentElement.classList.toggle('dark');
   localStorage.setItem('theme',dark?'dark':'light');
