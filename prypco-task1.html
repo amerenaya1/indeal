@@ -315,11 +315,44 @@ tr.clickable-row:hover .row-arrow{opacity:1;color:var(--brand-text)}
   </div>
 </div>
 
-<!-- SLIDE 5: RISKS -->
+<!-- SLIDE 5: PRINCIPLES -->
+<div class="slide">
+  <div class="header">
+    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Principles</span></div>
+  </div>
+  <div class="body">
+    <h2 style="font-size:44px;line-height:1.1;margin-bottom:20px">Before adding anything new,<br><span style="color:var(--brand-text)">I asked: what's actually broken?</span></h2>
+    <div style="border-top:1px solid var(--line);margin-bottom:20px"></div>
+    <div class="cards-2">
+      <div class="card">
+        <h3>Fix what's broken first.</h3>
+        <p>Emirates ID gate, T&amp;Cs error, empty shelf post-KYC. No new feature fixes a broken funnel. Sprint 1 starts with bug fixes, not builds.</p>
+      </div>
+      <div class="card">
+        <h3>AI features need to be built right.</h3>
+        <p>The wizard, OCR, and retargeting go in Sprint 2. They touch the most critical moments. Rushing them risks new bugs in the exact flow we're fixing.</p>
+      </div>
+      <div class="card">
+        <h3>Measure before you move.</h3>
+        <p>Drop-off rates today are estimates, not data. Instrumentation ships before everything else. Without a baseline, every improvement is invisible.</p>
+      </div>
+      <div class="card">
+        <h3>Everything earns its place.</h3>
+        <p>No nice-to-haves. Every initiative fixes a known drop-off point or drives a conversion event. If capacity forces cuts, medium-impact items go first.</p>
+      </div>
+      <div class="card">
+        <h3>Unblock the most users fastest.</h3>
+        <p>Registration, KYC roadmap, smart empty state. One sprint each, high impact, low effort. Not glamorous but they remove the friction that matters.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: RISKS -->
 <div class="slide">
   <div class="header">
     <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">Risks &amp; Trade-offs</span></div>
-    <span style="font-size:12px;color:var(--mute)">5 / 6</span>
+    <span style="font-size:12px;color:var(--mute)">6 / 7</span>
   </div>
   <div class="body">
     <h2>Risks, dependencies &amp; trade-offs.</h2>
@@ -366,7 +399,7 @@ tr.clickable-row:hover .row-arrow{opacity:1;color:var(--brand-text)}
   const progFill = document.getElementById('progFill');
   const counterEl = document.getElementById('counter');
   if(tot) tot.textContent = slides.length;
-  const slideTitles = ['Cover','The Problem','Strategy','14 Initiatives','Risks & Trade-offs','Closing'];
+  const slideTitles = ['Cover','The Problem','Strategy','15 Initiatives','Principles','Risks & Trade-offs','Closing'];
   const menu = document.createElement('div');
   const menuItems = [];
   menu.className = 'slide-menu';
