@@ -119,6 +119,32 @@ tr:last-child td{border-bottom:none}
 .slide .header,.slide .body{position:relative;z-index:1}
 @media print{.slide::before{display:none!important}}
 @media(max-width:1000px){.slide{padding:28px 32px 78px}h1{font-size:40px}h2{font-size:30px}.title-slide h1{font-size:52px}.kpis,.step-grid,.sprint-grid{grid-template-columns:repeat(2,1fr)}.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1400px){
+  .slide{padding:60px 100px 96px}
+  h2{font-size:56px}
+  h3,.card h3{font-size:28px}
+  .lead{font-size:24px;margin-bottom:32px}
+  .title-slide h1{font-size:100px}
+  .title-slide .sub{font-size:26px}
+  .closing h1{font-size:70px}
+  .wordmark{font-size:20px}
+  .section-tag{font-size:13px}
+  .card p,.card li{font-size:17px}
+  .card li{padding:7px 0 7px 24px}
+  th{font-size:13px;padding:12px 18px}
+  td{font-size:15px;padding:12px 18px}
+  .kpi .n{font-size:60px}
+  .kpi .l{font-size:16px}
+  .badge{font-size:14px;padding:4px 12px}
+  .step-title{font-size:24px}
+  .step p{font-size:16px}
+  .risk h4{font-size:19px}
+  .risk p,.fix{font-size:15px}
+  .grp-hdr td{font-size:13px}
+  .sb-htitle{font-size:22px}
+  #sb-desc{font-size:16px}
+  .sb-meta-val{font-size:16px}
+}
 @media print{html,body{overflow:visible!important;height:auto!important}body.nav-forward .slide:not(.active),body.nav-back .slide:not(.active){transform:none!important}.deck{overflow:visible!important;height:auto!important;position:relative!important}.slide{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;transform:none!important;page-break-after:always;break-after:page;height:100vh;overflow:hidden!important;padding:40px 60px 40px!important}.slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}.progress,.controls,.hint{display:none!important}h1,h2{-webkit-text-fill-color:#1d1d1f!important;background:none!important;color:#1d1d1f!important}#init-sidebar{display:none!important}}
 .quad-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
 .grp-hdr td{background:var(--line);color:var(--mute);font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px!important;border:none!important}
