@@ -10,91 +10,8 @@
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: #f5f6fa;
-    display: flex;
-    min-height: 100vh;
+    padding: 40px 60px 60px;
   }
-
-  /* ── Sidebar ── */
-  .sidebar {
-    width: 220px;
-    flex-shrink: 0;
-    background: #fff;
-    border-right: 1.5px solid #e5e7eb;
-    padding: 28px 14px 28px;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    transition: width 0.25s ease, padding 0.25s ease;
-  }
-  .sidebar.collapsed {
-    width: 48px;
-    padding: 28px 10px;
-    overflow: hidden;
-  }
-  .sidebar.collapsed .sidebar-label,
-  .sidebar.collapsed .sidebar-item span:last-child,
-  .sidebar.collapsed .sidebar-divider,
-  .sidebar.collapsed .save-btn span,
-  .sidebar.collapsed .sidebar-logo-text { display: none; }
-  .sidebar.collapsed .sidebar-item { justify-content: center; padding: 8px 0; }
-  .sidebar.collapsed .save-btn { padding: 10px 6px; justify-content: center; }
-
-  .sidebar-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding: 0 4px;
-  }
-  .sidebar-logo { display: flex; align-items: center; gap: 8px; }
-  .sidebar-logo svg { width: 30px; height: 30px; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
-  .sidebar-logo-text { font-size: 13px; font-weight: 700; color: #0f0f1a; white-space: nowrap; }
-
-  .collapse-btn {
-    background: none; border: none; cursor: pointer;
-    color: #9ca3af; font-size: 16px; padding: 2px;
-    flex-shrink: 0; line-height: 1;
-    transition: color 0.15s;
-  }
-  .collapse-btn:hover { color: #4b5563; }
-
-  .sidebar-label {
-    font-size: 10px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 1px; color: #9ca3af; padding: 0 8px; margin-bottom: 2px;
-    white-space: nowrap;
-  }
-
-  .sidebar-item {
-    display: flex; align-items: center; gap: 8px;
-    padding: 7px 10px; border-radius: 8px;
-    cursor: grab; font-size: 12px; font-weight: 500; color: #4b5563;
-    transition: background 0.15s; user-select: none; white-space: nowrap;
-  }
-  .sidebar-item:hover { background: #f3f4f6; color: #1B54F8; }
-  .sidebar-item.sortable-ghost { opacity: 0.4; background: #eff6ff; }
-  .drag-handle-sidebar { color: #d1d5db; font-size: 12px; flex-shrink: 0; }
-
-  .sidebar-divider { height: 1px; background: #f3f4f6; margin: 6px 0; flex-shrink: 0; }
-
-  .save-btn {
-    margin-top: auto; padding: 10px 12px;
-    background: #1B54F8; color: #fff; border: none; border-radius: 10px;
-    font-size: 12px; font-weight: 600; cursor: pointer;
-    display: flex; align-items: center; gap: 6px; justify-content: flex-start;
-    transition: background 0.15s; white-space: nowrap; flex-shrink: 0;
-  }
-  .save-btn:hover { background: #1444d4; }
-  .save-status {
-    font-size: 10px; color: #9ca3af; text-align: center;
-    padding: 0 4px; white-space: nowrap; flex-shrink: 0;
-  }
-
-  /* ── Main ── */
-  .main { flex: 1; padding: 40px 52px 60px; overflow-y: auto; }
 
   .header {
     display: flex; flex-direction: column; align-items: flex-start;
@@ -109,9 +26,7 @@
   #sections-container { display: flex; flex-direction: column; gap: 48px; }
   .section.sortable-ghost { opacity: 0.4; }
 
-  .section-header {
-    display: flex; align-items: center; gap: 8px; margin-bottom: 14px;
-  }
+  .section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
   .drag-handle-section { cursor: grab; color: #d1d5db; font-size: 14px; padding: 2px 4px; }
   .drag-handle-section:hover { color: #9ca3af; }
 
@@ -136,7 +51,7 @@
     border: 1px solid #f0f1f5; position: relative;
     transition: box-shadow 0.15s;
   }
-  .card:hover:not(.empty):not(.add-card) { box-shadow: inset 0 0 0 2px rgba(27,84,248,0.12); }
+  .card:hover:not(.empty) { box-shadow: inset 0 0 0 2px rgba(27,84,248,0.12); }
   .card.sortable-ghost { opacity: 0.3; background: #eff6ff; }
   .card.sortable-chosen { cursor: grabbing; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 10; }
   .card.empty { cursor: default; border: none; }
@@ -152,7 +67,6 @@
   }
   .card-desc:focus { background: #f8f9ff; padding: 2px 4px; margin: -2px -4px; }
 
-  /* delete button */
   .card-delete {
     position: absolute; top: 10px; right: 10px;
     width: 22px; height: 22px; border-radius: 50%;
@@ -164,63 +78,32 @@
   .card:hover .card-delete { display: flex; }
   .card-delete:hover { background: #fca5a5; }
 
-  /* drag handle on card */
   .card-drag {
     position: absolute; top: 10px; left: 10px;
-    color: #e5e7eb; font-size: 12px; cursor: grab;
-    display: none;
+    color: #e5e7eb; font-size: 12px; cursor: grab; display: none;
   }
-  .card:hover:not(.empty):not(.add-card) .card-drag { display: block; }
+  .card:hover:not(.empty) .card-drag { display: block; }
 
-  /* add card */
-  .add-card {
-    cursor: pointer; border: 2px dashed #e5e7eb !important;
-    background: #fafafa !important; min-height: 80px;
-    align-items: center; justify-content: center;
-    color: #9ca3af; font-size: 13px; font-weight: 500;
-    gap: 6px; flex-direction: row;
-    transition: border-color 0.15s, color 0.15s;
+  /* save button */
+  .save-bar {
+    position: fixed; bottom: 24px; right: 24px;
+    display: flex; align-items: center; gap: 10px; z-index: 100;
   }
-  .add-card:hover { border-color: #1B54F8 !important; color: #1B54F8; }
-  .add-card-icon { font-size: 18px; }
+  .save-btn {
+    padding: 10px 18px; background: #1B54F8; color: #fff;
+    border: none; border-radius: 10px; font-size: 13px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 14px rgba(27,84,248,0.3); transition: background 0.15s;
+  }
+  .save-btn:hover { background: #1444d4; }
+  .save-status { font-size: 12px; color: #6b7280; background: #fff; padding: 6px 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 
-  /* add card form */
-  .add-card-form { flex-direction: column; gap: 10px; padding: 20px 22px; cursor: default; }
-  .add-card-form input, .add-card-form textarea {
-    width: 100%; border: 1.5px solid #e5e7eb; border-radius: 8px;
-    padding: 8px 10px; font-size: 13px; font-family: inherit;
-    color: #0f0f1a; outline: none; resize: none;
-    transition: border-color 0.15s;
-  }
-  .add-card-form input:focus, .add-card-form textarea:focus { border-color: #1B54F8; }
-  .add-card-form input { font-weight: 700; }
-  .add-card-form-btns { display: flex; gap: 6px; }
-  .btn-add-confirm {
-    flex: 1; padding: 7px; background: #1B54F8; color: #fff;
-    border: none; border-radius: 7px; font-size: 12px; font-weight: 600;
-    cursor: pointer;
-  }
-  .btn-add-cancel {
-    padding: 7px 10px; background: #f3f4f6; color: #6b7280;
-    border: none; border-radius: 7px; font-size: 12px; cursor: pointer;
-  }
-
-  /* add section button */
-  .add-section-btn {
-    display: flex; align-items: center; gap: 8px;
-    padding: 14px 18px; border: 2px dashed #e5e7eb;
-    border-radius: 14px; background: transparent;
-    color: #9ca3af; font-size: 13px; font-weight: 500;
-    cursor: pointer; width: 100%; transition: border-color 0.15s, color 0.15s;
-  }
-  .add-section-btn:hover { border-color: #1B54F8; color: #1B54F8; }
-
-  .footer { margin-top: 16px; display: flex; justify-content: flex-end; }
+  .footer { margin-top: 32px; display: flex; justify-content: flex-end; }
   .confidential { font-size: 11px; color: #d1d5db; letter-spacing: 1px; text-transform: uppercase; }
 
   .toast {
-    position: fixed; bottom: 24px; right: 24px;
-    background: #0f0f1a; color: #fff; padding: 10px 18px;
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #0f0f1a; color: #fff; padding: 10px 20px;
     border-radius: 10px; font-size: 13px; font-weight: 500;
     opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 999;
   }
@@ -229,62 +112,35 @@
 </head>
 <body>
 
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-top">
-    <div class="sidebar-logo">
-      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-        <rect width="64" height="64" rx="16" fill="#1B54F8"/>
-        <rect x="10" y="20" width="5" height="14" rx="2" fill="#D4E84A"/>
-        <rect x="5.5" y="24.5" width="14" height="5" rx="2" fill="#D4E84A"/>
-        <text x="19" y="30" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Sales</text>
-        <text x="19" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Plus</text>
-      </svg>
-      <span class="sidebar-logo-text">Sales+</span>
-    </div>
-    <button class="collapse-btn" id="collapse-btn" title="Collapse sidebar">◀</button>
-  </div>
-
-  <div class="sidebar-label">Sections</div>
-  <div id="sidebar-list"></div>
-  <div class="sidebar-divider"></div>
-
-  <div class="save-status" id="save-status"></div>
-  <button class="save-btn" id="save-btn" onclick="linkAndSave()">
-    <span>💾</span><span>Save to File</span>
-  </button>
+<div class="header">
+  <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <rect width="64" height="64" rx="16" fill="#1B54F8"/>
+    <rect x="10" y="20" width="5" height="14" rx="2" fill="#D4E84A"/>
+    <rect x="5.5" y="24.5" width="14" height="5" rx="2" fill="#D4E84A"/>
+    <text x="19" y="30" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Sales</text>
+    <text x="19" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Plus</text>
+  </svg>
+  <h1>What's Coming Next for Sales+</h1>
+  <p class="subtitle">Empower every agent in the field. Sales+ is an all-in-one field sales platform built to streamline order management, customer engagement, and on-ground operations — giving sales leaders real-time visibility and the insights they need to drive growth.</p>
+  <p>Long-term product roadmap · CEO Briefing · May 2026</p>
 </div>
 
-<!-- Main -->
-<div class="main">
-  <div class="header">
-    <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-      <rect width="64" height="64" rx="16" fill="#1B54F8"/>
-      <rect x="10" y="20" width="5" height="14" rx="2" fill="#D4E84A"/>
-      <rect x="5.5" y="24.5" width="14" height="5" rx="2" fill="#D4E84A"/>
-      <text x="19" y="30" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Sales</text>
-      <text x="19" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Plus</text>
-    </svg>
-    <h1>What's Coming Next for Sales+</h1>
-    <p class="subtitle">Empower every agent in the field. Sales+ is an all-in-one field sales platform built to streamline order management, customer engagement, and on-ground operations — giving sales leaders real-time visibility and the insights they need to drive growth.</p>
-    <p>Long-term product roadmap · CEO Briefing · May 2026</p>
-  </div>
+<div id="sections-container"></div>
 
-  <div id="sections-container"></div>
-  <div style="margin-top:20px;">
-    <button class="add-section-btn" onclick="addSection()">+ Add Section</button>
-  </div>
+<div class="footer">
+  <div class="confidential">Confidential · salesplus.app</div>
+</div>
 
-  <div class="footer" style="margin-top:32px;">
-    <div class="confidential">Confidential · salesplus.app</div>
-  </div>
+<!-- Save bar -->
+<div class="save-bar">
+  <div class="save-status" id="save-status" style="display:none"></div>
+  <button class="save-btn" onclick="linkAndSave()">💾 Save to File</button>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script>
-// ── Data ───────────────────────────────────────────────────────────────────
 const DEFAULT_DATA = [
   {
     "id": "field-operations",
@@ -355,20 +211,17 @@ const DEFAULT_DATA = [
   }
 ];
 
-// ── File handle ────────────────────────────────────────────────────────────
+// ── File save ──────────────────────────────────────────────────────────────
 let fileHandle = null;
 let saveTimer = null;
 
 async function linkAndSave() {
-  if (!fileHandle) {
-    if ('showOpenFilePicker' in window) {
-      try {
-        [fileHandle] = await window.showOpenFilePicker({
-          types: [{ description: 'HTML file', accept: { 'text/html': ['.html'] } }]
-        });
-        setSaveStatus('Linked ✓');
-      } catch(e) { return; }
-    }
+  if (!fileHandle && 'showOpenFilePicker' in window) {
+    try {
+      [fileHandle] = await window.showOpenFilePicker({
+        types: [{ description: 'HTML file', accept: { 'text/html': ['.html'] } }]
+      });
+    } catch(e) { return; }
   }
   await writeToFile();
 }
@@ -381,99 +234,71 @@ async function writeToFile() {
       await writable.write(html);
       await writable.close();
       setSaveStatus('Saved ✓');
-      showToast('Saved to file');
-    } catch(e) {
-      fallbackDownload(html);
-    }
-  } else {
-    fallbackDownload(html);
+      return;
+    } catch(e) {}
   }
-}
-
-function fallbackDownload(html) {
+  // fallback download
   const blob = new Blob([html], { type: 'text/html' });
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'salesplus_roadmap_slide.html';
-  a.click();
-  showToast('Downloaded (File API not supported)');
+  a.href = URL.createObjectURL(blob); a.download = 'salesplus_roadmap_slide.html'; a.click();
 }
 
 function scheduleSave() {
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => writeToFile(), 800);
+  saveTimer = setTimeout(writeToFile, 900);
 }
 
 function setSaveStatus(msg) {
-  document.getElementById('save-status').textContent = msg;
-  setTimeout(() => document.getElementById('save-status').textContent = '', 3000);
+  const el = document.getElementById('save-status');
+  el.textContent = msg; el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 2500);
 }
 
 // ── Build HTML ─────────────────────────────────────────────────────────────
 function buildHTML() {
   const data = getCurrentData();
-  const sectionsHTML = data.map(sec => {
-    const cardsHTML = sec.cards.map(c =>
-      `      <div class="card" data-id="${c.id}">\n        <span class="card-drag">⠿</span>\n        <div class="card-title" contenteditable="true" spellcheck="false">${c.title}</div>\n        <div class="card-desc" contenteditable="true" spellcheck="false">${c.desc}</div>\n        <button class="card-delete" onclick="deleteCard(this)">×</button>\n      </div>`
-    ).join('\n');
-    const rem = sec.cards.length % 3;
-    const empties = rem ? '\n' + '      <div class="card empty"></div>'.repeat(3 - rem) : '';
-    return `    <div class="section" data-id="${sec.id}">\n      <div class="section-header">\n        <span class="drag-handle-section" title="Drag to reorder">⠿</span>\n        <span class="section-title" contenteditable="true" spellcheck="false">${sec.title}</span>\n      </div>\n      <div class="grid">\n${cardsHTML}${empties}\n        <div class="card add-card" onclick="showAddForm(this)"><span class="add-card-icon">+</span><span>Add initiative</span></div>\n      </div>\n    </div>`;
-  }).join('\n\n');
-
   const src = document.documentElement.outerHTML;
-  // replace DEFAULT_DATA
-  const updated = src.replace(/const DEFAULT_DATA = \[[\s\S]*?\];/, `const DEFAULT_DATA = ${JSON.stringify(data, null, 2)};`);
-  return '<!DOCTYPE html>\n' + updated;
+  return '<!DOCTYPE html>\n' + src.replace(
+    /const DEFAULT_DATA = \[[\s\S]*?\];/,
+    `const DEFAULT_DATA = ${JSON.stringify(data, null, 2)};`
+  );
 }
 
-// ── State ──────────────────────────────────────────────────────────────────
 function getCurrentData() {
-  const sections = [];
-  document.querySelectorAll('.section').forEach(sec => {
-    const cards = [];
-    sec.querySelectorAll('.card:not(.empty):not(.add-card)').forEach(card => {
-      cards.push({
-        id: card.dataset.id || uid(),
-        title: card.querySelector('.card-title').textContent.trim(),
-        desc: card.querySelector('.card-desc').textContent.trim()
-      });
-    });
-    sections.push({
-      id: sec.dataset.id,
-      title: sec.querySelector('.section-title').textContent.trim(),
-      cards
-    });
-  });
-  return sections;
+  return [...document.querySelectorAll('.section')].map(sec => ({
+    id: sec.dataset.id,
+    title: sec.querySelector('.section-title').textContent.trim(),
+    cards: [...sec.querySelectorAll('.card:not(.empty)')].map(c => ({
+      id: c.dataset.id || uid(),
+      title: c.querySelector('.card-title').textContent.trim(),
+      desc: c.querySelector('.card-desc').textContent.trim()
+    }))
+  }));
 }
 
 function uid() { return Math.random().toString(36).slice(2, 9); }
 
 // ── Render ─────────────────────────────────────────────────────────────────
-function renderSection(section) {
+function renderSection(sec) {
   const div = document.createElement('div');
-  div.className = 'section';
-  div.dataset.id = section.id;
-  div.innerHTML = `
-    <div class="section-header">
-      <span class="drag-handle-section" title="Drag to reorder">⠿</span>
-      <span class="section-title" contenteditable="true" spellcheck="false">${section.title}</span>
-    </div>`;
+  div.className = 'section'; div.dataset.id = sec.id;
+  div.innerHTML = `<div class="section-header">
+    <span class="drag-handle-section" title="Drag to reorder">⠿</span>
+    <span class="section-title" contenteditable="true" spellcheck="false">${sec.title}</span>
+  </div>`;
+  div.querySelector('.section-title').addEventListener('input', scheduleSave);
 
   const grid = document.createElement('div');
   grid.className = 'grid';
-  section.cards.forEach(c => grid.appendChild(makeCard(c)));
-  fillEmpties(grid, section.cards.length);
-  grid.appendChild(makeAddCard());
+  sec.cards.forEach(c => grid.appendChild(makeCard(c)));
+  fillEmpties(grid, sec.cards.length);
   div.appendChild(grid);
   return div;
 }
 
 function makeCard(card) {
   const div = document.createElement('div');
-  div.className = 'card';
-  div.dataset.id = card.id;
+  div.className = 'card'; div.dataset.id = card.id;
   div.innerHTML = `
     <span class="card-drag">⠿</span>
     <div class="card-title" contenteditable="true" spellcheck="false">${card.title}</div>
@@ -484,23 +309,11 @@ function makeCard(card) {
   return div;
 }
 
-function makeAddCard() {
-  const div = document.createElement('div');
-  div.className = 'card add-card';
-  div.innerHTML = `<span class="add-card-icon">+</span><span>Add initiative</span>`;
-  div.addEventListener('click', () => showAddForm(div));
-  return div;
-}
-
 function fillEmpties(grid, count) {
-  document.querySelectorAll('.card.empty').forEach(e => e.remove());
+  grid.querySelectorAll('.card.empty').forEach(e => e.remove());
   const rem = count % 3;
-  if (rem !== 0) {
-    for (let i = 0; i < 3 - rem; i++) {
-      const e = document.createElement('div');
-      e.className = 'card empty';
-      grid.appendChild(e);
-    }
+  if (rem) for (let i = 0; i < 3 - rem; i++) {
+    const e = document.createElement('div'); e.className = 'card empty'; grid.appendChild(e);
   }
 }
 
@@ -509,188 +322,43 @@ function renderAll(data) {
   c.innerHTML = '';
   data.forEach(s => c.appendChild(renderSection(s)));
   initSortables();
-  renderSidebar(data);
-  bindTitleEdits();
 }
-
-function bindTitleEdits() {
-  document.querySelectorAll('.section-title').forEach(el => {
-    el.addEventListener('input', scheduleSave);
-  });
-}
-
-// ── Sidebar ────────────────────────────────────────────────────────────────
-let sidebarSortable;
-
-function renderSidebar(data) {
-  const list = document.getElementById('sidebar-list');
-  list.innerHTML = '';
-  data.forEach(sec => {
-    const item = document.createElement('div');
-    item.className = 'sidebar-item';
-    item.dataset.id = sec.id;
-    item.innerHTML = `<span class="drag-handle-sidebar">⠿</span><span>${sec.title}</span>`;
-    item.addEventListener('click', () => {
-      const el = document.querySelector(`.section[data-id="${sec.id}"]`);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    list.appendChild(item);
-  });
-  if (sidebarSortable) sidebarSortable.destroy();
-  sidebarSortable = Sortable.create(list, {
-    handle: '.drag-handle-sidebar', animation: 150,
-    ghostClass: 'sortable-ghost',
-    onEnd() {
-      const ids = [...list.querySelectorAll('.sidebar-item')].map(i => i.dataset.id);
-      const c = document.getElementById('sections-container');
-      ids.forEach(id => { const s = c.querySelector(`.section[data-id="${id}"]`); if (s) c.appendChild(s); });
-      onOrderChange();
-    }
-  });
-}
-
-document.getElementById('collapse-btn').addEventListener('click', () => {
-  const sb = document.getElementById('sidebar');
-  const btn = document.getElementById('collapse-btn');
-  sb.classList.toggle('collapsed');
-  btn.textContent = sb.classList.contains('collapsed') ? '▶' : '◀';
-});
 
 // ── Sortables ──────────────────────────────────────────────────────────────
 function initSortables() {
   Sortable.create(document.getElementById('sections-container'), {
     handle: '.drag-handle-section', animation: 150,
     ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
-    onEnd: onOrderChange
+    onEnd: scheduleSave
   });
-
-  document.querySelectorAll('.grid').forEach(grid => {
-    Sortable.create(grid, {
-      group: 'cards', animation: 150,
-      ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
-      filter: '.empty, .add-card',
-      handle: '.card-drag',
-      onEnd() { rebalanceEmpties(); onOrderChange(); }
-    });
-  });
+  document.querySelectorAll('.grid').forEach(initGridSortable);
 }
 
-function rebalanceEmpties() {
-  document.querySelectorAll('.grid').forEach(grid => {
-    grid.querySelectorAll('.card.empty').forEach(e => e.remove());
-    const real = grid.querySelectorAll('.card:not(.empty):not(.add-card)').length;
-    const rem = real % 3;
-    const addCard = grid.querySelector('.add-card');
-    if (rem !== 0) {
-      for (let i = 0; i < 3 - rem; i++) {
-        const e = document.createElement('div'); e.className = 'card empty';
-        grid.insertBefore(e, addCard);
-      }
-    }
-    // delete empty sections
-    const sec = grid.closest('.section');
-    if (real === 0 && sec) {
-      const id = sec.dataset.id;
-      sec.remove();
-      const si = document.querySelector(`#sidebar-list .sidebar-item[data-id="${id}"]`);
-      if (si) si.remove();
-    }
-  });
-}
-
-function onOrderChange() {
-  // sync sidebar
-  const ids = [...document.querySelectorAll('.section')].map(s => s.dataset.id);
-  const list = document.getElementById('sidebar-list');
-  ids.forEach(id => {
-    const item = list.querySelector(`.sidebar-item[data-id="${id}"]`);
-    if (item) list.appendChild(item);
-  });
-  scheduleSave();
-}
-
-// ── Add / Delete ───────────────────────────────────────────────────────────
-function showAddForm(addCardEl) {
-  const grid = addCardEl.closest('.grid');
-  const form = document.createElement('div');
-  form.className = 'card add-card-form';
-  form.innerHTML = `
-    <input type="text" placeholder="Title" id="new-title" />
-    <textarea rows="3" placeholder="Description" id="new-desc"></textarea>
-    <div class="add-card-form-btns">
-      <button class="btn-add-confirm">Add</button>
-      <button class="btn-add-cancel">Cancel</button>
-    </div>`;
-
-  form.querySelector('.btn-add-confirm').addEventListener('click', () => {
-    const title = form.querySelector('#new-title').value.trim();
-    const desc = form.querySelector('#new-desc').value.trim();
-    if (!title) return;
-    const card = makeCard({ id: uid(), title, desc });
-    grid.insertBefore(card, addCardEl);
-    form.remove();
-    rebalanceEmpties();
-    // re-init sortable for this grid
-    const sec = grid.closest('.section');
-    const id = sec ? sec.dataset.id : null;
-    if (id) {
-      const newSec = document.querySelector(`.section[data-id="${id}"]`);
-      if (newSec) {
-        Sortable.create(grid, {
-          group: 'cards', animation: 150,
-          ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
-          filter: '.empty, .add-card', handle: '.card-drag',
-          onEnd() { rebalanceEmpties(); onOrderChange(); }
-        });
-      }
-    }
-    onOrderChange();
-  });
-  form.querySelector('.btn-add-cancel').addEventListener('click', () => form.remove());
-  grid.insertBefore(form, addCardEl);
-  form.querySelector('#new-title').focus();
-}
-
-function deleteCard(btn) {
-  const card = btn.closest('.card');
-  const grid = card.closest('.grid');
-  card.remove();
-  rebalanceEmpties();
-  onOrderChange();
-}
-
-function addSection() {
-  const id = uid();
-  const sec = { id, title: 'New Section', cards: [] };
-  const container = document.getElementById('sections-container');
-  const el = renderSection(sec);
-  container.appendChild(el);
-
-  // add to sidebar
-  const list = document.getElementById('sidebar-list');
-  const item = document.createElement('div');
-  item.className = 'sidebar-item'; item.dataset.id = id;
-  item.innerHTML = `<span class="drag-handle-sidebar">⠿</span><span>New Section</span>`;
-  item.addEventListener('click', () => el.scrollIntoView({ behavior: 'smooth' }));
-  list.appendChild(item);
-
-  // focus title
-  const titleEl = el.querySelector('.section-title');
-  titleEl.focus();
-  const range = document.createRange();
-  range.selectNodeContents(titleEl);
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(range);
-  titleEl.addEventListener('input', scheduleSave);
-
-  // init sortable for the new grid
-  Sortable.create(el.querySelector('.grid'), {
+function initGridSortable(grid) {
+  Sortable.create(grid, {
     group: 'cards', animation: 150,
     ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
-    filter: '.empty, .add-card', handle: '.card-drag',
-    onEnd() { rebalanceEmpties(); onOrderChange(); }
+    filter: '.empty', handle: '.card-drag',
+    onEnd() { rebalance(); scheduleSave(); }
   });
+}
 
+function rebalance() {
+  document.querySelectorAll('.grid').forEach(grid => {
+    grid.querySelectorAll('.card.empty').forEach(e => e.remove());
+    const real = grid.querySelectorAll('.card:not(.empty)').length;
+    if (real === 0) {
+      grid.closest('.section')?.remove();
+    } else {
+      fillEmpties(grid, real);
+    }
+  });
+}
+
+// ── Delete ─────────────────────────────────────────────────────────────────
+function deleteCard(btn) {
+  btn.closest('.card').remove();
+  rebalance();
   scheduleSave();
 }
 
@@ -703,11 +371,6 @@ function showToast(msg) {
 
 // ── Init ───────────────────────────────────────────────────────────────────
 renderAll(DEFAULT_DATA);
-
-// Auto-link file on load if File System Access API available
-if ('showOpenFilePicker' in window) {
-  document.getElementById('save-btn').querySelector('span:last-child').textContent = 'Link & Save';
-}
 </script>
 </body>
 </html>
