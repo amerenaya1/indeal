@@ -101,7 +101,7 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
 .slide.active .header{opacity:1;transform:none}
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:101}
 .progress .bar{height:100%;background:var(--brand);transition:width .3s ease}
-.controls{position:fixed;bottom:0;left:0;right:0;height:58px;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(18px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;z-index:100}
+.controls{position:fixed;bottom:0;left:0;right:0;height:58px;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(18px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;padding:0;z-index:100}.controls-inner{width:60vw;max-width:60vw;display:flex;align-items:center;justify-content:space-between}
 .controls .l,.controls .r{display:flex;align-items:center;gap:12px}
 .btn{width:34px;height:34px;border-radius:9px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);font-size:17px;transition:.15s;text-decoration:none}
 .btn:hover{background:var(--brand);color:#1d1d1f;border-color:var(--brand)}
@@ -428,16 +428,18 @@ html.dark .warn-note{background:rgba(255,149,0,.08);color:var(--orange)}
 </div><!-- /deck -->
 
 <div class="controls">
-  <div class="l">
-    <a class="btn" href="https://slides-u4d6.onrender.com/" title="All tasks">⌂</a>
-    <button class="btn" id="prev" title="Previous">←</button>
-  </div>
-  <div style="position:relative">
-    <span class="counter" id="counter"><span id="cur">1</span> / <span id="tot">6</span></span>
-  </div>
-  <div class="r">
-    <button class="btn" id="next" title="Next">→</button>
-    <button class="btn" id="themeBtn" onclick="toggleDark()" title="Toggle dark mode"></button>
+  <div class="controls-inner">
+    <div class="l">
+      <a class="btn" href="https://slides-u4d6.onrender.com/" title="All tasks">⌂</a>
+      <button class="btn" id="prev" title="Previous">←</button>
+    </div>
+    <div style="position:relative">
+      <span class="counter" id="counter"><span id="cur">1</span> / <span id="tot">6</span></span>
+    </div>
+    <div class="r">
+      <button class="btn" id="next" title="Next">→</button>
+      <button class="btn" id="themeBtn" onclick="toggleDark()" title="Toggle dark mode"></button>
+    </div>
   </div>
 </div>
 
