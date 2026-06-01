@@ -10,54 +10,132 @@
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: #f5f6fa;
-    padding: 40px 60px 60px;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: #fff;
+    border-right: 1.5px solid #e5e7eb;
+    padding: 32px 16px 32px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 0 4px;
+  }
+  .sidebar-logo svg { width: 32px; height: 32px; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
+  .sidebar-logo-text { font-size: 14px; font-weight: 700; color: #0f0f1a; }
+
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9ca3af;
+    padding: 0 8px;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: grab;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #4b5563;
+    transition: background 0.15s;
+    user-select: none;
+  }
+  .sidebar-item:hover { background: #f3f4f6; color: #1B54F8; }
+  .sidebar-item.sortable-ghost { opacity: 0.4; background: #eff6ff; }
+  .sidebar-item.sortable-chosen { background: #eff6ff; cursor: grabbing; }
+  .drag-handle-sidebar {
+    color: #d1d5db;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-divider { height: 1px; background: #f3f4f6; margin: 8px 0; }
+
+  .save-btn {
+    margin-top: auto;
+    padding: 10px 14px;
+    background: #1B54F8;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s;
+  }
+  .save-btn:hover { background: #1444d4; }
+
+  /* ── Main ── */
+  .main {
+    flex: 1;
+    padding: 40px 52px 60px;
+    overflow-y: auto;
   }
 
   .header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 52px;
+    margin-bottom: 48px;
     gap: 10px;
     max-width: 680px;
   }
-
-  .logo-svg {
-    width: 56px; height: 56px;
-    border-radius: 14px;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-
-  .header h1 {
-    font-size: 30px;
-    font-weight: 800;
-    color: #0f0f1a;
-    letter-spacing: -0.5px;
-  }
+  .logo-svg { width: 56px; height: 56px; border-radius: 14px; overflow: hidden; flex-shrink: 0; }
+  .header h1 { font-size: 30px; font-weight: 800; color: #0f0f1a; letter-spacing: -0.5px; }
   .header p { font-size: 13px; color: #9ca3af; }
-  .header p.subtitle {
-    font-size: 15px;
-    color: #4b5563;
-    line-height: 1.65;
-  }
+  .header p.subtitle { font-size: 15px; color: #4b5563; line-height: 1.65; }
 
   /* ── Section ── */
-  .section {
-    margin-bottom: 48px;
-  }
+  #sections-container { display: flex; flex-direction: column; gap: 48px; }
 
+  .section { }
+  .section.sortable-ghost { opacity: 0.4; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .drag-handle-section {
+    cursor: grab;
+    color: #d1d5db;
+    font-size: 14px;
+    padding: 2px 4px;
+  }
+  .drag-handle-section:hover { color: #9ca3af; }
   .section-title {
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     color: #9ca3af;
-    margin-bottom: 14px;
-    padding-left: 2px;
   }
 
-  /* ── Grid ── */
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -66,6 +144,7 @@
     border: 2px solid #e5e7eb;
     border-radius: 18px;
     overflow: hidden;
+    min-height: 80px;
   }
 
   .card {
@@ -75,31 +154,58 @@
     flex-direction: column;
     gap: 8px;
     border: 1px solid #f0f1f5;
+    cursor: grab;
+    position: relative;
+    transition: box-shadow 0.15s;
   }
-  .card.empty { border: none; }
+  .card:hover:not(.empty) { box-shadow: inset 0 0 0 2px rgba(27,84,248,0.15); }
+  .card.sortable-ghost { opacity: 0.3; background: #eff6ff; }
+  .card.sortable-chosen { cursor: grabbing; box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 10; }
+  .card.empty { cursor: default; border: none; }
 
-  .card-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: #0f0f1a;
-    line-height: 1.3;
-  }
-  .card-desc {
-    font-size: 13px;
-    color: #6b7280;
-    line-height: 1.6;
-  }
+  .card-title { font-size: 15px; font-weight: 700; color: #0f0f1a; line-height: 1.3; }
+  .card-desc { font-size: 13px; color: #6b7280; line-height: 1.6; }
 
-  .footer {
-    margin-top: 16px;
-    display: flex;
-    justify-content: flex-end;
-  }
+  .footer { margin-top: 16px; display: flex; justify-content: flex-end; }
   .confidential { font-size: 11px; color: #d1d5db; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* toast */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: #0f0f1a; color: #fff;
+    padding: 10px 18px; border-radius: 10px;
+    font-size: 13px; font-weight: 500;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 999;
+  }
+  .toast.show { opacity: 1; }
 </style>
 </head>
 <body>
 
+<!-- Sidebar -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="16" fill="#1B54F8"/>
+      <rect x="10" y="20" width="5" height="14" rx="2" fill="#D4E84A"/>
+      <rect x="5.5" y="24.5" width="14" height="5" rx="2" fill="#D4E84A"/>
+      <text x="19" y="30" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white" letter-spacing="-0.3">Sales</text>
+      <text x="19" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white" letter-spacing="-0.3">Plus</text>
+    </svg>
+    <span class="sidebar-logo-text">Sales+</span>
+  </div>
+
+  <div class="sidebar-label">Sections</div>
+  <div id="sidebar-list"></div>
+
+  <div class="sidebar-divider"></div>
+  <button class="save-btn" onclick="saveToFile()">⬇ Save to File</button>
+</div>
+
+<!-- Main -->
+<div class="main">
   <div class="header">
     <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <rect width="64" height="64" rx="16" fill="#1B54F8"/>
@@ -113,173 +219,331 @@
     <p>Long-term product roadmap · CEO Briefing · May 2026</p>
   </div>
 
-  <!-- Field Operations -->
-  <div class="section">
-    <div class="section-title">Field Operations</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">Visit Module</div>
-        <div class="card-desc">A dedicated module for agents to plan, log, and track customer visits in the field.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Notifications Center</div>
-        <div class="card-desc">Enable real-time notifications for orders, approvals, and alerts across the Sales+ platform.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Merchandising</div>
-        <div class="card-desc">Equip your merchandising team with the right tools to audit shelves and track store presence.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Market Research</div>
-        <div class="card-desc">Deploy field surveys for instant insights directly from agents on the ground.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Mystery Shopping</div>
-        <div class="card-desc">Pinpoint gaps in standards to elevate your customer experience through structured field evaluations.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Offline Support</div>
-        <div class="card-desc">Keep core operations running smoothly even when agents lose internet connection in the field.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Agent Management -->
-  <div class="section">
-    <div class="section-title">Agent Management</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">Agent Payout</div>
-        <div class="card-desc">Calculate and process agent payouts based on completed deliveries and commission rules.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Agent Performance Dashboard</div>
-        <div class="card-desc">Provide customizable KPIs and performance dashboards for agents and managers.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Agent Rewards Program</div>
-        <div class="card-desc">Motivate field agents with leaderboards, progress tracking, and performance-based rewards.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Agent Targets</div>
-        <div class="card-desc">Allow agents to see their targets and track progress toward personal and team goals.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Knowledge Base</div>
-        <div class="card-desc">Equip your field teams with the knowledge, answers, and resources they need in one dedicated app.</div>
-      </div>
-      <div class="card empty"></div>
-    </div>
-  </div>
-
-  <!-- Commercial Controls -->
-  <div class="section">
-    <div class="section-title">Commercial Controls</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">Approval Flows</div>
-        <div class="card-desc">Configure multi-tier approval workflows for orders, discounts, and credit decisions in Sales+.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Credit History</div>
-        <div class="card-desc">Provide detailed customer credit history visibility to support better financial decisions in the field.</div>
-      </div>
-      <div class="card empty"></div>
-    </div>
-  </div>
-
-  <!-- CRM -->
-  <div class="section">
-    <div class="section-title">CRM</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">CRM</div>
-        <div class="card-desc">Build a CRM tailored to your specific industry, workflow, and processes for easier customer management.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Gift Management</div>
-        <div class="card-desc">Distribute brand gifts to customers with full visibility and control over allocation and delivery.</div>
-      </div>
-      <div class="card empty"></div>
-    </div>
-  </div>
-
-  <!-- Catalog & Pricing -->
-  <div class="section">
-    <div class="section-title">Catalog & Pricing</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">Catalog Management</div>
-        <div class="card-desc">Control SKUs, pricing, and product content from one place — ensuring agents always sell with accurate information.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Dynamic Pricelists</div>
-        <div class="card-desc">Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel.</div>
-      </div>
-      <div class="card empty"></div>
-    </div>
-  </div>
-
-  <!-- Inventory & Warehouse -->
-  <div class="section">
-    <div class="section-title">Inventory & Warehouse</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">Inventory Management</div>
-        <div class="card-desc">Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Warehouse Management</div>
-        <div class="card-desc">Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout.</div>
-      </div>
-      <div class="card empty"></div>
-    </div>
-  </div>
-
-  <!-- Finance & Supply Chain -->
-  <div class="section">
-    <div class="section-title">Finance & Supply Chain</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">Invoice Processing</div>
-        <div class="card-desc">Automate invoice processing and eliminate hours of manual data entry for email and paper documents.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Procurement</div>
-        <div class="card-desc">Keep on top of orders, vendors, and budgets with an app customized to how your team sources and controls spend.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Vendor Management</div>
-        <div class="card-desc">Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">Logistics</div>
-        <div class="card-desc">Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations.</div>
-      </div>
-      <div class="card empty"></div>
-      <div class="card empty"></div>
-    </div>
-  </div>
-
-  <!-- Intelligence -->
-  <div class="section">
-    <div class="section-title">Intelligence</div>
-    <div class="grid">
-      <div class="card">
-        <div class="card-title">AI Assistant</div>
-        <div class="card-desc">Guide agents through orders, returns, stock transfers, and daily app use with an in-app AI.</div>
-      </div>
-      <div class="card">
-        <div class="card-title">BI Rich Dashboards</div>
-        <div class="card-desc">Dashboards empowered by Business Intelligence to give leadership the insights they need.</div>
-      </div>
-      <div class="card empty"></div>
-    </div>
-  </div>
+  <div id="sections-container"></div>
 
   <div class="footer">
     <div class="confidential">Confidential · salesplus.app</div>
   </div>
+</div>
 
+<div class="toast" id="toast">Order saved</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────
+const DEFAULT_DATA = [
+  {
+    id: "field-operations",
+    title: "Field Operations",
+    cards: [
+      { id: "visit-module", title: "Visit Module", desc: "A dedicated module for agents to plan, log, and track customer visits in the field." },
+      { id: "notifications-center", title: "Notifications Center", desc: "Enable real-time notifications for orders, approvals, and alerts across the Sales+ platform." },
+      { id: "merchandising", title: "Merchandising", desc: "Equip your merchandising team with the right tools to audit shelves and track store presence." },
+      { id: "market-research", title: "Market Research", desc: "Deploy field surveys for instant insights directly from agents on the ground." },
+      { id: "mystery-shopping", title: "Mystery Shopping", desc: "Pinpoint gaps in standards to elevate your customer experience through structured field evaluations." },
+      { id: "offline-support", title: "Offline Support", desc: "Keep core operations running smoothly even when agents lose internet connection in the field." }
+    ]
+  },
+  {
+    id: "agent-management",
+    title: "Agent Management",
+    cards: [
+      { id: "agent-payout", title: "Agent Payout", desc: "Calculate and process agent payouts based on completed deliveries and commission rules." },
+      { id: "agent-performance", title: "Agent Performance Dashboard", desc: "Provide customizable KPIs and performance dashboards for agents and managers." },
+      { id: "agent-rewards", title: "Agent Rewards Program", desc: "Motivate field agents with leaderboards, progress tracking, and performance-based rewards." },
+      { id: "agent-targets", title: "Agent Targets", desc: "Allow agents to see their targets and track progress toward personal and team goals." },
+      { id: "knowledge-base", title: "Knowledge Base", desc: "Equip your field teams with the knowledge, answers, and resources they need in one dedicated app." }
+    ]
+  },
+  {
+    id: "commercial-controls",
+    title: "Commercial Controls",
+    cards: [
+      { id: "approval-flows", title: "Approval Flows", desc: "Configure multi-tier approval workflows for orders, discounts, and credit decisions in Sales+." },
+      { id: "credit-history", title: "Credit History", desc: "Provide detailed customer credit history visibility to support better financial decisions in the field." }
+    ]
+  },
+  {
+    id: "crm",
+    title: "CRM",
+    cards: [
+      { id: "crm", title: "CRM", desc: "Build a CRM tailored to your specific industry, workflow, and processes for easier customer management." },
+      { id: "gift-management", title: "Gift Management", desc: "Distribute brand gifts to customers with full visibility and control over allocation and delivery." }
+    ]
+  },
+  {
+    id: "catalog-pricing",
+    title: "Catalog & Pricing",
+    cards: [
+      { id: "catalog-management", title: "Catalog Management", desc: "Control SKUs, pricing, and product content from one place — ensuring agents always sell with accurate information." },
+      { id: "dynamic-pricelists", title: "Dynamic Pricelists", desc: "Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel." }
+    ]
+  },
+  {
+    id: "inventory-warehouse",
+    title: "Inventory & Warehouse",
+    cards: [
+      { id: "inventory-management", title: "Inventory Management", desc: "Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory." },
+      { id: "warehouse-management", title: "Warehouse Management", desc: "Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout." }
+    ]
+  },
+  {
+    id: "finance-supply",
+    title: "Finance & Supply Chain",
+    cards: [
+      { id: "invoice-processing", title: "Invoice Processing", desc: "Automate invoice processing and eliminate hours of manual data entry for email and paper documents." },
+      { id: "procurement", title: "Procurement", desc: "Keep on top of orders, vendors, and budgets with an app customized to how your team sources and controls spend." },
+      { id: "vendor-management", title: "Vendor Management", desc: "Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards." },
+      { id: "logistics", title: "Logistics", desc: "Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations." }
+    ]
+  },
+  {
+    id: "intelligence",
+    title: "Intelligence",
+    cards: [
+      { id: "ai-assistant", title: "AI Assistant", desc: "Guide agents through orders, returns, stock transfers, and daily app use with an in-app AI." },
+      { id: "bi-dashboards", title: "BI Rich Dashboards", desc: "Dashboards empowered by Business Intelligence to give leadership the insights they need." }
+    ]
+  }
+];
+
+// ── State ─────────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'salesplus_roadmap_order';
+
+function loadData() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch(e) {}
+  return DEFAULT_DATA;
+}
+
+function saveData(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  showToast('Order saved');
+}
+
+function getCurrentData() {
+  const sections = [];
+  document.querySelectorAll('.section').forEach(sec => {
+    const cards = [];
+    sec.querySelectorAll('.card:not(.empty)').forEach(card => {
+      cards.push({
+        id: card.dataset.id,
+        title: card.querySelector('.card-title').textContent,
+        desc: card.querySelector('.card-desc').textContent
+      });
+    });
+    sections.push({
+      id: sec.dataset.id,
+      title: sec.querySelector('.section-title').textContent,
+      cards
+    });
+  });
+  return sections;
+}
+
+// ── Render ────────────────────────────────────────────────────────────────
+function renderSection(section) {
+  const div = document.createElement('div');
+  div.className = 'section';
+  div.dataset.id = section.id;
+
+  // header
+  div.innerHTML = `
+    <div class="section-header">
+      <span class="drag-handle-section" title="Drag to reorder section">⠿</span>
+      <span class="section-title">${section.title}</span>
+    </div>`;
+
+  // grid
+  const grid = document.createElement('div');
+  grid.className = 'grid';
+
+  section.cards.forEach(card => {
+    grid.appendChild(makeCard(card));
+  });
+
+  // fill empty slots to complete the row
+  const rem = section.cards.length % 3;
+  if (rem !== 0) {
+    for (let i = 0; i < 3 - rem; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'card empty';
+      grid.appendChild(empty);
+    }
+  }
+
+  div.appendChild(grid);
+  return div;
+}
+
+function makeCard(card) {
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.dataset.id = card.id;
+  div.innerHTML = `<div class="card-title">${card.title}</div><div class="card-desc">${card.desc}</div>`;
+  return div;
+}
+
+function renderAll(data) {
+  const container = document.getElementById('sections-container');
+  container.innerHTML = '';
+  data.forEach(section => container.appendChild(renderSection(section)));
+  initSortables();
+  renderSidebar(data);
+}
+
+function renderSidebar(data) {
+  const list = document.getElementById('sidebar-list');
+  list.innerHTML = '';
+  data.forEach(section => {
+    const item = document.createElement('div');
+    item.className = 'sidebar-item';
+    item.dataset.id = section.id;
+    item.innerHTML = `<span class="drag-handle-sidebar">⠿</span>${section.title}`;
+    item.addEventListener('click', () => {
+      const el = document.querySelector(`.section[data-id="${section.id}"]`);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    list.appendChild(item);
+  });
+  initSidebarSortable();
+}
+
+// ── Sortable ──────────────────────────────────────────────────────────────
+let sectionSortable, sidebarSortable;
+
+function initSortables() {
+  // sections drag
+  sectionSortable = Sortable.create(document.getElementById('sections-container'), {
+    handle: '.drag-handle-section',
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    onEnd() { onOrderChange(); }
+  });
+
+  // cards drag within each section
+  document.querySelectorAll('.grid').forEach(grid => {
+    Sortable.create(grid, {
+      group: 'cards',
+      animation: 150,
+      ghostClass: 'sortable-ghost',
+      chosenClass: 'sortable-chosen',
+      filter: '.empty',
+      onEnd(evt) {
+        // remove empty placeholders
+        document.querySelectorAll('.card.empty').forEach(e => e.remove());
+        // re-add empty placeholders per section
+        document.querySelectorAll('.grid').forEach(g => {
+          const real = g.querySelectorAll('.card:not(.empty)').length;
+          const rem = real % 3;
+          if (rem !== 0) {
+            for (let i = 0; i < 3 - rem; i++) {
+              const empty = document.createElement('div');
+              empty.className = 'card empty';
+              g.appendChild(empty);
+            }
+          }
+        });
+        onOrderChange();
+      }
+    });
+  });
+}
+
+function initSidebarSortable() {
+  if (sidebarSortable) sidebarSortable.destroy();
+  sidebarSortable = Sortable.create(document.getElementById('sidebar-list'), {
+    handle: '.drag-handle-sidebar',
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    onEnd(evt) {
+      // mirror section order in main content
+      const sidebarIds = [...document.querySelectorAll('#sidebar-list .sidebar-item')].map(i => i.dataset.id);
+      const container = document.getElementById('sections-container');
+      sidebarIds.forEach(id => {
+        const sec = container.querySelector(`.section[data-id="${id}"]`);
+        if (sec) container.appendChild(sec);
+      });
+      onOrderChange();
+    }
+  });
+}
+
+function onOrderChange() {
+  const data = getCurrentData();
+  saveData(data);
+  // sync sidebar order with section order
+  const sectionIds = [...document.querySelectorAll('.section')].map(s => s.dataset.id);
+  const sidebar = document.getElementById('sidebar-list');
+  sectionIds.forEach(id => {
+    const item = sidebar.querySelector(`.sidebar-item[data-id="${id}"]`);
+    if (item) sidebar.appendChild(item);
+  });
+}
+
+// ── Save to File ───────────────────────────────────────────────────────────
+function saveToFile() {
+  const data = getCurrentData();
+  // build sections HTML
+  const sectionsHTML = data.map(section => {
+    const cardsHTML = section.cards.map(card => `
+    <div class="card" data-id="${card.id}">
+      <div class="card-title">${card.title}</div>
+      <div class="card-desc">${card.desc}</div>
+    </div>`).join('');
+
+    const rem = section.cards.length % 3;
+    const emptyHTML = rem !== 0 ? '\n    <div class="card empty"></div>'.repeat(3 - rem) : '';
+
+    return `
+  <div class="section" data-id="${section.id}">
+    <div class="section-header">
+      <span class="drag-handle-section" title="Drag to reorder section">⠿</span>
+      <span class="section-title">${section.title}</span>
+    </div>
+    <div class="grid">${cardsHTML}${emptyHTML}
+    </div>
+  </div>`;
+  }).join('\n');
+
+  // inject into current page HTML
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(document.documentElement.outerHTML, 'text/html');
+  doc.getElementById('sections-container').innerHTML = sectionsHTML;
+
+  // update DEFAULT_DATA in script
+  const scripts = doc.querySelectorAll('script:not([src])');
+  scripts.forEach(s => {
+    if (s.textContent.includes('DEFAULT_DATA')) {
+      s.textContent = s.textContent.replace(
+        /const DEFAULT_DATA = \[[\s\S]*?\];/,
+        `const DEFAULT_DATA = ${JSON.stringify(data, null, 2)};`
+      );
+    }
+  });
+
+  const blob = new Blob(['<!DOCTYPE html>\n' + doc.documentElement.outerHTML], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'salesplus_roadmap_slide.html';
+  a.click();
+  showToast('File downloaded with saved order');
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+renderAll(loadData());
+</script>
 </body>
 </html>
