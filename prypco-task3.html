@@ -437,7 +437,11 @@ function scaleProto(){
   var scaleW=availW/390;
   var s=Math.min(scaleH,scaleW,1);
   el.style.transform='scale('+s+')';
+  el.style.transformOrigin='top center';
   el.style.marginBottom=(844*(s-1))+'px';
+  el.style.marginTop='0';
+  wrap.style.alignItems='flex-start';
+  wrap.style.paddingTop=Math.max(0,(availH-844*s)/2)+'px';
 }
 window.addEventListener('resize',scaleProto);
 document.addEventListener('DOMContentLoaded',function(){setTimeout(scaleProto,100);});
