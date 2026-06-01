@@ -429,7 +429,16 @@ function initSortables() {
       onEnd(evt) {
         // remove empty placeholders
         document.querySelectorAll('.card.empty').forEach(e => e.remove());
-        // re-add empty placeholders per section
+        // delete sections that now have no real cards
+        document.querySelectorAll('.section').forEach(sec => {
+          const real = sec.querySelectorAll('.card:not(.empty)').length;
+          if (real === 0) {
+            sec.remove();
+            const sidebarItem = document.querySelector(`#sidebar-list .sidebar-item[data-id="${sec.dataset.id}"]`);
+            if (sidebarItem) sidebarItem.remove();
+          }
+        });
+        // re-add empty placeholders per remaining section
         document.querySelectorAll('.grid').forEach(g => {
           const real = g.querySelectorAll('.card:not(.empty)').length;
           const rem = real % 3;
