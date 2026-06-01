@@ -322,25 +322,6 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- SLIDE 6: AUTOMATED PIPELINE -->
-<div class="slide">
-  <div class="header">
-    <div class="header-left"><span class="wordmark">PRYPCO</span><span class="section-tag">CI/CD Integration</span></div>
-    <span style="font-size:12px;color:var(--mute)">7 / 14</span>
-  </div>
-  <div class="body">
-    <h2>Automated pipeline - ongoing.</h2>
-    <p class="lead">New strings flow through translation automatically on every merge to main.</p>
-    <div class="pipeline" style="margin-top:12px">
-      <div class="pipe-step"><div class="pnum">1</div><h4>Dev pushes new JSX</h4><p>Hardcoded string in component</p></div>
-      <div class="pipe-step"><div class="pnum">2</div><h4>CI: AST extractor</h4><p>Babel parser finds new keys</p></div>
-      <div class="pipe-step"><div class="pnum">3</div><h4>CI: diff locales</h4><p>Finds keys missing in ar.json</p></div>
-      <div class="pipe-step"><div class="pnum">4</div><h4>Claude API + context</h4><p>Role, screen, siblings injected</p></div>
-      <div class="pipe-step"><div class="pnum">5</div><h4>ar.json updated</h4><p>Bot commits back to main</p></div>
-      <div class="pipe-step"><div class="pnum">6</div><h4>PR comment + QA checks</h4><p>Coverage, placeholders, truncation risk</p></div>
-    </div>
-  </div>
-</div>
 
 <!-- SLIDE 8: 10-DAY SPRINT PLAN -->
 <div class="slide">
@@ -516,7 +497,7 @@ tr:last-child td{border-bottom:none}
   const progFill = document.getElementById('progFill');
   const counterEl = document.getElementById('counter');
   if(tot) tot.textContent = slides.length;
-  const slideTitles = ['Cover','Localization ≠ Translation','Five Layers','Visual Assets','AI Pipeline','Automated Pipeline','10-Day Sprint Plan','QA Validation','Acceptance Criteria','Success Metrics','Risks','Closing'];
+  const slideTitles = ['Cover','Localization ≠ Translation','Five Layers','Visual Assets','AI Pipeline','10-Day Sprint Plan','QA Validation','Acceptance Criteria','Success Metrics','Risks','Closing'];
   const menu = document.createElement('div');
   const menuItems = [];
   menu.className = 'slide-menu';
