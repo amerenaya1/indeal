@@ -79,7 +79,7 @@ h3{font-size:20px;font-weight:600;margin-bottom:10px;letter-spacing:-.01em}
 .day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:4px;flex:1;min-width:120px;max-width:160px}
 /* Sprint plan vertical rows */
 .sprint-rows{display:flex;flex-direction:column;gap:6px;margin-top:10px}
-.sprint-row{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:10px;overflow:hidden;gap:0}
+.sprint-row{display:flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;gap:0}
 .sr-day{min-width:72px;padding:12px 16px;font-size:13px;font-weight:700;color:var(--brand-text);letter-spacing:-.01em;flex-shrink:0;border-right:1px solid var(--line)}
 .sr-task{min-width:160px;padding:12px 16px;font-size:13.5px;font-weight:600;color:var(--ink);flex-shrink:0;border-right:1px solid var(--line)}
 .sr-owner{min-width:150px;padding:12px 16px;font-size:12px;font-weight:600;color:var(--brand-text);letter-spacing:.02em;flex-shrink:0;border-right:1px solid var(--line)}
@@ -160,14 +160,6 @@ tr:last-child td{border-bottom:none}
   <div class="body">
     <h2>Localization ≠ translation.</h2>
     <p class="lead" style="margin-bottom:10px">Most teams ship the 20% and call it done. The 80% is what makes the product actually feel Arabic.</p>
-    <!-- Split bar -->
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-      <div style="display:flex;height:8px;border-radius:99px;overflow:hidden;flex:1">
-        <div style="width:20%;background:var(--line);flex-shrink:0"></div>
-        <div style="flex:1;background:var(--brand)"></div>
-      </div>
-      <span style="font-size:11px;color:var(--mute);white-space:nowrap">20% · 80%</span>
-    </div>
     <!-- Asymmetric columns -->
     <div style="display:grid;grid-template-columns:1fr 3fr;gap:12px">
       <!-- 20% -->
@@ -430,12 +422,12 @@ tr:last-child td{border-bottom:none}
     <h2>Success metrics.</h2>
     <p class="lead">Measured at 7, 30, and 90 days - localization quality shows in product metrics.</p>
     <div class="metric-grid">
-      <div class="metric"><div class="n">&gt;40%</div><div class="l">AR Adoption<br><em>Levant users switch to AR within 30 days</em></div></div>
-      <div class="metric"><div class="n">&lt;2.5</div><div class="l">CES Score<br><em>Arabic flow effort score (1=easy, 7=hard)</em></div></div>
-      <div class="metric"><div class="n">&lt;3</div><div class="l">Bug Escape Rate<br><em>P1/P2 RTL bugs in first week post-launch</em></div></div>
-      <div class="metric"><div class="n">100%</div><div class="l">String Coverage<br><em>Zero English fallbacks in AR locale on launch</em></div></div>
-      <div class="metric"><div class="n">+5pp</div><div class="l">KYC Completion<br><em>AR users vs EN users at 30 days</em></div></div>
-      <div class="metric"><div class="n">+8pts</div><div class="l">NPS Delta<br><em>AR users vs EN users at 90 days</em></div></div>
+      <div class="metric"><div class="l">AR Adoption<br><em>Levant users switch to AR within 30 days</em></div></div>
+      <div class="metric"><div class="l">CES Score<br><em>Arabic flow effort score (1=easy, 7=hard)</em></div></div>
+      <div class="metric"><div class="l">Bug Escape Rate<br><em>P1/P2 RTL bugs in first week post-launch</em></div></div>
+      <div class="metric"><div class="l">String Coverage<br><em>Zero English fallbacks in AR locale on launch</em></div></div>
+      <div class="metric"><div class="l">KYC Completion<br><em>AR users vs EN users at 30 days</em></div></div>
+      <div class="metric"><div class="l">NPS Delta<br><em>AR users vs EN users at 90 days</em></div></div>
     </div>
   </div>
 </div>
