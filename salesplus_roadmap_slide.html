@@ -10,7 +10,7 @@
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: #f5f6fa;
-    padding: 40px 60px 60px;
+    padding: 40px 60px 80px;
   }
 
   .header {
@@ -22,26 +22,11 @@
   .header p { font-size: 13px; color: #9ca3af; }
   .header p.subtitle { font-size: 15px; color: #4b5563; line-height: 1.65; }
 
-  /* ── Sections ── */
-  #sections-container { display: flex; flex-direction: column; gap: 48px; }
-  .section.sortable-ghost { opacity: 0.4; }
-
-  .section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
-  .drag-handle-section { cursor: grab; color: #d1d5db; font-size: 14px; padding: 2px 4px; }
-  .drag-handle-section:hover { color: #9ca3af; }
-
-  .section-title {
-    font-size: 11px; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 1.2px; color: #9ca3af;
-    outline: none; border-radius: 4px; padding: 2px 4px;
-  }
-  .section-title:focus { background: #f3f4f6; color: #4b5563; }
-
   /* ── Grid ── */
   .grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
     gap: 2px; background: #fff; border: 2px solid #e5e7eb;
-    border-radius: 18px; overflow: hidden; min-height: 80px;
+    border-radius: 18px; overflow: hidden;
   }
 
   /* ── Card ── */
@@ -73,12 +58,16 @@
     background: #fee2e2; color: #ef4444; border: none;
     font-size: 14px; line-height: 1; cursor: pointer;
     display: none; align-items: center; justify-content: center;
-    transition: background 0.15s;
   }
   .card:hover .card-delete { display: flex; }
   .card-delete:hover { background: #fca5a5; }
 
-  .card-drag {
+  .card-num {
+    position: absolute; bottom: 12px; right: 16px;
+    font-size: 52px; font-weight: 800; color: #f0f1f5;
+    line-height: 1; pointer-events: none; user-select: none;
+    font-variant-numeric: tabular-nums; letter-spacing: -2px;
+  }
     position: absolute; top: 10px; left: 10px;
     color: #e5e7eb; font-size: 12px; cursor: grab; display: none;
   }
@@ -96,7 +85,11 @@
     box-shadow: 0 4px 14px rgba(27,84,248,0.3); transition: background 0.15s;
   }
   .save-btn:hover { background: #1444d4; }
-  .save-status { font-size: 12px; color: #6b7280; background: #fff; padding: 6px 12px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .save-status {
+    font-size: 12px; color: #6b7280; background: #fff;
+    padding: 6px 12px; border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
 
   .footer { margin-top: 32px; display: flex; justify-content: flex-end; }
   .confidential { font-size: 11px; color: #d1d5db; letter-spacing: 1px; text-transform: uppercase; }
@@ -125,13 +118,12 @@
   <p>Long-term product roadmap · CEO Briefing · May 2026</p>
 </div>
 
-<div id="sections-container"></div>
+<div class="grid" id="grid"></div>
 
 <div class="footer">
   <div class="confidential">Confidential · salesplus.app</div>
 </div>
 
-<!-- Save bar -->
 <div class="save-bar">
   <div class="save-status" id="save-status" style="display:none"></div>
   <button class="save-btn" onclick="linkAndSave()">💾 Save to File</button>
@@ -141,74 +133,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <script>
-const DEFAULT_DATA = [
-  {
-    "id": "field-operations",
-    "title": "Field Operations",
-    "cards": [
-      {"id": "visit-module", "title": "Visit Module", "desc": "A dedicated module for agents to plan, log, and track customer visits in the field."},
-      {"id": "notifications-center", "title": "Notifications Center", "desc": "Enable real-time notifications for orders, approvals, and alerts across the Sales+ platform."},
-      {"id": "merchandising", "title": "Merchandising", "desc": "Equip your merchandising team with the right tools to audit shelves and track store presence."},
-      {"id": "market-research", "title": "Market Research", "desc": "Deploy field surveys for instant insights directly from agents on the ground."},
-      {"id": "mystery-shopping", "title": "Inspections", "desc": "Pinpoint gaps in standards to elevate your customer experience through structured field evaluations."},
-      {"id": "offline-support", "title": "Offline Support", "desc": "Keep core operations running smoothly even when agents lose internet connection in the field."}
-    ]
-  },
-  {
-    "id": "agent-management",
-    "title": "Agent Management",
-    "cards": [
-      {"id": "agent-payout", "title": "Agent Payout", "desc": "Calculate and process agent payouts based on completed deliveries and commission rules."},
-      {"id": "agent-performance", "title": "Agent Performance Dashboard", "desc": "Provide customizable KPIs and performance dashboards for agents and managers."},
-      {"id": "agent-rewards", "title": "Agent Rewards Program", "desc": "Motivate field agents with leaderboards, progress tracking, and performance-based rewards."},
-      {"id": "agent-targets", "title": "Agent Targets", "desc": "Allow agents to see their targets and track progress toward personal and team goals."},
-      {"id": "knowledge-base", "title": "Knowledge Base", "desc": "Equip your field teams with the knowledge, answers, and resources they need in one dedicated app."}
-    ]
-  },
-  {
-    "id": "commercial-controls",
-    "title": "Commercial Controls",
-    "cards": [
-      {"id": "approval-flows", "title": "Approval Flows", "desc": "Configure multi-tier approval workflows for orders, discounts, and credit decisions in Sales+."},
-      {"id": "credit-history", "title": "Credit History", "desc": "Provide detailed customer credit history visibility to support better financial decisions in the field."}
-    ]
-  },
-  {
-    "id": "crm",
-    "title": "CRM",
-    "cards": [
-      {"id": "crm", "title": "CRM", "desc": "Build a CRM tailored to your specific industry, workflow, and processes for easier customer management."},
-      {"id": "gift-management", "title": "Gift Management", "desc": "Distribute brand gifts to customers with full visibility and control over allocation and delivery."}
-    ]
-  },
-  {
-    "id": "catalog-inventory",
-    "title": "Catalog & Inventory Management",
-    "cards": [
-      {"id": "catalog-management", "title": "Catalog Management", "desc": "Control SKUs, pricing, and product content from one place — ensuring agents always sell with accurate information."},
-      {"id": "dynamic-pricelists", "title": "Dynamic Pricelists", "desc": "Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel."},
-      {"id": "inventory-management", "title": "Inventory Management", "desc": "Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory."},
-      {"id": "warehouse-management", "title": "Warehouse Management", "desc": "Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout."}
-    ]
-  },
-  {
-    "id": "finance-supply",
-    "title": "Finance & Supply Chain",
-    "cards": [
-      {"id": "invoice-processing", "title": "Invoice Processing", "desc": "Automate invoice processing and eliminate hours of manual data entry for email and paper documents."},
-      {"id": "procurement", "title": "Procurement", "desc": "Keep on top of orders, vendors, and budgets with an app customized to how your team sources and controls spend."},
-      {"id": "vendor-management", "title": "Vendor Management", "desc": "Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards."},
-      {"id": "logistics", "title": "Logistics", "desc": "Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations."}
-    ]
-  },
-  {
-    "id": "intelligence",
-    "title": "Intelligence",
-    "cards": [
-      {"id": "ai-assistant", "title": "AI Assistant", "desc": "Guide agents through orders, returns, stock transfers, and daily app use with an in-app AI."},
-      {"id": "bi-dashboards", "title": "BI Rich Dashboards", "desc": "Dashboards empowered by Business Intelligence to give leadership the insights they need."}
-    ]
-  }
+const DEFAULT_CARDS = [
+  {"id": "visit-module", "title": "Visit Module", "desc": "A dedicated module for agents to plan, log, and track customer visits in the field."},
+  {"id": "notifications-center", "title": "Notifications Center", "desc": "Enable real-time notifications for orders, approvals, and alerts across the Sales+ platform."},
+  {"id": "merchandising", "title": "Merchandising", "desc": "Equip your merchandising team with the right tools to audit shelves and track store presence."},
+  {"id": "market-research", "title": "Market Research", "desc": "Deploy field surveys for instant insights directly from agents on the ground."},
+  {"id": "mystery-shopping", "title": "Inspections", "desc": "Pinpoint gaps in standards to elevate your customer experience through structured field evaluations."},
+  {"id": "offline-support", "title": "Offline Support", "desc": "Keep core operations running smoothly even when agents lose internet connection in the field."},
+  {"id": "agent-payout", "title": "Agent Payout", "desc": "Calculate and process agent payouts based on completed deliveries and commission rules."},
+  {"id": "agent-performance", "title": "Agent Performance Dashboard", "desc": "Provide customizable KPIs and performance dashboards for agents and managers."},
+  {"id": "agent-rewards", "title": "Agent Rewards Program", "desc": "Motivate field agents with leaderboards, progress tracking, and performance-based rewards."},
+  {"id": "agent-targets", "title": "Agent Targets", "desc": "Allow agents to see their targets and track progress toward personal and team goals."},
+  {"id": "knowledge-base", "title": "Knowledge Base", "desc": "Equip your field teams with the knowledge, answers, and resources they need in one dedicated app."},
+  {"id": "approval-flows", "title": "Approval Flows", "desc": "Configure multi-tier approval workflows for orders, discounts, and credit decisions in Sales+."},
+  {"id": "credit-history", "title": "Credit History", "desc": "Provide detailed customer credit history visibility to support better financial decisions in the field."},
+  {"id": "crm", "title": "CRM", "desc": "Build a CRM tailored to your specific industry, workflow, and processes for easier customer management."},
+  {"id": "gift-management", "title": "Gift Management", "desc": "Distribute brand gifts to customers with full visibility and control over allocation and delivery."},
+  {"id": "catalog-management", "title": "Catalog Management", "desc": "Control SKUs, pricing, and product content from one place — ensuring agents always sell with accurate information."},
+  {"id": "dynamic-pricelists", "title": "Dynamic Pricelists", "desc": "Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel."},
+  {"id": "inventory-management", "title": "Inventory Management", "desc": "Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory."},
+  {"id": "warehouse-management", "title": "Warehouse Management", "desc": "Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout."},
+  {"id": "invoice-processing", "title": "Invoice Processing", "desc": "Automate invoice processing and eliminate hours of manual data entry for email and paper documents."},
+  {"id": "procurement", "title": "Procurement", "desc": "Keep on top of orders, vendors, and budgets with an app customized to how your team sources and controls spend."},
+  {"id": "vendor-management", "title": "Vendor Management", "desc": "Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards."},
+  {"id": "logistics", "title": "Logistics", "desc": "Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations."},
+  {"id": "ai-assistant", "title": "AI Assistant", "desc": "Guide agents through orders, returns, stock transfers, and daily app use with an in-app AI."},
+  {"id": "bi-dashboards", "title": "BI Rich Dashboards", "desc": "Dashboards empowered by Business Intelligence to give leadership the insights they need."}
 ];
 
 // ── File save ──────────────────────────────────────────────────────────────
@@ -237,7 +187,6 @@ async function writeToFile() {
       return;
     } catch(e) {}
   }
-  // fallback download
   const blob = new Blob([html], { type: 'text/html' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob); a.download = 'salesplus_roadmap_slide.html'; a.click();
@@ -254,48 +203,25 @@ function setSaveStatus(msg) {
   setTimeout(() => { el.style.display = 'none'; }, 2500);
 }
 
-// ── Build HTML ─────────────────────────────────────────────────────────────
 function buildHTML() {
-  const data = getCurrentData();
-  const src = document.documentElement.outerHTML;
-  return '<!DOCTYPE html>\n' + src.replace(
-    /const DEFAULT_DATA = \[[\s\S]*?\];/,
-    `const DEFAULT_DATA = ${JSON.stringify(data, null, 2)};`
+  const cards = getCurrentCards();
+  return '<!DOCTYPE html>\n' + document.documentElement.outerHTML.replace(
+    /const DEFAULT_CARDS = \[[\s\S]*?\];/,
+    `const DEFAULT_CARDS = ${JSON.stringify(cards, null, 2)};`
   );
 }
 
-function getCurrentData() {
-  return [...document.querySelectorAll('.section')].map(sec => ({
-    id: sec.dataset.id,
-    title: sec.querySelector('.section-title').textContent.trim(),
-    cards: [...sec.querySelectorAll('.card:not(.empty)')].map(c => ({
-      id: c.dataset.id || uid(),
-      title: c.querySelector('.card-title').textContent.trim(),
-      desc: c.querySelector('.card-desc').textContent.trim()
-    }))
+function getCurrentCards() {
+  return [...document.querySelectorAll('#grid .card:not(.empty)')].map(c => ({
+    id: c.dataset.id || uid(),
+    title: c.querySelector('.card-title').textContent.trim(),
+    desc: c.querySelector('.card-desc').textContent.trim()
   }));
 }
 
 function uid() { return Math.random().toString(36).slice(2, 9); }
 
 // ── Render ─────────────────────────────────────────────────────────────────
-function renderSection(sec) {
-  const div = document.createElement('div');
-  div.className = 'section'; div.dataset.id = sec.id;
-  div.innerHTML = `<div class="section-header">
-    <span class="drag-handle-section" title="Drag to reorder">⠿</span>
-    <span class="section-title" contenteditable="true" spellcheck="false">${sec.title}</span>
-  </div>`;
-  div.querySelector('.section-title').addEventListener('input', scheduleSave);
-
-  const grid = document.createElement('div');
-  grid.className = 'grid';
-  sec.cards.forEach(c => grid.appendChild(makeCard(c)));
-  fillEmpties(grid, sec.cards.length);
-  div.appendChild(grid);
-  return div;
-}
-
 function makeCard(card) {
   const div = document.createElement('div');
   div.className = 'card'; div.dataset.id = card.id;
@@ -303,74 +229,50 @@ function makeCard(card) {
     <span class="card-drag">⠿</span>
     <div class="card-title" contenteditable="true" spellcheck="false">${card.title}</div>
     <div class="card-desc" contenteditable="true" spellcheck="false">${card.desc}</div>
-    <button class="card-delete" onclick="deleteCard(this)" title="Delete">×</button>`;
+    <button class="card-delete" onclick="deleteCard(this)" title="Delete">×</button>
+    <span class="card-num"></span>`;
   div.querySelector('.card-title').addEventListener('input', scheduleSave);
   div.querySelector('.card-desc').addEventListener('input', scheduleSave);
   return div;
 }
 
-function fillEmpties(grid, count) {
+function fillEmpties(grid) {
   grid.querySelectorAll('.card.empty').forEach(e => e.remove());
+  const count = grid.querySelectorAll('.card:not(.empty)').length;
   const rem = count % 3;
   if (rem) for (let i = 0; i < 3 - rem; i++) {
     const e = document.createElement('div'); e.className = 'card empty'; grid.appendChild(e);
   }
+  updateNumbers(grid);
 }
 
-function renderAll(data) {
-  const c = document.getElementById('sections-container');
-  c.innerHTML = '';
-  data.forEach(s => c.appendChild(renderSection(s)));
-  initSortables();
-}
-
-// ── Sortables ──────────────────────────────────────────────────────────────
-function initSortables() {
-  Sortable.create(document.getElementById('sections-container'), {
-    handle: '.drag-handle-section', animation: 150,
-    ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
-    onEnd: scheduleSave
+function updateNumbers(grid) {
+  grid.querySelectorAll('.card:not(.empty)').forEach((card, i) => {
+    const num = card.querySelector('.card-num');
+    if (num) num.textContent = String(i + 1).padStart(2, '0');
   });
-  document.querySelectorAll('.grid').forEach(initGridSortable);
 }
 
-function initGridSortable(grid) {
+function renderAll(cards) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  cards.forEach(c => grid.appendChild(makeCard(c)));
+  fillEmpties(grid);
   Sortable.create(grid, {
-    group: 'cards', animation: 150,
+    animation: 150, handle: '.card-drag',
     ghostClass: 'sortable-ghost', chosenClass: 'sortable-chosen',
-    filter: '.empty', handle: '.card-drag',
-    onEnd() { rebalance(); scheduleSave(); }
+    filter: '.empty',
+    onEnd() { fillEmpties(grid); scheduleSave(); }
   });
 }
 
-function rebalance() {
-  document.querySelectorAll('.grid').forEach(grid => {
-    grid.querySelectorAll('.card.empty').forEach(e => e.remove());
-    const real = grid.querySelectorAll('.card:not(.empty)').length;
-    if (real === 0) {
-      grid.closest('.section')?.remove();
-    } else {
-      fillEmpties(grid, real);
-    }
-  });
-}
-
-// ── Delete ─────────────────────────────────────────────────────────────────
 function deleteCard(btn) {
   btn.closest('.card').remove();
-  rebalance();
+  fillEmpties(document.getElementById('grid'));
   scheduleSave();
 }
 
-// ── Toast ──────────────────────────────────────────────────────────────────
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
-}
-
-// ── Init ───────────────────────────────────────────────────────────────────
-renderAll(DEFAULT_DATA);
+renderAll(DEFAULT_CARDS);
 </script>
 </body>
 </html>
