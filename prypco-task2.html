@@ -373,24 +373,50 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="body">
     <h2>How we validate quality fast.</h2>
-    <p class="lead">Three layers of QA - automated first, human last, all within D8–D9.</p>
-    <div class="cards-2" style="margin-top:8px">
-      <div class="card">
-        <h3>Automated (D8 - hours)</h3>
-        <ul>
-          <li><strong>Detox RTL suite</strong> - screenshot tests for all 20 key screens in AR locale. Pixel-diff against EN baseline.</li>
-          <li><strong>Playwright (web)</strong> - headless browser tests: truncation, overflow, input direction, form validation in AR.</li>
-          <li><strong>ESLint i18n rule</strong> - catches any new hardcoded string committed after the sprint. Fails the build.</li>
-          <li><strong>BrowserStack</strong> - real device matrix: iPhone 14 Arabic, Samsung S23 Arabic, Chrome Arabic on Android.</li>
-        </ul>
+    <p class="lead">Automated first, human last — every layer is intentional.</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+      <div class="layer-row">
+        <div class="layer-row-left" style="min-width:0;padding:16px 20px">
+          <div class="layer-num">1</div>
+          <div class="layer-info"><h4>AI visual review</h4></div>
+        </div>
+        <div class="layer-row-desc">Claude Vision checks every AR screen for overflow, clipping, English text, RTL issues.</div>
       </div>
-      <div class="card">
-        <h3>Native Speaker (D3 + D9 - 2hr sessions)</h3>
-        <ul>
-          <li><strong>String audit (D3)</strong> - reviews 100% of ar.json. Corrects mistranslations. Flags financial/legal terms (DFSA, SPV, IBAN).</li>
-          <li><strong>Screen walkthrough (D9)</strong> - walks through all 20 key screens on a real Arabic iOS device. Signs off on each screen.</li>
-          <li><strong>Cultural review</strong> - imagery, colors, idioms, Shariah-relevant copy audited by MENA reviewer.</li>
-        </ul>      </div>
+      <div class="layer-row">
+        <div class="layer-row-left" style="min-width:0;padding:16px 20px">
+          <div class="layer-num">2</div>
+          <div class="layer-info"><h4>AI back-translation check</h4></div>
+        </div>
+        <div class="layer-row-desc">Flags meaning drift across all strings before human review.</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-row-left" style="min-width:0;padding:16px 20px">
+          <div class="layer-num">3</div>
+          <div class="layer-info"><h4>ESLint i18n rule</h4></div>
+        </div>
+        <div class="layer-row-desc">Any hardcoded string committed after sprint fails the build.</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-row-left" style="min-width:0;padding:16px 20px">
+          <div class="layer-num">4</div>
+          <div class="layer-info"><h4>Native speaker string audit (D3)</h4></div>
+        </div>
+        <div class="layer-row-desc">Focused review on AI-flagged strings only.</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-row-left" style="min-width:0;padding:16px 20px">
+          <div class="layer-num">5</div>
+          <div class="layer-info"><h4>Native speaker screen walkthrough (D9)</h4></div>
+        </div>
+        <div class="layer-row-desc">Signs off every screen on a real Arabic device.</div>
+      </div>
+      <div class="layer-row">
+        <div class="layer-row-left" style="min-width:0;padding:16px 20px">
+          <div class="layer-num">6</div>
+          <div class="layer-info"><h4>Feature flag</h4></div>
+        </div>
+        <div class="layer-row-desc">Ships to Levant users only — EN users completely unaffected.</div>
+      </div>
     </div>
   </div>
 </div>
