@@ -272,17 +272,11 @@ const DEFAULT_DATA = [
     ]
   },
   {
-    id: "catalog-pricing",
-    title: "Catalog & Pricing",
+    id: "catalog-inventory",
+    title: "Catalog & Inventory Management",
     cards: [
       { id: "catalog-management", title: "Catalog Management", desc: "Control SKUs, pricing, and product content from one place — ensuring agents always sell with accurate information." },
-      { id: "dynamic-pricelists", title: "Dynamic Pricelists", desc: "Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel." }
-    ]
-  },
-  {
-    id: "inventory-warehouse",
-    title: "Inventory & Warehouse",
-    cards: [
+      { id: "dynamic-pricelists", title: "Dynamic Pricelists", desc: "Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel." },
       { id: "inventory-management", title: "Inventory Management", desc: "Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory." },
       { id: "warehouse-management", title: "Warehouse Management", desc: "Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout." }
     ]
@@ -308,7 +302,7 @@ const DEFAULT_DATA = [
 ];
 
 // ── State ─────────────────────────────────────────────────────────────────
-const STORAGE_KEY = 'salesplus_roadmap_order';
+const STORAGE_KEY = 'salesplus_roadmap_order_v2';
 
 function loadData() {
   try {
