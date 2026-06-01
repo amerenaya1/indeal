@@ -226,6 +226,9 @@ tr.clickable-row:hover{background:rgba(207,253,87,.06)!important}
 tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
 .row-arrow{text-align:center;font-size:18px;color:var(--mute);opacity:.35;width:32px;transition:opacity .15s,color .15s}
 tr.clickable-row:hover .row-arrow{opacity:1;color:var(--brand-text)}
+#row-guide{position:fixed;z-index:400;display:flex;align-items:center;gap:8px;background:var(--brand);color:#1d1d1f;font-size:12px;font-weight:700;padding:7px 12px 7px 10px;border-radius:8px;pointer-events:none;opacity:0;transition:opacity .4s ease;white-space:nowrap}
+#row-guide::before{content:'';position:absolute;right:100%;top:50%;transform:translateY(-50%);border:6px solid transparent;border-right-color:var(--brand)}
+#row-guide.visible{opacity:1}
 .slide{padding-left:0!important;padding-right:0!important;align-items:center!important}
 .slide .header,.slide .body{width:60vw!important;max-width:60vw!important;margin-left:auto!important;margin-right:auto!important}
 </style></head>
@@ -435,7 +438,10 @@ tr.clickable-row:hover .row-arrow{opacity:1;color:var(--brand-text)}
     document.body.classList.toggle('nav-forward',i>idx);
     document.body.classList.toggle('nav-back',i<idx);
     slides.forEach(function(s){s.classList.remove('active');});
-    requestAnimationFrame(function(){slides[i].classList.add('active');});
+    requestAnimationFrame(function(){
+      slides[i].classList.add('active');
+      if(i===3) showRowGuide(); else hideRowGuide();
+    });
     idx=i;
     if(cur)cur.textContent=String(i+1);
     if(progFill){var pct=slides.length===1?0:(i/(slides.length-1))*100;progFill.style.width=pct+'%';}
@@ -469,6 +475,8 @@ function toggleDark(){
 }
 (function(){var btn=document.getElementById('themeBtn');if(btn)btn.textContent=document.documentElement.classList.contains('dark')?'☀':'☾';})();
 </script>
+
+<div id="row-guide">click any row</div>
 
 <!-- Initiative Sidebar -->
 <div id="init-sidebar">
@@ -565,6 +573,37 @@ function closeInitSidebar(){
 }
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape')closeInitSidebar();
+});
+
+var _guideTimer;
+function showRowGuide(){
+  var guide = document.getElementById('row-guide');
+  if(!guide) return;
+  // position beside row 2 (index 1) of clickable rows
+  var rows = document.querySelectorAll('tr.clickable-row');
+  var row2 = rows[1];
+  if(!row2) return;
+  var rect = row2.getBoundingClientRect();
+  var guideW = 130;
+  guide.style.top = (rect.top + rect.height/2 - 16) + 'px';
+  guide.style.left = (rect.right + 14) + 'px';
+  clearTimeout(_guideTimer);
+  guide.classList.remove('visible');
+  // slight delay so slide transition settles
+  _guideTimer = setTimeout(function(){
+    guide.classList.add('visible');
+    _guideTimer = setTimeout(hideRowGuide, 4000);
+  }, 600);
+}
+function hideRowGuide(){
+  var guide = document.getElementById('row-guide');
+  if(guide) guide.classList.remove('visible');
+  clearTimeout(_guideTimer);
+}
+
+// dismiss on any row click
+document.querySelectorAll('tr.clickable-row').forEach(function(row){
+  row.addEventListener('click', hideRowGuide);
 });
 </script>
 </body></html>
