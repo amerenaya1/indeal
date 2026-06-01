@@ -221,6 +221,7 @@ html.dark .sb-chip{background:#13141F;border-color:rgba(255,255,255,.1);color:rg
 html.dark .sb-chip-brand{background:rgba(200,245,100,.12);border-color:rgba(200,245,100,.2);color:#C8F564}
 /* Clickable row hint */
 tr.clickable-row{cursor:pointer;transition:background .15s}
+tr.clickable-row td:first-child{color:var(--brand-text);font-weight:700}
 tr.clickable-row:hover{background:rgba(207,253,87,.06)!important}
 tr.clickable-row:hover td:nth-child(2) .row-hint{opacity:1}
 .row-arrow{text-align:center;font-size:18px;color:var(--mute);opacity:.35;width:32px;transition:opacity .15s,color .15s}
@@ -286,15 +287,16 @@ tr.clickable-row:hover .row-arrow{opacity:1;color:var(--brand-text)}
     <span style="font-size:12px;color:var(--mute)">4 / 6</span>
   </div>
   <div class="body" style="justify-content:flex-start">
-    <h2 style="font-size:32px;margin-bottom:10px">15 initiatives across the full funnel.</h2>
+    <h2 style="font-size:32px;margin-bottom:4px">15 initiatives across the full funnel.</h2>
+    <p style="font-size:12px;color:var(--mute);margin-bottom:10px">Click any row to see the details and prototype.</p>
     <table class="tbl-sm" style="margin-top:10px;font-size:12px">
       <thead><tr><th>#</th><th>Initiative</th><th>Type</th><th>Impact</th><th>Effort</th><th style="width:32px"></th></tr></thead>
       <tbody>
         <tr class="grp-hdr"><td colspan="6">Foundation</td></tr>
-        <tr class="clickable-row" onclick="openInitSidebar(1)"><td style="color:var(--brand-text);font-weight:700">01</td><td>Funnel instrumentation &amp; analytics</td><td>Product + Eng</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(1)"><td>01</td><td>Funnel instrumentation &amp; analytics</td><td>Product + Eng</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
         <tr class="grp-hdr"><td colspan="6">Conversion - KYC</td></tr>
-        <tr class="clickable-row" onclick="openInitSidebar(2)"><td style="color:var(--brand-text);font-weight:700">02</td><td>Value-led landing screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Design</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
-        <tr class="clickable-row" onclick="openInitSidebar(3)"><td style="color:var(--brand-text);font-weight:700">03</td><td>One-tap registration <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(2)"><td>02</td><td>Value-led landing screen <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Design</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
+        <tr class="clickable-row" onclick="openInitSidebar(3)"><td>03</td><td>One-tap registration <span class="row-hint" style="font-size:10px;background:var(--brand-soft);color:var(--brand-text);padding:2px 7px;border-radius:99px;font-weight:600;margin-left:6px;vertical-align:middle;opacity:0;transition:opacity .15s">View mockup -&gt;</span></td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
         <tr class="clickable-row" onclick="openInitSidebar(4)"><td>04</td><td>First-time investment wizard</td><td>AI + Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-med">Medium</span></td><td class="row-arrow">›</td></tr>
         <tr class="clickable-row" onclick="openInitSidebar(5)"><td>05</td><td>KYC roadmap with save &amp; resume</td><td>Product</td><td><span class="badge b-high">High</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
         <tr class="clickable-row" onclick="openInitSidebar(6)"><td>06</td><td>KYC motivation layer</td><td>Design</td><td><span class="badge b-med">Medium</span></td><td><span class="badge b-low">Low</span></td><td class="row-arrow">›</td></tr>
