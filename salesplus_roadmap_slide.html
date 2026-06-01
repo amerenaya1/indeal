@@ -62,7 +62,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
-    background: #e5e7eb;
+    background: #ffffff;
     border: 2px solid #e5e7eb;
     border-radius: 18px;
     overflow: hidden;
@@ -74,7 +74,9 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+    border: 1px solid #f0f1f5;
   }
+  .card.empty { border: none; }
 
   .card-title {
     font-size: 15px;
@@ -151,10 +153,6 @@
         <div class="card-desc">Calculate and process agent payouts based on completed deliveries and commission rules.</div>
       </div>
       <div class="card">
-        <div class="card-title">Agent Commissions Config</div>
-        <div class="card-desc">Allow flexible commission configuration based on sales rules and performance criteria.</div>
-      </div>
-      <div class="card">
         <div class="card-title">Agent Performance Dashboard</div>
         <div class="card-desc">Provide customizable KPIs and performance dashboards for agents and managers.</div>
       </div>
@@ -170,6 +168,7 @@
         <div class="card-title">Knowledge Base</div>
         <div class="card-desc">Equip your field teams with the knowledge, answers, and resources they need in one dedicated app.</div>
       </div>
+      <div class="card empty"></div>
     </div>
   </div>
 
@@ -178,10 +177,6 @@
     <div class="section-title">Commercial Controls</div>
     <div class="grid">
       <div class="card">
-        <div class="card-title">Discount Configs</div>
-        <div class="card-desc">Enable configurable discount rules with limits and controls to govern how agents apply pricing flexibility.</div>
-      </div>
-      <div class="card">
         <div class="card-title">Approval Flows</div>
         <div class="card-desc">Configure multi-tier approval workflows for orders, discounts, and credit decisions in Sales+.</div>
       </div>
@@ -189,6 +184,7 @@
         <div class="card-title">Credit History</div>
         <div class="card-desc">Provide detailed customer credit history visibility to support better financial decisions in the field.</div>
       </div>
+      <div class="card empty"></div>
     </div>
   </div>
 
@@ -204,6 +200,7 @@
         <div class="card-title">Gift Management</div>
         <div class="card-desc">Distribute brand gifts to customers with full visibility and control over allocation and delivery.</div>
       </div>
+      <div class="card empty"></div>
     </div>
   </div>
 
@@ -219,6 +216,7 @@
         <div class="card-title">Dynamic Pricelists</div>
         <div class="card-desc">Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel.</div>
       </div>
+      <div class="card empty"></div>
     </div>
   </div>
 
@@ -234,6 +232,7 @@
         <div class="card-title">Warehouse Management</div>
         <div class="card-desc">Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout.</div>
       </div>
+      <div class="card empty"></div>
     </div>
   </div>
 
@@ -257,6 +256,8 @@
         <div class="card-title">Logistics</div>
         <div class="card-desc">Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations.</div>
       </div>
+      <div class="card empty"></div>
+      <div class="card empty"></div>
     </div>
   </div>
 
@@ -272,6 +273,7 @@
         <div class="card-title">BI Rich Dashboards</div>
         <div class="card-desc">Dashboards empowered by Business Intelligence to give leadership the insights they need.</div>
       </div>
+      <div class="card empty"></div>
     </div>
   </div>
 
