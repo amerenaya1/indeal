@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PRYPCO · Senior PM Assignment</title>
-<script>if(localStorage.getItem('theme')==='dark'||(localStorage.getItem('theme')===null&&window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}</script>
+<script>if(localStorage.getItem('theme')!=='light'){document.documentElement.classList.add('dark')}</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e5e5ea;--card:#fff;--brand:#cffd57;--brand-text:#4d6600;--brand-soft:#edfcaa;--shadow:0 12px 32px rgba(207,253,87,.15);--radius:20px;--h1-from:#1d1d1f;--h1-to:#cffd57}
@@ -101,14 +101,10 @@ function toggleDark(){
   applyDark(!isDark);
 }
 
-// On load: respect saved preference, then system preference
+// On load: respect saved preference, default to dark
 (function(){
   var saved = localStorage.getItem('theme');
-  if(saved){
-    applyDark(saved === 'dark');
-  } else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-    applyDark(true);
-  }
+  applyDark(saved !== 'light');
 })();
 </script>
 </body>
