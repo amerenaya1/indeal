@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales+ Long-Term Roadmap</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f5f6fa;
+    display: flex; min-height: 100vh;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 260px; flex-shrink: 0;
+    background: #fff; border-right: 1px solid #e5e7eb;
+    display: flex; flex-direction: column;
+    position: sticky; top: 0; height: 100vh; overflow: hidden;
+  }
+  .sidebar-header {
+    padding: 20px 18px 14px;
+    border-bottom: 1px solid #f0f1f5;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .sidebar-header span {
+    font-size: 12px; font-weight: 700; color: #9ca3af;
+    letter-spacing: 0.6px; text-transform: uppercase;
+  }
+  .sidebar-hint {
+    font-size: 11px; color: #d1d5db; padding: 8px 18px 10px;
+    border-bottom: 1px solid #f0f1f5;
+  }
+  .sidebar-list {
+    flex: 1; overflow-y: auto; padding: 8px 0;
+  }
+  .sidebar-list::-webkit-scrollbar { width: 4px; }
+  .sidebar-list::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
+
+  .sidebar-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 18px; cursor: grab; user-select: none;
+    transition: background 0.1s;
+  }
+  .sidebar-item:hover { background: #f8f9ff; }
+  .sidebar-item.sortable-ghost { opacity: 0.3; background: #eff6ff; }
+  .sidebar-item.sortable-chosen { cursor: grabbing; background: #f0f4ff; }
+
+  .sidebar-item-num {
+    font-size: 11px; font-weight: 700; color: #d1d5db;
+    width: 20px; flex-shrink: 0; text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .sidebar-item-name {
+    font-size: 13px; color: #374151; line-height: 1.3; flex: 1;
+  }
+  .sidebar-item-handle {
+    color: #d1d5db; font-size: 13px; flex-shrink: 0;
+  }
+
+  /* ── Main ── */
+  .main {
+    flex: 1; padding: 40px 48px 80px;
+    min-width: 0;
+  }
+
+  .header {
+    display: flex; flex-direction: column; align-items: flex-start;
+    margin-bottom: 48px; gap: 10px; max-width: 680px;
+  }
+  .logo-svg { width: 56px; height: 56px; border-radius: 14px; overflow: hidden; flex-shrink: 0; }
+  .header h1 { font-size: 30px; font-weight: 800; color: #0f0f1a; letter-spacing: -0.5px; }
+  .header p { font-size: 13px; color: #9ca3af; }
+  .header p.subtitle { font-size: 15px; color: #4b5563; line-height: 1.65; }
+
+  /* ── Grid ── */
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; background: #fff; border: 2px solid #e5e7eb;
+    border-radius: 18px; overflow: hidden;
+  }
+
+  /* ── Card ── */
+  .card {
+    background: #fff; padding: 24px 28px 24px 22px;
+    display: flex; flex-direction: row; gap: 16px;
+    border: 1px solid #f0f1f5; position: relative;
+    align-items: flex-start;
+  }
+  .card-text { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 0; }
+  .card.empty { cursor: default; border: none; }
+
+  .card-title { font-size: 15px; font-weight: 700; color: #0f0f1a; line-height: 1.3; }
+  .card-desc  { font-size: 13px; color: #6b7280; line-height: 1.6; }
+
+  .card-num {
+    font-size: 36px; font-weight: 800; color: #e8eaf0;
+    line-height: 1; pointer-events: none; user-select: none;
+    font-variant-numeric: tabular-nums; letter-spacing: -1px;
+    flex-shrink: 0; align-self: flex-start;
+  }
+
+  /* save button */
+  .save-bar {
+    position: fixed; bottom: 24px; right: 24px;
+    display: flex; align-items: center; gap: 10px; z-index: 100;
+  }
+  .save-btn {
+    padding: 10px 18px; background: #1B54F8; color: #fff;
+    border: none; border-radius: 10px; font-size: 13px; font-weight: 600;
+    cursor: pointer; display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 4px 14px rgba(27,84,248,0.3); transition: background 0.15s;
+  }
+  .save-btn:hover { background: #1444d4; }
+  .save-status {
+    font-size: 12px; color: #6b7280; background: #fff;
+    padding: 6px 12px; border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .footer { margin-top: 32px; display: flex; justify-content: flex-end; }
+  .confidential { font-size: 11px; color: #d1d5db; letter-spacing: 1px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <span>Sort Order</span>
+  </div>
+  <div class="sidebar-hint">Drag items to reorder</div>
+  <div class="sidebar-list" id="sidebar-list"></div>
+</aside>
+
+<!-- Main content -->
+<div class="main">
+  <div class="header">
+    <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <rect width="64" height="64" rx="16" fill="#1B54F8"/>
+      <rect x="10" y="20" width="5" height="14" rx="2" fill="#D4E84A"/>
+      <rect x="5.5" y="24.5" width="14" height="5" rx="2" fill="#D4E84A"/>
+      <text x="19" y="30" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Sales</text>
+      <text x="19" y="46" font-family="'Segoe UI',system-ui,sans-serif" font-weight="700" font-size="13" fill="white">Plus</text>
+    </svg>
+    <h1>Sales+ 2–3 Quarters Roadmap</h1>
+    <p class="subtitle">Empower every agent in the field — Sales+ is an all-in-one field sales platform built to streamline order management, customer engagement, and on-ground operations, giving sales leaders real-time visibility and the insights they need to drive growth.</p>
+    <p>Product roadmap · CEO Briefing · June 2026</p>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="footer">
+    <div class="confidential">Confidential · salesplus.app</div>
+  </div>
+</div>
+
+<div class="save-bar">
+  <div class="save-status" id="save-status" style="display:none"></div>
+  <button class="save-btn" onclick="linkAndSave()">💾 Save to File</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+<script>
+const DEFAULT_CARDS = [
+  {"id": "visit-module", "title": "Visit Module", "desc": "A dedicated module for agents to plan, log, and track customer visits in the field."},
+  {"id": "notifications-center", "title": "Notifications Center", "desc": "Enable real-time notifications for orders, approvals, and alerts across the Sales+ platform."},
+  {"id": "merchandising", "title": "Merchandising", "desc": "Equip your merchandising team with the right tools to audit shelves and track store presence."},
+  {"id": "market-research", "title": "Market Research", "desc": "Deploy field surveys for instant insights directly from agents on the ground."},
+  {"id": "mystery-shopping", "title": "Inspections", "desc": "Pinpoint gaps in standards to elevate your customer experience through structured field evaluations."},
+  {"id": "offline-support", "title": "Offline Support", "desc": "Keep core operations running smoothly even when agents lose internet connection in the field."},
+  {"id": "agent-payout", "title": "Agent Payout", "desc": "Calculate and process agent payouts based on completed deliveries and commission rules."},
+  {"id": "agent-performance", "title": "Agent Performance Dashboard", "desc": "Provide customizable KPIs and performance dashboards for agents and managers."},
+  {"id": "agent-rewards", "title": "Agent Rewards Program", "desc": "Motivate field agents with leaderboards, progress tracking, and performance-based rewards."},
+  {"id": "agent-targets", "title": "Agent Targets", "desc": "Allow agents to see their targets and track progress toward personal and team goals."},
+  {"id": "knowledge-base", "title": "Knowledge Base", "desc": "Equip your field teams with the knowledge, answers, and resources they need in one dedicated app."},
+  {"id": "approval-flows", "title": "Approval Flows", "desc": "Configure multi-tier approval workflows for orders, discounts, and credit decisions in Sales+."},
+  {"id": "credit-history", "title": "Credit History", "desc": "Provide detailed customer credit history visibility to support better financial decisions in the field."},
+  {"id": "crm", "title": "CRM", "desc": "Build a CRM tailored to your specific industry, workflow, and processes for easier customer management."},
+  {"id": "website-design", "title": "Website Design", "desc": "A clean, modern public-facing website that reflects the Sales+ brand and communicates value to prospects."},
+  {"id": "admin-portal", "title": "Sales+ Admin Portal", "desc": "A clean, redesigned admin portal giving operations teams full control over platform settings and configurations."},
+  {"id": "gift-management", "title": "Gift Management", "desc": "Distribute brand gifts to customers with full visibility and control over allocation and delivery."},
+  {"id": "catalog-management", "title": "Catalog Management", "desc": "Control SKUs, pricing, and product content from one place — ensuring agents always sell with accurate information."},
+  {"id": "dynamic-pricelists", "title": "Dynamic Pricelists", "desc": "Allow agents to manage and assign customer-specific pricelists dynamically from the admin panel."},
+  {"id": "inventory-management", "title": "Inventory Management", "desc": "Stay ahead of demand, prevent stockouts, and streamline fulfillment with software tailored to how you move inventory."},
+  {"id": "warehouse-management", "title": "Warehouse Management", "desc": "Streamline receiving, organize inventory, and manage suppliers with software designed around your warehouse layout."},
+  {"id": "invoice-processing", "title": "Invoice Processing", "desc": "Automate invoice processing and eliminate hours of manual data entry for email and paper documents."},
+  {"id": "procurement", "title": "Procurement", "desc": "Keep on top of orders, vendors, and budgets with an app customized to how your team sources and controls spend."},
+  {"id": "vendor-management", "title": "Vendor Management", "desc": "Track vendor performance, manage relationships, and ensure compliance with tools configured to your standards."},
+  {"id": "logistics", "title": "Logistics", "desc": "Optimize routes, coordinate shipments, and manage carriers with software tailored to your freight operations."},
+  {"id": "ai-assistant", "title": "AI Assistant", "desc": "Guide agents through orders, returns, stock transfers, and daily app use with an in-app AI."},
+  {"id": "bi-dashboards", "title": "BI Rich Dashboards", "desc": "Dashboards empowered by Business Intelligence to give leadership the insights they need."}
+];
+
+// ── File save ──────────────────────────────────────────────────────────────
+let fileHandle = null;
+
+async function linkAndSave() {
+  if (!fileHandle && 'showOpenFilePicker' in window) {
+    try {
+      [fileHandle] = await window.showOpenFilePicker({
+        types: [{ description: 'HTML file', accept: { 'text/html': ['.html'] } }]
+      });
+    } catch(e) { return; }
+  }
+  await writeToFile();
+}
+
+async function writeToFile() {
+  const html = buildHTML();
+  if (fileHandle) {
+    try {
+      const writable = await fileHandle.createWritable();
+      await writable.write(html);
+      await writable.close();
+      setSaveStatus('Saved ✓');
+      return;
+    } catch(e) {}
+  }
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'salesplus_roadmap_slide.html'; a.click();
+}
+
+function setSaveStatus(msg) {
+  const el = document.getElementById('save-status');
+  el.textContent = msg; el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 2500);
+}
+
+function buildHTML() {
+  const cards = getOrderedCards();
+  return '<!DOCTYPE html>\n' + document.documentElement.outerHTML.replace(
+    /const DEFAULT_CARDS = \[[\s\S]*?\];/,
+    `const DEFAULT_CARDS = ${JSON.stringify(cards, null, 2)};`
+  );
+}
+
+function getOrderedCards() {
+  return [...document.querySelectorAll('#sidebar-list .sidebar-item')].map(el => {
+    const id = el.dataset.id;
+    const card = DEFAULT_CARDS.find(c => c.id === id);
+    return { id, title: card.title, desc: card.desc };
+  });
+}
+
+function uid() { return Math.random().toString(36).slice(2, 9); }
+
+// ── Sidebar ────────────────────────────────────────────────────────────────
+function makeSidebarItem(card, index) {
+  const div = document.createElement('div');
+  div.className = 'sidebar-item'; div.dataset.id = card.id;
+  div.innerHTML = `
+    <span class="sidebar-item-num">${String(index + 1).padStart(2, '0')}</span>
+    <span class="sidebar-item-name">${card.title}</span>
+    <span class="sidebar-item-handle">⠿</span>`;
+  return div;
+}
+
+function renderSidebar(cards) {
+  const list = document.getElementById('sidebar-list');
+  list.innerHTML = '';
+  cards.forEach((c, i) => list.appendChild(makeSidebarItem(c, i)));
+  Sortable.create(list, {
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    onEnd() { syncFromSidebar(); }
+  });
+}
+
+function syncFromSidebar() {
+  const items = [...document.querySelectorAll('#sidebar-list .sidebar-item')];
+  // update sidebar numbers
+  items.forEach((el, i) => {
+    el.querySelector('.sidebar-item-num').textContent = String(i + 1).padStart(2, '0');
+  });
+  // rebuild grid in sidebar order
+  const ids = items.map(el => el.dataset.id);
+  const cardMap = {};
+  DEFAULT_CARDS.forEach(c => { cardMap[c.id] = c; });
+  const ordered = ids.map(id => cardMap[id]).filter(Boolean);
+  renderGrid(ordered);
+}
+
+// ── Grid ───────────────────────────────────────────────────────────────────
+function makeCard(card) {
+  const div = document.createElement('div');
+  div.className = 'card'; div.dataset.id = card.id;
+  div.innerHTML = `
+    <span class="card-num"></span>
+    <div class="card-text">
+      <div class="card-title">${card.title}</div>
+      <div class="card-desc">${card.desc}</div>
+    </div>`;
+  return div;
+}
+
+function renderGrid(cards) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  cards.forEach(c => grid.appendChild(makeCard(c)));
+  // fill empty slots to complete the last row
+  const rem = cards.length % 3;
+  if (rem) for (let i = 0; i < 3 - rem; i++) {
+    const e = document.createElement('div'); e.className = 'card empty'; grid.appendChild(e);
+  }
+  // number cards
+  grid.querySelectorAll('.card:not(.empty)').forEach((card, i) => {
+    card.querySelector('.card-num').textContent = String(i + 1).padStart(2, '0');
+  });
+}
+
+function renderAll(cards) {
+  renderSidebar(cards);
+  renderGrid(cards);
+}
+
+renderAll(DEFAULT_CARDS);
+</script>
+</body>
+</html>
