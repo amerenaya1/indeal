@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SalesPlus · Field Team Management</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fbfbfd;--ink:#1d1d1f;--mute:#86868b;--line:#e7e5f0;--card:#fff;--brand:#5b3fd9;--brand-2:#7c5cff;--brand-soft:#efeafd;--blue:#2563eb;--shadow:0 12px 32px rgba(91,63,217,.10);--radius:20px}
+html,body{background:var(--bg);color:var(--ink);font-family:'Inter','SF Pro Display',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5;height:100%;overflow:hidden}
+.deck{width:100vw;height:100vh;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;padding:48px 64px 90px;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s ease;background:var(--bg);overflow:auto}
+.slide.active{opacity:1;pointer-events:auto}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line);flex-shrink:0}
+.section-tag{font-size:12px;color:var(--brand);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.logo{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:13px;background:linear-gradient(150deg,#2f6bff 0%,#1e40ff 100%);box-shadow:0 8px 18px rgba(37,99,235,.32);color:#fff;font-weight:800;font-size:11px;line-height:1;letter-spacing:.02em;text-align:center;flex-direction:column;gap:1px}
+.logo span{display:block}
+.logo.sm{width:34px;height:34px;font-size:9px;border-radius:10px}
+h1{font-size:58px;line-height:1.12;letter-spacing:-.025em;font-weight:700;margin-bottom:16px;padding-bottom:.08em;background:linear-gradient(180deg,#1d1d1f 0%,#5b3fd9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-size:42px;letter-spacing:-.02em;font-weight:700;margin-bottom:8px;line-height:1.1;background:linear-gradient(180deg,#1d1d1f 0%,#5b3fd9 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lead{font-size:18px;color:var(--mute);max-width:880px;margin-bottom:22px;font-weight:400}
+.body{flex:1;display:flex;flex-direction:column;min-height:0}
+
+/* Title slide */
+.title-slide{justify-content:center;text-align:center;align-items:center;background:radial-gradient(1200px 600px at 50% -10%,#efeafd 0%,var(--bg) 60%)}
+.title-slide .logo{width:78px;height:78px;border-radius:20px;font-size:17px;margin-bottom:26px}
+.title-slide .eyebrow{font-size:14px;color:var(--brand);font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.title-slide h1{font-size:88px;margin-bottom:18px}
+.title-slide .sub{font-size:22px;color:var(--mute);max-width:680px}
+.title-slide .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.title-slide .chip{background:#fff;border:1px solid var(--line);border-radius:99px;padding:9px 18px;font-size:14px;font-weight:500;color:#3a3a3c;box-shadow:0 4px 14px rgba(91,63,217,.06)}
+.title-slide .meta{margin-top:38px;font-size:13px;color:var(--mute);letter-spacing:.05em}
+
+/* Content layout: two columns of features + phone in the middle */
+.feature-stage{flex:1;display:grid;grid-template-columns:1fr 250px 1fr;gap:22px;align-items:stretch;min-height:0}
+.col-head{display:flex;align-items:center;gap:10px;background:linear-gradient(90deg,var(--brand-soft),rgba(239,234,253,.25));border:1px solid var(--line);border-radius:14px;padding:10px 16px;margin-bottom:14px}
+.col-head h3{font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--brand);text-transform:uppercase}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;position:relative}
+.feat .ic{width:30px;height:30px;border-radius:9px;background:linear-gradient(150deg,#8b6dff,#5b3fd9);display:flex;align-items:center;justify-content:center;margin-bottom:9px;box-shadow:0 4px 10px rgba(91,63,217,.22)}
+.feat .ic svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.feat h4{font-size:14px;font-weight:600;color:var(--brand);margin-bottom:4px;line-height:1.2}
+.feat p{font-size:11.5px;color:#5a5a5e;line-height:1.4}
+.feat .soon{position:absolute;top:12px;right:12px;background:var(--brand);color:#fff;font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 7px;border-radius:99px}
+
+/* Phone mock */
+.phone-wrap{display:flex;align-items:center;justify-content:center}
+.phone{width:228px;height:466px;background:#0e0e12;border-radius:38px;padding:10px;box-shadow:0 24px 60px rgba(30,30,50,.28);position:relative}
+.phone .notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:96px;height:24px;background:#0e0e12;border-radius:99px;z-index:3}
+.screen{width:100%;height:100%;background:#f4f3fa;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;padding:34px 16px 14px}
+.scr-status{display:flex;justify-content:space-between;font-size:10px;color:#1d1d1f;font-weight:600;margin-bottom:14px;opacity:.7}
+.scr-user{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.scr-user .name{font-size:12px;font-weight:600}
+.scr-user .sync{font-size:9px;background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px 9px;color:var(--mute)}
+.scr-title{font-size:18px;font-weight:700;margin-bottom:12px}
+.scr-tabs{display:flex;gap:6px;margin-bottom:16px}
+.scr-tabs .t{flex:1;text-align:center;font-size:9px;padding:7px 0;border-radius:9px;background:#fff;border:1px solid var(--line);color:var(--mute)}
+.scr-tabs .t.on{border-color:var(--brand);color:var(--brand);font-weight:600;box-shadow:0 0 0 2px var(--brand-soft)}
+.scr-day{font-size:9px;color:var(--mute);font-weight:600;letter-spacing:.04em;margin-bottom:8px;text-transform:uppercase}
+.scr-row{display:flex;gap:8px;margin-bottom:8px}
+.scr-stat{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 10px}
+.scr-stat .l{font-size:8.5px;color:var(--mute)}
+.scr-stat .n{font-size:15px;font-weight:700;margin-top:3px}
+.scr-line{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 11px;margin-bottom:8px;font-size:10px}
+.scr-line .v{font-weight:700}
+.scr-line.hi{background:var(--brand-soft);border-color:#d8cdfb;color:var(--brand)}
+
+@media(max-width:1100px){
+  .feature-stage{grid-template-columns:1fr 1fr;gap:18px}
+  .phone-wrap{display:none}
+  .slide{padding:32px 36px 84px}
+  h1{font-size:42px}h2{font-size:30px}
+  .title-slide h1{font-size:56px}
+}
+@media(max-width:700px){
+  .slide{padding:20px 16px 76px}
+  .header{position:sticky;top:0;background:var(--bg);z-index:5}
+  .feature-stage{grid-template-columns:1fr;gap:18px}
+  .feat-grid{grid-template-columns:1fr 1fr}
+  h1{font-size:28px}h2{font-size:22px}
+  .title-slide h1{font-size:38px}
+  .title-slide .sub{font-size:15px}
+  .lead{font-size:14px;margin-bottom:14px}
+  .feat{padding:11px}
+  .feat h4{font-size:12.5px}
+  .feat p{font-size:11px}
+  .col-head h3{font-size:13px}
+}
+
+/* Controls */
+.controls{position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:100}
+.controls .l,.controls .r{display:flex;align-items:center;gap:14px}
+.btn{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);font-size:18px;transition:.15s;user-select:none}
+.btn:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn[disabled]{opacity:.35;cursor:not-allowed}
+.counter{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums;font-weight:500}
+.toc{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--mute);font-weight:500}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:101}
+.progress .bar{height:100%;background:var(--brand);transition:width .25s ease;width:0%}
+.swipe-hint{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.55);backdrop-filter:blur(8px);color:#fff;border-radius:99px;padding:10px 22px;font-size:14px;font-weight:500;z-index:200;display:none;align-items:center;gap:10px;pointer-events:none;white-space:nowrap;transition:opacity .5s ease}
+.swipe-hint .arr{font-size:20px;opacity:.8}
+@media(hover:none){.swipe-hint{display:flex}}
+@media(max-width:700px){.toc{display:none}}
+</style></head><body>
+<div class="swipe-hint" id="swipeHint"><span class="arr">←</span> Swipe to navigate <span class="arr">→</span></div>
+<div class="progress"><div class="bar" id="prog"></div></div>
+
+<div class="deck" id="deck">
+
+<!-- Slide 1: Cover -->
+<section class="slide title-slide active">
+<div class="logo"><span>Sales</span><span>Plus</span></div>
+<div class="eyebrow">Field Sales Platform</div>
+<h1>SalesPlus</h1>
+<p class="sub">Everything you need to manage your field team — from the ground to the boardroom.</p>
+<div class="chips">
+<span class="chip">📱 Field Team App</span>
+<span class="chip">🖥️ Management Portal</span>
+<span class="chip">🤖 AI Assistant</span>
+<span class="chip">📶 Offline Support</span>
+</div>
+<div class="meta">Product Overview · 2026</div>
+</section>
+
+<!-- Slide 2: Features -->
+<section class="slide">
+<div class="header"><div class="logo sm"><span>Sales</span><span>Plus</span></div><div class="section-tag">Product Capabilities</div></div>
+<div class="body">
+<h2>Everything You Need to Manage Your Field Team</h2>
+<p class="lead">Two connected experiences — a powerful app for agents in the field and a complete portal for managers — working together in real time.</p>
+
+<div class="feature-stage">
+
+  <!-- Field Team App column -->
+  <div>
+    <div class="col-head">
+      <h3>Field Team App</h3>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 0114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h4>Visits Tracking</h4><p>Track agent movement, visits and real-time activity on the ground.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/></svg></div><h4>Live Inventory</h4><p>View real-time stock across assigned warehouses and sources.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><h4>Order Creation</h4><p>Create and submit orders directly during customer visits.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg></div><h4>Live Targets</h4><p>Agents see assigned goals, progress and performance in real time.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4"/><path d="M9 13l-1.5 7L12 18l4.5 2L15 13"/></svg></div><h4>Sales Gamification</h4><p>Motivate agents with leaderboards, progress tracking and rewards.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M9 10l1.2 1.2L13 8.6"/></svg></div><h4>Market Feedback</h4><p>Capture stock availability, shelf visibility and merchandising feedback.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg></div><h4>AI Assistant</h4><p>Guides agents through orders, returns, stock transfers and daily use.</p></div>
+      <div class="feat"><div class="soon">Soon</div><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 11h16v9H4z"/><path d="M4 7h16v4H4zM12 7v13M12 7s-3-4-5-3 1 3 5 3zM12 7s3-4 5-3-1 3-5 3z"/></svg></div><h4>Gift Management</h4><p>Distribute brand gifts to customers with full traceability and control.</p></div>
+    </div>
+  </div>
+
+  <!-- Phone mock -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="notch"></div>
+      <div class="screen">
+        <div class="scr-status"><span>9:30</span><span>▪▪▪ ▮</span></div>
+        <div class="scr-user"><span class="name">👋 Salam, Mohammad…</span><span class="sync">Sync ↻</span></div>
+        <div class="scr-title">Progress</div>
+        <div class="scr-tabs"><span class="t on">Today</span><span class="t">Last week</span><span class="t">Last month</span><span class="t">Custom</span></div>
+        <div class="scr-day">Today · Mon 20 Jan 2025</div>
+        <div class="scr-row">
+          <div class="scr-stat"><div class="l">Total orders</div><div class="n">50</div></div>
+          <div class="scr-stat"><div class="l">Total collections</div><div class="n">₦200,000</div></div>
+        </div>
+        <div class="scr-line hi"><span>↗ Total Sales</span><span class="v">₦100,000</span></div>
+        <div class="scr-line"><span>▤ Total Invoices</span><span class="v">120</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Management Portal column -->
+  <div>
+    <div class="col-head">
+      <h3>Management Portal</h3>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 108 8h-8V4z"/><path d="M12 4a8 8 0 018 8"/></svg></div><h4>Performance Tracking</h4><p>Track agent performance with advanced analytics.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4-8-4z"/><path d="M4 8v8l8 4 8-4V8"/></svg></div><h4>Heat Maps</h4><p>Visualize agent &amp; customer activity through dynamic heat maps.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h18v12H3zM3 7l3-3h12l3 3"/><path d="M8 12h8"/></svg></div><h4>Inventory Management</h4><p>Manage stock levels and transfers across multiple warehouses.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15 20a5 5 0 016-4.5"/></svg></div><h4>Agent Tracking</h4><p>Track every agent's route, visits and field movement in real time.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h6l2 2h10v10H3z"/><circle cx="14" cy="13" r="2.5"/></svg></div><h4>Catalogue Management</h4><p>Control SKUs, pricing and product content in one place.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 12a7 7 0 0114 0"/><path d="M8.5 14a3.5 3.5 0 017 0"/><circle cx="12" cy="16.5" r="1"/></svg></div><h4>Offline Support</h4><p>Keep core operations running even when agents lose internet.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 11l2 2 3-3"/></svg></div><h4>Customer Management</h4><p>Manage profiles, statuses, notes and documents in one place.</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 5h14v14H5z"/><path d="M8 16L16 8"/><circle cx="9" cy="9" r="1.2"/><circle cx="15" cy="15" r="1.2"/></svg></div><h4>Promotion Engine</h4><p>Create bundles, discounts, combos and tailored offers with full control.</p></div>
+    </div>
+  </div>
+
+</div>
+</div>
+</section>
+
+</div><!-- /deck -->
+
+<div class="controls">
+<div class="l">
+<div class="btn" id="prev" title="Previous" disabled>‹</div>
+<div class="btn" id="next" title="Next">›</div>
+<div class="counter"><span id="cur">1</span> / <span id="tot">2</span></div>
+</div>
+<div class="toc"><span id="sec-name">Cover</span></div>
+<div class="r">
+<div class="btn" id="home" title="Home">⌂</div>
+</div>
+</div>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const cur = document.getElementById('cur');
+  const tot = document.getElementById('tot');
+  const secName = document.getElementById('sec-name');
+  const progBar = document.getElementById('prog');
+  const sectionByIdx = ['Cover','Product Capabilities'];
+
+  if (tot) tot.textContent = String(slides.length);
+  slides.forEach(s => s.classList.remove('active'));
+  slides[0].classList.add('active');
+
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+  const homeBtn = document.getElementById('home');
+
+  let idx = 0;
+  function go(i){
+    if (i < 0) i = 0;
+    if (i >= slides.length) i = slides.length - 1;
+    if (i === idx) return;
+    slides.forEach(s => s.classList.remove('active'));
+    requestAnimationFrame(() => slides[i].classList.add('active'));
+    idx = i;
+    if (cur) cur.textContent = String(i + 1);
+    if (secName) secName.textContent = sectionByIdx[i] || '';
+    if (progBar) progBar.style.width = (slides.length === 1 ? 0 : (i / (slides.length - 1)) * 100) + '%';
+    if (prevBtn) prevBtn.toggleAttribute('disabled', i === 0);
+    if (nextBtn) nextBtn.toggleAttribute('disabled', i === slides.length - 1);
+    window.scrollTo(0, 0);
+  }
+
+  if (prevBtn) prevBtn.addEventListener('click', () => go(idx - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => go(idx + 1));
+  if (homeBtn) homeBtn.addEventListener('click', () => go(0));
+
+  document.addEventListener('keydown', function(e){
+    const k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' ' || k === 'Spacebar'){ e.preventDefault(); go(idx + 1); }
+    else if (k === 'ArrowLeft' || k === 'PageUp'){ e.preventDefault(); go(idx - 1); }
+    else if (k === 'Home'){ e.preventDefault(); go(0); }
+    else if (k === 'End'){ e.preventDefault(); go(slides.length - 1); }
+  });
+
+  const deck = document.getElementById('deck');
+  if (deck) {
+    let sx = 0, sy = 0, st = 0, tracking = false;
+    const THRESH = 50, MAX_VERT = 80, MAX_TIME = 700;
+    deck.addEventListener('touchstart', function(e){
+      if (e.touches.length !== 1){ tracking = false; return; }
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; st = Date.now(); tracking = true;
+    }, { passive: true });
+    deck.addEventListener('touchend', function(e){
+      if (!tracking || e.changedTouches.length !== 1) return;
+      tracking = false;
+      const dx = e.changedTouches[0].clientX - sx;
+      const dy = e.changedTouches[0].clientY - sy;
+      const dt = Date.now() - st;
+      if (dt > MAX_TIME || Math.abs(dx) < THRESH || Math.abs(dy) > MAX_VERT || Math.abs(dx) < Math.abs(dy)) return;
+      if (dx < 0) go(idx + 1); else go(idx - 1);
+    }, { passive: true });
+    deck.addEventListener('touchcancel', function(){ tracking = false; }, { passive: true });
+  }
+
+  const swipeHint = document.getElementById('swipeHint');
+  if (swipeHint && ('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+    if (!sessionStorage.getItem('swipeHintSeen')) {
+      swipeHint.style.opacity = '1';
+      function dismissHint(){
+        swipeHint.style.opacity = '0';
+        setTimeout(function(){ swipeHint.style.display = 'none'; }, 500);
+        sessionStorage.setItem('swipeHintSeen', '1');
+        deck.removeEventListener('touchstart', dismissHint);
+      }
+      setTimeout(dismissHint, 3000);
+      deck.addEventListener('touchstart', dismissHint, { passive: true, once: true });
+    } else {
+      swipeHint.style.display = 'none';
+    }
+  }
+})();
+</script>
+</body></html>
